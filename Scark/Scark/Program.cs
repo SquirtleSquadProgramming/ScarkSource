@@ -11,6 +11,8 @@ namespace Scark
         static void Main(string[] args)
         {
             Console.WriteLine("Hello world! UwU");
+            Console.Clear();
+            Console.WriteLine("OwO");
         }
     }
 }
