@@ -60,7 +60,7 @@ namespace Scark.ast.start
                     //Mage
                     break;
             }
-
+            //Sean Write Some More Story
             return CharacterInfo;
         }
     }
