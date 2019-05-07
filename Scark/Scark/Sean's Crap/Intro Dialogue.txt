@@ -1,3 +1,8 @@
-﻿NOTE: IF THE BELOW TEXT EXTENDS BEYOND THE SCREEN, GO TO [Tools > Options > Text Editor > All Languages > Word wrap]
-
-You have been arrested for treason to the king. You are walked up to the gallows to which you will be executed. The executioner firms his grasp around the lever. before he pulls the lever he mumbles a quick prayer. The executioner asks if anybody objects when legendary explorer “Lord Wakehart” says that you could be of service to him. his lordship allows him to pardon anybody he wishes. He asks you "what's your name?" "/* input */" then tells you that he desperately needs an explorer to go to the island of scark. He promises you a fortune if you complete his quest. Before you can say anything you are rushed off to a training fort. The trainer asks you how you like to fight "/*input*/" you are trained basically in (*put class here*)and shipped to scark.
+﻿You have been arrested for treason to the king. You are walked up to the gallows to which you will be 
+executed. The executioner firms his grasp around the lever. before he pulls the lever he mumbles a 
+quick prayer. The executioner asks if anybody objects when legendary explorer “Lord Wakehart” says that 
+you could be of service to him. his lordship allows him to pardon anybody he wishes. He asks you "what's 
+your name?" "/* input */" then tells you that he desperately needs an explorer to go to the island of 
+Scark. He promises you a fortune if you complete his quest. Before you can say anything you are rushed 
+off to a training fort. The trainer asks you how you like to fight "/*input*/" you are trained basically 
+in (*put class here*)and shipped to scark.
