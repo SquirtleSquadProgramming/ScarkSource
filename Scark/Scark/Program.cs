@@ -8,8 +8,6 @@ namespace Scark
 {
     class Program
     {
-        //Temp Comment For Build
-        //SaveSys Save = new SaveSys(); // intializing the save system
         const string gameVersion = "v0.0.0"; // game version variable
         Dictionary<string, int> charcterdata = new Dictionary<string, int>() // dictionary of local save's data
 	    {
@@ -24,12 +22,10 @@ namespace Scark
             //Used To Remove Warnings 
             Console.Clear();
             // converting the start main function to a non - static
-            Menu start = new Menu();
+            ast.start.Menu start = new ast.start.Menu();
             start.menuSeq(); // starting the main function
 
-            //Temp Comments
-            //	bicoder BiCoder = new bicoder();
-            //	BiCoder.encStrToNum("abcdefghjiklmnopqrstuvwxyz");
+            Console.Read();
         }
     }
 }
