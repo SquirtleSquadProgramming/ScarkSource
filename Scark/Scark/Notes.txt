@@ -1,0 +1,54 @@
+﻿Currency: Ethryl, Starter amount 50
+Health: ~100 (Data Terminated on Death?)
+Character Types (class): Undefined(0), Rouge(1), Warrior(2), Ranger(3), Mage(4)
+
+CHARACTER TYPES:
+Undefined:
+Used when a save has not been initialised, or no save data can be found.
+Dysfunctional- A charactertype must be chosen as this charactertype does not initialize.
+
+Rouge: [Melee]
+A solitary thief who lurks in the shadows fighting for his own and others lives.
++ Movement Speed
++ Intuition
++ Melee, Single Target
+- Defence
+- Multi Target 
+- Charisma
+(Iron Shortsword)
+
+Warrior: [Melee]
+A skilled combatant trained to carry out orders and dominate the battlefield.
++ Defence
++ Multi Target 
++ Charisma
+- Movement Speed
+- Intuition
+- Single Target 
+(Iron Broadsword)
+
+Ranger: [Ranged]
+Scouting amongst the trees, the ranger picks off targets with meticulous precision. The silent force of the battlefield.
++ Single Target
++ Charisma
++ Movement Speed
+- Intuition
+- Multi Target Damage
+- Defence
+(Quiver and Bow)
+
+Mage: [Magic]
+Harnessing the dark and light pillars of magic and energy, the mage infuses the battle with powerful, mystic attacks.
++ Multi Target
++ Intuition
++ Charisma
+- Defence
+- Movement Speed
+- Single Target
+(Book of Souls)
+
+
+
+
+
+
