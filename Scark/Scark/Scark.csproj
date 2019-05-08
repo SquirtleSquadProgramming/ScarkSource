@@ -68,7 +68,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ast\save\save.py" />
+    <Content Include="ast\save\FileSystem.py" />
+    <Content Include="ast\save\encDec.list" />
     <Content Include="Sean%27s Crap\Intro Dialogue.txt" />
     <Content Include="Notes.txt" />
   </ItemGroup>
