@@ -33,9 +33,9 @@ namespace Scark.ast.start
                 wd("\nIn the midst of all the confusion, you begin running.");
                 
                 wd("\nSuddenly, a baton bludgeons you from behind.");
-                Thread.Sleep(3000);
+                Thread.Sleep(2000);
                 Console.Clear();
-                Thread.Sleep(10000);
+                Thread.Sleep(3000);
 
                 wd("You wake up in a mysterious place and realize where you are...");
                 
@@ -132,7 +132,7 @@ namespace Scark.ast.start
         public void wd(string text) // write dialogue and wait 1.5 s
         {
             Console.WriteLine(text);
-            Thread.Sleep(1500);
+            Thread.Sleep(3000);
         }
     }
 }
