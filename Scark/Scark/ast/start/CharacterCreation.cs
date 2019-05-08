@@ -9,55 +9,64 @@ namespace Scark.ast.start
 {
     public class CC
     {
-        //Danny IDK if Static Is Ment To be here but i removed it because it gave me an error add if you can fix the error
-        public string[] NewPlayer()
+        //NewPlayer function
+        public string[] NewPlayer(bool dev)
         {
             //declare The New T's And C's Of The New Player
             string[] CharacterInfo = new string[2];
-            //name,Class
+            
             Console.Clear();
-            //Story Line
-            Console.WriteLine("You have been arrested for treason to the king. You are walked up to the gallows to which you will be executed.");
-            Thread.Sleep(4000);
-            Console.WriteLine("The executioner firms his grasp around the lever. Before he pulls the lever he mumbles a quick prayer.");
-            Thread.Sleep(4000);
-            Console.WriteLine("The executioner asks if anybody objects when legendary explorer “Lord Wakehart” says that you could be of service to him.");
-            Thread.Sleep(4000);
-            Console.WriteLine("His lordship allows him to pardon anybody he wishes.");
-            Thread.Sleep(4000);
+
+            if (!dev) // TEMPORARY: If user is dev then skip story lines
+            {
+                //Story Line
+                Console.WriteLine("You have been arrested for treason to the king. You are walked up to the gallows to which you will be executed.");
+                Thread.Sleep(3000);
+                Console.WriteLine("The executioner firms his grasp around the lever. Before he pulls the lever he mumbles a quick prayer.");
+                Thread.Sleep(3000);
+                Console.WriteLine("The executioner asks if anybody objects. Suddenly legendary explorer Lord Wakehart says that you could be of service.");
+                Thread.Sleep(3000);
+                Console.WriteLine("His lordship allows him to pardon anybody he wishes.");
+                Thread.Sleep(3000);
+            }
+
             Console.WriteLine("He asks you what's your name?");
             CharacterInfo[0] = Console.ReadLine();
-            Console.WriteLine("Then tells you that he desperately needs an explorer to go to the island of scark.\nHe promises you a fortune if you complete his quest.");
-            Thread.Sleep(7000);
-            Console.WriteLine("Before you can say anything you are rushed off to a training fort.");
-            //Traing Fort
-            Thread.Sleep(3000);
-            Console.WriteLine("The trainer asks you how you like to fight \n1:Rouge\n2:Warrior\n3:Ranger\n4:Mage");
+
+            if (!dev) // TEMPORARY: If user is dev then skip story lines
+            {
+                Console.WriteLine("Then tells you that he desperately needs an explorer to go to the island of scark.");
+                Thread.Sleep(1000);
+                Console.WriteLine("He promises you a fortune if you complete his quest.");
+                Thread.Sleep(4000);
+                Console.WriteLine("Before you can say anything you are rushed off to a training fort.");
+                Thread.Sleep(3000);
+            }
+
+            //Training Fort
+            Console.WriteLine("The trainer asks you how you like to fight \n(1) Rouge\n(2) Warrior\n(3) Ranger\n(4) Mage");
+            Console.Write("Please select a role (number): ");
+
             //Add Class Options Here
             CharacterInfo[1] = Console.ReadLine();
-            //put switch statement here
 
             switch (CharacterInfo[1])
             {
-                case "1":
-                    Console.WriteLine("you are trained in basic Stealth and shipped to scark.");
-                    //Rouge
+                case "1": //Rouge
+                    Console.WriteLine("You are trained in basic Stealth and shipped to the distant land of scark...");
                     CharacterInfo[1] = "Rouge";
                     break;
-                case "2":
+                case "2": //Warrior
                     CharacterInfo[1] = "Warrior";
-                    Console.WriteLine("you are trained in basic Combat and shipped to scark.");
-                    //Warrior
+                    Console.WriteLine("You are trained in basic Combat and shipped to the distant land of scark...");
                     break;
-                case "3":
+                case "3": //Ranger
                     CharacterInfo[1] = "Ranger";
-                    Console.WriteLine("you are trained in basic Archery and shipped to scark.");
-                    //Ranger
+                    Console.WriteLine("You are trained in basic Archery and shipped to the distant land of scark...");
                     break;
+                case "4": //Mage
                     CharacterInfo[1] = "Mage";
-                case "4":
-                    Console.WriteLine("you are trained in basic Magery and shipped to scark.");
-                    //Mage
+                    Console.WriteLine("You are trained in basic Magery and shipped to the distant land of scark...");
                     break;
             }
             //Sean Write Some More Story

@@ -19,12 +19,17 @@ namespace Scark.ast.start
             Console.WriteLine("1: New Game\n2: Load");
             string input = Console.ReadLine();
 
+            string[] tmp;
+
             switch (input)
             {
                 case "1":
                     //New Game Should be Called
                     //Call NewPlayer In CC
-                    string[] tmp = charcterCreation.NewPlayer();
+                    tmp = charcterCreation.NewPlayer(false);
+                    break;
+                case "1d":
+                    tmp = charcterCreation.NewPlayer(true);
                     break;
                 case "2":
                     //Load Should be Called But It Might Not Idk... JK
@@ -33,7 +38,7 @@ namespace Scark.ast.start
                     break;
                 default:
                     Console.WriteLine("Please input a valid number!");
-                    //	menuSeq();
+                    menuSeq();
                     break;
             }
             

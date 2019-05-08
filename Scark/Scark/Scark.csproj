@@ -42,8 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ast\encdec\bicoder.cs" />
-    <Compile Include="ast\encdec\save.cs" />
     <Compile Include="ast\start\CharacterCreation.cs" />
     <Compile Include="ast\start\MenuSequence.cs" />
     <Compile Include="Program.cs" />
@@ -51,7 +49,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ast\encdec\Title.font" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Sean%27s Crap\Intro Dialogue.txt" />
