@@ -10,7 +10,7 @@ namespace Scark.ast.start
     public class Menu
     {
 
-        string version = "v0.1.1-alpha";
+        string version = "v0.1.2-alpha";
 
         public void menuSeq()
         {

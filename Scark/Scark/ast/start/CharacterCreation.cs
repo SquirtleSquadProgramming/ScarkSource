@@ -33,9 +33,9 @@ namespace Scark.ast.start
                 wd("\nIn the midst of all the confusion, you begin running.");
                 
                 wd("\nSuddenly, a baton bludgeons you from behind.");
-                Thread.Sleep(3000);
+                Thread.Sleep(2000);
                 Console.Clear();
-                Thread.Sleep(10000);
+                Thread.Sleep(3000);
 
                 wd("You wake up in a mysterious place and realize where you are...");
                 
@@ -101,21 +101,25 @@ namespace Scark.ast.start
                         CharacterInfo[1] = "Rouge";
                         Console.WriteLine("You are trained in basic Stealth and shipped to the distant land of Scark...");
                         userPickedOption = true;
+                        Thread.Sleep(1500);
                         break;
                     case "2": // Warrior
                         CharacterInfo[1] = "Warrior";
                         Console.WriteLine("You are trained in basic Combat and shipped to the distant land of Scark...");
                         userPickedOption = true;
+                        Thread.Sleep(1500);
                         break;
                     case "3": // Ranger
                         CharacterInfo[1] = "Ranger";
                         Console.WriteLine("You are trained in basic Archery and shipped to the distant land of Scark...");
                         userPickedOption = true;
+                        Thread.Sleep(1500);
                         break;
                     case "4": // Mage
                         CharacterInfo[1] = "Mage";
                         Console.WriteLine("You are trained in basic Magery and shipped to the distant land of Scark...");
                         userPickedOption = true;
+                        Thread.Sleep(1500);
                         break;
 
                     default:
@@ -132,7 +136,7 @@ namespace Scark.ast.start
         public void wd(string text) // write dialogue and wait 1.5 s
         {
             Console.WriteLine(text);
-            Thread.Sleep(1500);
+            Thread.Sleep(3000);
         }
     }
 }
