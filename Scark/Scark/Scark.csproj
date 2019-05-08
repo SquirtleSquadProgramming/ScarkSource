@@ -51,6 +51,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ast\save\save.py" />
     <Content Include="Sean%27s Crap\Intro Dialogue.txt" />
     <Content Include="Notes.txt" />
   </ItemGroup>
