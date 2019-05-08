@@ -97,22 +97,22 @@ namespace Scark.ast.start
                 CharacterInfo[1] = Console.ReadLine();
                 switch (CharacterInfo[1])
                 {
-                    case "1": //Rouge
+                    case "1": // Rouge
                         CharacterInfo[1] = "Rouge";
                         Console.WriteLine("You are trained in basic Stealth and shipped to the distant land of Scark...");
                         userPickedOption = true;
                         break;
-                    case "2": //Warrior
+                    case "2": // Warrior
                         CharacterInfo[1] = "Warrior";
                         Console.WriteLine("You are trained in basic Combat and shipped to the distant land of Scark...");
                         userPickedOption = true;
                         break;
-                    case "3": //Ranger
+                    case "3": // Ranger
                         CharacterInfo[1] = "Ranger";
                         Console.WriteLine("You are trained in basic Archery and shipped to the distant land of Scark...");
                         userPickedOption = true;
                         break;
-                    case "4": //Mage
+                    case "4": // Mage
                         CharacterInfo[1] = "Mage";
                         Console.WriteLine("You are trained in basic Magery and shipped to the distant land of Scark...");
                         userPickedOption = true;
