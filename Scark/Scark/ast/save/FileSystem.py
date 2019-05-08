@@ -20,7 +20,7 @@ class FileSystem:
 
         for x in range(len(encDec)):
             if ">" not in encDec[x]:
-                encDec.remove(encDec[x])
+                encDec.pop(x)
 
     # writeTF function is for writing to selected file with given data
     def writeTF(fnm, dtw):
