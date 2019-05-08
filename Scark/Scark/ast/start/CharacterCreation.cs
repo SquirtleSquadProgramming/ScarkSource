@@ -43,7 +43,7 @@ namespace Scark.ast.start
                 Thread.Sleep(1500);
                 Console.WriteLine("\nThe executioner firms his grasp around the lever. Before he pulls the lever he mumbles a quick prayer.");
                 Thread.Sleep(1500);
-                Console.WriteLine("\n[Executioner] Does anybody objects to the hanging?");
+                Console.WriteLine("\n[EXECUTIONER] Does anybody object to this her' hanging?");
                 Thread.Sleep(1500);
                 Console.WriteLine("\nSilence.");
                 Thread.Sleep(1500);
@@ -53,7 +53,7 @@ namespace Scark.ast.start
                 Thread.Sleep(1500);
                 Console.WriteLine("\nThe executioner's eyes fix upon the man who called.");
                 Thread.Sleep(1500);
-                Console.WriteLine("\n[EXECUTIONER] Ar, an' who d'ya think you are?");
+                Console.WriteLine("\n[EXECUTIONER] Arr, an' who d'ya think you ar'?");
                 Thread.Sleep(1500);
                 Console.WriteLine("\n[VOICE] Lord Wakehart, the explorer.");
                 Thread.Sleep(1500);
