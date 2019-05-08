@@ -31,11 +31,12 @@ namespace Scark.ast.start
             }
 
             Console.WriteLine("He asks you what's your name?");
+            Console.Write("> "); // !!! MAKE SURE TO ADD THIS TO ANYTHING W/ USER INPUT
             CharacterInfo[0] = Console.ReadLine();
 
             if (!dev) // TEMPORARY: If user is dev then skip story lines
             {
-                Console.WriteLine("Then tells you that he desperately needs an explorer to go to the island of scark.");
+                Console.WriteLine("Then tells you that he desperately needs an explorer to go to the island of Scark.");
                 Thread.Sleep(1000);
                 Console.WriteLine("He promises you a fortune if you complete his quest.");
                 Thread.Sleep(4000);
@@ -45,7 +46,8 @@ namespace Scark.ast.start
 
             //Training Fort
             Console.WriteLine("The trainer asks you how you like to fight \n(1) Rouge\n(2) Warrior\n(3) Ranger\n(4) Mage");
-            Console.Write("Please select a role (number): ");
+            Console.Write("Please select a role (number): "); // two lines or 1?? -dc
+           
 
             //Add Class Options Here
             CharacterInfo[1] = Console.ReadLine();
