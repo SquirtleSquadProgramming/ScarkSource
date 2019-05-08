@@ -11,6 +11,7 @@ namespace Scark.ast.start
     {
         public static void aboardShip()
         {
+            Console.Clear();
             Console.WriteLine(@"                    |
                     |
              |    __-__
@@ -22,6 +23,7 @@ namespace Scark.ast.start
      '-._|.-.|-.    |'-.____'.
          |------------------'
           `----------------'  smd");
+            Console.ReadLine();
         }
     }
 }
