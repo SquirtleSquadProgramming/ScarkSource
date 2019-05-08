@@ -13,7 +13,7 @@ namespace Scark.ast.start
         public string[] NewPlayer(bool dev)
         {
             //declare The New T's And C's Of The New Player
-            string[] CharacterInfo = new string[2];
+            string[] CharacterInfo = new string[3];
 
             Console.Clear();
 
@@ -88,39 +88,44 @@ namespace Scark.ast.start
             //Training Fort
             Console.WriteLine("The trainer asks you how you like to fight \n[1] Rouge\n[2] Warrior\n[3] Ranger\n[4] Mage");
             Console.WriteLine("Please select a role by inputting a number");
-            Console.Write("> ");
 
 
-            //Add Class Options Here
-            CharacterInfo[1] = Console.ReadLine();
-
-            switch (CharacterInfo[1])
+            bool userPickedOption = false;
+            while (userPickedOption == false)
             {
-                case "1": //Rouge
-                    Console.WriteLine("You are trained in basic Stealth and shipped to the distant land of Scark...");
-                    CharacterInfo[1] = "Rouge";
-                    
-                    break;
-                case "2": //Warrior
-                    CharacterInfo[1] = "Warrior";
-                    Console.WriteLine("You are trained in basic Combat and shipped to the distant land of Scark...");
-                    break;
-                case "3": //Ranger
-                    CharacterInfo[1] = "Ranger";
-                    Console.WriteLine("You are trained in basic Archery and shipped to the distant land of Scark...");
-                    break;
-                case "4": //Mage
-                    CharacterInfo[1] = "Mage";
-                    Console.WriteLine("You are trained in basic Magery and shipped to the distant land of Scark...");
-                    
-                    
+                Console.Write("> ");
+                CharacterInfo[1] = Console.ReadLine();
+                switch (CharacterInfo[1])
+                {
+                    case "1": //Rouge
+                        CharacterInfo[1] = "Rouge";
+                        Console.WriteLine("You are trained in basic Stealth and shipped to the distant land of Scark...");
+                        userPickedOption = true;
+                        break;
+                    case "2": //Warrior
+                        CharacterInfo[1] = "Warrior";
+                        Console.WriteLine("You are trained in basic Combat and shipped to the distant land of Scark...");
+                        userPickedOption = true;
+                        break;
+                    case "3": //Ranger
+                        CharacterInfo[1] = "Ranger";
+                        Console.WriteLine("You are trained in basic Archery and shipped to the distant land of Scark...");
+                        userPickedOption = true;
+                        break;
+                    case "4": //Mage
+                        CharacterInfo[1] = "Mage";
+                        Console.WriteLine("You are trained in basic Magery and shipped to the distant land of Scark...");
+                        userPickedOption = true;
+                        break;
 
-                    break;
-                default:
-                    Console.WriteLine("Please input a valid number between 1 and 4!");
-                    break;
+                    default:
+                        Console.WriteLine("Please input a valid number between 1 and 4!");
+                        break;
+                }
             }
+
             //Sean Write Some More Story
+            CharacterInfo[2] = "1";
             return CharacterInfo;
         }
 
