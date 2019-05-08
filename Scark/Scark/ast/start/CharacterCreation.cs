@@ -66,7 +66,7 @@ namespace Scark.ast.start
             }
 
             wd("[LORD WAKEHART] Hey kid, what's your name?");
-            Console.Write("> "); // !!! MAKE SURE TO ADD THIS TO ANYTHING W/ USER INPUT
+            Console.Write("> ");
             CharacterInfo[0] = Console.ReadLine();
 
             if (!dev) // TEMPORARY: If user is dev then skip story lines
@@ -135,8 +135,15 @@ namespace Scark.ast.start
 
         public void wd(string text) // write dialogue and wait 1.5 s
         {
-            Console.WriteLine(text);
-            Thread.Sleep(3000);
+            if (!dev)
+            {
+                Console.WriteLine(text);
+                Thread.Sleep(3000);
+            }
+            else
+            {
+                Console.WriteLine(text);
+            }
         }
     }
 }

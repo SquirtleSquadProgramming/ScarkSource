@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Scark.ast.start
 {
@@ -10,6 +11,7 @@ namespace Scark.ast.start
     {
         public string[] aboardShip(string[] charinf, bool dev)
         {
+            
             Console.WriteLine(@"                    |
                     |
              |    __-__
@@ -20,11 +22,31 @@ namespace Scark.ast.start
  '-._/_| (   |\     |.'    \
      '-._|.-.|-.    |'-.____'.
          |------------------'
-          `----------------'");
+          `-      Farquaad '
+            `-------------'");
 
+            wd("Days pass aboard the Farquaad.");
+            wd("[LORD WAKEHART] Hey kid.");
+            wd("[LORD WAKEHART] Not long 'til the Farquaad arrives at Scark.");
+            wd("[LORD WAKEHART] She's gonna stay in the port for a lil' while as we restock.");
+            wd("[LORD WAKEHART] Y'know what, go to the town not far from here, and go to the tarven called \"The Medallion\".");
+            wd("[LORD WAKEHART] Talk to my friend Orpheus, he's the barman. He'll tell you some stuff you ought to know.");
 
             charinf[2] = "2"; // Continuing story
             return charinf;
+        }
+
+        public void wd(string text) // write dialogue and wait 1.5 s
+        {
+            if (!dev)
+            {
+                Console.WriteLine(text);
+                Thread.Sleep(3000);
+            }
+            else
+            {
+                Console.WriteLine(text);
+            }
         }
     }
 }
