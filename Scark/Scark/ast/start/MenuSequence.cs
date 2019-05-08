@@ -36,7 +36,7 @@ namespace Scark.ast.start
                 Console.WriteLine("      #######                                         #    \n    #       ###                                     ##  \n   #         ##                                     ##\n   ##        #                                      ## \n    ###                                ###  ####    ##\n   ## ###           ####       ####     #### #### # ##  ###  \n    ### ###        # ###  #   # ###  #   ##   ####  ## # ###\n      ### ###     #   ####   #   ####    ##         ###   # \n        ### ###  ##         ##    ##     ##         ##   # \n          ## ### ##         ##    ##     ##         ##  #\n           ## ## ##         ##    ##     ##         ## ## \n            # #  ##         ##    ##     ##         ###### \n  ###        #   ###     #  ##    ##     ###        ##  ### \n #  #########     #######    ##### ##     ###       ##   ### #\n#     #####        #####      ###   ##               ##   ###\n#      \n ## ");
                 Console.ForegroundColor = ConsoleColor.White;
 
-                Console.Write("\n[1] New Game\n[2] Load [WIP]\n> "); // Options
+                Console.Write("\n[1] New Game\n[2] Load Played [WIP]\n> "); // Options
                 if (dev == true) Console.Write("Dev mode enabled\n> "); // Saying if dev mode is enabled
 
                 switch (Console.ReadLine())
