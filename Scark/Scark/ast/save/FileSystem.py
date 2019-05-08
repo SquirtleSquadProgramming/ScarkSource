@@ -19,8 +19,8 @@ class FileSystem:
         encDec = readFF("encdic", "list").split("\n")
 
         for x in range(len(encDec)):
-            if ">" in encDec[x]:
-                print("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+            if ">" not in encDec[x]:
+                encDec.remove(encDec[x])
 
     # writeTF function is for writing to selected file with given data
     def writeTF(fnm, dtw):
