@@ -1,0 +1,45 @@
+You carefully aim your crossbow directly at the King's chest.
+>1500
+A bloodstained crossbow loaded with a lead bolt sits in your sweaty hand as you observe the speech from a ramshackle building.
+>1500
+Your finger pulls the trigger.
+>1500
+You hear an instant uproar as the King's body topples down the stone stairs.
+>1500
+In the midst of all the confusion, you begin running.
+>1500
+Suddenly, a baton bludgeons you from behind.
+>10000
+You wake up in a mysterious place and realize where you are...
+>1500
+You have been arrested for treason to the king. You are walked up to the gallows to which you will be executed.
+>1500
+The executioner firms his grasp around the lever. Before he pulls the lever he mumbles a quick prayer.
+>1500
+[EXECUTIONER] Does anybody object to this her' hanging?
+>1500
+Silence.
+>1500
+As the executioner moves his hand towards the lever, a voice shouts out.
+>1500
+[VOICE] I object!
+>1500
+The executioner's eyes fix upon the man who called.
+>1500
+[EXECUTIONER] Arr, an' who d'ya think you ar'?
+>1500
+[VOICE] Lord Wakehart, the explorer.
+>1500
+[LORD WAKEHART] I wish to pardon this kid.
+>1500
+The executioner has no choice but to obey the laws, Wakehart's lordship grants him power to pardon anyone he wishes.
+>1500
+The rope is loosened around your neck as you are escorted into the disappointed audience by Lord Wakehart.
+>1500
+[LORD WAKEHART] Hey kid, what's your name?
+>1500
+<input
+
+>1500
+
+>1500

@@ -22,67 +22,67 @@ namespace Scark.ast.start
             if (!dev) // TEMPORARY: If user is dev then skip story lines
             {
                 //Story Line
-                Console.WriteLine("\nYou carefully aim your crossbow directly at the King's chest.");
-                Thread.Sleep(1500);
-                Console.WriteLine("\nA bloodstained crossbow loaded with a lead bolt sits in your sweaty hand as you observe the speech from a ramshackle building.");
-                Thread.Sleep(5000);
-                Console.WriteLine("\nYour finger pulls the trigger.");
-                Thread.Sleep(1500);
-                Console.WriteLine("\nYou hear an instant uproar as the King's body topples down the stone stairs.");
-                Thread.Sleep(1500);
-                Console.WriteLine("\nIn the midst of all the confusion, you begin running.");
-                Thread.Sleep(1500);
-                Console.WriteLine("\nSuddenly, a baton bludgeons you from behind.");
+                wd("\nYou carefully aim your crossbow directly at the King's chest.");
+                
+                wd("\nA bloodstained crossbow loaded with a lead bolt sits in your sweaty hand as you observe the speech from a ramshackle building.");
+
+                wd("\nYour finger pulls the trigger.");
+                
+                wd("\nYou hear an instant uproar as the King's body topples down the stone stairs.");
+                
+                wd("\nIn the midst of all the confusion, you begin running.");
+                
+                wd("\nSuddenly, a baton bludgeons you from behind.");
                 Thread.Sleep(3000);
                 Console.Clear();
                 Thread.Sleep(10000);
 
-                Console.WriteLine("You wake up in a mysterious place and realize where you are...");
-                Thread.Sleep(1500);
-                Console.WriteLine("You have been arrested for treason to the king. You are walked up to the gallows to which you will be executed.");
-                Thread.Sleep(1500);
-                Console.WriteLine("\nThe executioner firms his grasp around the lever. Before he pulls the lever he mumbles a quick prayer.");
-                Thread.Sleep(1500);
-                Console.WriteLine("\n[EXECUTIONER] Does anybody object to this her' hanging?");
-                Thread.Sleep(1500);
-                Console.WriteLine("\nSilence.");
-                Thread.Sleep(1500);
-                Console.WriteLine("\nAs the executioner moves his hand towards the lever, a voice shouts out.");
-                Thread.Sleep(1500);
-                Console.WriteLine("\n[VOICE] I object!");
-                Thread.Sleep(1500);
-                Console.WriteLine("\nThe executioner's eyes fix upon the man who called.");
-                Thread.Sleep(1500);
-                Console.WriteLine("\n[EXECUTIONER] Arr, an' who d'ya think you ar'?");
-                Thread.Sleep(1500);
-                Console.WriteLine("\n[VOICE] Lord Wakehart, the explorer.");
-                Thread.Sleep(1500);
-                Console.WriteLine("\n[LORD WAKEHART] I wish to pardon this kid.");
-                Thread.Sleep(1500);
-                Console.WriteLine("\nThe executioner has no choice but to obey the laws, Wakehart's lordship grants him power to pardon anyone he wishes.");
-                Thread.Sleep(1500);
-                Console.WriteLine("\nThe rope is loosened around your neck as you are escorted into the disappointed audience by Lord Wakehart.");
-                Thread.Sleep(1500);
+                wd("You wake up in a mysterious place and realize where you are...");
+                
+                wd("You have been arrested for treason to the king. You are walked up to the gallows to which you will be executed.");
+                
+                wd("\nThe executioner firms his grasp around the lever. Before he pulls the lever he mumbles a quick prayer.");
+                
+                wd("\n[EXECUTIONER] Does anybody object to this her' hanging?");
+                
+                wd("\nSilence.");
+                
+                wd("\nAs the executioner moves his hand towards the lever, a voice shouts out.");
+                
+                wd("\n[VOICE] I object!");
+                
+                wd("\nThe executioner's eyes fix upon the man who called.");
+                
+                wd("\n[EXECUTIONER] Arr, an' who d'ya think you ar'?");
+                
+                wd("\n[VOICE] Lord Wakehart, the explorer.");
+                
+                wd("\n[LORD WAKEHART] I wish to pardon this kid.");
+                
+                wd("\nThe executioner has no choice but to obey the laws, Wakehart's lordship grants him power to pardon anyone he wishes.");
+                
+                wd("\nThe rope is loosened around your neck as you are escorted into the disappointed audience by Lord Wakehart.");
+                
             }
 
-            Console.WriteLine("[LORD WAKEHART] Hey kid, what's your name?");
+            wd("[LORD WAKEHART] Hey kid, what's your name?");
             Console.Write("> "); // !!! MAKE SURE TO ADD THIS TO ANYTHING W/ USER INPUT
             CharacterInfo[0] = Console.ReadLine();
 
             if (!dev) // TEMPORARY: If user is dev then skip story lines
             {
-                Console.WriteLine($"[LORD WAKEHART] Hey, {CharacterInfo[0]}. Don't think I'm pardoning you for nothing, nah.");
-                Thread.Sleep(1500);
-                Console.WriteLine("\n[LORD WAKEHART] I've a quest for you, and if you succeed, you'll be a very rich man.");
-                Thread.Sleep(1500);
-                Console.WriteLine("\n[LORD WAKEHART] Ha ha, I'm guessing you want to know what this quest involves!");
-                Thread.Sleep(1500);
-                Console.WriteLine("\n[LORD WAKEHART] Well, I need a brave adventurer to go to the island of Scark.");
-                Thread.Sleep(1500);
-                Console.WriteLine("\n[LORD WAKEHART] I'll tell you more when we get there, kid.");
-                Thread.Sleep(1500);
-                Console.WriteLine("Before you can say anything, you are rushed off to a training fort...");
-                Thread.Sleep(1500);
+                wd($"[LORD WAKEHART] Hey, {CharacterInfo[0]}. Don't think I'm pardoning you for nothing, nah.");
+                
+                wd("\n[LORD WAKEHART] I've a quest for you, and if you succeed, you'll be a very rich man.");
+                
+                wd("\n[LORD WAKEHART] Ha ha, I'm guessing you want to know what this quest involves!");
+                
+                wd("\n[LORD WAKEHART] Well, I need a brave adventurer to go to the island of Scark.");
+                
+                wd("\n[LORD WAKEHART] I'll tell you more when we get there, kid.");
+                
+                wd("Before you can say anything, you are rushed off to a training fort...");
+                
             }
 
             //Training Fort
@@ -97,20 +97,24 @@ namespace Scark.ast.start
             switch (CharacterInfo[1])
             {
                 case "1": //Rouge
-                    Console.WriteLine("You are trained in basic Stealth and shipped to the distant land of scark...");
+                    Console.WriteLine("You are trained in basic Stealth and shipped to the distant land of Scark...");
                     CharacterInfo[1] = "Rouge";
+                    
                     break;
                 case "2": //Warrior
                     CharacterInfo[1] = "Warrior";
-                    Console.WriteLine("You are trained in basic Combat and shipped to the distant land of scark...");
+                    Console.WriteLine("You are trained in basic Combat and shipped to the distant land of Scark...");
                     break;
                 case "3": //Ranger
                     CharacterInfo[1] = "Ranger";
-                    Console.WriteLine("You are trained in basic Archery and shipped to the distant land of scark...");
+                    Console.WriteLine("You are trained in basic Archery and shipped to the distant land of Scark...");
                     break;
                 case "4": //Mage
                     CharacterInfo[1] = "Mage";
-                    Console.WriteLine("You are trained in basic Magery and shipped to the distant land of scark...");
+                    Console.WriteLine("You are trained in basic Magery and shipped to the distant land of Scark...");
+                    
+                    
+
                     break;
                 default:
                     Console.WriteLine("Please input a valid number between 1 and 4!");
@@ -118,6 +122,12 @@ namespace Scark.ast.start
             }
             //Sean Write Some More Story
             return CharacterInfo;
+        }
+
+        public void wd(string text) // write dialogue and wait 1.5 s
+        {
+            Console.WriteLine(text);
+            Thread.Sleep(1500);
         }
     }
 }
