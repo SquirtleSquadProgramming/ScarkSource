@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Scark.ast;
 
 namespace Scark.ast.start
 {
     public class Menu
     {
-
-        string version = "v0.1.2-alpha";
+        public static bool dev = false;
+        public const string version = "v0.1.3-alpha";
 
         public void menuSeq()
         {
@@ -24,31 +25,38 @@ namespace Scark.ast.start
 
             Console.WriteLine("\n\nPRESS ANY KEY TO BEGIN...");
             Console.ReadKey();
-
-            Console.Clear();
-            //Looks Nicer if We Put The Title Up For The Rest of the menu options
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("      #######                                         #    \n    #       ###                                     ##  \n   #         ##                                     ##\n   ##        #                                      ## \n    ###                                ###  ####    ##\n   ## ###           ####       ####     #### #### # ##  ###  \n    ### ###        # ###  #   # ###  #   ##   ####  ## # ###\n      ### ###     #   ####   #   ####    ##         ###   # \n        ### ###  ##         ##    ##     ##         ##   # \n          ## ### ##         ##    ##     ##         ##  #\n           ## ## ##         ##    ##     ##         ## ## \n            # #  ##         ##    ##     ##         ###### \n  ###        #   ###     #  ##    ##     ###        ##  ### \n #  #########     #######    ##### ##     ###       ##   ### #\n#     #####        #####      ###   ##               ##   ###\n#      \n ## ");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("\n[1] New Game\n[2] Load [WIP]");
-            string input = Console.ReadLine();
             Scark.ast.story Story = new Scark.ast.story();
 
-            switch (input)
+
+            bool optionSelected = false;
+            while (optionSelected == false)
             {
-                case "1":
-                    Story.Run(new string[] { "", "", "0" });
-                    break;
-                case "1d":
-                    Story.Run(new string[] { "", "", "0" }, true);
-                    break;
-                case "2":
-                    Console.WriteLine("This feature is WIP");
-                    break;
-                default:
-                    Console.WriteLine("Please input a valid number!");
-                    menuSeq();
-                    break;
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("      #######                                         #    \n    #       ###                                     ##  \n   #         ##                                     ##\n   ##        #                                      ## \n    ###                                ###  ####    ##\n   ## ###           ####       ####     #### #### # ##  ###  \n    ### ###        # ###  #   # ###  #   ##   ####  ## # ###\n      ### ###     #   ####   #   ####    ##         ###   # \n        ### ###  ##         ##    ##     ##         ##   # \n          ## ### ##         ##    ##     ##         ##  #\n           ## ## ##         ##    ##     ##         ## ## \n            # #  ##         ##    ##     ##         ###### \n  ###        #   ###     #  ##    ##     ###        ##  ### \n #  #########     #######    ##### ##     ###       ##   ### #\n#     #####        #####      ###   ##               ##   ###\n#      \n ## ");
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Console.Write("\n[1] New Game\n[2] Load [WIP]\n> "); // Options
+                if (dev == true) Console.Write("Dev mode enabled\n> "); // Saying if dev mode is enabled
+
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        optionSelected = true;
+                        Story.Run(new string[] { "", "", "0" });
+                        break;
+                    case "dev":
+                        if (dev == false) dev = true;
+                        else dev = false;
+                        break;
+                    case "2":
+                        optionSelected = true;
+                        Console.WriteLine("This feature is WIP");
+                        break;
+                    default:
+                        Console.WriteLine("Please input a valid number!");
+                        break;
+                }
             }
 
             Console.Read();

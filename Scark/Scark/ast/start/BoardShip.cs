@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using Scark.ast;
 
 namespace Scark.ast.start
 {
     class BoardShip
     {
-        public string[] aboardShip(string[] charinf, bool dev)
+        public string[] aboardShip(string[] charinf)
         {
-            
             Console.WriteLine(@"                    |
                     |
              |    __-__
@@ -38,7 +38,7 @@ namespace Scark.ast.start
 
         public void wd(string text) // write dialogue and wait 1.5 s
         {
-            if (!dev)
+            if (!start.Menu.dev)
             {
                 Console.WriteLine(text);
                 Thread.Sleep(3000);
