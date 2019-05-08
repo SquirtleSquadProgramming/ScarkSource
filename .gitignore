@@ -3,6 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# User-Chosen files
+[Rr]un.py
+[Rr]un.exe
+
 # User-specific files
 *.suo
 *.user
@@ -84,6 +88,9 @@ StyleCopReport.xml
 *.pidb
 *.svclog
 *.scc
+*.exe
+*.exe.config
+*.pdb
 
 # Chutzpah Test files
 _Chutzpah*
