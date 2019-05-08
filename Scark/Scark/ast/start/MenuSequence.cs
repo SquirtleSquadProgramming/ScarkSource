@@ -17,6 +17,7 @@ namespace Scark.ast.start
             Console.WriteLine("\nPress any key to begin...");
             Console.ReadKey();
             Console.Clear();
+            //Looks Nicer if We Put The Title Up For The Rest of the menu options
             Console.WriteLine("      #######                                         #    \n    #       ###                                     ##  \n   #         ##                                     ##\n   ##        #                                      ## \n    ###                                ###  ####    ##\n   ## ###           ####       ####     #### #### # ##  ###  \n    ### ###        # ###  #   # ###  #   ##   ####  ## # ###\n      ### ###     #   ####   #   ####    ##         ###   # \n        ### ###  ##         ##    ##     ##         ##   # \n          ## ### ##         ##    ##     ##         ##  #\n           ## ## ##         ##    ##     ##         ## ## \n            # #  ##         ##    ##     ##         ###### \n  ###        #   ###     #  ##    ##     ###        ##  ### \n #  #########     #######    ##### ##     ###       ##   ### #\n#     #####        #####      ###   ##               ##   ###\n#      \n ## ");
             Console.WriteLine("\n[1] New Game\n[2] Load");
             string input = Console.ReadLine();
