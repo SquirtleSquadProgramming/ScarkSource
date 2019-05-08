@@ -12,11 +12,12 @@ namespace Scark.ast.start
         {
             CC charcterCreation = new CC();
             //Danny Doing Font Stuff and idk how it works plz halp
-            Console.WriteLine(""/*Ascii.Title*/);
+            Console.WriteLine("      #######                                         #    \n    #       ###                                     ##  \n   #         ##                                     ##\n   ##        #                                      ## \n    ###                                ###  ####    ##\n   ## ###           ####       ####     #### #### # ##  ###  \n    ### ###        # ###  #   # ###  #   ##   ####  ## # ###\n      ### ###     #   ####   #   ####    ##         ###   # \n        ### ###  ##         ##    ##     ##         ##   # \n          ## ### ##         ##    ##     ##         ##  #\n           ## ## ##         ##    ##     ##         ## ## \n            # #  ##         ##    ##     ##         ###### \n  ###        #   ###     #  ##    ##     ###        ##  ### \n #  #########     #######    ##### ##     ###       ##   ### #\n#     #####        #####      ###   ##               ##   ###\n#      \n ## ");
 
-            Console.WriteLine("Press any key to begin...");
+            Console.WriteLine("\nPress any key to begin...");
             Console.ReadKey();
-            Console.WriteLine("1: New Game\n2: Load");
+            Console.Clear();
+            Console.WriteLine("\n[1] New Game\n[2] Load");
             string input = Console.ReadLine();
 
             string[] tmp;
