@@ -38,7 +38,7 @@ namespace Scark.ast.start
                 Thread.Sleep(10000);
 
                 Console.WriteLine("You wake up in a mysterious place and realize where you are...");
-                Thread.Sleep(1500)
+                Thread.Sleep(1500);
                 Console.WriteLine("You have been arrested for treason to the king. You are walked up to the gallows to which you will be executed.");
                 Thread.Sleep(1500);
                 Console.WriteLine("\nThe executioner firms his grasp around the lever. Before he pulls the lever he mumbles a quick prayer.");
