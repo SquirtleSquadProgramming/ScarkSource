@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Scark.ast.items.weapons
 {
-    public class IronShortsword : Weapon
+    public static class IronShortsword //: Weapon
     {
-        Weapon.damage = 1; // <= ?????
     }
 }

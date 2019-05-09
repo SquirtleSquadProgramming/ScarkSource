@@ -84,7 +84,7 @@ namespace Scark.ast.start
             
 
             wd("[TRAINER] So.");
-            wd("[TRAINER] I see that the idiot Wakehead or whatever the hell his name is has pardoned you.");
+            wd($"[TRAINER] I see that the idiot Wakehead or whatever {Character.SwearReplacements["the hell"]} his name is has pardoned you.");
             wd("[TRAINER] Well, I guess I'll have to obey.");
             wd("[TRAINER] So kid, how'll your flimsy little limbs fight, eh?");
             wd("[TRAINER] Don't know what I'm talking about?");

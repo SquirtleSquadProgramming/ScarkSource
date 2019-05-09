@@ -49,9 +49,7 @@ namespace Scark.ast.start
                 if (Convert.ToInt32(response) <= 5000)
                 {
                     Character.Settings["SpeechSpeed"] = Convert.ToInt32(response);
-
-                    Console.WriteLine("\nTesting Speed");
-                    Thread.Sleep(Character.Settings["SpeechSpeed"]);
+                    Console.WriteLine("\n");
                     for (int i = 0; i < 3; i++)
                     {
                         Console.WriteLine("Testing Speed...");
@@ -91,13 +89,17 @@ namespace Scark.ast.start
                 if (response.ToLower() == "f")
                 {
                     Character.Settings["Profanity"] = false;
-                    
+
+                    Character.SwearReplacements["the hell"] = "the hell";
+
                     run();
                 }
                 if (response.ToLower() == "t")
                 {
                     Character.Settings["Profanity"] = true;
-                    
+
+                    Character.SwearReplacements["the hell"] = "the fuck";
+
                     run();
                 }
                 else
