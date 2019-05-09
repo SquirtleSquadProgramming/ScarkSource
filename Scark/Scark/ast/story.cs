@@ -9,29 +9,25 @@ namespace Scark.ast
 {
     class story
     {
-        public void Run(string[] charinf)
+        public void Run()
         {
             bool end = false;
             while (end == false)
             {
-                switch (charinf[2])
+                switch (Character.stage)
                 {
-                    case "0": // Character Creation
+                    case 0: // Character Creation
                         Console.Clear();
                         start.CC cC = new start.CC();
-                        charinf = cC.NewPlayer();
+                        cC.NewPlayer();
                         break;
-                    case "1": // Aboarding Ship
+                    case 1: // Aboarding Ship
                         Console.Clear();
                         start.BoardShip boardShip = new start.BoardShip();
-                        charinf = boardShip.aboardShip(charinf);
+                        boardShip.aboardShip();
                         break;
-                    case "2": // Further Story [WIP]
+                    case 2: // Further Story [WIP]
                         end = true; // temp as Abording Ship isn't completed and story isn't written for here.
-                        break;
-                    case "3": // settings menu
-                        Console.Clear();
-                        start.SettingsMenu settingsMenu = new start.SettingsMenu();
                         break;
                     default:
                         // Ummmmm... idk what goes here but...

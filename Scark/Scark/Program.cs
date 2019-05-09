@@ -10,14 +10,7 @@ namespace Scark
 {
     class Program
     {
-        const string gameVersion = "v0.0.0"; // game version variable
-        public Dictionary<string, int> charcterdata = new Dictionary<string, int>() // dictionary of local save's data
-	    {
-            {"ethryl", 0}, // currency
-		    {"health", 0},  // health
-		    {"characterType", 0}, // character type
-		    {"nickName", 0} // character name (encoded)  TODO: create encoder/decoder
- 	    };
+        public readonly static string gameVersion = "v0.1.4-alpha"; // game version variable
 
         public static void Main(string[] args)
         {
@@ -27,6 +20,7 @@ namespace Scark
             ast.start.Menu start = new ast.start.Menu();
             start.menuSeq(); // starting the main function
 
+            Console.Write("Press any key to exit...");
             Console.Read();
         }
     }

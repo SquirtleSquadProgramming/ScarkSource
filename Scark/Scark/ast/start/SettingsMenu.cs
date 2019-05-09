@@ -9,7 +9,6 @@ namespace Scark.ast.start
 {
     class SettingsMenu
     {
-        public int dialogueSpeed = 2000;
         Menu menu = new Menu();
 
         public void run()
@@ -30,7 +29,7 @@ namespace Scark.ast.start
                     break;
                 default:
                     Console.WriteLine("\nPlease enter a valid number!");
-                    Thread.Sleep(dialogueSpeed);
+                    Thread.Sleep(Character.Settings["SpeechSpeed"]);
                     break;
             }
         }
@@ -39,21 +38,21 @@ namespace Scark.ast.start
         {
             Console.Clear();
 
-            Console.Write("\nPlease enter the speed of dialogue in milliseconds (1000ms = 1s).\n> ");
+            Console.Write("\nPlease enter the speed of dialogue in milliseconds (1000ms = 1s).\nThe default is 1000ms\n> ");
             string response = Console.ReadLine();
 
             try
             {
                 if (Convert.ToInt32(response) <= 5000)
                 {
-                    dialogueSpeed = Convert.ToInt32(response);
+                    Character.Settings["SpeechSpeed"] = Convert.ToInt32(response);
 
-                    Console.WriteLine("\ntesting speed");
-                    Thread.Sleep(dialogueSpeed);
-                    for (int i = 0; i < 5; i++)
+                    Console.WriteLine("\nTesting Speed");
+                    Thread.Sleep(Character.Settings["SpeechSpeed"]);
+                    for (int i = 0; i < 3; i++)
                     {
-                        Console.WriteLine("testing speed");
-                        Thread.Sleep(dialogueSpeed);
+                        Console.WriteLine("Testing Speed...");
+                        Thread.Sleep(Character.Settings["SpeechSpeed"]);
                     }
                     
                     run();
@@ -61,7 +60,7 @@ namespace Scark.ast.start
                 else
                 {
                     Console.WriteLine("Please enter a value equal or less than 5000!");
-                    Thread.Sleep(dialogueSpeed);
+                    Thread.Sleep(Character.Settings["SpeechSpeed"]);
                     Console.Clear();
                     editDialogueSpeedSetting();
                 }
@@ -70,7 +69,7 @@ namespace Scark.ast.start
             {
                 Console.WriteLine("Please enter a valid number!");
                 
-                Thread.Sleep(dialogueSpeed);
+                Thread.Sleep(Character.Settings["SpeechSpeed"]);
                 Console.Clear();
                 editDialogueSpeedSetting();
             }

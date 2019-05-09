@@ -11,9 +11,6 @@ namespace Scark.ast.start
 {
     public class Menu
     {
-        public static bool dev = false;
-        public const string version = "v0.1.3-alpha";
-
         public void menuSeq()
         {
             Console.Clear();
@@ -22,12 +19,11 @@ namespace Scark.ast.start
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("      #######                                         #    \n    #       ###                                     ##  \n   #         ##                                     ##\n   ##        #                                      ## \n    ###                                ###  ####    ##\n   ## ###           ####       ####     #### #### # ##  ###  \n    ### ###        # ###  #   # ###  #   ##   ####  ## # ###\n      ### ###     #   ####   #   ####    ##         ###   # \n        ### ###  ##         ##    ##     ##         ##   # \n          ## ### ##         ##    ##     ##         ##  #\n           ## ## ##         ##    ##     ##         ## ## \n            # #  ##         ##    ##     ##         ###### \n  ###        #   ###     #  ##    ##     ###        ##  ### \n #  #########     #######    ##### ##     ###       ##   ### #\n#     #####        #####      ###   ##               ##   ###\n#      \n ## ");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("                        " + version);
+            Console.Write("                        " + Program.gameVersion);
 
             Console.WriteLine("\n\nPRESS ANY KEY TO BEGIN...");
             Console.ReadKey();
-
-            Menu menu = new Menu();
+            
             story Story = new story();
             SettingsMenu settingsMenu = new SettingsMenu();
 
@@ -40,36 +36,36 @@ namespace Scark.ast.start
                 Console.WriteLine("\n      #######                                         #    \n    #       ###                                     ##  \n   #         ##                                     ##\n   ##        #                                      ## \n    ###                                ###  ####    ##\n   ## ###           ####       ####     #### #### # ##  ###  \n    ### ###        # ###  #   # ###  #   ##   ####  ## # ###\n      ### ###     #   ####   #   ####    ##         ###   # \n        ### ###  ##         ##    ##     ##         ##   # \n          ## ### ##         ##    ##     ##         ##  #\n           ## ## ##         ##    ##     ##         ## ## \n            # #  ##         ##    ##     ##         ###### \n  ###        #   ###     #  ##    ##     ###        ##  ### \n #  #########     #######    ##### ##     ###       ##   ### #\n#     #####        #####      ###   ##               ##   ###\n#      \n ## ");
                 Console.ForegroundColor = ConsoleColor.White;
 
-                Console.Write("\n[1] New Game\n[2] Load Player [WIP]\n[3] Settings\n> "); // Options
-                if (dev == true) Console.Write("Dev mode enabled\n> "); // Saying if dev mode is enabled
+                Console.Write("\n[1] New Game\n[2] Load Player [WIP]\n[3] Settings\n\n[x] Exit\n> "); // Options
+                if (Character.dev == true) Console.Write("Dev mode enabled\n> "); // Saying if dev mode is enabled
 
                 switch (Console.ReadLine())
                 {
                     case "1":
                         optionSelected = true;
-                        Story.Run(new string[] { "", "", "0" });
+                        Story.Run();
                         break;
                     case "dev":
-                        if (dev == false) dev = true;
-                        else dev = false;
+                        if (Character.dev == false) Character.dev = true;
+                        else Character.dev = false;
                         break;
                     case "2":
                         optionSelected = true;
                         Console.WriteLine("This feature is WIP");
-                        Thread.Sleep(settingsMenu.dialogueSpeed);
+                        Thread.Sleep(Character.Settings["SpeechSpeed"]);
                         menuSeq();
                         break;
                     case "3":
-
                         settingsMenu.run();
+                        break;
+                    case "x":
+                        optionSelected = true;
                         break;
                     default:
                         Console.WriteLine("Please input a valid number!");
                         break;
                 }
             }
-
-            Console.Read();
         }
     }
 }

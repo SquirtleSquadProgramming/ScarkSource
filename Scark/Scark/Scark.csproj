@@ -79,6 +79,7 @@
     <Compile Include="ast\start\BoardShip.cs" />
     <Compile Include="ast\start\SettingsMenu.cs" />
     <Compile Include="ast\story.cs" />
+    <Compile Include="Character.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

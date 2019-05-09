@@ -10,9 +10,7 @@ namespace Scark.ast.start
 {
     class BoardShip
     {
-        SettingsMenu sm = new SettingsMenu();
-
-        public string[] aboardShip(string[] charinf)
+        public void aboardShip()
         {
             Console.WriteLine(@"                    |
                     |
@@ -36,16 +34,15 @@ namespace Scark.ast.start
             wd("[LORD WAKEHART] Here's some ethryl to start you off.");
             wd("Wakehart hands over a few coins radiating with a strange light.");
 
-            charinf[2] = "2"; // Continuing story
-            return charinf;
+            Character.stage++; // Continuing story
         }
 
         public void wd(string text) // write dialogue and wait 1.5 s
         {
-            if (!start.Menu.dev)
+            if (!Character.dev)
             {
                 Console.WriteLine("\n"+text);
-                Thread.Sleep(sm.dialogueSpeed);
+                Thread.Sleep(Character.Settings["SpeechSpeed"]);
             }
             else
             {

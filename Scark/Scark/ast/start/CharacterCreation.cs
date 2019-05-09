@@ -13,10 +13,8 @@ namespace Scark.ast.start
         SettingsMenu sm = new SettingsMenu();
 
         //NewPlayer function
-        public string[] NewPlayer()
+        public void NewPlayer()
         {
-            //declare The New T's And C's Of The New Player
-            string[] CharacterInfo = new string[3];
 
             //Story Line
             wd("You carefully aim your crossbow directly at the King's chest.");
@@ -30,7 +28,7 @@ namespace Scark.ast.start
             wd("In the midst of all the confusion, you begin running.");
                 
             wd("Suddenly, a baton bludgeons you from behind.");
-            if (!Menu.dev)
+            if (!Character.dev)
             {
                 Thread.Sleep(2000);
                 Console.Clear();
@@ -66,9 +64,9 @@ namespace Scark.ast.start
 
             wd("[LORD WAKEHART] Hey kid, what's your name?");
             Console.Write("> ");
-            CharacterInfo[0] = Console.ReadLine();
+            Character.name = Console.ReadLine();
             
-            wd($"[LORD WAKEHART] Hey, {CharacterInfo[0]}. Don't think I'm pardoning you for nothing, nah.");
+            wd($"[LORD WAKEHART] Hey, {Character.name}. Don't think I'm pardoning you for nothing, nah.");
                 
             wd("[LORD WAKEHART] I've a quest for you, and if you succeed, you'll be a very rich man.");
                 
@@ -106,29 +104,29 @@ namespace Scark.ast.start
             while (userPickedOption == false)
             {
                 Console.Write("> ");
-                CharacterInfo[1] = Console.ReadLine();
-                switch (CharacterInfo[1])
+                Character.race = Console.ReadLine();
+                switch (Character.race)
                 {
                     case "1": // Rouge
-                        CharacterInfo[1] = "Rouge";
+                        Character.race = "Rouge";
                         Console.WriteLine("You are trained in basic Stealth and shipped to the distant land of Scark...");
                         userPickedOption = true;
                         Thread.Sleep(1500);
                         break;
                     case "2": // Warrior
-                        CharacterInfo[1] = "Warrior";
+                        Character.race = "Warrior";
                         Console.WriteLine("You are trained in basic Combat and shipped to the distant land of Scark...");
                         userPickedOption = true;
                         Thread.Sleep(1500);
                         break;
                     case "3": // Ranger
-                        CharacterInfo[1] = "Ranger";
+                        Character.race = "Ranger";
                         Console.WriteLine("You are trained in basic Archery and shipped to the distant land of Scark...");
                         userPickedOption = true;
                         Thread.Sleep(1500);
                         break;
                     case "4": // Mage
-                        CharacterInfo[1] = "Mage";
+                        Character.race = "Mage";
                         Console.WriteLine("You are trained in basic Magery and shipped to the distant land of Scark...");
                         userPickedOption = true;
                         Thread.Sleep(1500);
@@ -141,19 +139,17 @@ namespace Scark.ast.start
             }
 
             //Sean Write Some More Story
-            CharacterInfo[2] = "1";
-            return CharacterInfo;
+            Character.stage++;
         }
 
         public void wd(string text) // write dialogue and wait 1.5 s
         {
             Console.WriteLine("\n"+text);
-            if (!start.Menu.dev)
+            if (!Character.dev)
             {
                 // Console.Write("[DEV: {0}]", start.Menu.dev);
-                Thread.Sleep(sm.dialogueSpeed);
+                Thread.Sleep(Character.Settings["SpeechSpeed"]);
             }
-
         }
     }
 }
