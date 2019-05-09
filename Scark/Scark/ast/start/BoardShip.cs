@@ -33,6 +33,8 @@ namespace Scark.ast.start
             wd("[LORD WAKEHART] She's gonna stay in the port for a lil' while as we restock.");
             wd("[LORD WAKEHART] Y'know what, go to the town not far from here, and go to the tarven called \"The Medallion\".");
             wd("[LORD WAKEHART] Talk to my friend Orpheus, he's the barman. He'll tell you some stuff you ought to know.");
+            wd("[LORD WAKEHART] Here's some ethryl to start you off.");
+            wd("Wakehart hands over a few coins radiating with a strange light.");
 
             charinf[2] = "2"; // Continuing story
             return charinf;

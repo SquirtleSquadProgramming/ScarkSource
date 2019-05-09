@@ -11,7 +11,7 @@ namespace Scark
     class Program
     {
         const string gameVersion = "v0.0.0"; // game version variable
-        Dictionary<string, int> charcterdata = new Dictionary<string, int>() // dictionary of local save's data
+        public Dictionary<string, int> charcterdata = new Dictionary<string, int>() // dictionary of local save's data
 	    {
             {"ethryl", 0}, // currency
 		    {"health", 0},  // health
