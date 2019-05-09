@@ -33,6 +33,9 @@ namespace Scark.ast.start
             wd("[LORD WAKEHART] Talk to my friend Orpheus, he's the barman. He'll tell you some stuff you ought to know.");
             wd("[LORD WAKEHART] Here's some ethryl to start you off.");
             wd("Wakehart hands over a few coins radiating with a strange light.");
+            
+
+            Console.ReadLine();
 
             Character.stage++; // Continuing story
         }
