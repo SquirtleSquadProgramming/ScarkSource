@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scark.ast.items
+namespace Scark.ast.items.weapons
 {
-    public class Item
+    public class IronShortsword : Weapon
     {
-        public static int id { get; set; }
+        Weapon.damage = 1; // <= ?????
     }
 }

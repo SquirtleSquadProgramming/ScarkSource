@@ -11,7 +11,7 @@ namespace Scark.ast.start
     {
         Menu menu = new Menu();
 
-        public void run()
+        public void run() // starting code
         {
             Console.Clear();
 
@@ -65,7 +65,7 @@ namespace Scark.ast.start
                     editDialogueSpeedSetting();
                 }
             }
-            catch
+            catch // if theres an error eg. inputted string
             {
                 Console.WriteLine("Please enter a valid number!");
                 

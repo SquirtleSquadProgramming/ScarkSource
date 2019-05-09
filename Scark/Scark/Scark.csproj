@@ -74,6 +74,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ast\items\Item.cs" />
+    <Compile Include="ast\items\Weapon.cs" />
+    <Compile Include="ast\items\weapons\IronShortsword.cs" />
     <Compile Include="ast\start\CharacterCreation.cs" />
     <Compile Include="ast\start\MenuSequence.cs" />
     <Compile Include="ast\start\BoardShip.cs" />
