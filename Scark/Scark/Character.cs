@@ -11,7 +11,7 @@ namespace Scark
 
         // Interger Variables
         public static int stage; // What stage of story the player is at
-        public static int ethril; // Currency
+        public static int ethryl; // Currency
         public static int health; // Health
 
         // String Variables
@@ -40,7 +40,7 @@ namespace Scark
                     listToString += inventory[i] + ",";
                 else listToString += inventory[i] + "]";
             }
-            return new string[] { stage.ToString(), ethril.ToString(), health.ToString(), name, race, listToString};
+            return new string[] { stage.ToString(), ethryl.ToString(), health.ToString(), name, race, listToString};
         }
 
     }
