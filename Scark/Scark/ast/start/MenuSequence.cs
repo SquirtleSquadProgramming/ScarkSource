@@ -22,7 +22,7 @@ namespace Scark.ast.start
             Console.Write("                        " + Program.gameVersion);
 
             //Wait for player input to start the game
-            Console.WriteLine("\n\nPress any key to enter the realm of scark...");
+            Console.WriteLine("\n\nPress any key to enter the realm of Scark...");
             Console.ReadKey();
             
             //Instantiate classes for later
@@ -53,7 +53,7 @@ namespace Scark.ast.start
                         break;
                     case "2": //Load character (doesn't work yet)
                         optionSelected = true;
-                        Console.WriteLine("This feature is WIP");
+                        Console.WriteLine("This feature is currently WIP");
                         Thread.Sleep(Character.Settings["SpeechSpeed"]);
                         menuSeq();
                         break;
