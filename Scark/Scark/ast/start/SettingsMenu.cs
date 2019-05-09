@@ -15,13 +15,16 @@ namespace Scark.ast.start
         {
             Console.Clear();
 
-            Console.Write("Please select the setting you wish to edit.\n[1] Dialogue Speed\n\n[x] Exit\n> ");
+            Console.Write("Please select the setting you wish to edit.\n[1] Dialogue Speed\n[1] Profanity\n\n[x] Exit\n> ");
             string response = Console.ReadLine();
 
             switch (response)
             {
                 case "1":
                     editDialogueSpeedSetting();
+                    break;
+                case "2":
+                    editProfanitySetting();
                     break;
                 case "x":
                 case "X":
@@ -74,6 +77,50 @@ namespace Scark.ast.start
                 editDialogueSpeedSetting();
             }
 
+        }
+
+        public void editProfanitySetting()
+        {
+            Console.Clear();
+
+            Console.Write("\nPlease enter a value of t (true) or f (false).\nPlease note this setting may not be suitable for younger viewers.\nThe default is f. ");
+            string response = Console.ReadLine();
+
+            try
+            {
+                if (response.ToLower() == "f")
+                {
+                    Character.Settings["Profanity"] = false;
+
+                    
+
+                    run();
+                }
+                if (response.ToLower() == "t")
+                {
+                    Character.Settings["Profanity"] = true;
+
+
+
+                    run();
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid input! (f or t)");
+                    Thread.Sleep(Character.Settings["SpeechSpeed"]);
+                    Console.Clear();
+                    editProfanitySetting();
+
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Please enter a valid input! (f or t)");
+
+                Thread.Sleep(Character.Settings["SpeechSpread"]);
+                Console.Clear();
+                editProfanitySetting();
+            }
         }
     }
 }
