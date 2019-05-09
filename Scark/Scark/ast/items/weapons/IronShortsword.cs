@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Scark.ast.items;
 
 namespace Scark.ast.items.weapons
 {
-    public static class IronShortsword //: Weapon
+    public class IronShortsword : Weapon
     {
+        public IronShortsword()
+        {
+            Damage = 1;
+        }
     }
 }
