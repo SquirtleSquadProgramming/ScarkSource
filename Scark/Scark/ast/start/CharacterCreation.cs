@@ -10,6 +10,8 @@ namespace Scark.ast.start
 {
     public class CC
     {
+        SettingsMenu sm = new SettingsMenu();
+
         //NewPlayer function
         public string[] NewPlayer()
         {
@@ -149,7 +151,7 @@ namespace Scark.ast.start
             if (!start.Menu.dev)
             {
                 // Console.Write("[DEV: {0}]", start.Menu.dev);
-                Thread.Sleep(SettingsMenu.dialogueSpeed);
+                Thread.Sleep(sm.dialogueSpeed);
             }
 
         }

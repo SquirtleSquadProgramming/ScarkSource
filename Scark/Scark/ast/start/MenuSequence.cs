@@ -26,7 +26,10 @@ namespace Scark.ast.start
 
             Console.WriteLine("\n\nPRESS ANY KEY TO BEGIN...");
             Console.ReadKey();
-            Scark.ast.story Story = new Scark.ast.story();
+
+            Menu menu = new Menu();
+            story Story = new story();
+            SettingsMenu settingsMenu = new SettingsMenu();
 
 
             bool optionSelected = false;
@@ -57,7 +60,8 @@ namespace Scark.ast.start
                         menuSeq();
                         break;
                     case "3":
-                        SettingsMenu.run();
+
+                        settingsMenu.run();
                         break;
                     default:
                         Console.WriteLine("Please input a valid number!");
