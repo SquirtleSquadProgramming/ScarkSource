@@ -38,7 +38,7 @@ namespace Scark.ast.start
         {
             Console.Clear();
 
-            Console.Write("\nPlease enter the speed of dialogue in milliseconds (1000ms = 1s).\nThe default is 1000ms\n> ");
+            Console.Write("\nPlease enter the speed of dialogue in milliseconds (1000ms = 1s).\nThe default is 1500ms\n> ");
             string response = Console.ReadLine();
 
             try

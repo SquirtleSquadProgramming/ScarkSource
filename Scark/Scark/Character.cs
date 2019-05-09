@@ -28,7 +28,7 @@ namespace Scark
         // Dictionary for settings, accessed by setting in []: eg. Character.Settings["SpeechSpeed"]
         public static Dictionary<string, int> Settings = new Dictionary<string, int>()
         {
-            {"SpeechSpeed", 1000}
+            {"SpeechSpeed", 1500}
         };
 
         // Puts all character data into one
