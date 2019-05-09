@@ -1,6 +1,8 @@
 # Scark
-Scark is a text-based roleplaying game.
+#### Scark is a text-based roleplaying game.
 
-A stable and completed release of the game isn't quite finished as we are in early stages of development. If anyone passing by wishes to play the game, bare in mind bugs and loopholes are inevitable & the story doesn't continue for very long.
+A stable and completed release of the game isn't _fully completed_ as we are in early stages of development. If anyone passing by wishes to play the game, bare in mind bugs and loopholes are **inevitable** and the story isn't very long.
 
-Made by Squirtle Squad
+Scark is programmed in C# using the layout of a C# console app. If you wish to play the game you will need to build it through a service such as Microsoft Visual Studio.
+
+Programmed, written and created by Squirtle Squad.
