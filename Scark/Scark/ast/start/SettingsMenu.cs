@@ -14,9 +14,9 @@ namespace Scark.ast.start
 
         public void run()
         {
-            Console.WriteLine(@"Please select the setting you wish to edit.
-[1] Dialogue Speed\n
-[x] Exit\n");
+            Console.Clear();
+
+            Console.Write("Please select the setting you wish to edit.\n[1] Dialogue Speed\n\n[x] Exit\n> ");
             string response = Console.ReadLine();
 
             switch (response)
@@ -37,6 +37,8 @@ namespace Scark.ast.start
 
         public void editDialogueSpeedSetting()
         {
+            Console.Clear();
+
             Console.Write("\nPlease enter the speed of dialogue in milliseconds (1000ms = 1s).\n> ");
             string response = Console.ReadLine();
 
@@ -46,12 +48,14 @@ namespace Scark.ast.start
                 {
                     dialogueSpeed = Convert.ToInt32(response);
 
-                    Console.WriteLine("\n testing speed");
+                    Console.WriteLine("\ntesting speed");
+                    Thread.Sleep(dialogueSpeed);
                     for (int i = 0; i < 5; i++)
                     {
                         Console.WriteLine("testing speed");
+                        Thread.Sleep(dialogueSpeed);
                     }
-                    Thread.Sleep(dialogueSpeed);
+                    
                     run();
                 }
                 else
