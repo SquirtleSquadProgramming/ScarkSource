@@ -73,6 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ast\items\Item.cs" />
     <Compile Include="ast\start\CharacterCreation.cs" />
     <Compile Include="ast\start\MenuSequence.cs" />
     <Compile Include="ast\start\BoardShip.cs" />

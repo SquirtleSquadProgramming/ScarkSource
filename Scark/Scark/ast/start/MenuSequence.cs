@@ -37,7 +37,7 @@ namespace Scark.ast.start
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("      #######                                         #    \n    #       ###                                     ##  \n   #         ##                                     ##\n   ##        #                                      ## \n    ###                                ###  ####    ##\n   ## ###           ####       ####     #### #### # ##  ###  \n    ### ###        # ###  #   # ###  #   ##   ####  ## # ###\n      ### ###     #   ####   #   ####    ##         ###   # \n        ### ###  ##         ##    ##     ##         ##   # \n          ## ### ##         ##    ##     ##         ##  #\n           ## ## ##         ##    ##     ##         ## ## \n            # #  ##         ##    ##     ##         ###### \n  ###        #   ###     #  ##    ##     ###        ##  ### \n #  #########     #######    ##### ##     ###       ##   ### #\n#     #####        #####      ###   ##               ##   ###\n#      \n ## ");
+                Console.WriteLine("\n      #######                                         #    \n    #       ###                                     ##  \n   #         ##                                     ##\n   ##        #                                      ## \n    ###                                ###  ####    ##\n   ## ###           ####       ####     #### #### # ##  ###  \n    ### ###        # ###  #   # ###  #   ##   ####  ## # ###\n      ### ###     #   ####   #   ####    ##         ###   # \n        ### ###  ##         ##    ##     ##         ##   # \n          ## ### ##         ##    ##     ##         ##  #\n           ## ## ##         ##    ##     ##         ## ## \n            # #  ##         ##    ##     ##         ###### \n  ###        #   ###     #  ##    ##     ###        ##  ### \n #  #########     #######    ##### ##     ###       ##   ### #\n#     #####        #####      ###   ##               ##   ###\n#      \n ## ");
                 Console.ForegroundColor = ConsoleColor.White;
 
                 Console.Write("\n[1] New Game\n[2] Load Player [WIP]\n[3] Settings\n> "); // Options
@@ -56,7 +56,7 @@ namespace Scark.ast.start
                     case "2":
                         optionSelected = true;
                         Console.WriteLine("This feature is WIP");
-                        Thread.Sleep(2000);
+                        Thread.Sleep(settingsMenu.dialogueSpeed);
                         menuSeq();
                         break;
                     case "3":
