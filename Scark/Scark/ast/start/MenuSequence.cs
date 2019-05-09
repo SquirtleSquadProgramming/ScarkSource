@@ -18,7 +18,20 @@ namespace Scark.ast.start
             //Print the title and toggle a blue colour
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("      ███████                                         █    \n    █       ███                                     ██  \n   █         ██                                     ██\n   ██        █                                      ██ \n    ███                                ███  ████    ██\n   ██ ███           ████       ████     ████ ████ █ ██  ███  \n    ███ ███        █ ███  █   █ ███  █   ██   ████  ██ █ ███\n      ███ ███     █   ████   █   ████    ██         ███   █ \n        ███ ███  ██         ██    ██     ██         ██   █ \n          ██ ███ ██         ██    ██     ██         ██  █\n           ██ ██ ██         ██    ██     ██         ██ ██ \n            █ █  ██         ██    ██     ██         ██████ \n  ███        █   ███     █  ██    ██     ███        ██  ███ \n █  █████████     ███████    █████ ██     ███       ██   ███ █\n█     █████        █████      ███   ██               ██   ███\n█      \n ██ ");
-            Console.ForegroundColor = ConsoleColor.White;
+            
+            //Change the colour scheme to desired setting
+            if (Character.Settings["ColourTheme"] == "dark")
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.BackgroundColor = ConsoleColor.Black;
+            }
+            else if (Character.Settings["ColourTheme"] == "light")
+            {
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = ConsoleColor.White;
+            }
+
+            //Print version with colours conforming with the theme
             Console.Write("                        " + Program.gameVersion);
 
             //Wait for player input to start the game
@@ -36,7 +49,18 @@ namespace Scark.ast.start
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("      ███████                                         █    \n    █       ███                                     ██  \n   █         ██                                     ██\n   ██        █                                      ██ \n    ███                                ███  ████    ██\n   ██ ███           ████       ████     ████ ████ █ ██  ███  \n    ███ ███        █ ███  █   █ ███  █   ██   ████  ██ █ ███\n      ███ ███     █   ████   █   ████    ██         ███   █ \n        ███ ███  ██         ██    ██     ██         ██   █ \n          ██ ███ ██         ██    ██     ██         ██  █\n           ██ ██ ██         ██    ██     ██         ██ ██ \n            █ █  ██         ██    ██     ██         ██████ \n  ███        █   ███     █  ██    ██     ███        ██  ███ \n █  █████████     ███████    █████ ██     ███       ██   ███ █\n█     █████        █████      ███   ██               ██   ███\n█      \n ██ ");
-                Console.ForegroundColor = ConsoleColor.White;
+
+                //Change the colour scheme to desired setting
+                if (Character.Settings["ColourTheme"] == "dark")
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.Black;
+                }
+                else if (Character.Settings["ColourTheme"] == "light")
+                {
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.BackgroundColor = ConsoleColor.White;
+                }
 
                 Console.Write("\n[1] New Game\n[2] Load Player [WIP]\n[3] Settings\n\n[x] Exit\n> "); // Options
                 if (Character.dev == true) Console.Write("Dev mode enabled\n> "); // Saying if dev mode is enabled
