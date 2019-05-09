@@ -31,6 +31,17 @@ namespace Scark
             { "SpeechSpeed", 1500 }
         };
 
+        // Ability scores dictionary
+        public static Dictionary<string, int> AbilityScores = new Dictionary<string, int>()
+        {
+            {"constitution", 0},
+            {"charisma", 0 },
+            {"intelligence", 0 },
+            {"perception", 0 },
+            {"strength", 0 },
+            {"stealth", 0 }
+        };
+
         // Puts all character data into one
         public static string[] dataCollection()
         {
@@ -42,6 +53,53 @@ namespace Scark
                 else listToString += inventory[i] + "]";
             }
             return new string[] { stage.ToString(), ethryl.ToString(), health.ToString(), name, race, listToString};
+        }
+
+        // Converts ability SCORE into ability MODIFIER
+        public static int convertAbilityScoreToAbilityModifier(string ability_score_name)
+        {
+            switch (AbilityScores[ability_score_name])
+            {
+                case 0:
+                    return -5;
+                case 1:
+                    return -4;
+                case 2:
+                    return -3;
+                case 3:
+                case 4:
+                    return -2;
+                case 5:
+                case 6:
+                    return -1;
+                case 7:
+                case 8:
+                case 9:
+                    return 0;
+                case 10:
+                case 11:
+                case 12:
+                    return 1;
+                case 13:
+                case 14:
+                case 15:
+                    return 2;
+                case 16:
+                case 17:
+                case 18:
+                case 19: 
+                    return 3;
+                case 20:
+                case 21:
+                case 22:
+                case 23:
+                    return 4;
+                case 24:
+                case 25:
+                    return 5;
+            }
+            
+            return 0;
         }
 
     }
