@@ -10,6 +10,8 @@ namespace Scark.ast.start
 {
     class BoardShip
     {
+        SettingsMenu sm = new SettingsMenu();
+
         public string[] aboardShip(string[] charinf)
         {
             Console.WriteLine(@"                    |
@@ -41,7 +43,7 @@ namespace Scark.ast.start
             if (!start.Menu.dev)
             {
                 Console.WriteLine("\n"+text);
-                Thread.Sleep(SettingsMenu.dialogueSpeed);
+                Thread.Sleep(sm.dialogueSpeed);
             }
             else
             {
