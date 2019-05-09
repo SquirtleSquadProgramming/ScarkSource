@@ -15,7 +15,7 @@ namespace Scark.ast.start
         {
             Console.Clear();
 
-            Console.Write($"Please select the setting you wish to edit.\n[1] Dialogue Speed\n= {Character.Settings["SpeechSpeed"]}\n\n[2] Profanity\n= {Character.Settings["Profanity"]}\n\n[x] Exit\n> ");
+            Console.Write($"Please select the setting you wish to edit.\n[1] Dialogue Speed\n= {Character.Settings["SpeechSpeed"]}\n\n[2] Profanity\n= {Character.Settings["Profanity"]}\n\n[3] ColourTheme\n= {Character.Settings["ColourTheme"]}\n\n[x] Exit\n> ");
             string response = Console.ReadLine();
 
             switch (response)
@@ -25,6 +25,9 @@ namespace Scark.ast.start
                     break;
                 case "2":
                     editProfanitySetting();
+                    break;
+                case "3":
+                    editColourThemeSetting();
                     break;
                 case "x":
                 case "X":
@@ -118,6 +121,50 @@ namespace Scark.ast.start
                 Thread.Sleep(Character.Settings["SpeechSpeed"]);
                 Console.Clear();
                 editProfanitySetting();
+            }
+        }
+
+        public void editColourThemeSetting()
+        {
+            Console.Clear();
+
+            Console.Write("\nPlease input \"Dark\" or \"Light\".\n> ");
+            string response = Console.ReadLine();
+
+            try
+            {
+                if (response.ToLower() == "dark")
+                {
+                    Character.Settings["ColourTheme"] = "dark";
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.Black;
+
+                    run();
+                }
+                if (response.ToLower() == "light")
+                {
+                    Character.Settings["ColourTheme"] = "light";
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.BackgroundColor = ConsoleColor.White;
+
+                    run();
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid value! (Dark or Light)");
+                    Thread.Sleep(Character.Settings["SpeechSpeed"]);
+                    Console.Clear();
+                    editColourThemeSetting();
+
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Please enter a valid input! (f or t)");
+
+                Thread.Sleep(Character.Settings["SpeechSpeed"]);
+                Console.Clear();
+                editColourThemeSetting();
             }
         }
     }

@@ -29,7 +29,8 @@ namespace Scark
         public static Dictionary<string, dynamic> Settings = new Dictionary<string, dynamic>()
         {
             {"SpeechSpeed", 1500 },
-            {"Profanity", false}
+            {"Profanity", false},
+            {"ColourTheme", "dark"}
         };
 
         // Ability scores dictionary
