@@ -18,16 +18,20 @@ namespace Scark.ast
                 {
                     case "0": // Character Creation
                         Console.Clear();
-                        Scark.ast.start.CC cC = new Scark.ast.start.CC();
+                        start.CC cC = new start.CC();
                         charinf = cC.NewPlayer();
                         break;
                     case "1": // Aboarding Ship
                         Console.Clear();
-                        Scark.ast.start.BoardShip boardShip = new Scark.ast.start.BoardShip();
+                        start.BoardShip boardShip = new start.BoardShip();
                         charinf = boardShip.aboardShip(charinf);
                         break;
                     case "2": // Further Story [WIP]
                         end = true; // temp as Abording Ship isn't completed and story isn't written for here.
+                        break;
+                    case "3": // settings menu
+                        Console.Clear();
+                        start.SettingsMenu settingsMenu = new start.SettingsMenu();
                         break;
                     default:
                         // Ummmmm... idk what goes here but...

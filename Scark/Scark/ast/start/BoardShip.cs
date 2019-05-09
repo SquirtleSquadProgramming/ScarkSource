@@ -24,8 +24,8 @@ namespace Scark.ast.start
          |------------------'
           `-      Farquaad '
             `-------------'");
-            //Is The Farquadd the last name
-            wd("Days pass aboard the Farquaad.");
+
+            wd("\nDays pass aboard the Farquaad.");
             wd("[LORD WAKEHART] Hey kid.");
             wd("[LORD WAKEHART] Not long 'til the Farquaad arrives at Scark.");
             wd("[LORD WAKEHART] She's gonna stay in the port for a lil' while as we restock.");
@@ -40,12 +40,12 @@ namespace Scark.ast.start
         {
             if (!start.Menu.dev)
             {
-                Console.WriteLine(text);
-                Thread.Sleep(3000);
+                Console.WriteLine("\n"+text);
+                Thread.Sleep(SettingsMenu.dialogueSpeed);
             }
             else
             {
-                Console.WriteLine(text);
+                Console.WriteLine("\n"+text);
             }
         }
     }

@@ -76,6 +76,7 @@
     <Compile Include="ast\start\CharacterCreation.cs" />
     <Compile Include="ast\start\MenuSequence.cs" />
     <Compile Include="ast\start\BoardShip.cs" />
+    <Compile Include="ast\start\SettingsMenu.cs" />
     <Compile Include="ast\story.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

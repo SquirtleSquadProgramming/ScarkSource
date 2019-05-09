@@ -17,17 +17,17 @@ namespace Scark.ast.start
             string[] CharacterInfo = new string[3];
 
             //Story Line
-            wd("\nYou carefully aim your crossbow directly at the King's chest.");
+            wd("You carefully aim your crossbow directly at the King's chest.");
                 
-            wd("\nA bloodstained crossbow loaded with a lead bolt sits in your sweaty hand as you observe the speech from a ramshackle building.");
+            wd("A bloodstained crossbow loaded with a lead bolt sits in your sweaty hand as you observe the speech from a ramshackle building.");
 
-            wd("\nYour finger pulls the trigger.");
+            wd("Your finger pulls the trigger.");
                 
-            wd("\nYou hear an instant uproar as the King's body topples down the stone stairs.");
+            wd("You hear an instant uproar as the King's body topples down the stone stairs.");
                 
-            wd("\nIn the midst of all the confusion, you begin running.");
+            wd("In the midst of all the confusion, you begin running.");
                 
-            wd("\nSuddenly, a baton bludgeons you from behind.");
+            wd("Suddenly, a baton bludgeons you from behind.");
             if (!Menu.dev)
             {
                 Thread.Sleep(2000);
@@ -39,27 +39,27 @@ namespace Scark.ast.start
                 
             wd("You have been arrested for treason to the king. You are walked up to the gallows to which you will be executed.");
                 
-            wd("\nThe executioner firms his grasp around the lever. Before he pulls the lever he mumbles a quick prayer.");
+            wd("The executioner firms his grasp around the lever. Before he pulls the lever he mumbles a quick prayer.");
+               
+            wd("[EXECUTIONER] Does anybody object to this her' hanging?");
                 
-            wd("\n[EXECUTIONER] Does anybody object to this her' hanging?");
+            wd("Silence.");
                 
-            wd("\nSilence.");
+            wd("As the executioner moves his hand towards the lever, a voice shouts out.");
                 
-            wd("\nAs the executioner moves his hand towards the lever, a voice shouts out.");
+            wd("[VOICE] I object!");
                 
-            wd("\n[VOICE] I object!");
+            wd("The executioner's eyes fix upon the man who called.");
                 
-            wd("\nThe executioner's eyes fix upon the man who called.");
+            wd("[EXECUTIONER] Arr, an' who d'ya think you ar'?");
                 
-            wd("\n[EXECUTIONER] Arr, an' who d'ya think you ar'?");
+            wd("[VOICE] Lord Wakehart, the explorer.");
                 
-            wd("\n[VOICE] Lord Wakehart, the explorer.");
+            wd("[LORD WAKEHART] I wish to pardon this kid.");
                 
-            wd("\n[LORD WAKEHART] I wish to pardon this kid.");
+            wd("The executioner has no choice but to obey the laws, Wakehart's lordship grants him power to pardon anyone he wishes.");
                 
-            wd("\nThe executioner has no choice but to obey the laws, Wakehart's lordship grants him power to pardon anyone he wishes.");
-                
-            wd("\nThe rope is loosened around your neck as you are escorted into the disappointed audience by Lord Wakehart.");
+            wd("The rope is loosened around your neck as you are escorted into the disappointed audience by Lord Wakehart.");
                 
 
             wd("[LORD WAKEHART] Hey kid, what's your name?");
@@ -68,23 +68,37 @@ namespace Scark.ast.start
             
             wd($"[LORD WAKEHART] Hey, {CharacterInfo[0]}. Don't think I'm pardoning you for nothing, nah.");
                 
-            wd("\n[LORD WAKEHART] I've a quest for you, and if you succeed, you'll be a very rich man.");
+            wd("[LORD WAKEHART] I've a quest for you, and if you succeed, you'll be a very rich man.");
                 
-            wd("\n[LORD WAKEHART] Ha ha, I'm guessing you want to know what this quest involves!");
+            wd("[LORD WAKEHART] Ha ha, I'm guessing you want to know what this quest involves!");
                 
-            wd("\n[LORD WAKEHART] Well, I need a brave adventurer to go to the island of Scark.");
+            wd("[LORD WAKEHART] Well, I need a brave adventurer to go to the island of Scark.");
                 
-            wd("\n[LORD WAKEHART] I'll tell you more when we get there, kid.");
+            wd("[LORD WAKEHART] I'll tell you more when we get there, kid.");
                 
             wd("Before you can say anything, you are rushed off to a training fort...");
-                
+
+            Console.Clear();
 
             //Training Fort
-            Console.WriteLine (
-                "The trainer asks you how you like to fight \n" +
-                "[1] Rouge\n[2] Warrior\n[3] Ranger\n[4] Mage\n" +
-                "Please select a role by inputting a number" );
+            
 
+            wd("[TRAINER] So.");
+            wd("[TRAINER] I see that the idiot Wakehead or whatever the hell his name is has pardoned you.");
+            wd("[TRAINER] Well, I guess I'll have to obey.");
+            wd("[TRAINER] So kid, how'll your flimsy little limbs fight, eh?");
+            wd("[TRAINER] Don't know what I'm talking about?");
+            wd("[TRAINER] Not surprised, from some wanna-be revolutionist like yourself.");
+            wd("[TRAINER] Forgive me, but your attempt on the glorious King's life was futile at best.");
+            wd("[TRAINER] At worst?");
+            wd("[TRAINER] Ha ha ha ha.");
+            wd("[TRAINER] Well anyways, I can train you in four classes.");
+            wd("[TRAINER] Rouge, warrior, ranger or mage.");
+
+            Console.WriteLine(
+                "\nThe trainer asks you how you like to fight \n" +
+                "[1] Rouge\n[2] Warrior\n[3] Ranger\n[4] Mage\n" +
+                "Please select a role by inputting a number\n");
 
             bool userPickedOption = false;
             while (userPickedOption == false)
@@ -131,12 +145,13 @@ namespace Scark.ast.start
 
         public void wd(string text) // write dialogue and wait 1.5 s
         {
-            Console.WriteLine(text);
+            Console.WriteLine("\n"+text);
             if (!start.Menu.dev)
             {
-                Console.Write("[DEV: {0}]", start.Menu.dev);
-                Thread.Sleep(3000);
+                // Console.Write("[DEV: {0}]", start.Menu.dev);
+                Thread.Sleep(SettingsMenu.dialogueSpeed);
             }
+
         }
     }
 }

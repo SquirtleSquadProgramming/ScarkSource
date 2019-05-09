@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using Scark.ast;
 
 namespace Scark.ast.start
@@ -36,7 +37,7 @@ namespace Scark.ast.start
                 Console.WriteLine("      #######                                         #    \n    #       ###                                     ##  \n   #         ##                                     ##\n   ##        #                                      ## \n    ###                                ###  ####    ##\n   ## ###           ####       ####     #### #### # ##  ###  \n    ### ###        # ###  #   # ###  #   ##   ####  ## # ###\n      ### ###     #   ####   #   ####    ##         ###   # \n        ### ###  ##         ##    ##     ##         ##   # \n          ## ### ##         ##    ##     ##         ##  #\n           ## ## ##         ##    ##     ##         ## ## \n            # #  ##         ##    ##     ##         ###### \n  ###        #   ###     #  ##    ##     ###        ##  ### \n #  #########     #######    ##### ##     ###       ##   ### #\n#     #####        #####      ###   ##               ##   ###\n#      \n ## ");
                 Console.ForegroundColor = ConsoleColor.White;
 
-                Console.Write("\n[1] New Game\n[2] Load Played [WIP]\n> "); // Options
+                Console.Write("\n[1] New Game\n[2] Load Player [WIP]\n[3] Settings\n> "); // Options
                 if (dev == true) Console.Write("Dev mode enabled\n> "); // Saying if dev mode is enabled
 
                 switch (Console.ReadLine())
@@ -52,6 +53,11 @@ namespace Scark.ast.start
                     case "2":
                         optionSelected = true;
                         Console.WriteLine("This feature is WIP");
+                        Thread.Sleep(2000);
+                        menuSeq();
+                        break;
+                    case "3":
+                        SettingsMenu.run();
                         break;
                     default:
                         Console.WriteLine("Please input a valid number!");
