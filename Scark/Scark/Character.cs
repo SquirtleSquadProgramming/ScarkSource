@@ -13,6 +13,7 @@ namespace Scark
         public static int stage; // What stage of story the player is at
         public static int ethril; // Currency
         public static int health; // Health
+        public static int magika; // Mana/Magika
 
         // String Variables
         public static string name; // Name
@@ -24,7 +25,7 @@ namespace Scark
         // List for inventory
         public static List<string> inventory = new List<string>();
 
-        // Dictionary for settings accessed by setting in []: eg. Character.Settings["SpeechSpeed"]
+        // Dictionary for settings, accessed by setting in []: eg. Character.Settings["SpeechSpeed"]
         public static Dictionary<string, int> Settings = new Dictionary<string, int>()
         {
             {"SpeechSpeed", 1000}
