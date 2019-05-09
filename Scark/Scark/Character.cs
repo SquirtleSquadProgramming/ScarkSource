@@ -26,9 +26,9 @@ namespace Scark
         public static List<string> inventory = new List<string>();
 
         // Dictionary for settings, accessed by setting in []: eg. Character.Settings["SpeechSpeed"]
-        public static Dictionary<string, int> Settings = new Dictionary<string, int>()
+        public static Dictionary<string, dynamic> Settings = new Dictionary<string, dynamic>()
         {
-            {"SpeechSpeed", 1500}
+            { "SpeechSpeed", 1500 }
         };
 
         // Puts all character data into one
