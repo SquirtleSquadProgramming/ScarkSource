@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace Scark.ast.items
 {
-    public static class Weapon : Item
+    public class Weapon : Item
     {
-        public static int[] damage { get; set; }
-        public string weaponClass { get; set; }
-        
+        public static int Damage {
+            get { return Damage; }
+            set { Damage = value; }
+        }
+        public static string weaponClass
+        {
+            get { return weaponClass; }
+            set { weaponClass = value; }
+        }
     }
 }
