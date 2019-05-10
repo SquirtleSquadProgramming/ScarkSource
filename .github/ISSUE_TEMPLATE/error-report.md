@@ -1,6 +1,6 @@
 ---
 name: Error report
-about: Create a report to help us improve
+about: Report a game breaking error or exception.
 title: ''
 labels: error
 assignees: ''
