@@ -68,7 +68,6 @@ namespace Scark.ast.start
                     Console.ForegroundColor = ConsoleColor.Black;
                     Console.BackgroundColor = ConsoleColor.White;
                 }
-
                 Console.Write("\n             New      Load     Settings     Exit\n           =[ 1 ]=   =[ 2 ]=    =[ 3 ]=    =[ x ]=\n> "); // Options
                 if (Character.dev == true) Console.Write("Dev mode enabled\n> "); // Saying if dev mode is enabled
 
@@ -84,15 +83,36 @@ namespace Scark.ast.start
                         break;
                     case "2": //Load character (doesn't work yet)
                         optionSelected = true;
-                        Console.WriteLine("This feature is currently WIP");
+                        Console.WriteLine("\nThis feature is currently WIP");
                         Thread.Sleep(Character.Settings["SpeechSpeed"]);
+                        Console.Clear();
                         menuSeq();
+                        
                         break;
                     case "3": //Settings
                         settingsMenu.run();
                         break;
                     case "x": //Exit
-                        optionSelected = true;
+                        optionSelected = true; // what does this code do?? - DC
+
+                        Console.Clear();
+                        Console.Write("Are you sure you want to exit?\n[1] Yes \n[2] No\n\n> ");
+                        string r = Console.ReadLine();
+                        
+                        switch (r)
+                        {
+                            case "1":
+                                Environment.Exit(0); // closes the consoleapp window -- might have problems according to stackoverflow
+                                break;
+                            case "2":
+                                menuSeq();
+                                break;
+                            default:
+                                Console.WriteLine("\nPlease input a valid number!");
+                                Thread.Sleep(Character.Settings["SpeechSpeed"]);
+                                break;
+                        }
+
                         break;
                     default: //for when they try to be smartasses
                         Console.WriteLine("Please input a valid number!");
