@@ -149,7 +149,7 @@ namespace Scark.ast.start
             string filteredText = text;
 
             //profanitise if selected
-            if (Character.Settings["Profanity"] == true)
+            if (Character.Settings["Profanity"])
             {
                 filteredText = filteredText.Replace("hell", "fuck");
                 filteredText = filteredText.Replace("flip", "fuck");

@@ -45,7 +45,7 @@ namespace Scark.ast.start
             string filteredText = text;
 
             //profanitise if selected
-            if (Character.Settings["Profanity"] == true)
+            if (Character.Settings["Profanity"])
             {
                 //replaces good boy words with their more profane counterparts
                 filteredText = filteredText.Replace("hell", "fuck");
