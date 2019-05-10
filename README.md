@@ -5,4 +5,6 @@ A stable and completed release of the game isn't _fully completed_ as we are in 
 
 Scark is programmed in C# using the layout of a C# console app. If you wish to play the game you will need to build it through a service such as Microsoft Visual Studio.
 
+You can view the [wiki](https://github.com/SquirtleSquadProgramming/ScarkSource/wiki) for more information on game dynamics and storyline.
+
 Programmed, written and created by Squirtle Squad.
