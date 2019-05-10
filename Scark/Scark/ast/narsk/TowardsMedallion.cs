@@ -9,7 +9,7 @@ namespace Scark.ast.narsk
 {
     public class TowardsMedallion
     {
-        public void towardsMedalloin()
+        public void towardsMedallion()
         {
             Character.wd("Test");
             Console.ReadLine();
