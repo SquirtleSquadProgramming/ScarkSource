@@ -44,13 +44,6 @@ namespace Scark
             {"stealth", 0 },
         };
 
-        // Sets swear word censorship/not (maybe could be optimized)
-        public static Dictionary<string, string> SwearReplacements = new Dictionary<string, string>()
-        {
-            {"the hell", "the hell"},
-        };
-
-
 
         // Puts all character data into one
         public static string[] dataCollection()

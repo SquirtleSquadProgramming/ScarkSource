@@ -43,8 +43,10 @@ namespace Scark.ast.start
                
             wd("[EXECUTIONER] Does anybody object to this her' hanging?");
                 
-            wd("Silence.");
-                
+            wd("Nothing but silence comes from the crowd.");
+
+            wd("[TOWNFOLK] Just bloody pull the lever already!");
+
             wd("As the executioner moves his hand towards the lever, a voice shouts out.");
                 
             wd("[VOICE] I object!");
@@ -84,7 +86,7 @@ namespace Scark.ast.start
             
 
             wd("[TRAINER] So.");
-            wd($"[TRAINER] I see that the idiot Wakehead or whatever {Character.SwearReplacements["the hell"]} his name is has pardoned you.");
+            wd("[TRAINER] I see that the idiot Wakehead or whatever the hell his name is has pardoned you.");
             wd("[TRAINER] Well, I guess I'll have to obey.");
             wd("[TRAINER] So kid, how'll your flimsy little limbs fight, eh?");
             wd("[TRAINER] Don't know what I'm talking about?");
@@ -144,7 +146,18 @@ namespace Scark.ast.start
 
         public void wd(string text) // write dialogue and wait 1.5 s
         {
-            Console.WriteLine("\n"+text);
+            string filteredText = text;
+
+            //profanitise if selected
+            if (Character.Settings["Profanity"] == true)
+            {
+                filteredText = filteredText.Replace("hell", "fuck");
+                filteredText = filteredText.Replace("flip", "fuck");
+                filteredText = filteredText.Replace("darn", "damn");
+                filteredText = filteredText.Replace("idiot", "cunt");
+                filteredText = filteredText.Replace("bloody", "fucking");
+            }
+            Console.WriteLine("\n"+filteredText);
             if (!Character.dev)
             {
                 // Console.Write("[DEV: {0}]", start.Menu.dev);
