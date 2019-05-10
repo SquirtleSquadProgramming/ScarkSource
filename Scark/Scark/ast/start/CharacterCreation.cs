@@ -45,7 +45,7 @@ namespace Scark.ast.start
                 
             Character.wd("Nothing but silence comes from the crowd.");
 
-            Character.wd("[TOWNFOLK] Just bloody pull the lever already!");
+            Character.wd("[TOWNFOLK] Just pull the bloody lever already!");
 
             Character.wd("As the executioner moves his hand towards the lever, a voice shouts out.");
                 
@@ -55,7 +55,7 @@ namespace Scark.ast.start
                 
             Character.wd("[EXECUTIONER] Arr, an' who d'ya think you ar'?");
                 
-            Character.wd("[VOICE] Lord Wakehart, the explorer.");
+            Character.wd("[VOICE] I am Lord Wakehart, the explorer.");
                 
             Character.wd("[LORD WAKEHART] I wish to pardon this kid.");
                 
@@ -64,7 +64,7 @@ namespace Scark.ast.start
             Character.wd("The rope is loosened around your neck as you are escorted into the disappointed audience by Lord Wakehart.");
                 
 
-            Character.wd("[LORD WAKEHART] Hey kid, what's your name?");
+            Character.wd("[LORD WAKEHART] So, hey kid, what's your name?");
             Console.Write("> ");
             Character.name = Console.ReadLine();
             
@@ -119,18 +119,26 @@ namespace Scark.ast.start
                         break;
                     case "2": // Warrior
                         Character.race = "Warrior";
+                        Character.inventory.Add(ItemID.ConvertStringToID("Iron Broadsword"));
+
                         Console.WriteLine("You are trained in basic Combat and shipped to the distant land of Scark...");
                         userPickedOption = true;
                         Thread.Sleep(1500);
                         break;
                     case "3": // Ranger
                         Character.race = "Ranger";
+                        Character.inventory.Add(ItemID.ConvertStringToID("Iron Bow"));
+                        Character.inventory.Add(ItemID.ConvertStringToID("Leather Quiver"));
+
                         Console.WriteLine("You are trained in basic Archery and shipped to the distant land of Scark...");
                         userPickedOption = true;
                         Thread.Sleep(1500);
                         break;
                     case "4": // Mage
                         Character.race = "Mage";
+                        Character.inventory.Add(ItemID.ConvertStringToID("Book of Souls"));
+
+
                         Console.WriteLine("You are trained in basic Magery and shipped to the distant land of Scark...");
                         userPickedOption = true;
                         Thread.Sleep(1500);
