@@ -10,7 +10,7 @@ namespace Scark
 {
     class Program
     {
-        public readonly static string gameVersion = "v0.1.4-alpha"; // game version variable
+        public readonly static string gameVersion = "v0.1.5-alpha"; // game version variable
 
         public static void Main(string[] args)
         {
