@@ -93,15 +93,20 @@ namespace Scark.ast.start
                 {
                     Character.Settings["Profanity"] = false;
 
+                    //replace swearwords
                     Character.SwearReplacements["the hell"] = "the hell";
-
+                    Character.SwearReplacements["flipping"] = "flipping";
+                    Character.SwearReplacements["oh man"] = "oh man";
                     run();
                 }
                 if (response.ToLower() == "t")
                 {
                     Character.Settings["Profanity"] = true;
 
+                    //replaceswearwords
                     Character.SwearReplacements["the hell"] = "the fuck";
+                    Character.SwearReplacements["flipping"] = "fucking";
+                    Character.SwearReplacements["oh man"] = "ah shit";
 
                     run();
                 }
