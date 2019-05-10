@@ -4,14 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scark.ast.items
+namespace Scark.ast.narsk
 {
-    public class Weapon : Item
+    public class TowardsMedallion
     {
-        public int Damage { get; set; }
 
-        
-        
-        
     }
 }

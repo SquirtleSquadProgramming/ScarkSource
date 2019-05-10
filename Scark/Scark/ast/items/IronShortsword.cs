@@ -9,9 +9,6 @@ namespace Scark.ast.items.weapons
 {
     public class IronShortsword : Weapon
     {
-        public IronShortsword()
-        {
-            Damage = 1;
-        }
+        
     }
 }

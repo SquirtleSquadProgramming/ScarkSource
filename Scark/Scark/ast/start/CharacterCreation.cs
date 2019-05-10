@@ -17,17 +17,17 @@ namespace Scark.ast.start
         {
 
             //Story Line
-            wd("You carefully aim your crossbow directly at the King's chest.");
+            Character.wd("You carefully aim your crossbow directly at the King's chest.");
                 
-            wd("A bloodstained crossbow loaded with a lead bolt sits in your sweaty hand as you observe the speech from a ramshackle building.");
+            Character.wd("A bloodstained crossbow loaded with a lead bolt sits in your sweaty hand as you observe the speech from a ramshackle building.");
 
-            wd("Your finger pulls the trigger.");
+            Character.wd("Your finger pulls the trigger.");
                 
-            wd("You hear an instant uproar as the King's body topples down the stone stairs.");
+            Character.wd("You hear an instant uproar as the King's body topples down the stone stairs.");
                 
-            wd("In the midst of all the confusion, you begin running.");
+            Character.wd("In the midst of all the confusion, you begin running.");
                 
-            wd("Suddenly, a baton bludgeons you from behind.");
+            Character.wd("Suddenly, a baton bludgeons you from behind.");
             if (!Character.dev)
             {
                 Thread.Sleep(2000);
@@ -35,67 +35,67 @@ namespace Scark.ast.start
                 Thread.Sleep(3000);
             }
 
-            wd("You wake up in a mysterious place and realize where you are...");
+            Character.wd("You wake up in a mysterious place and realize where you are...");
                 
-            wd("You have been arrested for treason to the king. You are walked up to the gallows to which you will be executed.");
+            Character.wd("You have been arrested for treason to the king. You are walked up to the gallows to which you will be executed.");
                 
-            wd("The executioner firms his grasp around the lever. Before he pulls the lever he mumbles a quick prayer.");
+            Character.wd("The executioner firms his grasp around the lever. Before he pulls the lever he mumbles a quick prayer.");
                
-            wd("[EXECUTIONER] Does anybody object to this her' hanging?");
+            Character.wd("[EXECUTIONER] Does anybody object to this her' hanging?");
                 
-            wd("Nothing but silence comes from the crowd.");
+            Character.wd("Nothing but silence comes from the crowd.");
 
-            wd("[TOWNFOLK] Just bloody pull the lever already!");
+            Character.wd("[TOWNFOLK] Just bloody pull the lever already!");
 
-            wd("As the executioner moves his hand towards the lever, a voice shouts out.");
+            Character.wd("As the executioner moves his hand towards the lever, a voice shouts out.");
                 
-            wd("[VOICE] I object!");
+            Character.wd("[VOICE] I object!");
                 
-            wd("The executioner's eyes fix upon the man who called.");
+            Character.wd("The executioner's eyes fix upon the man who called.");
                 
-            wd("[EXECUTIONER] Arr, an' who d'ya think you ar'?");
+            Character.wd("[EXECUTIONER] Arr, an' who d'ya think you ar'?");
                 
-            wd("[VOICE] Lord Wakehart, the explorer.");
+            Character.wd("[VOICE] Lord Wakehart, the explorer.");
                 
-            wd("[LORD WAKEHART] I wish to pardon this kid.");
+            Character.wd("[LORD WAKEHART] I wish to pardon this kid.");
                 
-            wd("The executioner has no choice but to obey the laws, Wakehart's lordship grants him power to pardon anyone he wishes.");
+            Character.wd("The executioner has no choice but to obey the laws, Wakehart's lordship grants him power to pardon anyone he wishes.");
                 
-            wd("The rope is loosened around your neck as you are escorted into the disappointed audience by Lord Wakehart.");
+            Character.wd("The rope is loosened around your neck as you are escorted into the disappointed audience by Lord Wakehart.");
                 
 
-            wd("[LORD WAKEHART] Hey kid, what's your name?");
+            Character.wd("[LORD WAKEHART] Hey kid, what's your name?");
             Console.Write("> ");
             Character.name = Console.ReadLine();
             
-            wd($"[LORD WAKEHART] Hey, {Character.name}. Don't think I'm pardoning you for nothing, nah.");
+            Character.wd($"[LORD WAKEHART] Hey, {Character.name}. Don't think I'm pardoning you for nothing, nah.");
                 
-            wd("[LORD WAKEHART] I've a quest for you, and if you succeed, you'll be a very rich man.");
+            Character.wd("[LORD WAKEHART] I've a quest for you, and if you succeed, you'll be a very rich man.");
                 
-            wd("[LORD WAKEHART] Ha ha, I'm guessing you want to know what this quest involves!");
+            Character.wd("[LORD WAKEHART] Ha ha, I'm guessing you want to know what this quest involves!");
                 
-            wd("[LORD WAKEHART] Well, I need a brave adventurer to go to the island of Scark.");
+            Character.wd("[LORD WAKEHART] Well, I need a brave adventurer to go to the island of Scark.");
                 
-            wd("[LORD WAKEHART] I'll tell you more when we get there, kid.");
+            Character.wd("[LORD WAKEHART] I'll tell you more when we get there, kid.");
                 
-            wd("Before you can say anything, you are rushed off to a training fort...");
+            Character.wd("Before you can say anything, you are rushed off to a training fort...");
 
             Console.Clear();
 
             //Training Fort
             
 
-            wd("[TRAINER] So.");
-            wd("[TRAINER] I see that the idiot Wakehead or whatever the hell his name is has pardoned you.");
-            wd("[TRAINER] Well, I guess I'll have to obey.");
-            wd("[TRAINER] So kid, how'll your flimsy little limbs fight, eh?");
-            wd("[TRAINER] Don't know what I'm talking about?");
-            wd("[TRAINER] Not surprised, from some wanna-be revolutionist like yourself.");
-            wd("[TRAINER] Forgive me, but your attempt on the glorious King's life was futile at best.");
-            wd("[TRAINER] At worst?");
-            wd("[TRAINER] Ha ha ha ha.");
-            wd("[TRAINER] Well anyways, I can train you in four classes.");
-            wd("[TRAINER] Rouge, warrior, ranger or mage.");
+            Character.wd("[TRAINER] So.");
+            Character.wd("[TRAINER] I see that the idiot Wakehead or whatever the hell his name is has pardoned you.");
+            Character.wd("[TRAINER] Well, I guess I'll have to obey.");
+            Character.wd("[TRAINER] So kid, how'll your flimsy little limbs fight, eh?");
+            Character.wd("[TRAINER] Don't know what I'm talking about?");
+            Character.wd("[TRAINER] Not surprised, from some wanna-be revolutionist like yourself.");
+            Character.wd("[TRAINER] Forgive me, but your attempt on the glorious King's life was futile at best.");
+            Character.wd("[TRAINER] At worst?");
+            Character.wd("[TRAINER] Ha ha ha ha.");
+            Character.wd("[TRAINER] Well anyways, I can train you in four classes.");
+            Character.wd("[TRAINER] Rouge, warrior, ranger or mage.");
 
             Console.WriteLine(
                 "\nThe trainer asks you how you like to fight \n" +
@@ -112,6 +112,8 @@ namespace Scark.ast.start
                     case "1": // Rouge
                         Character.race = "Rouge";
                         Console.WriteLine("You are trained in basic Stealth and shipped to the distant land of Scark...");
+
+                        //Character.inventory.Add(items.weapons.IronShortsword);
                         userPickedOption = true;
                         Thread.Sleep(1500);
                         break;
@@ -144,25 +146,5 @@ namespace Scark.ast.start
             Character.stage++;
         }
 
-        public void wd(string text) // write dialogue and wait 1.5 s
-        {
-            string filteredText = text;
-
-            //profanitise if selected
-            if (Character.Settings["Profanity"])
-            {
-                filteredText = filteredText.Replace("hell", "fuck");
-                filteredText = filteredText.Replace("flip", "fuck");
-                filteredText = filteredText.Replace("darn", "damn");
-                filteredText = filteredText.Replace("idiot", "cunt");
-                filteredText = filteredText.Replace("bloody", "fucking");
-            }
-            Console.WriteLine("\n"+filteredText);
-            if (!Character.dev)
-            {
-                // Console.Write("[DEV: {0}]", start.Menu.dev);
-                Thread.Sleep(Character.Settings["SpeechSpeed"]);
-            }
-        }
     }
 }

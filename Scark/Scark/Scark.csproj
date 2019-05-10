@@ -75,7 +75,8 @@
   <ItemGroup>
     <Compile Include="ast\items\Item.cs" />
     <Compile Include="ast\items\Weapon.cs" />
-    <Compile Include="ast\items\weapons\IronShortsword.cs" />
+    <Compile Include="ast\items\IronShortsword.cs" />
+    <Compile Include="ast\narsk\TowardsMedallion.cs" />
     <Compile Include="ast\start\CharacterCreation.cs" />
     <Compile Include="ast\start\MenuSequence.cs" />
     <Compile Include="ast\start\BoardShip.cs" />
@@ -105,6 +106,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ast\items\weapons\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

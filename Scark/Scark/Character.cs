@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Scark
 {
@@ -23,7 +24,7 @@ namespace Scark
         public static bool dev; // If dev
 
         // List for inventory
-        public static List<string> inventory = new List<string>();
+        public static List<ast.items.Item> inventory = new List<ast.items.Item >();
 
         // Dictionary for settings, accessed by setting in []: eg. Character.Settings["SpeechSpeed"]
         public static Dictionary<string, dynamic> Settings = new Dictionary<string, dynamic>()
@@ -103,6 +104,59 @@ namespace Scark
             }
             
             return 0;
+        }
+
+
+        // awards ethyrl to the player
+        public static void awardEthryl(int amount)
+        {
+            //enable lit purple colour and print little message
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("+ " + amount.ToString() + " Ethryl");
+
+            //actually give the player the ethryl
+            Character.ethryl = Character.ethryl + amount;
+
+            revertColourScheme();
+
+            // Wait a bit (because why not) (and also incase a Console.Clear() is directly after this.)
+            Thread.Sleep(Character.Settings["SpeechSpeed"]);
+
+        }
+
+
+        // reverts all colours to normal (colour scheme dependent)
+        public static void revertColourScheme()
+        {
+            //Revert back to colour scheme
+            if (Character.Settings["ColourTheme"] == "dark")
+                Console.ForegroundColor = ConsoleColor.White;
+            else if (Character.Settings["ColourTheme"] == "light")
+                Console.ForegroundColor = ConsoleColor.Black;
+        }
+
+
+        // write text w/ delay (depending on admin or not)
+        public static void wd(string text)
+        {
+            string filteredText = text;
+
+            //profanitise if selected
+            if (Character.Settings["Profanity"])
+            {
+                //replaces good boy words with their more profane counterparts
+                filteredText = filteredText.Replace("hell", "fuck");
+                filteredText = filteredText.Replace("flip", "fuck");
+                filteredText = filteredText.Replace("darn", "damn");
+                filteredText = filteredText.Replace("idiot", "dick");
+                filteredText = filteredText.Replace("bloody", "fucking");
+            }
+            Console.WriteLine("\n" + filteredText);
+            if (!Character.dev)
+            {
+                // Console.Write("[DEV: {0}]", start.Menu.dev);
+                Thread.Sleep(Character.Settings["SpeechSpeed"]);
+            }
         }
 
     }
