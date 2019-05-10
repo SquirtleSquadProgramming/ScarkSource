@@ -10,6 +10,13 @@ namespace Scark
     class Character
     {
 
+        // Void for saving the character data
+        public void save()
+        {
+
+        }
+        
+         
         // Integer Variables
         public static int stage; // What stage of story the player is at
         public static int ethryl; // Currency
@@ -62,47 +69,12 @@ namespace Scark
         // Converts ability SCORE into ability MODIFIER
         public static int convertAbilityScoreToAbilityModifier(string ability_score_name)
         {
-            switch (AbilityScores[ability_score_name])
-            {
-                case 0:
-                    return -5;
-                case 1:
-                    return -4;
-                case 2:
-                    return -3;
-                case 3:
-                case 4:
-                    return -2;
-                case 5:
-                case 6:
-                    return -1;
-                case 7:
-                case 8:
-                case 9:
-                    return 0;
-                case 10:
-                case 11:
-                case 12:
-                    return 1;
-                case 13:
-                case 14:
-                case 15:
-                    return 2;
-                case 16:
-                case 17:
-                case 18:
-                case 19: 
-                    return 3;
-                case 20:
-                case 21:
-                case 22:
-                case 23:
-                    return 4;
-                case 24:
-                case 25:
-                    return 5;
-            }
-            
+            int[] tmp = new int[26] { -5, -4, -3, -2, -2, -1, -1, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5 };
+
+            for (int i = 0; i < 26; i++)
+                if (AbilityScores[ability_score_name] == i)
+                    return tmp[i];
+
             return 0;
         }
 

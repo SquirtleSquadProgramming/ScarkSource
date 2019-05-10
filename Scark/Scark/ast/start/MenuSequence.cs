@@ -14,9 +14,13 @@ namespace Scark.ast.start
         public void menuSeq()
         {
             Console.Clear();
+            //Choose a random colour
+            ConsoleColor[] colours = {ConsoleColor.Red, ConsoleColor.Blue, ConsoleColor.DarkCyan, ConsoleColor.DarkMagenta, ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.White, ConsoleColor.DarkRed };
+            Random rand = new Random();
+            int chosenIndex = rand.Next(colours.Length);
 
-            //Print the title and toggle a blue colour
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            //Print the title with the random colour chosen
+            Console.ForegroundColor = colours[chosenIndex];
             Console.WriteLine("      ███████                                         █    \n    █       ███                                     ██  \n   █         ██                                     ██\n   ██        █                                      ██ \n    ███                                ███  ████    ██\n   ██ ███           ████       ████     ████ ████ █ ██  ███  \n    ███ ███        █ ███  █   █ ███  █   ██   ████  ██ █ ███\n      ███ ███     █   ████   █   ████    ██         ███   █ \n        ███ ███  ██         ██    ██     ██         ██   █ \n          ██ ███ ██         ██    ██     ██         ██  █\n           ██ ██ ██         ██    ██     ██         ██ ██ \n            █ █  ██         ██    ██     ██         ██████ \n  ███        █   ███     █  ██    ██     ███        ██  ███ \n █  █████████     ███████    █████ ██     ███       ██   ███ █\n█     █████        █████      ███   ██               ██   ███\n█      \n ██ ");
             
             //Change the colour scheme to desired setting
@@ -35,7 +39,8 @@ namespace Scark.ast.start
             Console.Write("                        " + Program.gameVersion);
 
             //Wait for player input to start the game
-            Console.WriteLine("\n\nPress any key to enter the realm of Scark...");
+            Console.WriteLine("\n                 ┌─────────────────────────┘\n");
+            Console.WriteLine("           Press any key to enter the realm of Scark");
             Console.ReadKey();
             
             //Instantiate classes for later
@@ -47,7 +52,9 @@ namespace Scark.ast.start
             while (optionSelected == false)
             {
                 Console.Clear();
-                Console.ForegroundColor = ConsoleColor.DarkCyan;
+
+                //Print the title with the random colour chosen
+                Console.ForegroundColor = colours[chosenIndex];
                 Console.WriteLine("      ███████                                         █    \n    █       ███                                     ██  \n   █         ██                                     ██\n   ██        █                                      ██ \n    ███                                ███  ████    ██\n   ██ ███           ████       ████     ████ ████ █ ██  ███  \n    ███ ███        █ ███  █   █ ███  █   ██   ████  ██ █ ███\n      ███ ███     █   ████   █   ████    ██         ███   █ \n        ███ ███  ██         ██    ██     ██         ██   █ \n          ██ ███ ██         ██    ██     ██         ██  █\n           ██ ██ ██         ██    ██     ██         ██ ██ \n            █ █  ██         ██    ██     ██         ██████ \n  ███        █   ███     █  ██    ██     ███        ██  ███ \n █  █████████     ███████    █████ ██     ███       ██   ███ █\n█     █████        █████      ███   ██               ██   ███\n█      \n ██ ");
 
                 //Change the colour scheme to desired setting
@@ -62,7 +69,7 @@ namespace Scark.ast.start
                     Console.BackgroundColor = ConsoleColor.White;
                 }
 
-                Console.Write("\n[1] New Game\n[2] Load Player [WIP]\n[3] Settings\n\n[x] Exit\n> "); // Options
+                Console.Write("\n             New     Load    Settings    Exit\n            [ 1 ]   [ 2 ]     [ 3 ]      [ X ]\n>"); // Options
                 if (Character.dev == true) Console.Write("Dev mode enabled\n> "); // Saying if dev mode is enabled
 
                 switch (Console.ReadLine())
@@ -93,5 +100,7 @@ namespace Scark.ast.start
                 }
             }
         }
+
+        
     }
 }
