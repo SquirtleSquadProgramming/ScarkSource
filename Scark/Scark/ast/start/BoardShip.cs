@@ -33,7 +33,8 @@ namespace Scark.ast.start
             wd("[LORD WAKEHART] Talk to my friend Orpheus, he's the barman. He'll tell you some stuff you ought to know.");
             wd("[LORD WAKEHART] Here's some ethryl to start you off.");
             wd("Wakehart hands over a few coins radiating with a strange light.");
-            
+
+            awardEthryl(25);
 
             Console.ReadLine();
 
@@ -60,6 +61,25 @@ namespace Scark.ast.start
                 // Console.Write("[DEV: {0}]", start.Menu.dev);
                 Thread.Sleep(Character.Settings["SpeechSpeed"]);
             }
+        }
+
+        public void awardEthryl(int amount)
+        {
+            //enable lit purple colour and print little message
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("+ " + amount.ToString() + " Ethryl");
+
+            //actually give the player the ethryl
+            Character.ethryl = Character.ethryl + amount;
+
+            //Revert back to colour scheme
+            if (Character.Settings["ColourTheme"] == "dark")
+                Console.ForegroundColor = ConsoleColor.White;
+            else if (Character.Settings["ColourTheme"] == "light")
+                Console.ForegroundColor = ConsoleColor.Black;
+
+            // Wait a bit (because why not) (and also incase a Console.Clear() is directly after this.)
+            Thread.Sleep(Character.Settings["SpeechSpeed"]);
         }
     }
 }
