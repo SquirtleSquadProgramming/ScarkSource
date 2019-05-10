@@ -27,7 +27,12 @@ namespace Scark.ast
                         boardShip.aboardShip();
                         break;
                     case 2: // Further Story [WIP]
-                        end = true; // temp as Abording Ship isn't completed and story isn't written for here.
+                        Console.Clear();
+                        
+                        
+                        break;
+                    case 3:
+                        end = true;
                         break;
                     default:
                         // Ummmmm... idk what goes here but...

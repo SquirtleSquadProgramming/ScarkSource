@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Scark.ast;
 
 namespace Scark.ast.narsk
 {
-    class TowardsMedallion
+    public class TowardsMedallion
     {
+        public void towardsMedalloin()
+        {
+            Character.wd("Test");
+            Console.ReadLine();
+        }
     }
 }

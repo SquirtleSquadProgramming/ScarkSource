@@ -102,7 +102,7 @@ namespace Scark.ast.start
                         switch (r)
                         {
                             case "1":
-                                Environment.Exit(0); // closes the consoleapp window -- might have problems according to stackoverflow
+                                Environment.Exit(0); // closes the consoleapp window -- might have problems according to stackoverflow but idk lmao
                                 break;
                             case "2":
                                 menuSeq();

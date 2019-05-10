@@ -23,6 +23,10 @@ namespace Scark
         public static int health; // Health
         public static int magika; // Mana/Magika
 
+        public static int level; // Player level
+        public static int currentXP; // player's current XP
+        public static int maxXP; // maximum xp player can get before level up
+
         // String Variables
         public static string name; // Name
         public static string race; // Race
@@ -65,7 +69,7 @@ namespace Scark
                     listToString += inventory[i] + ",";
                 else listToString += inventory[i] + "]";
             }
-            return new string[] { stage.ToString(), ethryl.ToString(), health.ToString(), name, race, listToString};
+            return new string[] { stage.ToString(), ethryl.ToString(), health.ToString(), magika.ToString(), level.ToString(), currentXP.ToString(), maxXP.ToString(), name, race, listToString};
         }
 
         // Converts ability SCORE into ability MODIFIER
