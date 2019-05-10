@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scark.ast.items
+namespace Scark.ast.narsk
 {
-    public class Item
+    class TowardsMedallion
     {
-        public static int ID { get; set; }
     }
 }

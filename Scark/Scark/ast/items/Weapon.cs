@@ -12,10 +12,10 @@ namespace Scark.ast.items
             get { return Damage; }
             set { Damage = value; }
         }
-        public static string weaponClass
+        public static string WeaponClass
         {
-            get { return weaponClass; }
-            set { weaponClass = value; }
+            get { return WeaponClass; }
+            set { WeaponClass = value; }
         }
     }
 }
