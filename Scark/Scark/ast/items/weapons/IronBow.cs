@@ -13,7 +13,7 @@ namespace Scark.ast.items.weapons
             Name = "Iron Bow";
             Damage = 6; // tbc
             WeaponClass = "Ranged";
-            Description = "A trusty bow. A little bit rusty, but capable of hunting easy game."
+            Description = "A trusty bow. A little bit rusty, but capable of hunting easy game.";
 
             ID = 3;
         }
