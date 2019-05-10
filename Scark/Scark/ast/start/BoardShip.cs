@@ -34,18 +34,16 @@ namespace Scark.ast.start
             Character.wd("[LORD WAKEHART] Here's some ethryl to start you off.");
             Character.wd("Wakehart hands over a few coins radiating with a strange light.");
 
-            Character.wd(@"                ______________
-    __,.,---'''''              '''''---..._
- ,-'             .....:::''::.:            '`-.
-'           ...:::.....       '                .
-            ''':::'''''       .                '
-|'-.._           ''''':::..::':          __,,-'
- '-.._''`---.....______________.....---''__,,-'
-      ''`---.....______________.....---''\n\n"); // <= this is a coin
-
             Character.awardEthryl(25);
 
-            
+            Character.wd("[LORD WAKEHART] Wizards back in korambia granted me a few vials of this strange substance aswell."); //if there is a better town name by all means add it korambia is just a placeholder
+            Character.wd("[LORD WAKEHART] I will give you some, you never know when it might come in handy.");
+            Character.wd("You take a handful of the substance, and it seems to infuse into your skin.");
+
+            Character.awardMagika(10);
+
+            Character.wd("[LORD WAKEHART] I'll give you some, you never know when it might come in handy.");
+            Character.wd("The once lapping waves run still. The farquaad enters the bay...");
 
             Console.ReadLine();
 

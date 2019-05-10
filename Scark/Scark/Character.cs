@@ -88,13 +88,36 @@ namespace Scark
         // awards ethyrl to the player
         public static void awardEthryl(int amount)
         {
-            //enable lit purple colour and print little message
-            Console.ForegroundColor = ConsoleColor.Magenta;
+            //Change to dark or light magenta and print a message to console
+            if (Character.Settings["ColourTheme"] == "dark")
+                Console.ForegroundColor = ConsoleColor.Magenta; 
+            else if (Character.Settings["ColourTheme"] == "light")
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            
             Console.WriteLine("+ " + amount.ToString() + " Ethryl");
 
             //actually give the player the ethryl
             Character.ethryl = Character.ethryl + amount;
+            revertColourScheme();
 
+            // Wait a bit (because why not) (and also incase a Console.Clear() is directly after this.)
+            Thread.Sleep(Character.Settings["SpeechSpeed"]);
+
+        }
+
+        // awards magika to the player
+        public static void awardMagika(int amount)
+        {
+            //Change to dark or light green and print a message to console
+            if (Character.Settings["ColourTheme"] == "dark")
+                Console.ForegroundColor = ConsoleColor.Green;
+            else if (Character.Settings["ColourTheme"] == "light")
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+
+            Console.WriteLine("+ " + amount.ToString() + " Magika");
+
+            //actually give the player the ethryl
+            Character.magika = Character.magika + amount;
             revertColourScheme();
 
             // Wait a bit (because why not) (and also incase a Console.Clear() is directly after this.)
