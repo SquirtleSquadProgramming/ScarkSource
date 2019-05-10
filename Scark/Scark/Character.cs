@@ -23,13 +23,15 @@ namespace Scark
         public static int health; // Health
         public static int magika; // Mana/Magika
 
+        public static int abilityPoints;
+
         public static int level; // Player level
         public static int currentXP; // player's current XP
         public static int maxXP; // maximum xp player can get before level up
 
         // String Variables
         public static string name; // Name
-        public static string race; // Race
+        public static string characterClass; // Race -- but race is only human tho
 
         // Boolean Variables
         public static bool dev; // If dev
@@ -69,7 +71,7 @@ namespace Scark
                     listToString += inventory[i] + ",";
                 else listToString += inventory[i] + "]";
             }
-            return new string[] { stage.ToString(), ethryl.ToString(), health.ToString(), magika.ToString(), level.ToString(), currentXP.ToString(), maxXP.ToString(), name, race, listToString};
+            return new string[] { stage.ToString(), ethryl.ToString(), health.ToString(), magika.ToString(), level.ToString(), currentXP.ToString(), maxXP.ToString(), name, characterClass, listToString};
         }
 
         // Converts ability SCORE into ability MODIFIER
@@ -108,21 +110,39 @@ namespace Scark
         // awards magika to the player
         public static void awardMagika(int amount)
         {
-            //Change to dark or light green and print a message to console
+            //Change to dark or light blue and print a message to console
             if (Character.Settings["ColourTheme"] == "dark")
-                Console.ForegroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.Blue;
             else if (Character.Settings["ColourTheme"] == "light")
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
 
             Console.WriteLine("+ " + amount.ToString() + " Magika");
 
-            //actually give the player the ethryl
             Character.magika = Character.magika + amount;
             revertColourScheme();
 
-            // Wait a bit (because why not) (and also incase a Console.Clear() is directly after this.)
             Thread.Sleep(Character.Settings["SpeechSpeed"]);
 
+        }
+
+
+        // gives the player ability point(s)
+        public static void awardAbilityPoint(int amount)
+        {
+            if (Character.Settings["ColourTheme"] == "dark")
+                Console.ForegroundColor = ConsoleColor.Cyan;
+            else if (Character.Settings["ColourTheme"] == "light")
+                Console.ForegroundColor = ConsoleColor.DarkCyan ;
+
+            if (amount == 1)
+                Console.WriteLine("+ " + amount.ToString() + " Ability Point"); // singular
+            else if (amount > 1)
+                Console.WriteLine("+ " + amount.ToString() + " Ability Points"); // plural
+
+            Character.abilityPoints = Character.abilityPoints + amount;
+            revertColourScheme();
+
+            Thread.Sleep(Character.Settings["SpeechSpeed"]);
         }
 
 

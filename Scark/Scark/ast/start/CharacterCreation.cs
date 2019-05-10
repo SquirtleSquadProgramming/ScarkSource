@@ -106,34 +106,37 @@ namespace Scark.ast.start
             while (userPickedOption == false)
             {
                 Console.Write("> ");
-                Character.race = Console.ReadLine();
-                switch (Character.race)
+                Character.characterClass = Console.ReadLine();
+                switch (Character.characterClass)
                 {
                     case "1": // Rouge
-                        Character.race = "Rouge";
+                        Character.characterClass = "Rouge";
                         Character.inventory.Add(ItemID.ConvertStringToID("Iron Shortsword"));
-
-                        Console.WriteLine("You are trained in basic Stealth and shipped to the distant land of Scark...");
                         userPickedOption = true;
                         Thread.Sleep(1500);
+                        assignAbilityScoreIntro();
                         break;
                     case "2": // Warrior
-                        Character.race = "Warrior";
-                        Console.WriteLine("You are trained in basic Combat and shipped to the distant land of Scark...");
+                        Character.characterClass = "Warrior";
+                        Character.inventory.Add(ItemID.ConvertStringToID("Iron Broadsword"));
                         userPickedOption = true;
                         Thread.Sleep(1500);
+                        assignAbilityScoreIntro();
                         break;
                     case "3": // Ranger
-                        Character.race = "Ranger";
-                        Console.WriteLine("You are trained in basic Archery and shipped to the distant land of Scark...");
+                        Character.characterClass = "Ranger";
+                        Character.inventory.Add(ItemID.ConvertStringToID("Iron Bow"));
+                        Character.inventory.Add(ItemID.ConvertStringToID("Leather Quiver"));
                         userPickedOption = true;
                         Thread.Sleep(1500);
+                        assignAbilityScoreIntro();
                         break;
                     case "4": // Mage
-                        Character.race = "Mage";
-                        Console.WriteLine("You are trained in basic Magery and shipped to the distant land of Scark...");
+                        Character.characterClass = "Mage";
+                        Character.inventory.Add(ItemID.ConvertStringToID("Book of Souls"));
                         userPickedOption = true;
                         Thread.Sleep(1500);
+                        assignAbilityScoreIntro();
                         break;
 
                     default:
@@ -145,6 +148,101 @@ namespace Scark.ast.start
             //Sean Write Some More Story
             Character.stage++;
         }
+
+        public void assignAbilityScoreIntro()
+        {
+            Character.wd("[TRAINER] Oh, I almost forgot.");
+            Character.wd("[TRAINER] You need to choose some ability scores as well.");
+            Character.wd("[TRAINER] They determine how good you are at certain things.");
+            Character.wd("[TRAINER] There are six ability scores; Constitution, Charisma, Intelligence, Perception, Strength and Stealth.");
+            Character.wd("[TRAINER] You get 25 Ability Points to spend on these scores at the start.");
+            Character.awardAbilityPoint(25);
+            Character.wd("[TRAINER] You can get more points by leveling up, or doing certain quests.");
+            Character.wd("[TRAINER] Your skills will start out bad, but as you progress, you'll get better and better.");
+
+            Character.wd("Please input the amount of Ability Points you wish to assign to the selected Ability score, or input \"x\" to reassign.");
+
+            assignAbilityScore();
+
+        }
+
+        public void assignAbilityScore()
+        {
+
+            Console.Clear();
+            Console.Write(Character.abilityPoints + @" points remaining.
+
+To assign points to scores, write the amount of points you wish to assign to each score for every score in one line, seperated by a comma and NO space.
+
+Eg. 1,2,3,4,5,6
+Will assign 1 to Constitution, 2 to Charisma, 3 to Intelligence, and so on.
+
+ORDER: CON CHA INT PER STR STE
+
+> ");
+
+            try
+            {
+                string response = Console.ReadLine();
+                List<string> result = response.Split(',').ToList();
+
+                if (result.Count <= 5 || result.Count >= 7)
+                {
+                    Character.wd("Please input a number for every score (6 numbers total)!");
+                    assignAbilityScore();
+                }
+                if (Convert.ToInt32(result[0]) + Convert.ToInt32(result[1]) + Convert.ToInt32(result[2]) + Convert.ToInt32(result[3]) + Convert.ToInt32(result[4]) + Convert.ToInt32(result[5]) > Character.abilityPoints)
+                {
+                    Character.wd("Insufficient funds.");
+                    assignAbilityScore();
+                }
+                else
+                {
+
+                    // this code below could probs be simplified dan
+                    Character.AbilityScores["Constitution"] = Convert.ToInt32(result[0]);
+                    Character.AbilityScores["Charisma"] = Convert.ToInt32(result[1]);
+                    Character.AbilityScores["Intelligence"] = Convert.ToInt32(result[2]);
+                    Character.AbilityScores["Perception"] = Convert.ToInt32(result[3]);
+                    Character.AbilityScores["Strength"] = Convert.ToInt32(result[4]);
+                    Character.AbilityScores["Stealth"] = Convert.ToInt32(result[5]);
+
+
+                    switch (Character.characterClass.ToLower() )
+                    {
+                        case "rouge":
+                            Character.wd("The instructor relentlessly trains you to become a rouge.");
+                            Character.wd("At the end of the day, your joints are sore and tired.");
+                            Character.wd("You are put onto a ship named Farquaad and sailed to the distand island of Scark.");
+                            
+                            break;
+                        case "warrior":
+                            Character.wd("The instructor relentlessly trains you to become a warrior.");
+                            Character.wd("At the end of the day, your joints are sore and tired.");
+                            Character.wd("You are put onto a ship named Farquaad and sailed to the distand island of Scark.");
+                            break;
+                        case "ranger":
+                            Character.wd("The instructor relentlessly trains you to become a ranger.");
+                            Character.wd("At the end of the day, your joints are sore and tired.");
+                            Character.wd("You are put onto a ship named Farquaad and sailed to the distand island of Scark.");
+                            break;
+                        case "mage":
+                            Character.wd("The instructor relentlessly trains you to become a mage.");
+                            Character.wd("At the end of the day, your joints are sore and tired.");
+                            Character.wd("You are put onto a ship named Farquaad and sailed to the distand island of Scark.");
+                            break;
+                    }
+
+                }
+            }
+            catch
+            {
+                Character.wd("Please input a valid response!");
+            }
+
+
+        }
+
 
     }
 }
