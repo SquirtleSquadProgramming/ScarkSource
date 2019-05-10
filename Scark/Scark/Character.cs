@@ -16,7 +16,7 @@ namespace Scark
 
         }
         
-
+         
         // Integer Variables
         public static int stage; // What stage of story the player is at
         public static int ethryl; // Currency
