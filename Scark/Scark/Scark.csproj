@@ -57,8 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ast\items\general items\LeatherQuiver.cs" />
     <Compile Include="ast\items\Item.cs" />
     <Compile Include="ast\items\Weapon.cs" />
+    <Compile Include="ast\items\weapons\BookOfSouls.cs" />
+    <Compile Include="ast\items\weapons\IronBow.cs" />
+    <Compile Include="ast\items\weapons\IronBroadsword.cs" />
     <Compile Include="ast\items\weapons\IronShortsword.cs" />
     <Compile Include="ast\narsk\TowardsMedallion.cs" />
     <Compile Include="ast\start\CharacterCreation.cs" />
@@ -67,6 +71,7 @@
     <Compile Include="ast\start\SettingsMenu.cs" />
     <Compile Include="ast\story.cs" />
     <Compile Include="Character.cs" />
+    <Compile Include="ItemID.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -74,6 +79,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ast\items\item ids.txt" />
     <Content Include="ast\save\FileSystem.py" />
     <Content Include="ast\save\encDec.list" />
     <Content Include="Sean%27s Crap\Intro Dialogue.txt" />

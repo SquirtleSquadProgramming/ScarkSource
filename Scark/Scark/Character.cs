@@ -31,7 +31,7 @@ namespace Scark
         public static bool dev; // If dev
 
         // List for inventory
-        public static List<ast.items.Item> inventory = new List<ast.items.Item >();
+        public static List<int /* int is for item ID */> inventory = new List<int>();
 
         // Dictionary for settings, accessed by setting in []: eg. Character.Settings["SpeechSpeed"]
         public static Dictionary<string, dynamic> Settings = new Dictionary<string, dynamic>()
@@ -51,6 +51,8 @@ namespace Scark
             {"strength", 0 },
             {"stealth", 0 },
         };
+
+        
 
 
         // Puts all character data into one

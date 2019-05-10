@@ -111,9 +111,9 @@ namespace Scark.ast.start
                 {
                     case "1": // Rouge
                         Character.race = "Rouge";
-                        Console.WriteLine("You are trained in basic Stealth and shipped to the distant land of Scark...");
+                        Character.inventory.Add(ItemID.ConvertStringToID("Iron Shortsword"));
 
-                        //Character.inventory.Add(items.weapons.IronShortsword);
+                        Console.WriteLine("You are trained in basic Stealth and shipped to the distant land of Scark...");
                         userPickedOption = true;
                         Thread.Sleep(1500);
                         break;
