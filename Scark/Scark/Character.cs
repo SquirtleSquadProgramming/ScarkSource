@@ -9,7 +9,7 @@ namespace Scark
     class Character
     {
 
-        // Interger Variables
+        // Integer Variables
         public static int stage; // What stage of story the player is at
         public static int ethryl; // Currency
         public static int health; // Health
@@ -29,7 +29,8 @@ namespace Scark
         public static Dictionary<string, dynamic> Settings = new Dictionary<string, dynamic>()
         {
             {"SpeechSpeed", 1500 },
-            {"Profanity", false}
+            {"Profanity", false},
+            {"ColourTheme", "dark"}
         };
 
         // Ability scores dictionary
@@ -42,6 +43,7 @@ namespace Scark
             {"strength", 0 },
             {"stealth", 0 },
         };
+
 
         // Puts all character data into one
         public static string[] dataCollection()

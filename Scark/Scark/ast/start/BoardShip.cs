@@ -42,14 +42,23 @@ namespace Scark.ast.start
 
         public void wd(string text) // write dialogue and wait 1.5 s
         {
+            string filteredText = text;
+
+            //profanitise if selected
+            if (Character.Settings["Profanity"])
+            {
+                //replaces good boy words with their more profane counterparts
+                filteredText = filteredText.Replace("hell", "fuck");
+                filteredText = filteredText.Replace("flip", "fuck");
+                filteredText = filteredText.Replace("darn", "damn");
+                filteredText = filteredText.Replace("idiot", "cunt");
+                filteredText = filteredText.Replace("bloody", "fucking");
+            }
+            Console.WriteLine("\n" + filteredText);
             if (!Character.dev)
             {
-                Console.WriteLine("\n"+text);
+                // Console.Write("[DEV: {0}]", start.Menu.dev);
                 Thread.Sleep(Character.Settings["SpeechSpeed"]);
-            }
-            else
-            {
-                Console.WriteLine("\n"+text);
             }
         }
     }
