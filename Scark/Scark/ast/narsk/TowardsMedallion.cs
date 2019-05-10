@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Scark.ast.narsk
 {
-    public class TowardsMedallion
+    class TowardsMedallion
     {
-
     }
 }

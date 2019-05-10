@@ -8,11 +8,6 @@ namespace Scark.ast.items
 {
     public class Item
     {
-        public int ID { get; set; }
-        public int Weight { get; set; }
-
-        public string Name { get; set; }
-
-
+        public static int ID { get; set; }
     }
 }
