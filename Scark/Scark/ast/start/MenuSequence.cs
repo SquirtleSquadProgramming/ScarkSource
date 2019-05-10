@@ -69,7 +69,7 @@ namespace Scark.ast.start
                     Console.BackgroundColor = ConsoleColor.White;
                 }
 
-                Console.Write("\n             New     Load    Settings    Exit\n            [ 1 ]   [ 2 ]     [ 3 ]      [ X ]\n>"); // Options
+                Console.Write("\n             New      Load     Settings     Exit\n           =[ 1 ]=   =[ 2 ]=    =[ 3 ]=    =[ x ]=\n> "); // Options
                 if (Character.dev == true) Console.Write("Dev mode enabled\n> "); // Saying if dev mode is enabled
 
                 switch (Console.ReadLine())

@@ -68,7 +68,7 @@ Scouting amongst the trees, the ranger picks off targets with meticulous precisi
 - Intuition
 - Multi Target Damage
 - Defence
-(Quiver and Bow)
+(Quiver and Iron Bow)
 
 Mage: [Magic]
 HP: 3 + con

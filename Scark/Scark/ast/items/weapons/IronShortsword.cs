@@ -11,7 +11,12 @@ namespace Scark.ast.items.weapons
     {
         public IronShortsword()
         {
-            Damage = 1;
+            Damage = 5; // tbc
+            Name = "Iron Shortsword";
+            WeaponClass = "Melee";
+            Description = "A rather short, bloodstained sword. Old but it works."
+
+            ID = 0;
         }
     }
 }

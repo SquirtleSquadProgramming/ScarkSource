@@ -34,7 +34,6 @@ namespace Scark.ast.start
             Character.wd("[LORD WAKEHART] Here's some ethryl to start you off.");
             Character.wd("Wakehart hands over a few coins radiating with a strange light.");
 
-            Console.ForegroundColor = ConsoleColor.Magenta;
             Character.wd(@"                ______________
     __,.,---'''''              '''''---..._
  ,-'             .....:::''::.:            '`-.
@@ -42,10 +41,11 @@ namespace Scark.ast.start
             ''':::'''''       .                '
 |'-.._           ''''':::..::':          __,,-'
  '-.._''`---.....______________.....---''__,,-'
-      ''`---.....______________.....---''"); // <= this is a coin
+      ''`---.....______________.....---''\n\n"); // <= this is a coin
 
-            Character.revertColourScheme();
             Character.awardEthryl(25);
+
+            
 
             Console.ReadLine();
 

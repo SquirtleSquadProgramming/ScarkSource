@@ -1,0 +1,6 @@
+﻿-1	You've f'd something up real bad
+
+0	IronShortsword
+1	IronBroadsword
+
+if not all ids here, check "ItemID.cs"

@@ -22,6 +22,7 @@ namespace Scark
 
             Console.Write("Press any key to exit...");
             Console.Read();
+            
         }
     }
 }
