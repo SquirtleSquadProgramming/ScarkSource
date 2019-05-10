@@ -8,14 +8,10 @@ namespace Scark.ast.items
 {
     public class Weapon : Item
     {
-        public static int Damage {
-            get { return Damage; }
-            set { Damage = value; }
-        }
-        public static string WeaponClass
-        {
-            get { return WeaponClass; }
-            set { WeaponClass = value; }
-        }
+        public int Damage { get; set; }
+
+        
+        
+        
     }
 }
