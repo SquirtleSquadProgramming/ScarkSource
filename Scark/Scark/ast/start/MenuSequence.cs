@@ -42,7 +42,7 @@ namespace Scark.ast.start
             Console.WriteLine("\n                 ┌─────────────────────────┘\n");
             Console.WriteLine("           Press any key to enter the realm of Scark");
             Console.ReadKey();
-            
+
             //Instantiate classes for later
             story Story = new story();
             SettingsMenu settingsMenu = new SettingsMenu();
