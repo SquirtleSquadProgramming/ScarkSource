@@ -18,12 +18,14 @@ namespace Scark.ast.start
 
             //Story Line
             Character.wd("You carefully aim your crossbow directly at the King's chest.");
+
+            Character.showCharInfoGUI();
                 
-            Character.wd("A bloodstained crossbow loaded with a lead bolt sits in your sweaty hand as you observe the speech from a ramshackle building.");
+            Character.wd("A bloodstained crossbow loaded with a lead bolt sits in your \nsweaty hand as you observe the speech from a ramshackle building.");
 
             Character.wd("Your finger pulls the trigger.");
                 
-            Character.wd("You hear an instant uproar as the King's body topples down the stone stairs.");
+            Character.wd("You hear an instant uproar as the King's body topples down the \nstone stairs.");
                 
             Character.wd("In the midst of all the confusion, you begin running.");
                 
@@ -37,9 +39,9 @@ namespace Scark.ast.start
 
             Character.wd("You wake up in a mysterious place and realize where you are...");
                 
-            Character.wd("You have been arrested for treason to the king. You are walked up to the gallows to which you will be executed.");
+            Character.wd("You have been arrested for treason to the king. You are walked up \nto the gallows to which you will be executed.");
                 
-            Character.wd("The executioner firms his grasp around the lever. Before he pulls the lever he mumbles a quick prayer.");
+            Character.wd("The executioner firms his grasp around the lever. Before he pulls \nthe lever he mumbles a quick prayer.");
                
             Character.wd("[EXECUTIONER] Does anybody object to this her' hanging?");
                 
@@ -47,7 +49,7 @@ namespace Scark.ast.start
 
             Character.wd("[TOWNFOLK] Just bloody pull the lever already!");
 
-            Character.wd("As the executioner moves his hand towards the lever, a voice shouts out.");
+            Character.wd("As the executioner moves his hand towards the lever, a voice shouts \nout.");
                 
             Character.wd("[VOICE] I object!");
                 
@@ -59,9 +61,9 @@ namespace Scark.ast.start
                 
             Character.wd("[LORD WAKEHART] I wish to pardon this kid.");
                 
-            Character.wd("The executioner has no choice but to obey the laws, Wakehart's lordship grants him power to pardon anyone he wishes.");
+            Character.wd("The executioner has no choice but to obey the laws, Wakehart's lordship \ngrants him power to pardon anyone he wishes.");
                 
-            Character.wd("The rope is loosened around your neck as you are escorted into the disappointed audience by Lord Wakehart.");
+            Character.wd("The rope is loosened around your neck as you are escorted into the \ndisappointed audience by Lord Wakehart.");
                 
 
             Character.wd("[LORD WAKEHART] Hey kid, what's your name?");
@@ -70,13 +72,13 @@ namespace Scark.ast.start
 
             Character.awardXP(10);
 
-            Character.wd($"[LORD WAKEHART] Hey, {Character.name}. Don't think I'm pardoning you for nothing, nah.");
+            Character.wd($"[LORD WAKEHART] Hey, {Character.name}. Don't think I'm pardoning \nyou for nothing, nah.");
                 
-            Character.wd("[LORD WAKEHART] I've a quest for you, and if you succeed, you'll be a very rich man.");
+            Character.wd("[LORD WAKEHART] I've a quest for you, and if you succeed, you'll be \na very rich man.");
                 
-            Character.wd("[LORD WAKEHART] Ha ha, I'm guessing you want to know what this quest involves!");
+            Character.wd("[LORD WAKEHART] Ha ha, I'm guessing you want to know what this quest \ninvolves!");
                 
-            Character.wd("[LORD WAKEHART] Well, I need a brave adventurer to go to the island of Scark.");
+            Character.wd("[LORD WAKEHART] Well, I need a brave adventurer to go to the island \nof Scark.");
                 
             Character.wd("[LORD WAKEHART] I'll tell you more when we get there, kid.");
                 
@@ -87,12 +89,12 @@ namespace Scark.ast.start
             //Training Fort
             
             Character.wd("[TRAINER] So.");
-            Character.wd("[TRAINER] I see that the idiot Wakehead or whatever the hell his name is has pardoned you.");
+            Character.wd("[TRAINER] I see that the idiot Wakehead or whatever the hell his name \nis has pardoned you.");
             Character.wd("[TRAINER] Well, I guess I'll have to obey.");
             Character.wd("[TRAINER] So kid, how'll your flimsy little limbs fight, eh?");
             Character.wd("[TRAINER] Don't know what I'm talking about?");
             Character.wd("[TRAINER] Not surprised, from some wanna-be revolutionist like yourself.");
-            Character.wd("[TRAINER] Forgive me, but your attempt on the glorious King's life was futile at best.");
+            Character.wd("[TRAINER] Forgive me, but your attempt on the glorious King's life was \nfutile at best.");
             Character.wd("[TRAINER] At worst?");
             Character.wd("[TRAINER] Ha ha ha ha.");
             Character.wd("[TRAINER] Well anyways, I can train you in four classes.");
@@ -115,6 +117,9 @@ namespace Scark.ast.start
                         Character.inventory.Add(ItemID.ConvertStringToID("Iron Shortsword"));
                         userPickedOption = true;
                         Thread.Sleep(1500);
+
+                        Character.pressAnyKeyToContinue();
+
                         assignAbilityScoreIntro();
                         break;
                     case "2": // Warrior
@@ -122,6 +127,9 @@ namespace Scark.ast.start
                         Character.inventory.Add(ItemID.ConvertStringToID("Iron Broadsword"));
                         userPickedOption = true;
                         Thread.Sleep(1500);
+
+                        Character.pressAnyKeyToContinue();
+
                         assignAbilityScoreIntro();
                         break;
                     case "3": // Ranger
@@ -130,6 +138,10 @@ namespace Scark.ast.start
                         Character.inventory.Add(ItemID.ConvertStringToID("Leather Quiver"));
                         userPickedOption = true;
                         Thread.Sleep(1500);
+
+                        Character.pressAnyKeyToContinue();
+                        Console.Clear();
+
                         assignAbilityScoreIntro();
                         break;
                     case "4": // Mage
@@ -137,6 +149,9 @@ namespace Scark.ast.start
                         Character.inventory.Add(ItemID.ConvertStringToID("Book of Souls"));
                         userPickedOption = true;
                         Thread.Sleep(1500);
+
+                        Character.pressAnyKeyToContinue();
+
                         assignAbilityScoreIntro();
                         break;
 
@@ -163,12 +178,16 @@ namespace Scark.ast.start
 
             Character.wd("Please input the amount of Ability Points you wish to assign to the selected Ability score, or input \"x\" to reassign.");
 
+            Character.pressAnyKeyToContinue();
+
             assignAbilityScore();
 
         }
 
         public void assignAbilityScore()
         {
+
+            // this needs to be improved vv
 
             Console.Clear();
             Console.Write(Character.abilityPoints + @" points remaining.
@@ -195,6 +214,7 @@ ORDER: CON CHA INT PER STR STE
                 if (Convert.ToInt32(result[0]) + Convert.ToInt32(result[1]) + Convert.ToInt32(result[2]) + Convert.ToInt32(result[3]) + Convert.ToInt32(result[4]) + Convert.ToInt32(result[5]) > Character.abilityPoints)
                 {
                     Character.wd("Insufficient funds.");
+
                     assignAbilityScore();
                 }
                 else
@@ -216,25 +236,31 @@ ORDER: CON CHA INT PER STR STE
                             Character.awardXP(100);
                             Character.wd("At the end of the day, your joints are sore and tired.");
                             Character.wd("You are put onto a ship named Farquaad and sailed to the distand island of Scark.");
-                            
+
+                            Character.pressAnyKeyToContinue();
+
                             break;
                         case "warrior":
                             Character.wd("The instructor relentlessly trains you to become a warrior.");
                             Character.awardXP(100);
                             Character.wd("At the end of the day, your joints are sore and tired.");
                             Character.wd("You are put onto a ship named Farquaad and sailed to the distand island of Scark.");
+
+                            Character.pressAnyKeyToContinue();
                             break;
                         case "ranger":
                             Character.wd("The instructor relentlessly trains you to become a ranger.");
                             Character.awardXP(100);
                             Character.wd("At the end of the day, your joints are sore and tired.");
                             Character.wd("You are put onto a ship named Farquaad and sailed to the distand island of Scark.");
+                            Character.pressAnyKeyToContinue();
                             break;
                         case "mage":
                             Character.wd("The instructor relentlessly trains you to become a mage.");
                             Character.awardXP(100);
                             Character.wd("At the end of the day, your joints are sore and tired.");
                             Character.wd("You are put onto a ship named Farquaad and sailed to the distand island of Scark.");
+                            Character.pressAnyKeyToContinue();
                             break;
                     }
 

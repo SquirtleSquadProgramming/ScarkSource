@@ -96,7 +96,7 @@ namespace Scark
             else if (Character.Settings["ColourTheme"] == "light")
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
             
-            Console.WriteLine("+ " + amount.ToString() + " Ethryl");
+            Console.WriteLine("\n+ " + amount.ToString() + " Ethryl");
 
             //actually give the player the ethryl
             Character.ethryl = Character.ethryl + amount;
@@ -116,7 +116,7 @@ namespace Scark
             else if (Character.Settings["ColourTheme"] == "light")
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
 
-            Console.WriteLine("+ " + amount.ToString() + " Magika");
+            Console.WriteLine("\n+ " + amount.ToString() + " Magika");
 
             Character.magika = Character.magika + amount;
             revertColourScheme();
@@ -135,9 +135,9 @@ namespace Scark
                 Console.ForegroundColor = ConsoleColor.DarkCyan ;
 
             if (amount == 1)
-                Console.WriteLine("+ " + amount.ToString() + " Ability Point"); // singular
+                Console.WriteLine("\n+ " + amount.ToString() + " Ability Point"); // singular
             else if (amount > 1)
-                Console.WriteLine("+ " + amount.ToString() + " Ability Points"); // plural
+                Console.WriteLine("\n+ " + amount.ToString() + " Ability Points"); // plural
 
             Character.abilityPoints = Character.abilityPoints + amount;
             revertColourScheme();
@@ -197,12 +197,12 @@ namespace Scark
             {
                 level = level + 1;
                 currentXP = currentXP + amount - maxXP;
-                Console.WriteLine("+ " + amount.ToString() + " XP \nYou leveled up to level " + level.ToString() + "! (" + currentXP.ToString() + "/" + maxXP.ToString() + " needed to gain the next level.)");
+                Console.WriteLine("\n+ " + amount.ToString() + " XP \nYou leveled up to level " + level.ToString() + "! (" + currentXP.ToString() + "/" + maxXP.ToString() + " needed to gain the next level.)");
             }
             else
             {
                 currentXP = currentXP + amount;
-                Console.WriteLine("+ " + amount.ToString() + " XP (" + currentXP.ToString() + "/" + maxXP.ToString() + ")");
+                Console.WriteLine("\n+ " + amount.ToString() + " XP (" + currentXP.ToString() + "/" + maxXP.ToString() + ")");
             }
 
             //revert back to normal colours
@@ -212,6 +212,26 @@ namespace Scark
             maxXP = (level + 1) * 100;
 
             Thread.Sleep(Character.Settings["SpeechSpeed"]);
+        }
+
+
+        // shows a "press any key to continue screen"
+        public static void pressAnyKeyToContinue()
+        {
+            Character.wd("Press any key to contine...");
+            Console.ReadKey();
+        }
+
+
+        // character info gui
+        public static void showCharInfoGUI()
+        // ╔═║╚ █▒
+        {
+            Console.WriteLine("╔═════════════════════════════════");
+            Console.WriteLine("║ {0} the {1}", name, characterClass);
+            Console.WriteLine("║ Health: {0}/{1}");
+            Console.WriteLine("║ XP: {0}/{1} ║ Level: {2}", currentXP, maxXP, level);
+            Console.WriteLine("║");
         }
     }
 }

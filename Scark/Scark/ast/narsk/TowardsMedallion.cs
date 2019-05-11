@@ -50,11 +50,19 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
             switch (response.ToLower())
             {
                 case "look around":
+                    Character.wd("In front of you, you see the tavern Lord Wakehart told you about; \"The Medallion\".");
+                    Console.Clear();
+                    towardsMedallion();
+                    break;
+                case "walk forwards":
+                case "walk towards tavern":
+                case "walk towards the medallion":
                     break;
             }
             
 
             Console.ReadLine();
         }
+
     }
 }
