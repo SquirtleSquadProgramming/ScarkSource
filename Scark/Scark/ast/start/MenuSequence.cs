@@ -46,7 +46,6 @@ namespace Scark.ast.start
             //Instantiate classes for later
             story Story = new story();
             SettingsMenu settingsMenu = new SettingsMenu();
-            CommandsList commandsList = new CommandsList();
 
             //Option selection
             bool optionSelected = false;
