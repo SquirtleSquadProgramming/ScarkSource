@@ -40,7 +40,7 @@ namespace Scark.ast.start
             Character.wd("[LORD WAKEHART] I will give you some, you never know when it might come in handy.");
             Character.wd("You take a handful of the substance, and it seems to infuse into your skin.");
 
-            Character.awardMagika(10);
+            Character.addMagika(10);
 
             Character.wd("[LORD WAKEHART] I'll give you some, you never know when it might come in handy.");
             Character.wd("The once lapping waves run still. The Farquaad enters the bay...");

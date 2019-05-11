@@ -57,6 +57,8 @@ namespace Scark
         {
             Go();
 
+            Character.save("test");
+            Console.Read();
             //Used To Remove Warnings 
             Console.Clear();
             // converting the start main function to a non - static
