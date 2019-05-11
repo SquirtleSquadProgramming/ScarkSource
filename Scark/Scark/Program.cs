@@ -29,7 +29,6 @@ namespace Scark
 
         internal static bool Go()
         {
-
             IntPtr consoleHandle = GetStdHandle(STD_INPUT_HANDLE);
 
             // get current console mode
@@ -65,7 +64,6 @@ namespace Scark
 
             Console.Write("Press any key to exit...");
             Console.Read();
-            
         }
     }
 }

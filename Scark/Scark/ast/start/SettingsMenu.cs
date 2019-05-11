@@ -80,7 +80,6 @@ namespace Scark.ast.start
                 Console.Clear();
                 editDialogueSpeedSetting();
             }
-
         }
 
         public void editProfanitySetting()
@@ -110,7 +109,6 @@ namespace Scark.ast.start
                     Thread.Sleep(Character.Settings["SpeechSpeed"]);
                     Console.Clear();
                     editProfanitySetting();
-
                 }
             }
             catch
@@ -154,7 +152,6 @@ namespace Scark.ast.start
                     Thread.Sleep(Character.Settings["SpeechSpeed"]);
                     Console.Clear();
                     editColourThemeSetting();
-
                 }
             }
             catch
@@ -194,7 +191,6 @@ namespace Scark.ast.start
                     Thread.Sleep(Character.Settings["SpeechSpeed"]);
                     Console.Clear();
                     editSpecialEffectsSetting();
-
                 }
             }
             catch

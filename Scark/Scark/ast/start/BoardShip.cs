@@ -52,7 +52,5 @@ namespace Scark.ast.start
 
             Character.stage++; // Continuing story
         }
-
-        
     }
 }
