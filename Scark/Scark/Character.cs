@@ -180,5 +180,40 @@ namespace Scark
             }
         }
 
+        // award experience points
+        public static void awardXP(int amount)
+        {
+            //making sure maxXP is up to date
+            maxXP = (level + 1) * 100;
+
+            //Apply colours for "+ 10 xp" messages
+            if (Character.Settings["ColourTheme"] == "dark")
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            else if (Character.Settings["ColourTheme"] == "light")
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+
+            //If the player has reached max xp for that level, level up.
+            if (currentXP + amount >= maxXP)
+            {
+                level = level + 1;
+                currentXP = currentXP + amount - maxXP;
+                Console.WriteLine("+ " + amount.ToString() + " XP \nYou leveled up to level " + level.ToString() + "! (" + currentXP.ToString() + "/" + maxXP.ToString() + " needed to gain the next level.)");
+            }
+            else
+            {
+                currentXP = currentXP + amount;
+                Console.WriteLine("+ " + amount.ToString() + " XP (" + currentXP.ToString() + "/" + maxXP.ToString() + ")");
+            }
+
+            //revert back to normal colours
+            revertColourScheme();
+
+            //Make sure maxxp is up to date, again
+            maxXP = (level + 1) * 100;
+
+            Thread.Sleep(Character.Settings["SpeechSpeed"]);
+
+        }
+
     }
 }

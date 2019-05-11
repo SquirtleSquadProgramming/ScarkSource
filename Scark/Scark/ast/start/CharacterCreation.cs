@@ -67,7 +67,9 @@ namespace Scark.ast.start
             Character.wd("[LORD WAKEHART] Hey kid, what's your name?");
             Console.Write("> ");
             Character.name = Console.ReadLine();
-            
+
+            Character.awardXP(10);
+
             Character.wd($"[LORD WAKEHART] Hey, {Character.name}. Don't think I'm pardoning you for nothing, nah.");
                 
             Character.wd("[LORD WAKEHART] I've a quest for you, and if you succeed, you'll be a very rich man.");
@@ -84,7 +86,6 @@ namespace Scark.ast.start
 
             //Training Fort
             
-
             Character.wd("[TRAINER] So.");
             Character.wd("[TRAINER] I see that the idiot Wakehead or whatever the hell his name is has pardoned you.");
             Character.wd("[TRAINER] Well, I guess I'll have to obey.");
@@ -212,22 +213,26 @@ ORDER: CON CHA INT PER STR STE
                     {
                         case "rouge":
                             Character.wd("The instructor relentlessly trains you to become a rouge.");
+                            Character.awardXP(100);
                             Character.wd("At the end of the day, your joints are sore and tired.");
                             Character.wd("You are put onto a ship named Farquaad and sailed to the distand island of Scark.");
                             
                             break;
                         case "warrior":
                             Character.wd("The instructor relentlessly trains you to become a warrior.");
+                            Character.awardXP(100);
                             Character.wd("At the end of the day, your joints are sore and tired.");
                             Character.wd("You are put onto a ship named Farquaad and sailed to the distand island of Scark.");
                             break;
                         case "ranger":
                             Character.wd("The instructor relentlessly trains you to become a ranger.");
+                            Character.awardXP(100);
                             Character.wd("At the end of the day, your joints are sore and tired.");
                             Character.wd("You are put onto a ship named Farquaad and sailed to the distand island of Scark.");
                             break;
                         case "mage":
                             Character.wd("The instructor relentlessly trains you to become a mage.");
+                            Character.awardXP(100);
                             Character.wd("At the end of the day, your joints are sore and tired.");
                             Character.wd("You are put onto a ship named Farquaad and sailed to the distand island of Scark.");
                             break;
