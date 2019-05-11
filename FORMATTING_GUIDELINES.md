@@ -26,7 +26,7 @@ Console.WriteLine("Bar\n"); // the newline at the end of "Bar" is optional if "B
 ```
 
 **Variable, class and method names**  
----
+---  
 Classes should follow Pascal Case (ie. all words' first letters are capatilized), thus;
 ```cs
 class ExampleClass
@@ -51,4 +51,11 @@ void exampleMethod()
 {
   ...
 }
+```
+
+**String Interpolation**
+---
+String interpolation with variables should use indexes, thus;
+```cs
+Console.WriteLine($"foo = {0}, bar = {1}", foo, bar);
 ```
