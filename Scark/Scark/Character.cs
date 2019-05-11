@@ -212,8 +212,6 @@ namespace Scark
             maxXP = (level + 1) * 100;
 
             Thread.Sleep(Character.Settings["SpeechSpeed"]);
-
         }
-
     }
 }
