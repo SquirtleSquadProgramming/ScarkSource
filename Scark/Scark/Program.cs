@@ -11,7 +11,7 @@ namespace Scark
 {
     class Program
     {
-        public readonly static string gameVersion = "v0.1.5-alpha"; // game version variable
+        public readonly static string gameVersion = "v0.2.2-alpha"; // game version variable
 
         const uint ENABLE_QUICK_EDIT = 0x0040;
 
@@ -29,7 +29,6 @@ namespace Scark
 
         internal static bool Go()
         {
-
             IntPtr consoleHandle = GetStdHandle(STD_INPUT_HANDLE);
 
             // get current console mode
@@ -65,7 +64,6 @@ namespace Scark
 
             Console.Write("Press any key to exit...");
             Console.Read();
-            
         }
     }
 }

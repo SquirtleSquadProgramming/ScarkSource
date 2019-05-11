@@ -15,11 +15,8 @@ namespace Scark.ast.start
         //NewPlayer function
         public void NewPlayer()
         {
-
             //Story Line
             Character.wd("You carefully aim your crossbow directly at the King's chest.");
-
-            Character.showCharInfoGUI();
                 
             Character.wd("A bloodstained crossbow loaded with a lead bolt sits in your \nsweaty hand as you observe the speech from a ramshackle building.");
 
@@ -64,7 +61,6 @@ namespace Scark.ast.start
             Character.wd("The executioner has no choice but to obey the laws, Wakehart's lordship \ngrants him power to pardon anyone he wishes.");
                 
             Character.wd("The rope is loosened around your neck as you are escorted into the \ndisappointed audience by Lord Wakehart.");
-                
 
             Character.wd("[LORD WAKEHART] Hey kid, what's your name?");
             Console.Write("\n> ");
@@ -143,7 +139,6 @@ Select a role by inputting it's respective number.
                         Thread.Sleep(1500);
 
                         Character.pressAnyKeyToContinue();
-                        Console.Clear();
 
                         assignAbilityScoreIntro();
                         break;
@@ -170,7 +165,7 @@ Select a role by inputting it's respective number.
 
         public void assignAbilityScoreIntro()
         {
-            Character.wd("[TRAINER] Oh, I almost forgot.");
+            Character.wd("[TRAINER] Hey, don't start packing yet.");
             Character.wd("[TRAINER] You need to choose some ability scores as well.");
             Character.wd("[TRAINER] They determine how good you are at certain things.");
             Character.wd("[TRAINER] There are six ability scores; Constitution, Charisma, Intelligence, Perception, Strength and Stealth.");
@@ -179,104 +174,9 @@ Select a role by inputting it's respective number.
             Character.wd("[TRAINER] You can get more points by leveling up, or doing certain quests.");
             Character.wd("[TRAINER] Your skills will start out bad, but as you progress, you'll get better and better.");
 
-            Character.wd("Please input the amount of Ability Points you wish to assign to the selected Ability score, or input \"x\" to reassign.");
-
             Character.pressAnyKeyToContinue();
 
-            assignAbilityScore();
-
+            Character.chooseAbilityScorePoints();
         }
-
-        public void assignAbilityScore()
-        {
-
-            // this needs to be improved vv
-
-            Console.Clear();
-            Console.Write(Character.abilityPoints + @" points remaining.
-
-To assign points to scores, write the amount of points you wish to assign to each score for every score in one line, seperated by a comma and NO space.
-
-Eg. 1,2,3,4,5,6
-Will assign 1 to Constitution, 2 to Charisma, 3 to Intelligence, and so on.
-
-ORDER: CON CHA INT PER STR STE
-
-> ");
-
-            try
-            {
-                string response = Console.ReadLine();
-                List<string> result = response.Split(',').ToList();
-
-                if (result.Count <= 5 || result.Count >= 7)
-                {
-                    Character.wd("Please input a number for every score (6 numbers total)!");
-                    assignAbilityScore();
-                }
-                if (Convert.ToInt32(result[0]) + Convert.ToInt32(result[1]) + Convert.ToInt32(result[2]) + Convert.ToInt32(result[3]) + Convert.ToInt32(result[4]) + Convert.ToInt32(result[5]) > Character.abilityPoints)
-                {
-                    Character.wd("Insufficient funds.");
-
-                    assignAbilityScore();
-                }
-                else
-                {
-
-                    // this code below could probs be simplified dan
-                    Character.AbilityScores["Constitution"] = Convert.ToInt32(result[0]);
-                    Character.AbilityScores["Charisma"] = Convert.ToInt32(result[1]);
-                    Character.AbilityScores["Intelligence"] = Convert.ToInt32(result[2]);
-                    Character.AbilityScores["Perception"] = Convert.ToInt32(result[3]);
-                    Character.AbilityScores["Strength"] = Convert.ToInt32(result[4]);
-                    Character.AbilityScores["Stealth"] = Convert.ToInt32(result[5]);
-
-
-                    switch (Character.characterClass.ToLower() )
-                    {
-                        case "rouge":
-                            Character.wd("The instructor relentlessly trains you to become a rouge.");
-                            Character.awardXP(100);
-                            Character.wd("At the end of the day, your joints are sore and tired.");
-                            Character.wd("You are put onto a ship named Farquaad and sailed to the distand island of Scark.");
-
-                            Character.pressAnyKeyToContinue();
-
-                            break;
-                        case "warrior":
-                            Character.wd("The instructor relentlessly trains you to become a warrior.");
-                            Character.awardXP(100);
-                            Character.wd("At the end of the day, your joints are sore and tired.");
-                            Character.wd("You are put onto a ship named Farquaad and sailed to the distand island of Scark.");
-
-                            Character.pressAnyKeyToContinue();
-                            break;
-                        case "ranger":
-                            Character.wd("The instructor relentlessly trains you to become a ranger.");
-                            Character.awardXP(100);
-                            Character.wd("At the end of the day, your joints are sore and tired.");
-                            Character.wd("You are put onto a ship named Farquaad and sailed to the distand island of Scark.");
-                            Character.pressAnyKeyToContinue();
-                            break;
-                        case "mage":
-                            Character.wd("The instructor relentlessly trains you to become a mage.");
-                            Character.awardXP(100);
-                            Character.wd("At the end of the day, your joints are sore and tired.");
-                            Character.wd("You are put onto a ship named Farquaad and sailed to the distand island of Scark.");
-                            Character.pressAnyKeyToContinue();
-                            break;
-                    }
-
-                }
-            }
-            catch
-            {
-                Character.wd("Please input a valid response!");
-            }
-
-
-        }
-
-
     }
 }

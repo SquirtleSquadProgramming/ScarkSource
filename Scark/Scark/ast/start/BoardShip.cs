@@ -12,7 +12,9 @@ namespace Scark.ast.start
     {
         public void aboardShip()
         {
-            Console.WriteLine(@"                    |
+            if (Character.Settings["SpecialEffects"])
+            {
+                Console.WriteLine(@"                    |
                     |
              |    __-__
            __-__ /  | (
@@ -24,6 +26,7 @@ namespace Scark.ast.start
          |------------------'
           `-      Farquaad '
             `-------------'");
+            }
 
             Character.wd("\nDays pass aboard the Farquaad.");
             Character.wd("[LORD WAKEHART] Hey kid.");
@@ -45,11 +48,9 @@ namespace Scark.ast.start
             Character.wd("[LORD WAKEHART] I'll give you some, you never know when it might come in handy.");
             Character.wd("The once lapping waves run still. The Farquaad enters the bay...");
 
-            Console.ReadLine();
+            Character.pressAnyKeyToContinue();
 
             Character.stage++; // Continuing story
         }
-
-        
     }
 }
