@@ -157,10 +157,13 @@ namespace Scark
         // gives the player ability point(s)
         public static void awardAbilityPoint(int amount)
         {
-            if (Character.Settings["ColourTheme"] == "dark")
-                Console.ForegroundColor = ConsoleColor.Cyan;
-            else if (Character.Settings["ColourTheme"] == "light")
-                Console.ForegroundColor = ConsoleColor.DarkCyan ;
+            if (Character.Settings["SpecialEffects"])
+            {
+                if (Character.Settings["ColourTheme"] == "dark")
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                else if (Character.Settings["ColourTheme"] == "light")
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+            }
 
             if (amount == 1)
                 Console.WriteLine("+ " + amount.ToString() + " Ability Point"); // singular

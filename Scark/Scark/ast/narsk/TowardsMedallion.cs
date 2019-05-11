@@ -11,8 +11,9 @@ namespace Scark.ast.narsk
     {
         public void towardsMedallion()
         {
-
-            Character.wd(@"                                                     ___
+            if (Character.Settings["SpecialEffects"])
+            {
+                Character.wd(@"                                                     ___
                                              ___..--'  .`.
                                     ___...--'     -  .` `.`.
                            ___...--' _      -  _   .` -   `.`.
@@ -41,6 +42,7 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
  -- . ''           :'              `--._ ---------`--._-- . ''    -- . ''
           -- . ''       -- . ''         `--._ _________`--._   -- . ''
 :'                 -- . ''          -- . ''  `--._----------`--._");
+            }
 
             Character.wd("You walk along a narrow path for five or so minutes until you arrive at a wooden building.");
             Character.wd("A battered sign hangs on a wall, reading \"The Medallion\"");
