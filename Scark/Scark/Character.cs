@@ -12,7 +12,6 @@ namespace Scark
 {
     class Character
     {
-
         #region Character Attributes
         // Integer Variables
         public static int stage; // What stage of story the player is at
@@ -103,67 +102,84 @@ namespace Scark
         // awards ethyrl to the player
         public static void awardEthryl(int amount)
         {
-            //Change to dark or light magenta (if special effects is enabled) and print a message to console 
+            // If the user has special effects enabled
             if (Character.Settings["SpecialEffects"])
             {
+                // If the users theme is dark mode
                 if (Character.Settings["ColourTheme"] == "dark")
-                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.ForegroundColor = ConsoleColor.Magenta; // Setting the colour to magenta
+                // If the users theme is light mode (ew gay)
                 else if (Character.Settings["ColourTheme"] == "light")
-                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta; // Setting the colour to a dark magenta
             }
             
-            
+            // Writing: "+ * Ethryl" * amount of ethryl to console
             Console.WriteLine("+ " + amount.ToString() + " Ethryl");
 
-            //actually give the player the ethryl
+            // Adding the ethryl to the player
             Character.ethryl = Character.ethryl + amount;
+
+            // Setting the foreground colour back to the default
             revertColourScheme();
 
             // Wait a bit (because why not) (and also incase a Console.Clear() is directly after this.)
             Thread.Sleep(Character.Settings["SpeechSpeed"]);
-
         }
 
         // awards magika to the player
         public static void addMagika(int amount)
         {
-            //Change to dark or light blue (if special effects is enabled) and print a message to console
+            // if the user has special effects enabled
             if (Character.Settings["SpecialEffects"])
             {
+                // if the user has dark theme
                 if (Character.Settings["ColourTheme"] == "dark")
-                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.ForegroundColor = ConsoleColor.Blue; // set text colour to blue
+                // if the user has light theme (ew gay)
                 else if (Character.Settings["ColourTheme"] == "light")
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Console.ForegroundColor = ConsoleColor.DarkBlue; // set text colour to dark blue
             }
 
+            // Printing the amount of magika added
             Console.WriteLine("+ " + amount.ToString() + " Magika");
 
+            // Adding to the max amount of magika
             Character.magika["max"] += amount;
+
+            // Changing text colour back to the original
             revertColourScheme();
 
+            // Sleeping because a Console.Clear may follow
             Thread.Sleep(Character.Settings["SpeechSpeed"]);
-
         }
 
         // gives the player ability point(s)
         public static void awardAbilityPoint(int amount)
         {
+            // if the user has special effects enabled
             if (Character.Settings["SpecialEffects"])
             {
+                // if the user has dark theme enabled
                 if (Character.Settings["ColourTheme"] == "dark")
-                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Cyan; // set the text colour to cyan
+                // if the user has light theme enabled (ew gay)
                 else if (Character.Settings["ColourTheme"] == "light")
-                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                    Console.ForegroundColor = ConsoleColor.DarkCyan; // set the text colour to dark cyan
             }
 
-            if (amount == 1)
-                Console.WriteLine("+ " + amount.ToString() + " Ability Point"); // singular
-            else if (amount > 1)
+            // if the amount added is > 1
+            if (amount > 1)
                 Console.WriteLine("+ " + amount.ToString() + " Ability Points"); // plural
+            else // else
+                Console.WriteLine("+ " + amount.ToString() + " Ability Point"); // singular
 
+            // Adding the ability points to the character
             Character.abilityPoints += amount;
+
+            // Reverting text colour to original
             revertColourScheme();
 
+            // Sleeping as there may be a Console.Clear after
             Thread.Sleep(Character.Settings["SpeechSpeed"]);
         }
 
@@ -173,34 +189,39 @@ namespace Scark
             //making sure maxXP is up to date
             maxXP = (level + 1) * 100;
 
-            //Apply colours for "+ 10 xp" messages (if special effects)
+            // If user has special effects enabled
             if (Character.Settings["SpecialEffects"])
             {
+                // If the user has dark theme
                 if (Character.Settings["ColourTheme"] == "dark")
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Yellow; // Setting the text colour to yellow
+                // If the use has ligth theme (ew gay)
                 else if (Character.Settings["ColourTheme"] == "light")
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.ForegroundColor = ConsoleColor.DarkYellow; // Setting the text colour to dark yellow
             }
 
-            //If the player has reached max xp for that level, level up.
+            // If the player has reached max xp current level
             if (currentXP + amount >= maxXP)
             {
-                level = level + 1;
-                currentXP += amount - maxXP;
-                Console.WriteLine("+ " + amount.ToString() + " XP \nYou leveled up to level " + level.ToString() + "! (" + currentXP.ToString() + "/" + maxXP.ToString() + " needed to gain the next level.)");
+                level++; // Adding to the level
+                currentXP += amount - maxXP; // Current XP gets what is left over after leveling up
+                // Printing that you leveled up and more data about levels
+                Console.WriteLine("+ " + amount.ToString() + " XP \nYou leveled up to level " + level.ToString() + "!\n(" + currentXP.ToString() + "/" + maxXP.ToString() + " needed to gain the next level.)");
             }
-            else
+            else // If the player didn't level up
             {
-                currentXP += amount;
+                currentXP += amount; // adding amount to currentXP
+                // Printing data about levels and XP
                 Console.WriteLine("+ " + amount.ToString() + " XP (" + currentXP.ToString() + "/" + maxXP.ToString() + ")");
             }
 
-            //revert back to normal colours
+            // revert back to normal colours
             revertColourScheme();
 
-            //Make sure maxxp is up to date, again
+            // Make sure maxxp is up to date, again
             maxXP = (level + 1) * 100;
 
+            // Waiting just incase a Console.Clear follows
             Thread.Sleep(Character.Settings["SpeechSpeed"]);
         }
         #endregion
@@ -208,11 +229,12 @@ namespace Scark
         // reverts all colours to normal (colour scheme dependent)
         public static void revertColourScheme()
         {
-            //Revert back to colour scheme
+            // If the users theme is dark
             if (Character.Settings["ColourTheme"] == "dark")
-                Console.ForegroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.White; // Then set the text colour back to white
+            // If the users theme is light (ew gay)
             else if (Character.Settings["ColourTheme"] == "light")
-                Console.ForegroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.Black; // Then set the text colour back to black
         }
 
         #region Save Systems
@@ -409,6 +431,7 @@ Do you wish to apply these changes: Add {0} to {1} leaving you with {2}
             throw new Exception();
         }
         #endregion
+
 
         #region EOA Methods
         // EOA: Ease Of Access
