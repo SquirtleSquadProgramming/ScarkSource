@@ -93,9 +93,6 @@ namespace Scark.ast.start
                     case "3": //Settings
                         settingsMenu.run();
                         break;
-                    case "4":
-                        commandsList.run();
-                        break;
                     case "x": //Exit
                         optionSelected = true; // what does this code do?? - DC
 
