@@ -15,7 +15,7 @@ namespace Scark.ast.start
         {
             Console.Clear();
 
-            Console.Write($"Please select the setting you wish to edit.\n[1] Dialogue Speed\n= {Character.Settings["SpeechSpeed"]}\n\n[2] Profanity\n= {Character.Settings["Profanity"]}\n\n[3] ColourTheme\n= {Character.Settings["ColourTheme"]}\n\n[x] Exit\n> ");
+            Console.Write($"Please select the setting you wish to edit.\n[1] Dialogue Speed\n= {Character.Settings["SpeechSpeed"]}\n\n[2] Profanity\n= {Character.Settings["Profanity"]}\n\n[3] ColourTheme\n= {Character.Settings["ColourTheme"]}\n\n[4] SpecialEffects\n= {Character.Settings["SpecialEffects"]}\n\n[x] Exit\n> ");
             string response = Console.ReadLine();
 
             switch (response)
@@ -28,6 +28,9 @@ namespace Scark.ast.start
                     break;
                 case "3":
                     editColourThemeSetting();
+                    break;
+                case "4":
+                    editSpecialEffectsSetting();
                     break;
                 case "x":
                 case "X":
@@ -161,6 +164,46 @@ namespace Scark.ast.start
                 Thread.Sleep(Character.Settings["SpeechSpeed"]);
                 Console.Clear();
                 editColourThemeSetting();
+            }
+        }
+
+        public void editSpecialEffectsSetting()
+        {
+            Console.Clear();
+
+            Console.Write("\nPlease input \"T\" or \"F\".\n> ");
+            string response = Console.ReadLine();
+
+            try
+            {
+                if (response.ToLower() == "t")
+                {
+                    Character.Settings["SpecialEffects"] = true;
+
+                    run();
+                }
+                if (response.ToLower() == "f")
+                {
+                    Character.Settings["SpecialEffects"] = false;
+
+                    run();
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid value! (T or F)");
+                    Thread.Sleep(Character.Settings["SpeechSpeed"]);
+                    Console.Clear();
+                    editSpecialEffectsSetting();
+
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Please enter a valid input! (f or t)");
+
+                Thread.Sleep(Character.Settings["SpeechSpeed"]);
+                Console.Clear();
+                editSpecialEffectsSetting();
             }
         }
     }

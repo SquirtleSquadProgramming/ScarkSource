@@ -12,7 +12,9 @@ namespace Scark.ast.start
     {
         public void aboardShip()
         {
-            Console.WriteLine(@"                    |
+            if (Character.Settings["SpecialEffects"])
+            {
+                Console.WriteLine(@"                    |
                     |
              |    __-__
            __-__ /  | (
@@ -24,6 +26,7 @@ namespace Scark.ast.start
          |------------------'
           `-      Farquaad '
             `-------------'");
+            }
 
             Character.wd("\nDays pass aboard the Farquaad.");
             Character.wd("[LORD WAKEHART] Hey kid.");
