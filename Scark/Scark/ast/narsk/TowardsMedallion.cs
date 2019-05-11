@@ -44,19 +44,16 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
 
             Character.wd("You walk along a narrow path for five or so minutes until you arrive at a wooden building.");
             Character.wd("A battered sign hangs on a wall, reading \"The Medallion\"");
+            Character.wd("[1] Go inside\n[2] Look around");
             Console.Write("> ");
             string response = Console.ReadLine();
 
             switch (response.ToLower())
             {
-                case "look around":
-                    Character.wd("In front of you, you see the tavern Lord Wakehart told you about; \"The Medallion\".");
-                    Console.Clear();
-                    towardsMedallion();
+                case "1":
+                    Character.wd("You walk up to the handsome mahogany door and push it open.");
                     break;
-                case "walk forwards":
-                case "walk towards tavern":
-                case "walk towards the medallion":
+                case "2":
                     break;
             }
             
