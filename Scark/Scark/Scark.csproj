@@ -68,6 +68,7 @@
     <Compile Include="ast\NPCs\Monster.cs" />
     <Compile Include="ast\NPCs\NPC.cs" />
     <Compile Include="ast\start\CharacterCreation.cs" />
+    <Compile Include="ast\start\CommandsList.cs" />
     <Compile Include="ast\start\MenuSequence.cs" />
     <Compile Include="ast\start\BoardShip.cs" />
     <Compile Include="ast\start\SettingsMenu.cs" />

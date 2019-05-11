@@ -46,6 +46,7 @@ namespace Scark.ast.start
             //Instantiate classes for later
             story Story = new story();
             SettingsMenu settingsMenu = new SettingsMenu();
+            CommandsList commandsList = new CommandsList();
 
             //Option selection
             bool optionSelected = false;
@@ -68,7 +69,7 @@ namespace Scark.ast.start
                     Console.ForegroundColor = ConsoleColor.Black;
                     Console.BackgroundColor = ConsoleColor.White;
                 }
-                Console.Write("\n             New      Load     Settings     Exit\n           =[ 1 ]=    =[ 2 ]=    =[ 3 ]=    =[ x ]=\n> "); // Options
+                Console.Write("\n        New       Load     Settings   Commands     Exit\n      =[ 1 ]=    =[ 2 ]=    =[ 3 ]=    =[ 4 ]=    =[ x ]=\n> "); // Options
                 if (Character.dev == true) Console.Write("Dev mode enabled\n> "); // Saying if dev mode is enabled
 
                 switch (Console.ReadLine())
@@ -91,6 +92,9 @@ namespace Scark.ast.start
                         break;
                     case "3": //Settings
                         settingsMenu.run();
+                        break;
+                    case "4":
+                        commandsList.run();
                         break;
                     case "x": //Exit
                         optionSelected = true; // what does this code do?? - DC
