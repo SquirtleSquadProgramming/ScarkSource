@@ -37,7 +37,8 @@ namespace Scark
         {
             {"SpeechSpeed", 1500 },
             {"Profanity", false},
-            {"ColourTheme", "dark"}
+            {"ColourTheme", "dark"},
+            {"SpecialEffects", true}
         };
 
         // Ability scores dictionary
@@ -111,11 +112,15 @@ namespace Scark
         // awards ethyrl to the player
         public static void awardEthryl(int amount)
         {
-            //Change to dark or light magenta and print a message to console
-            if (Character.Settings["ColourTheme"] == "dark")
-                Console.ForegroundColor = ConsoleColor.Magenta; 
-            else if (Character.Settings["ColourTheme"] == "light")
-                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            //Change to dark or light magenta (if special effects is enabled) and print a message to console 
+            if (Character.Settings["SpecialEffects"])
+            {
+                if (Character.Settings["ColourTheme"] == "dark")
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                else if (Character.Settings["ColourTheme"] == "light")
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            }
+            
             
             Console.WriteLine("+ " + amount.ToString() + " Ethryl");
 
@@ -131,11 +136,14 @@ namespace Scark
         // awards magika to the player
         public static void addMagika(int amount)
         {
-            //Change to dark or light blue and print a message to console
-            if (Character.Settings["ColourTheme"] == "dark")
-                Console.ForegroundColor = ConsoleColor.Blue;
-            else if (Character.Settings["ColourTheme"] == "light")
-                Console.ForegroundColor = ConsoleColor.DarkBlue;
+            //Change to dark or light blue (if special effects is enabled) and print a message to console
+            if (Character.Settings["SpecialEffects"])
+            {
+                if (Character.Settings["ColourTheme"] == "dark")
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                else if (Character.Settings["ColourTheme"] == "light")
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+            }
 
             Console.WriteLine("+ " + amount.ToString() + " Magika");
 
@@ -205,11 +213,14 @@ namespace Scark
             //making sure maxXP is up to date
             maxXP = (level + 1) * 100;
 
-            //Apply colours for "+ 10 xp" messages
-            if (Character.Settings["ColourTheme"] == "dark")
-                Console.ForegroundColor = ConsoleColor.Yellow;
-            else if (Character.Settings["ColourTheme"] == "light")
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
+            //Apply colours for "+ 10 xp" messages (if special effects)
+            if (Character.Settings["SpecialEffects"])
+            {
+                if (Character.Settings["ColourTheme"] == "dark")
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                else if (Character.Settings["ColourTheme"] == "light")
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+            }
 
             //If the player has reached max xp for that level, level up.
             if (currentXP + amount >= maxXP)

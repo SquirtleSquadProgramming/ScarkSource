@@ -19,8 +19,13 @@ namespace Scark.ast.start
             Random rand = new Random();
             int chosenIndex = rand.Next(colours.Length);
 
-            //Print the title with the random colour chosen
-            Console.ForegroundColor = colours[chosenIndex];
+
+            //Print the title with the random colour chosen (if special effects is enabled)
+            if (Character.Settings["SpecialEffects"])
+            {
+                Console.ForegroundColor = colours[chosenIndex];
+            }
+            
             Console.WriteLine("      ███████                                         █    \n    █       ███                                     ██  \n   █         ██                                     ██\n   ██        █                                      ██ \n    ███                                ███  ████    ██\n   ██ ███           ████       ████     ████ ████ █ ██  ███  \n    ███ ███        █ ███  █   █ ███  █   ██   ████  ██ █ ███\n      ███ ███     █   ████   █   ████    ██         ███   █ \n        ███ ███  ██         ██    ██     ██         ██   █ \n          ██ ███ ██         ██    ██     ██         ██  █\n           ██ ██ ██         ██    ██     ██         ██ ██ \n            █ █  ██         ██    ██     ██         ██████ \n  ███        █   ███     █  ██    ██     ███        ██  ███ \n █  █████████     ███████    █████ ██     ███       ██   ███ █\n█     █████        █████      ███   ██               ██   ███\n█      \n ██ ");
             
             //Change the colour scheme to desired setting
@@ -53,8 +58,11 @@ namespace Scark.ast.start
             {
                 Console.Clear();
 
-                //Print the title with the random colour chosen
-                Console.ForegroundColor = colours[chosenIndex];
+                //Print the title with the random colour chosen (if special effects is enabled)
+                if (Character.Settings["SpecialEffects"])
+                {
+                    Console.ForegroundColor = colours[chosenIndex];
+                }
                 Console.WriteLine("      ███████                                         █    \n    █       ███                                     ██  \n   █         ██                                     ██\n   ██        █                                      ██ \n    ███                                ███  ████    ██\n   ██ ███           ████       ████     ████ ████ █ ██  ███  \n    ███ ███        █ ███  █   █ ███  █   ██   ████  ██ █ ███\n      ███ ███     █   ████   █   ████    ██         ███   █ \n        ███ ███  ██         ██    ██     ██         ██   █ \n          ██ ███ ██         ██    ██     ██         ██  █\n           ██ ██ ██         ██    ██     ██         ██ ██ \n            █ █  ██         ██    ██     ██         ██████ \n  ███        █   ███     █  ██    ██     ███        ██  ███ \n █  █████████     ███████    █████ ██     ███       ██   ███ █\n█     █████        █████      ███   ██               ██   ███\n█      \n ██ ");
 
                 //Change the colour scheme to desired setting
