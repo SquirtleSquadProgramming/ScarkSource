@@ -235,7 +235,7 @@ namespace Scark
         // Void for saving the character data
         public static void save(string name)
         {
-            string fileURL = Environment.CurrentDirectory + "\\" + name + ".data";
+            string fileURL = Environment.CurrentDirectory + "\\" + name + ".save";
             string[] tmp = Character.dataCollection();
             string output = "";
             for (int i = 0; i < Character.dataCollection().Length; i++)
@@ -245,5 +245,7 @@ namespace Scark
             }
             File.WriteAllText(fileURL, output);
         }
+
+        // Void for reading character saves
     }
 }
