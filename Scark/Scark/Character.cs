@@ -270,146 +270,139 @@ namespace Scark
         // Void for the choose ability score points menu
         public static void chooseAbilityScorePoints()
         {
-            bool loop = true; // Boolean for the while loop
+            Console.Clear();
 
-            //While loop for the code to repeat as many times a necessary
-            while (loop)
-            {
-                Console.Clear();
+            bool optionPicked = false; // setting optionPicked to false for later use in a while loop
 
-                bool optionPicked = false; // setting optionPicked to false for later use in a while loop
-
-                //Clearing the Console and printing the options
-                Console.Clear();
-                Console.Write(
+            //Clearing the Console and printing the options
+            Console.Clear();
+            Console.Write(
 @"                             {0} Ability Points Remaining
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-                                    Options:
- [STE] Stealth      : Likelihood of surprising people, avoiding danger, hiding, etc.
- [CON] Constitution : Determines HP, likelyhood of surviving sickness, etc.
- [INT] Intelligence : Ability to know about things, traps, enemies, etc.
- [CHA] Charisma     : Likelihood of persuading
- or other speech actions.
- [PER] Perception   : Ability to sense traps, find clues, etc.
- [STR] Strength     : Ability to use strength
- [ X ]   Exit         : Exit this menu
+                                Options:
+[STE] Stealth      : Likelihood of surprising people, avoiding danger, hiding, etc.
+[CON] Constitution : Determines HP, likelyhood of surviving sickness, etc.
+[INT] Intelligence : Ability to know about things, traps, enemies, etc.
+[CHA] Charisma     : Likelihood of persuading
+or other speech actions.
+[PER] Perception   : Ability to sense traps, find clues, etc.
+[STR] Strength     : Ability to use strength
+[ X ]   Exit         : Exit this menu
 Please select an ability to add points to (Max 25 points to each ability):
 > ", abilityPoints);
 
-                // string addTo processed to give a maximum of 3 characters
-                string addTo = (Console.ReadLine().Replace("[", "").Replace("]", "").ToUpper() + "   ").Substring(0, 3).Replace(" ", "");
+            // string addTo processed to give a maximum of 3 characters
+            string addTo = (Console.ReadLine().Replace("[", "").Replace("]", "").ToUpper() + "   ").Substring(0, 3).Replace(" ", "");
 
-                // Processing the (processed) input to the actual name of an ability for later use
-                switch (addTo)
-                {
-                    case "CON":
-                        addTo = "constitution"; // Setting it to* constitution
-                        break;
-                    case "CHA":
-                        addTo = "charisma"; // * charisma
-                        break;
-                    case "INT":
-                        addTo = "intelligence"; // * intelligence
-                        break;
-                    case "PER":
-                        addTo = "perception"; // * perception
-                        break;
-                    case "STR":
-                        addTo = "strength"; // * strength
-                        break;
-                    case "STE":
-                        addTo = "stealth"; // * stealth
-                        break;
-                    case "X": // if the user wished to exit
-                        return; // exiting
-                }
+            // Processing the (processed) input to the actual name of an ability for later use
+            switch (addTo)
+            {
+                case "CON":
+                    addTo = "constitution"; // Setting it to* constitution
+                    break;
+                case "CHA":
+                    addTo = "charisma"; // * charisma
+                    break;
+                case "INT":
+                    addTo = "intelligence"; // * intelligence
+                    break;
+                case "PER":
+                    addTo = "perception"; // * perception
+                    break;
+                case "STR":
+                    addTo = "strength"; // * strength
+                    break;
+                case "STE":
+                    addTo = "stealth"; // * stealth
+                    break;
+                case "X": // if the user wished to exit
+                    return; // exiting
+            }
 
-                // Asking the amound of points wants to add to the specified ability
-                Console.Write(
+            // Asking the amound of points wants to add to the specified ability
+            Console.Write(
 @"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 Please enter the amount of points that want to add to the {0} abilty:
 > ", addTo);
-                // parsing the input
-                int amount = Math.Abs(Int32.Parse(Console.ReadLine()));
+            // parsing the input
+            int amount = Math.Abs(Int32.Parse(Console.ReadLine()));
                 
-                // loop while the user has exceeded: the amount of abilityPoints they have
-                //                                   the max amount of points an ability can have
-                while (!(amount <= abilityPoints && amount + AbilityScores[addTo] <= 25))
-                {
-                    // Writing that they have exceeded an amount
-                    Console.Write(
+            // loop while the user has exceeded: the amount of abilityPoints they have
+            //                                   the max amount of points an ability can have
+            while (!(amount <= abilityPoints && amount + AbilityScores[addTo] <= 25))
+            {
+                // Writing that they have exceeded an amount
+                Console.Write(
 @"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-                         {1} exceeds either: {2} or 25!
-         Please enter the amount of points that want to add to the {0} abilty:
+                        {1} exceeds either: {2} or 25!
+        Please enter the amount of points that want to add to the {0} abilty:
 > ", addTo, amount, abilityPoints);
 
-                    // Re-getting their input
-                    amount = Int32.Parse(Console.ReadLine());
-                }
+                // Re-getting their input
+                amount = Int32.Parse(Console.ReadLine());
+            }
 
-                // Adding the amount to the selected ability
-                AbilityScores[addTo] += amount;
+            // Adding the amount to the selected ability
+            AbilityScores[addTo] += amount;
 
-                // Subtracting amount from the abilityPoints
-                abilityPoints -= amount;
+            // Subtracting amount from the abilityPoints
+            abilityPoints -= amount;
 
-                // setting optionPicked to false as to reuse it
-                optionPicked = false;
-                dynamic apply = false; // dynamic variable apply to false
+            // setting optionPicked to false as to reuse it
+            optionPicked = false;
+            dynamic apply = false; // dynamic variable apply to false
 
-                // Looping until the user picks Y/N
-                while (optionPicked == false)
-                {
-                    // Asking if they wish to apply the changes
-                    Console.Write(
+            // Looping until the user picks Y/N
+            while (optionPicked == false)
+            {
+                // Asking if they wish to apply the changes
+                Console.Write(
 @"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 Do you wish to apply these changes: Add {0} to {1} leaving you with {2}
 [Y] Apply
 [N] Revert changes
 > ", amount, addTo, abilityPoints);
 
-                    //Getting and processing their input to only 1 character
-                    apply = Console.ReadLine().Replace("[", "").Replace("]", "").Replace(" ", "").Substring(0, 1).ToUpper();
+                //Getting and processing their input to only 1 character
+                apply = Console.ReadLine().Replace("[", "").Replace("]", "").Replace(" ", "").Substring(0, 1).ToUpper();
 
-                    switch (apply)
-                    {
-                        case "Y": // If they picked yes
-                            optionPicked = true; // Exiting while loop
-                            apply = true; // Setting apply(dynamic) to true
-                            break;
-                        case "N": // If they picked no
-                            optionPicked = true; // Exiting while loop
-                            abilityPoints += amount; // Reversing changes
-                            AbilityScores[addTo] -= amount; // Reversing changes
-                            apply = false; // Setting apply(dynamic) to false
-                            break;
-                    }
-                }
-                
-                // boolean loop2 is set to true for while loop
-                bool loop2 = true;
-
-                // Repeating until selection is made
-                while (loop2)
+                switch (apply)
                 {
-                    // Asking if they wish to use more ability points
-                    Console.Write(
-        @"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-                    Do you wish to use more ability points?
-                    [Y] Yes I do!            No Thanks! [N]
+                    case "Y": // If they picked yes
+                        optionPicked = true; // Exiting while loop
+                        apply = true; // Setting apply(dynamic) to true
+                        break;
+                    case "N": // If they picked no
+                        optionPicked = true; // Exiting while loop
+                        abilityPoints += amount; // Reversing changes
+                        AbilityScores[addTo] -= amount; // Reversing changes
+                        apply = false; // Setting apply(dynamic) to false
+                        break;
+                }
+            }
+                
+            // boolean loop2 is set to true for while loop
+            bool loop2 = true;
+
+            // Repeating until selection is made
+            while (loop2)
+            {
+                // Asking if they wish to use more ability points
+                Console.Write(
+    @"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+                Do you wish to use more ability points?
+                [Y] Yes I do!            No Thanks! [N]
 > ");
-                    // Getting their input and processing it to 1 character
-                    string inp = Console.ReadLine().Replace("[", "").Replace("]", "").Replace(" ", "").Substring(0, 1).ToUpper();
-                    switch (inp)
-                    {
-                        case "Y": // if they did wish to use more
-                            loop = true; // Making sure the while loop, loops
-                            loop2 = false; // Exiting the current while loop
-                            break;
-                        case "N": // if they didn't wish to use more
-                            loop2 = false; // Exiting the current while loop
-                            return;
-                    }
+                // Getting their input and processing it to 1 character
+                string inp = Console.ReadLine().Replace("[", "").Replace("]", "").Replace(" ", "").Substring(0, 1).ToUpper();
+                switch (inp)
+                {
+                    case "Y": // if they did wish to use more
+                        loop2 = false; // Exiting the current while loop
+                        break;
+                    case "N": // if they didn't wish to use more
+                        loop2 = false; // Exiting the current while loop
+                        return;
                 }
             }
         }

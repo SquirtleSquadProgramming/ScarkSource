@@ -8,7 +8,6 @@ namespace Scark
 {
     public class ItemID
     {
-        
       //    Character.inventory.Add(ItemID.ConvertStringToID("iron shortsword"));
       //    Character.inventory.ForEach(i => Console.Write("{0} ", ItemID.ConvertIDToString(i)));
       //    
@@ -23,7 +22,6 @@ namespace Scark
                 case 2: return "Leather Quiver";
                 case 3: return "Iron Bow";
                 case 4: return "Book of Souls";
-
             }
 
             throw new NotImplementedException();
