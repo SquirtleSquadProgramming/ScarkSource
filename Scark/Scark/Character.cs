@@ -4,24 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.IO;
 
 namespace Scark
 {
     class Character
     {
 
-        // Void for saving the character data
-        public void save()
-        {
-
-        }
-        
-         
         // Integer Variables
         public static int stage; // What stage of story the player is at
         public static int ethryl; // Currency
-        public static int health; // Health
-        public static int magika; // Mana/Magika
 
         public static int abilityPoints;
 
@@ -58,20 +50,49 @@ namespace Scark
             {"stealth", 0 },
         };
 
-        
+        // Health
+        public static Dictionary<string, int> health = new Dictionary<string, int>()
+        {
+            {"max", 0},
+            {"current", 0}
+        };
 
+        // Mana/Magika
+        public static Dictionary<string, int> magika = new Dictionary<string, int>()
+        {
+            {"max", 0},
+            {"current", 0}
+        };
 
         // Puts all character data into one
         public static string[] dataCollection()
         {
-            string listToString = "["; // Used for converting the list to a string (for saving)
+            string listToString = ""; // Used for converting the list to a string (for saving)
             for (int i = 0; i < inventory.Count; i++)
             {
                 if (i < inventory.Count - 1)
                     listToString += inventory[i] + ",";
-                else listToString += inventory[i] + "]";
+                else listToString += inventory[i];
             }
-            return new string[] { stage.ToString(), ethryl.ToString(), health.ToString(), magika.ToString(), level.ToString(), currentXP.ToString(), maxXP.ToString(), name, characterClass, listToString};
+
+            dynamic a = AbilityScores; // For EOA
+
+            return new string[] {
+                stage.ToString(),
+                ethryl.ToString(),
+                health["max"].ToString() + "," + health["current"].ToString(),
+                magika["max"].ToString() + "," + magika["current"].ToString(),
+                level.ToString(),
+                currentXP.ToString(),
+                maxXP.ToString(),
+                name,
+                characterClass,
+                listToString,
+                Settings["SpeechSpeed"] + "," + Settings["Profanity"] + "," + Settings["ColourTheme"],
+                a["constitution"].ToString() + "," + a["charisma"].ToString() + "," +
+                a["intelligence"].ToString() + ","+ a["perception"].ToString() + "," +
+                a["strength"].ToString() + "," + a["stealth"].ToString()
+            };
         }
 
         // Converts ability SCORE into ability MODIFIER
@@ -86,7 +107,6 @@ namespace Scark
             return 0;
         }
 
-
         // awards ethyrl to the player
         public static void awardEthryl(int amount)
         {
@@ -96,7 +116,7 @@ namespace Scark
             else if (Character.Settings["ColourTheme"] == "light")
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
             
-            Console.WriteLine("\n+ " + amount.ToString() + " Ethryl");
+            Console.WriteLine("+ " + amount.ToString() + " Ethryl");
 
             //actually give the player the ethryl
             Character.ethryl = Character.ethryl + amount;
@@ -108,7 +128,7 @@ namespace Scark
         }
 
         // awards magika to the player
-        public static void awardMagika(int amount)
+        public static void addMagika(int amount)
         {
             //Change to dark or light blue and print a message to console
             if (Character.Settings["ColourTheme"] == "dark")
@@ -116,15 +136,14 @@ namespace Scark
             else if (Character.Settings["ColourTheme"] == "light")
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
 
-            Console.WriteLine("\n+ " + amount.ToString() + " Magika");
+            Console.WriteLine("+ " + amount.ToString() + " Magika");
 
-            Character.magika = Character.magika + amount;
+            Character.magika["max"] += amount;
             revertColourScheme();
 
             Thread.Sleep(Character.Settings["SpeechSpeed"]);
 
         }
-
 
         // gives the player ability point(s)
         public static void awardAbilityPoint(int amount)
@@ -135,16 +154,15 @@ namespace Scark
                 Console.ForegroundColor = ConsoleColor.DarkCyan ;
 
             if (amount == 1)
-                Console.WriteLine("\n+ " + amount.ToString() + " Ability Point"); // singular
+                Console.WriteLine("+ " + amount.ToString() + " Ability Point"); // singular
             else if (amount > 1)
-                Console.WriteLine("\n+ " + amount.ToString() + " Ability Points"); // plural
+                Console.WriteLine("+ " + amount.ToString() + " Ability Points"); // plural
 
-            Character.abilityPoints = Character.abilityPoints + amount;
+            Character.abilityPoints += amount;
             revertColourScheme();
 
             Thread.Sleep(Character.Settings["SpeechSpeed"]);
         }
-
 
         // reverts all colours to normal (colour scheme dependent)
         public static void revertColourScheme()
@@ -156,9 +174,8 @@ namespace Scark
                 Console.ForegroundColor = ConsoleColor.Black;
         }
 
-
         // write text w/ delay (depending on admin or not)
-        public static void wd(string text)
+        public static void wd(string text, bool writeNotLine = false)
         {
             string filteredText = text;
 
@@ -172,7 +189,8 @@ namespace Scark
                 filteredText = filteredText.Replace("idiot", "dick");
                 filteredText = filteredText.Replace("bloody", "fucking");
             }
-            Console.WriteLine("\n" + filteredText);
+            if (writeNotLine) Console.Write("\n" + filteredText);
+            else Console.WriteLine("\n" + filteredText);
             if (!Character.dev)
             {
                 // Console.Write("[DEV: {0}]", start.Menu.dev);
@@ -196,13 +214,13 @@ namespace Scark
             if (currentXP + amount >= maxXP)
             {
                 level = level + 1;
-                currentXP = currentXP + amount - maxXP;
-                Console.WriteLine("\n+ " + amount.ToString() + " XP \nYou leveled up to level " + level.ToString() + "! (" + currentXP.ToString() + "/" + maxXP.ToString() + " needed to gain the next level.)");
+                currentXP += amount - maxXP;
+                Console.WriteLine("+ " + amount.ToString() + " XP \nYou leveled up to level " + level.ToString() + "! (" + currentXP.ToString() + "/" + maxXP.ToString() + " needed to gain the next level.)");
             }
             else
             {
-                currentXP = currentXP + amount;
-                Console.WriteLine("\n+ " + amount.ToString() + " XP (" + currentXP.ToString() + "/" + maxXP.ToString() + ")");
+                currentXP += amount;
+                Console.WriteLine("+ " + amount.ToString() + " XP (" + currentXP.ToString() + "/" + maxXP.ToString() + ")");
             }
 
             //revert back to normal colours
@@ -213,25 +231,19 @@ namespace Scark
 
             Thread.Sleep(Character.Settings["SpeechSpeed"]);
         }
-
-
-        // shows a "press any key to continue screen"
-        public static void pressAnyKeyToContinue()
+        
+        // Void for saving the character data
+        public static void save(string name)
         {
-            Character.wd("Press any key to contine...");
-            Console.ReadKey();
-        }
-
-
-        // character info gui
-        public static void showCharInfoGUI()
-        // ╔═║╚ █▒
-        {
-            Console.WriteLine("╔═════════════════════════════════");
-            Console.WriteLine("║ {0} the {1}", name, characterClass);
-            Console.WriteLine("║ Health: {0}/{1}");
-            Console.WriteLine("║ XP: {0}/{1} ║ Level: {2}", currentXP, maxXP, level);
-            Console.WriteLine("║");
+            string fileURL = Environment.CurrentDirectory + "\\" + name + ".data";
+            string[] tmp = Character.dataCollection();
+            string output = "";
+            for (int i = 0; i < Character.dataCollection().Length; i++)
+            {
+                output += tmp[i];
+                if (i < tmp.Length - 1) output += "§";
+            }
+            File.WriteAllText(fileURL, output);
         }
     }
 }

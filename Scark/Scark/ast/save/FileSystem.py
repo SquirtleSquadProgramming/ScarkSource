@@ -1,7 +1,6 @@
-import json
-import os
-from random import *
 import math
+from random import *
+import os
 
 class FileSystem:
 
@@ -9,7 +8,7 @@ class FileSystem:
         writeTF(data[3], encode(data), "save")
 
     def readCharacter(name):
-        return json.loads("{'save':" + decode(readFF(name, "save")) + "}")
+        return "{'save':" + decode(readFF(name, "save")) + "}"
 
     # encode is for encoding letters as numbers
     def encode(data):
@@ -20,9 +19,9 @@ class FileSystem:
             if ">" not in encDec[loopNum]:
                 encDec.pop(loopNum)
                 loopNum = loopNum - 1
-            else:
-                encDec[loopNum] = encDec[loopNum].split(">")
             loopNum = loopNum + 1
+
+        print(str(encDec).replace("[", "{").replace("]", "}").replace("'", "\""))
 
         for x in range(len(encDec)):
             data = data.replace(encDec[x][0], encDec[x][1])
@@ -63,3 +62,5 @@ class FileSystem:
         # opening the file that is in the same folder in write mode
         f = open(str(os.path.dirname(os.path.realpath(__file__)) + "\\" + fnm + "." + filetype), "r")
         return f.read() # writing to the file
+
+FileSystem.encode("")
