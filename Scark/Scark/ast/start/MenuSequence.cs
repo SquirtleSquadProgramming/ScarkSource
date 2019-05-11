@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,8 +17,7 @@ namespace Scark.ast.start
             ConsoleColor[] colours = {ConsoleColor.Red, ConsoleColor.Blue, ConsoleColor.DarkCyan, ConsoleColor.DarkMagenta, ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.White, ConsoleColor.DarkRed };
             Random rand = new Random();
             int chosenIndex = rand.Next(colours.Length);
-
-
+            
             //Print the title with the random colour chosen (if special effects is enabled)
             if (Character.Settings["SpecialEffects"])
             {
@@ -128,7 +126,5 @@ namespace Scark.ast.start
                 }
             }
         }
-
-        
     }
 }

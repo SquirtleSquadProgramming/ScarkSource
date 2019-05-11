@@ -15,7 +15,6 @@ namespace Scark.ast.start
         //NewPlayer function
         public void NewPlayer()
         {
-
             //Story Line
             Character.wd("You carefully aim your crossbow directly at the King's chest.");
 
@@ -64,7 +63,6 @@ namespace Scark.ast.start
             Character.wd("The executioner has no choice but to obey the laws, Wakehart's lordship \ngrants him power to pardon anyone he wishes.");
                 
             Character.wd("The rope is loosened around your neck as you are escorted into the \ndisappointed audience by Lord Wakehart.");
-                
 
             Character.wd("[LORD WAKEHART] Hey kid, what's your name?");
             Console.Write("> ");
@@ -179,7 +177,6 @@ namespace Scark.ast.start
             Character.pressAnyKeyToContinue();
 
             Character.chooseAbilityScorePoints();
-
         }
     }
 }

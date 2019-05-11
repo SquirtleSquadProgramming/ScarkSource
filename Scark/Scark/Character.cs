@@ -432,7 +432,6 @@ Do you wish to apply these changes: Add {0} to {1} leaving you with {2}
         }
         #endregion
 
-
         #region EOA Methods
         // EOA: Ease Of Access
 
