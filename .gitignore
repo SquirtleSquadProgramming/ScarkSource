@@ -6,6 +6,7 @@
 # User-Chosen files
 [Rr]un.py
 [Rr]un.exe
+*.save
 
 # User-specific files
 *.suo
