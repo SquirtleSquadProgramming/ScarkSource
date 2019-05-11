@@ -175,9 +175,6 @@ namespace Scark.ast.start
             Character.awardAbilityPoint(25);
             Character.wd("[TRAINER] You can get more points by leveling up, or doing certain quests.");
             Character.wd("[TRAINER] Your skills will start out bad, but as you progress, you'll get better and better.");
-
-            Character.wd("Please input the amount of Ability Points you wish to assign to the selected Ability score, or input \"x\" to reassign.");
-
             Character.pressAnyKeyToContinue();
 
             Character.chooseAbilityScorePoints();
