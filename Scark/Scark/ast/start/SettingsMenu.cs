@@ -47,27 +47,22 @@ namespace Scark.ast.start
         {
             Console.Clear();
 
-            Console.Write("\nPlease enter the speed of dialogue in milliseconds (1000ms = 1s).\nThe default is 1500ms\n> ");
+            Console.Write("\nPlease enter a speed modifier less than 10.\nThe default is 4\n> ");
             string response = Console.ReadLine();
 
             try
             {
-                if (Convert.ToInt32(response) <= 5000)
+                if (Convert.ToInt32(response) <= 10)
                 {
                     Character.Settings["SpeechSpeed"] = Convert.ToInt32(response);
                     Console.WriteLine("\n");
-                    for (int i = 0; i < 3; i++)
-                    {
-                        Console.WriteLine("Testing Speed...");
-                        Thread.Sleep(Character.Settings["SpeechSpeed"]);
-                    }
                     
                     run();
                 }
                 else
                 {
-                    Console.WriteLine("Please enter a value equal or less than 5000!");
-                    Thread.Sleep(Character.Settings["SpeechSpeed"]);
+                    Console.WriteLine("Please enter a value equal or less than 10!");
+                    Thread.Sleep(2000);
                     Console.Clear();
                     editDialogueSpeedSetting();
                 }
@@ -106,7 +101,7 @@ namespace Scark.ast.start
                 else
                 {
                     Console.WriteLine("Please enter a valid value! (T or F)");
-                    Thread.Sleep(Character.Settings["SpeechSpeed"]);
+                    Thread.Sleep(2000);
                     Console.Clear();
                     editProfanitySetting();
                 }
@@ -158,7 +153,7 @@ namespace Scark.ast.start
             {
                 Console.WriteLine("Please enter a valid input! (f or t)");
 
-                Thread.Sleep(Character.Settings["SpeechSpeed"]);
+                Thread.Sleep(2000);
                 Console.Clear();
                 editColourThemeSetting();
             }
@@ -188,7 +183,7 @@ namespace Scark.ast.start
                 else
                 {
                     Console.WriteLine("Please enter a valid value! (T or F)");
-                    Thread.Sleep(Character.Settings["SpeechSpeed"]);
+                    Thread.Sleep(2000);
                     Console.Clear();
                     editSpecialEffectsSetting();
                 }
@@ -197,7 +192,7 @@ namespace Scark.ast.start
             {
                 Console.WriteLine("Please enter a valid input! (f or t)");
 
-                Thread.Sleep(Character.Settings["SpeechSpeed"]);
+                Thread.Sleep(2000);
                 Console.Clear();
                 editSpecialEffectsSetting();
             }

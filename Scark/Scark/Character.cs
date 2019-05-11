@@ -34,7 +34,7 @@ namespace Scark
         // Dictionary for settings, accessed by setting in []: eg. Character.Settings["SpeechSpeed"]
         public static Dictionary<string, dynamic> Settings = new Dictionary<string, dynamic>()
         {
-            {"SpeechSpeed", 1500 },
+            {"SpeechSpeed", 4},
             {"Profanity", false},
             {"ColourTheme", "dark"},
             {"SpecialEffects", true}
@@ -123,7 +123,7 @@ namespace Scark
             revertColourScheme();
 
             // Wait a bit (because why not) (and also incase a Console.Clear() is directly after this.)
-            Thread.Sleep(Character.Settings["SpeechSpeed"]);
+            Thread.Sleep(1000);
         }
 
         // awards magika to the player
@@ -150,7 +150,7 @@ namespace Scark
             revertColourScheme();
 
             // Sleeping because a Console.Clear may follow
-            Thread.Sleep(Character.Settings["SpeechSpeed"]);
+            Thread.Sleep(1000);
         }
 
         // gives the player ability point(s)
@@ -180,7 +180,7 @@ namespace Scark
             revertColourScheme();
 
             // Sleeping as there may be a Console.Clear after
-            Thread.Sleep(Character.Settings["SpeechSpeed"]);
+            Thread.Sleep(1000);
         }
 
         // award experience points
@@ -222,7 +222,7 @@ namespace Scark
             maxXP = (level + 1) * 100;
 
             // Waiting just incase a Console.Clear follows
-            Thread.Sleep(Character.Settings["SpeechSpeed"]);
+            Thread.Sleep(1000);
         }
         #endregion
 
@@ -399,7 +399,29 @@ namespace Scark
         // IDK What this is for
         internal static void showCharInfoGUI()
         {
-            //WIP from derek?
+            Console.WriteLine("\nCharacter Information\n");
+            Console.WriteLine(@"
+ --------   _____________________
+|   __   |  IDENTIFICATION DETAIL    
+|  /..\  |  _____________________
+|  \  /  |  Issuing authority of 
+| /    \ |  Narsk Province, Scark.
+ --------   _____________________
+                     ");
+            Console.WriteLine("NAME: " + Character.name);
+            Console.WriteLine("CLASS ID: " + Character.characterClass);
+            Console.WriteLine("_________________________________");
+            Console.WriteLine("LEVEL: " + Character.level);
+            Console.WriteLine("[" + Character.currentXP + "/" + Character.maxXP + "] needed to level up");
+            Console.WriteLine("_________________________________");
+            Console.WriteLine("ETHRYL BALANCE: " + Character.ethryl);
+            Console.WriteLine("_________________________________");
+            Console.WriteLine("MAGIKA: [" + Character.magika["current"] + "/" + Character.magika["max"] + "]");
+            Console.WriteLine("HEALTH: [" + Character.health["current"] + "/" + Character.health["max"] + "]");
+            Console.WriteLine("_________________________________");
+            Console.WriteLine("UNUSED ABILITY POINTS: " + Character.abilityPoints);
+            Console.WriteLine("CON: " + Character.AbilityScores["constitution"] + " CHA: " + Character.AbilityScores["charisma"] + " INT: " + Character.AbilityScores["intelligence"] + " PER: " + Character.AbilityScores["perception"] + " STR: " + Character.AbilityScores["strength"] + " STE: " + Character.AbilityScores["stealth"]);
+            Console.WriteLine("_________________________________");
         }
 
         // Any key to continue
@@ -408,6 +430,7 @@ namespace Scark
             // Writing dialouge: "Press any key to continue..."
             wd("Press any key to continue...", true);
             Console.ReadKey(); // Getting user to press a key
+            Console.Clear();
         }
 
         // write text w/ delay (depending on admin or not)
@@ -438,9 +461,10 @@ namespace Scark
             if (!Character.dev)
             {
                 // Sleeping for the specified speech speed
-                Thread.Sleep(Character.Settings["SpeechSpeed"]);
+                Thread.Sleep((text.Length * 100) / Character.Settings["SpeechSpeed"]);
             }
         }
+
         #endregion
     }
 }

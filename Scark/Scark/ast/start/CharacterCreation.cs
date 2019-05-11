@@ -17,8 +17,6 @@ namespace Scark.ast.start
         {
             //Story Line
             Character.wd("You carefully aim your crossbow directly at the King's chest.");
-
-            Character.showCharInfoGUI();
                 
             Character.wd("A bloodstained crossbow loaded with a lead bolt sits in your \nsweaty hand as you observe the speech from a ramshackle building.");
 
@@ -138,7 +136,6 @@ namespace Scark.ast.start
                         Thread.Sleep(1500);
 
                         Character.pressAnyKeyToContinue();
-                        Console.Clear();
 
                         assignAbilityScoreIntro();
                         break;
@@ -165,7 +162,7 @@ namespace Scark.ast.start
 
         public void assignAbilityScoreIntro()
         {
-            Character.wd("[TRAINER] Oh, I almost forgot.");
+            Character.wd("[TRAINER] Hey, don't start packing yet.");
             Character.wd("[TRAINER] You need to choose some ability scores as well.");
             Character.wd("[TRAINER] They determine how good you are at certain things.");
             Character.wd("[TRAINER] There are six ability scores; Constitution, Charisma, Intelligence, Perception, Strength and Stealth.");
