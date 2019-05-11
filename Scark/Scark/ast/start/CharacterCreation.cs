@@ -67,7 +67,7 @@ namespace Scark.ast.start
                 
 
             Character.wd("[LORD WAKEHART] Hey kid, what's your name?");
-            Console.Write("> ");
+            Console.Write("\n> ");
             Character.name = Console.ReadLine();
 
             Character.awardXP(10);
@@ -100,15 +100,18 @@ namespace Scark.ast.start
             Character.wd("[TRAINER] Well anyways, I can train you in four classes.");
             Character.wd("[TRAINER] Rouge, warrior, ranger or mage.");
 
-            Console.WriteLine(
-                "\nThe trainer asks you how you like to fight \n" +
-                "[1] Rouge\n[2] Warrior\n[3] Ranger\n[4] Mage\n" +
-                "Please select a role by inputting a number\n");
+            Console.WriteLine(@"The trainer asks you how you would like to fight.
+
+Select a role by inputting it's respective number.
+[1] Rouge
+[2] Warrior
+[3] Ranger
+[4] Mage");
 
             bool userPickedOption = false;
             while (userPickedOption == false)
             {
-                Console.Write("> ");
+                Console.Write("\n> ");
                 Character.characterClass = Console.ReadLine();
                 switch (Character.characterClass)
                 {
