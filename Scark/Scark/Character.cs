@@ -416,36 +416,45 @@ Do you wish to apply these changes: Add {0} to {1} leaving you with {2}
         // IDK What this is for
         internal static void showCharInfoGUI()
         {
-
+            //WIP from derek?
         }
 
         // Any key to continue
         public static void pressAnyKeyToContinue()
         {
+            // Writing dialouge: "Press any key to continue..."
             wd("Press any key to continue...", true);
-            Console.ReadKey();
+            Console.ReadKey(); // Getting user to press a key
         }
 
         // write text w/ delay (depending on admin or not)
         public static void wd(string text, bool writeNotLine = false)
         {
+            // String filteredText gets the value of text
             string filteredText = text;
 
             //profanitise if selected
             if (Character.Settings["Profanity"])
             {
-                //replaces good boy words with their more profane counterparts
-                filteredText = filteredText.Replace("hell", "fuck");
-                filteredText = filteredText.Replace("flip", "fuck");
-                filteredText = filteredText.Replace("darn", "damn");
-                filteredText = filteredText.Replace("idiot", "dick");
-                filteredText = filteredText.Replace("bloody", "fucking");
+                // 2 dimensional jagged string array for profane words
+                string[][] profaneText = new string[5][] { new string[] { "hell", "fuck" }, new string[] { "flip", "fuck" }, new string[] { "darn", "damn" }, new string[] { "idiot", "dick" }, new string[] { "bloody", "fucking" } };
+                
+                // Itterates through profaneText
+                for (int i = 0; i < profaneText.Length; i++)
+                    //i replaciing good boiii with bad boiiii words iiiii
+                    filteredText = filteredText.Replace(profaneText[i][0], profaneText[i][1]);
             }
+
+            // If to do Console.Write
             if (writeNotLine) Console.Write("\n" + filteredText);
+
+            // or Console.WriteLine
             else Console.WriteLine("\n" + filteredText);
+
+            // If the character isn't a dev
             if (!Character.dev)
             {
-                // Console.Write("[DEV: {0}]", start.Menu.dev);
+                // Sleeping for the specified speech speed
                 Thread.Sleep(Character.Settings["SpeechSpeed"]);
             }
         }
