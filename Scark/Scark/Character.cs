@@ -19,6 +19,7 @@ namespace Scark
 
         public static int level; // Player level
         public static int currentXP; // player's current XP
+
         public static int maxXP; // maximum xp player can get before level up
 
         // String Variables
@@ -247,5 +248,18 @@ namespace Scark
         }
 
         // Void for reading character saves
+
+        // IDK What this is for
+        internal static void showCharInfoGUI()
+        {
+
+        }
+
+        // Any key to continue
+        public static void pressAnyKeyToContinue()
+        {
+            wd("Press any key to continue...", true);
+            Console.ReadKey();
+        }
     }
 }
