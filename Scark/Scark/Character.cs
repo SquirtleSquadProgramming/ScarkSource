@@ -267,6 +267,27 @@ namespace Scark
         #endregion
 
         #region Ability Scores
+
+        private static string abbreviationToName(string input)
+        {
+            switch (input)
+            {
+                case "CON":
+                    return "constitution"; // Setting it to* constitution
+                case "CHA":
+                    return "charisma"; // * charisma
+                case "INT":
+                    return "intelligence"; // * intelligence
+                case "PER":
+                    return "perception"; // * perception
+                case "STR":
+                    return "strength"; // * strength
+                case "STE":
+                    return "stealth"; // * stealth
+            }
+            throw new NotImplementedException();
+        }
+
         // Void for the choose ability score points menu
         public static void chooseAbilityScorePoints()
         {
@@ -276,54 +297,18 @@ namespace Scark
 
             //Clearing the Console and printing the options
             Console.Clear();
-            Console.Write(
-@"                             {0} Ability Points Remaining
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-                                Options:
-[STE] Stealth      : Likelihood of surprising people, avoiding danger, hiding, etc.
-[CON] Constitution : Determines HP, likelyhood of surviving sickness, etc.
-[INT] Intelligence : Ability to know about things, traps, enemies, etc.
-[CHA] Charisma     : Likelihood of persuading
-or other speech actions.
-[PER] Perception   : Ability to sense traps, find clues, etc.
-[STR] Strength     : Ability to use strength
-[ X ]   Exit         : Exit this menu
-Please select an ability to add points to (Max 25 points to each ability):
-> ", abilityPoints);
+            Console.Write("                             {0} Ability Points Remaining\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n                                Options:\n[STE] Stealth      : Likelihood of surprising people, avoiding danger, hiding, etc.\n[CON] Constitution : Determines HP, likelyhood of surviving sickness, etc.\n[INT] Intelligence : Ability to know about things, traps, enemies, etc.\n[CHA] Charisma     : Likelihood of persuading or other speech actions.\n[PER] Perception   : Ability to sense traps, find clues, etc.\n[STR] Strength     : Ability to use strength\n[ X ]   Exit         : Exit this menu\nPlease select an ability to add points to (Max 25 points to each ability):\n> ", abilityPoints);
 
             // string addTo processed to give a maximum of 3 characters
             string addTo = (Console.ReadLine().Replace("[", "").Replace("]", "").ToUpper() + "   ").Substring(0, 3).Replace(" ", "");
 
             // Processing the (processed) input to the actual name of an ability for later use
-            switch (addTo)
-            {
-                case "CON":
-                    addTo = "constitution"; // Setting it to* constitution
-                    break;
-                case "CHA":
-                    addTo = "charisma"; // * charisma
-                    break;
-                case "INT":
-                    addTo = "intelligence"; // * intelligence
-                    break;
-                case "PER":
-                    addTo = "perception"; // * perception
-                    break;
-                case "STR":
-                    addTo = "strength"; // * strength
-                    break;
-                case "STE":
-                    addTo = "stealth"; // * stealth
-                    break;
-                case "X": // if the user wished to exit
-                    return; // exiting
-            }
+            if (addTo == "X") return;
+            else addTo = abbreviationToName(addTo);
 
             // Asking the amound of points wants to add to the specified ability
-            Console.Write(
-@"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-Please enter the amount of points that want to add to the {0} abilty:
-> ", addTo);
+            Console.Write("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\nPlease enter the amount of points that want to add to the {0} abilty:\n> ", addTo);
+            
             // parsing the input
             int amount = Math.Abs(Int32.Parse(Console.ReadLine()));
                 
@@ -332,11 +317,7 @@ Please enter the amount of points that want to add to the {0} abilty:
             while (!(amount <= abilityPoints && amount + AbilityScores[addTo] <= 25))
             {
                 // Writing that they have exceeded an amount
-                Console.Write(
-@"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-                        {1} exceeds either: {2} or 25!
-        Please enter the amount of points that want to add to the {0} abilty:
-> ", addTo, amount, abilityPoints);
+                Console.Write("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n                        {1} exceeds either: {2} or 25!\n        Please enter the amount of points that want to add to the {0} abilty:\n> ", addTo, amount, abilityPoints);
 
                 // Re-getting their input
                 amount = Int32.Parse(Console.ReadLine());
@@ -356,12 +337,7 @@ Please enter the amount of points that want to add to the {0} abilty:
             while (optionPicked == false)
             {
                 // Asking if they wish to apply the changes
-                Console.Write(
-@"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-Do you wish to apply these changes: Add {0} to {1} leaving you with {2}
-[Y] Apply
-[N] Revert changes
-> ", amount, addTo, abilityPoints);
+                Console.Write("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\nDo you wish to apply these changes: Add {0} to {1} leaving you with {2}\n[Y] Apply\n[N] Revert changes\n> ", amount, addTo, abilityPoints);
 
                 //Getting and processing their input to only 1 character
                 apply = Console.ReadLine().Replace("[", "").Replace("]", "").Replace(" ", "").Substring(0, 1).ToUpper();
@@ -380,31 +356,23 @@ Do you wish to apply these changes: Add {0} to {1} leaving you with {2}
                         break;
                 }
             }
+              
+            // Asking if they wish to use more ability points
+            Console.Write("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n                Do you wish to use more ability points?\n                [Y] Yes I do!            No Thanks! [N]\n> ");
                 
-            // boolean loop2 is set to true for while loop
-            bool loop2 = true;
-
-            // Repeating until selection is made
-            while (loop2)
+            // Getting their input and processing it to 1 character
+            string inp = Console.ReadLine().Replace("[", "").Replace("]", "").Replace(" ", "").Substring(0, 1).ToUpper();
+            switch (inp)
             {
-                // Asking if they wish to use more ability points
-                Console.Write(
-    @"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-                Do you wish to use more ability points?
-                [Y] Yes I do!            No Thanks! [N]
-> ");
-                // Getting their input and processing it to 1 character
-                string inp = Console.ReadLine().Replace("[", "").Replace("]", "").Replace(" ", "").Substring(0, 1).ToUpper();
-                switch (inp)
-                {
-                    case "Y": // if they did wish to use more
-                        loop2 = false; // Exiting the current while loop
-                        break;
-                    case "N": // if they didn't wish to use more
-                        loop2 = false; // Exiting the current while loop
-                        return;
-                }
+                case "Y": // if they did wish to use more
+                    break;
+                case "N": // if they didn't wish to use more
+                    return;
+                default:
+                    return;
             }
+
+            chooseAbilityScorePoints();
         }
 
         // Converts ability SCORE into ability MODIFIER
