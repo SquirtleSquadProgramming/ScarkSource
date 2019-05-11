@@ -34,18 +34,18 @@ namespace Scark.ast.start
             Character.wd("[LORD WAKEHART] She's gonna stay in the port for a lil' while as we restock.");
             Character.wd("[LORD WAKEHART] Y'know what, go to the town called Narsk not far from here, and go to the tarven called \"The Medallion\".");
             Character.wd("[LORD WAKEHART] Talk to my friend Orpheus, he's the barman. He'll tell you some stuff you ought to know.");
-            Character.wd("[LORD WAKEHART] Here's some ethryl to start you off.");
+            Character.wd("[LORD WAKEHART] Ethryl is the currency of Scark.");
+            Character.wd("[LORD WAKEHART] Here's some of it to start you off.");
             Character.wd("Wakehart hands over a few coins radiating with a strange light.");
 
             Character.awardEthryl(25);
 
-            Character.wd("[LORD WAKEHART] Wizards back in korambia granted me a few vials of this strange substance aswell."); //if there is a better town name by all means add it korambia is just a placeholder
+            Character.wd("[LORD WAKEHART] Wizards back in Braedon granted me a few vials of this strange substance as well."); 
             Character.wd("[LORD WAKEHART] I will give you some, you never know when it might come in handy.");
             Character.wd("You take a handful of the substance, and it seems to infuse into your skin.");
 
             Character.addMagika(10);
 
-            Character.wd("[LORD WAKEHART] I'll give you some, you never know when it might come in handy.");
             Character.wd("The once lapping waves run still. The Farquaad enters the bay...");
 
             Character.pressAnyKeyToContinue();

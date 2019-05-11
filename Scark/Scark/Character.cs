@@ -114,7 +114,7 @@ namespace Scark
             }
             
             // Writing: "+ * Ethryl" * amount of ethryl to console
-            Console.WriteLine("+ " + amount.ToString() + " Ethryl");
+            Console.WriteLine("+ " + amount.ToString() + " Ethryl\n");
 
             // Adding the ethryl to the player
             Character.ethryl = Character.ethryl + amount;
@@ -141,7 +141,7 @@ namespace Scark
             }
 
             // Printing the amount of magika added
-            Console.WriteLine("+ " + amount.ToString() + " Magika");
+            Console.WriteLine("+ " + amount.ToString() + " Magika\n");
 
             // Adding to the max amount of magika
             Character.magika["max"] += amount;
@@ -169,9 +169,9 @@ namespace Scark
 
             // if the amount added is > 1
             if (amount > 1)
-                Console.WriteLine("+ " + amount.ToString() + " Ability Points"); // plural
+                Console.WriteLine("+ " + amount.ToString() + " Ability Points\n"); // plural
             else // else
-                Console.WriteLine("+ " + amount.ToString() + " Ability Point"); // singular
+                Console.WriteLine("+ " + amount.ToString() + " Ability Point\n"); // singular
 
             // Adding the ability points to the character
             Character.abilityPoints += amount;
@@ -195,7 +195,7 @@ namespace Scark
                 // If the user has dark theme
                 if (Character.Settings["ColourTheme"] == "dark")
                     Console.ForegroundColor = ConsoleColor.Yellow; // Setting the text colour to yellow
-                // If the use has ligth theme (ew gay)
+                // If the use has ligth theme
                 else if (Character.Settings["ColourTheme"] == "light")
                     Console.ForegroundColor = ConsoleColor.DarkYellow; // Setting the text colour to dark yellow
             }
@@ -206,13 +206,13 @@ namespace Scark
                 level++; // Adding to the level
                 currentXP += amount - maxXP; // Current XP gets what is left over after leveling up
                 // Printing that you leveled up and more data about levels
-                Console.WriteLine("+ " + amount.ToString() + " XP \nYou leveled up to level " + level.ToString() + "!\n(" + currentXP.ToString() + "/" + maxXP.ToString() + " needed to gain the next level.)");
+                Console.WriteLine("+ " + amount.ToString() + " XP \nYou leveled up to level " + level.ToString() + "!\n(" + currentXP.ToString() + "/" + maxXP.ToString() + " needed to gain the next level.\n)");
             }
             else // If the player didn't level up
             {
                 currentXP += amount; // adding amount to currentXP
                 // Printing data about levels and XP
-                Console.WriteLine("+ " + amount.ToString() + " XP (" + currentXP.ToString() + "/" + maxXP.ToString() + ")");
+                Console.WriteLine("+ " + amount.ToString() + " XP (" + currentXP.ToString() + "/" + maxXP.ToString() + ")\n");
             }
 
             // revert back to normal colours
@@ -396,32 +396,31 @@ namespace Scark
         #region EOA Methods
         // EOA: Ease Of Access
 
-        // IDK What this is for
-        internal static void showCharInfoGUI()
+        internal static void showCharInfoGUI() //╔ ═ ╗ ║ ╚ ╝
         {
             Console.WriteLine("\nCharacter Information\n");
             Console.WriteLine(@"
- --------   _____________________
-|   __   |  IDENTIFICATION DETAIL    
-|  /..\  |  _____________________
-|  \  /  |  Issuing authority of 
-| /    \ |  Narsk Province, Scark.
- --------   _____________________
+╔════════╗  ══════════════════════
+║   __   ║  IDENTIFICATION DETAIL    
+║  /..\  ║  ══════════════════════
+║  \  /  ║  Issuing authority of 
+║ /    \ ║  Narsk Province, Scark.
+╚════════╝  ══════════════════════
                      ");
-            Console.WriteLine("NAME: " + Character.name);
-            Console.WriteLine("CLASS ID: " + Character.characterClass);
-            Console.WriteLine("_________________________________");
-            Console.WriteLine("LEVEL: " + Character.level);
-            Console.WriteLine("[" + Character.currentXP + "/" + Character.maxXP + "] needed to level up");
-            Console.WriteLine("_________________________________");
-            Console.WriteLine("ETHRYL BALANCE: " + Character.ethryl);
-            Console.WriteLine("_________________________________");
-            Console.WriteLine("MAGIKA: [" + Character.magika["current"] + "/" + Character.magika["max"] + "]");
-            Console.WriteLine("HEALTH: [" + Character.health["current"] + "/" + Character.health["max"] + "]");
-            Console.WriteLine("_________________________________");
-            Console.WriteLine("UNUSED ABILITY POINTS: " + Character.abilityPoints);
-            Console.WriteLine("CON: " + Character.AbilityScores["constitution"] + " CHA: " + Character.AbilityScores["charisma"] + " INT: " + Character.AbilityScores["intelligence"] + " PER: " + Character.AbilityScores["perception"] + " STR: " + Character.AbilityScores["strength"] + " STE: " + Character.AbilityScores["stealth"]);
-            Console.WriteLine("_________________________________");
+            Console.WriteLine($"NAME: {0}", Character.name);
+            Console.WriteLine($"CLASS ID: {0}", Character.characterClass);
+            Console.WriteLine("═════════════════════════════════");
+            Console.WriteLine($"LEVEL: {0}", Character.level);
+            Console.WriteLine($"[" + Character.currentXP + "/" + Character.maxXP + "] needed to level up");
+            Console.WriteLine("═════════════════════════════════");
+            Console.WriteLine($"ETHRYL BALANCE: {0}", Character.ethryl);
+            Console.WriteLine("═════════════════════════════════");
+            Console.WriteLine($"MAGIKA: [{0}/{1}]", Character.magika["current"], Character.magika["max"]);
+            Console.WriteLine($"HEALTH: [{0}/{1}]", Character.health["current"], Character.health["max"]);
+            Console.WriteLine("═════════════════════════════════");
+            Console.WriteLine($"UNUSED ABILITY POINTS: {0}", Character.abilityPoints);
+            Console.WriteLine($"CON: [{0}] CHA: [{1}] INT: [{2}] PER: [{3}] STR: [{4}] STE: [{5}]", Character.AbilityScores["constitution"], Character.AbilityScores["charisma"], Character.AbilityScores["intelligence"], Character.AbilityScores["perception"], Character.AbilityScores["strength"], Character.AbilityScores["stealth"]);
+            Console.WriteLine("═════════════════════════════════");
         }
 
         // Any key to continue
@@ -434,13 +433,13 @@ namespace Scark
         }
 
         // write text w/ delay (depending on admin or not)
-        public static void wd(string text, bool writeNotLine = false)
+        public static void wd(string text, bool writeNotLine = false, bool profanitiseIfRequired = true)
         {
             // String filteredText gets the value of text
             string filteredText = text;
 
             //profanitise if selected
-            if (Character.Settings["Profanity"])
+            if (Character.Settings["Profanity"] && profanitiseIfRequired == true)
             {
                 // 2 dimensional jagged string array for profane words
                 string[][] profaneText = new string[5][] { new string[] { "hell", "fuck" }, new string[] { "flip", "fuck" }, new string[] { "darn", "damn" }, new string[] { "idiot", "dick" }, new string[] { "bloody", "fucking" } };
@@ -452,10 +451,10 @@ namespace Scark
             }
 
             // If to do Console.Write
-            if (writeNotLine) Console.Write("\n" + filteredText);
+            if (writeNotLine) Console.Write(filteredText + "\n");
 
             // or Console.WriteLine
-            else Console.WriteLine("\n" + filteredText);
+            else Console.WriteLine(filteredText + "\n");
 
             // If the character isn't a dev
             if (!Character.dev)

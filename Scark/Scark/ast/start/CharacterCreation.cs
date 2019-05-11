@@ -63,7 +63,7 @@ namespace Scark.ast.start
             Character.wd("The rope is loosened around your neck as you are escorted into the \ndisappointed audience by Lord Wakehart.");
 
             Character.wd("[LORD WAKEHART] Hey kid, what's your name?");
-            Console.Write("\n> ");
+            Console.Write("> ");
             Character.name = Console.ReadLine();
 
             Character.awardXP(10);
