@@ -28,8 +28,8 @@ namespace Scark.ast
                         break;
                     case 2: // Further Story [WIP]
                         Console.Clear();
-                        
-                        
+                        narsk.TowardsMedallion tw = new narsk.TowardsMedallion();
+                        tw.towardsMedallion();
                         break;
                     case 3:
                         end = true;
