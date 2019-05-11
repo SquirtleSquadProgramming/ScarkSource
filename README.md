@@ -12,3 +12,5 @@ Please also read the [formatting guidelines](https://github.com/SquirtleSquadPro
 Programmed, written and created by Squirtle Squad.
 Credit to https://www.asciiart.eu/ for use of some great ASCII art. A list of all peoples' artwork featured within this project can be found [here](https://github.com/SquirtleSquadProgramming/ScarkSource/blob/master/ACKNOWLEDGEMENTS.md).
 Also thanks to patorjk's [brilliant text to ASCII program](http://patorjk.com/software/taag/) which was used in the title screen.
+
+[![CodeFactor](https://www.codefactor.io/repository/github/squirtlesquadprogramming/scarksource/badge)](https://www.codefactor.io/repository/github/squirtlesquadprogramming/scarksource)
