@@ -219,14 +219,24 @@ namespace Scark
         // Void for saving the character data
         public static void save(string name)
         {
+            // setting fileURL to the url to the save file
             string fileURL = Environment.CurrentDirectory + "\\" + name + ".save";
-            string[] tmp = Character.dataCollection();
-            string output = "";
+            string[] tmp = Character.dataCollection(); // setting string[] tmp to dataCollection()
+            string output = ""; // string output to blank
+
+            // itterating through dataCollection
             for (int i = 0; i < Character.dataCollection().Length; i++)
             {
-                output += tmp[i];
-                if (i < tmp.Length - 1) output += "§";
+                output += tmp[i]; // adding dataCollection[i] to output
+
+                // if ! the last entry of tmp
+                if (i < tmp.Length - 1)
+                {
+                    output += "§"; // adding a seperator character
+                }
             }
+
+            // writing ouput to the save file at fileURL
             File.WriteAllText(fileURL, output);
         }
 
