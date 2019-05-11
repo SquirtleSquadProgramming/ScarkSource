@@ -50,17 +50,6 @@ namespace Scark
             {"strength", 0 },
             {"stealth", 0 },
         };
-        
-        // Ability scores dictionary for current levels (out of 25)
-        private static Dictionary<string, int> aSScores = new Dictionary<string, int>()
-        {
-            {"constitution", 0},
-            {"charisma", 0 },
-            {"intelligence", 0 },
-            {"perception", 0 },
-            {"strength", 0 },
-            {"stealth", 0 },
-        };
 
         // Health
         public static Dictionary<string, int> health = new Dictionary<string, int>()
@@ -270,7 +259,8 @@ namespace Scark
             {
                 bool optionPicked = false;
                 Console.Clear();
-                Console.Write(@"{0} Ability Points Remaining
+                Console.Write(
+@"                             {0} Ability Points Remaining
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
                                     Options:
  [STE] Stealth      : Likelihood of surprising people, avoiding danger, hiding, etc.
@@ -309,8 +299,8 @@ Please select an ability to add points to (Max 25 points to each ability):
                 }
 
                 Console.Write(
-    @"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-         Please enter the amount of points that want to add to the {0} abilty:
+@"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Please enter the amount of points that want to add to the {0} abilty:
 > ", addTo);
                 int amount = Int32.Parse(Console.ReadLine());
                 
@@ -324,7 +314,7 @@ Please select an ability to add points to (Max 25 points to each ability):
                     amount = Int32.Parse(Console.ReadLine());
                 }
 
-                aSScores[addTo] += amount;
+                AbilityScores[addTo] += amount;
                 abilityPoints -= amount;
 
                 optionPicked = false;
@@ -333,7 +323,7 @@ Please select an ability to add points to (Max 25 points to each ability):
                 while (optionPicked == false)
                 {
                     Console.Write(
-        @"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+@"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 Do you wish to apply these changes: Add {0} to {1} leaving you with {2}
 [Y] Apply
 [N] Revert changes
@@ -348,7 +338,7 @@ Do you wish to apply these changes: Add {0} to {1} leaving you with {2}
                         case "N":
                             optionPicked = true;
                             abilityPoints += amount;
-                            aSScores[addTo] -= amount;
+                            AbilityScores[addTo] -= amount;
                             apply = false;
                             break;
                     }
