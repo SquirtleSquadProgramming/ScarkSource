@@ -1,25 +1,25 @@
-﻿using System;
+﻿#region Usings
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.IO;
+#endregion
 
 namespace Scark
 {
     class Character
     {
 
+        #region Character Attributes
         // Integer Variables
         public static int stage; // What stage of story the player is at
         public static int ethryl; // Currency
-
         public static int abilityPoints;
-
         public static int level; // Player level
         public static int currentXP; // player's current XP
-
         public static int maxXP; // maximum xp player can get before level up
 
         // String Variables
@@ -97,18 +97,9 @@ namespace Scark
             };
         }
 
-        // Converts ability SCORE into ability MODIFIER
-        public static int convertAbilityScoreToAbilityModifier(string ability_score_name)
-        {
-            int[] tmp = new int[26] { -5, -4, -3, -2, -2, -1, -1, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5 };
+        #endregion
 
-            for (int i = 0; i < 26; i++)
-                if (AbilityScores[ability_score_name] == i)
-                    return tmp[i];
-
-            return 0;
-        }
-
+        #region Adding Attributes
         // awards ethyrl to the player
         public static void awardEthryl(int amount)
         {
@@ -176,40 +167,6 @@ namespace Scark
             Thread.Sleep(Character.Settings["SpeechSpeed"]);
         }
 
-        // reverts all colours to normal (colour scheme dependent)
-        public static void revertColourScheme()
-        {
-            //Revert back to colour scheme
-            if (Character.Settings["ColourTheme"] == "dark")
-                Console.ForegroundColor = ConsoleColor.White;
-            else if (Character.Settings["ColourTheme"] == "light")
-                Console.ForegroundColor = ConsoleColor.Black;
-        }
-
-        // write text w/ delay (depending on admin or not)
-        public static void wd(string text, bool writeNotLine = false)
-        {
-            string filteredText = text;
-
-            //profanitise if selected
-            if (Character.Settings["Profanity"])
-            {
-                //replaces good boy words with their more profane counterparts
-                filteredText = filteredText.Replace("hell", "fuck");
-                filteredText = filteredText.Replace("flip", "fuck");
-                filteredText = filteredText.Replace("darn", "damn");
-                filteredText = filteredText.Replace("idiot", "dick");
-                filteredText = filteredText.Replace("bloody", "fucking");
-            }
-            if (writeNotLine) Console.Write("\n" + filteredText);
-            else Console.WriteLine("\n" + filteredText);
-            if (!Character.dev)
-            {
-                // Console.Write("[DEV: {0}]", start.Menu.dev);
-                Thread.Sleep(Character.Settings["SpeechSpeed"]);
-            }
-        }
-
         // award experience points
         public static void awardXP(int amount)
         {
@@ -246,7 +203,19 @@ namespace Scark
 
             Thread.Sleep(Character.Settings["SpeechSpeed"]);
         }
-        
+        #endregion
+
+        // reverts all colours to normal (colour scheme dependent)
+        public static void revertColourScheme()
+        {
+            //Revert back to colour scheme
+            if (Character.Settings["ColourTheme"] == "dark")
+                Console.ForegroundColor = ConsoleColor.White;
+            else if (Character.Settings["ColourTheme"] == "light")
+                Console.ForegroundColor = ConsoleColor.Black;
+        }
+
+        #region Save Systems
         // Void for saving the character data
         public static void save(string name)
         {
@@ -263,7 +232,9 @@ namespace Scark
 
         // Void for reading character saves
 
+        #endregion
 
+        #region Ability Scores
         // Void for the choose ability score points menu
         public static void chooseAbilityScorePoints()
         {
@@ -385,6 +356,21 @@ Do you wish to apply these changes: Add {0} to {1} leaving you with {2}
             }
         }
 
+        // Converts ability SCORE into ability MODIFIER
+        public static int convertAbilityScoreToAbilityModifier(string ability_score_name)
+        {
+            int[] tmp = new int[26] { -5, -4, -3, -2, -2, -1, -1, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5 };
+
+            for (int i = 0; i < 26; i++)
+                if (AbilityScores[ability_score_name] == i)
+                    return tmp[i];
+
+            return 0;
+        }
+        #endregion
+
+        #region EOA Methods
+        // EOA: Ease Of Access
 
         // IDK What this is for
         internal static void showCharInfoGUI()
@@ -398,5 +384,30 @@ Do you wish to apply these changes: Add {0} to {1} leaving you with {2}
             wd("Press any key to continue...", true);
             Console.ReadKey();
         }
+
+        // write text w/ delay (depending on admin or not)
+        public static void wd(string text, bool writeNotLine = false)
+        {
+            string filteredText = text;
+
+            //profanitise if selected
+            if (Character.Settings["Profanity"])
+            {
+                //replaces good boy words with their more profane counterparts
+                filteredText = filteredText.Replace("hell", "fuck");
+                filteredText = filteredText.Replace("flip", "fuck");
+                filteredText = filteredText.Replace("darn", "damn");
+                filteredText = filteredText.Replace("idiot", "dick");
+                filteredText = filteredText.Replace("bloody", "fucking");
+            }
+            if (writeNotLine) Console.Write("\n" + filteredText);
+            else Console.WriteLine("\n" + filteredText);
+            if (!Character.dev)
+            {
+                // Console.Write("[DEV: {0}]", start.Menu.dev);
+                Thread.Sleep(Character.Settings["SpeechSpeed"]);
+            }
+        }
+        #endregion
     }
 }
