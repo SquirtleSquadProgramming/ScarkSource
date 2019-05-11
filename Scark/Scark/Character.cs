@@ -248,11 +248,16 @@ namespace Scark
         // Void for the choose ability score points menu
         public static void chooseAbilityScorePoints()
         {
-            Console.Clear();
-            bool loop = true;
+            bool loop = true; // Boolean for the while loop
+
+            //While loop for the code to repeat as many times a necessary
             while (loop)
             {
-                bool optionPicked = false;
+                Console.Clear();
+
+                bool optionPicked = false; // setting optionPicked to false for later use in a while loop
+
+                //Clearing the Console and printing the options
                 Console.Clear();
                 Console.Write(
 @"                             {0} Ability Points Remaining
@@ -268,99 +273,120 @@ namespace Scark
  [ X ]   Exit         : Exit this menu
 Please select an ability to add points to (Max 25 points to each ability):
 > ", abilityPoints);
+
+                // string addTo processed to give a maximum of 3 characters
                 string addTo = (Console.ReadLine().Replace("[", "").Replace("]", "").ToUpper() + "   ").Substring(0, 3).Replace(" ", "");
+
+                // Processing the (processed) input to the actual name of an ability for later use
                 switch (addTo)
                 {
                     case "CON":
-                        addTo = "constitution";
+                        addTo = "constitution"; // Setting it to* constitution
                         break;
                     case "CHA":
-                        addTo = "charisma";
+                        addTo = "charisma"; // * charisma
                         break;
                     case "INT":
-                        addTo = "intelligence";
+                        addTo = "intelligence"; // * intelligence
                         break;
                     case "PER":
-                        addTo = "perception";
+                        addTo = "perception"; // * perception
                         break;
                     case "STR":
-                        addTo = "strength";
+                        addTo = "strength"; // * strength
                         break;
                     case "STE":
-                        addTo = "stealth";
+                        addTo = "stealth"; // * stealth
                         break;
-                    case "X":
-                        return;
+                    case "X": // if the user wished to exit
+                        return; // exiting
                 }
 
+                // Asking the amound of points wants to add to the specified ability
                 Console.Write(
 @"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 Please enter the amount of points that want to add to the {0} abilty:
 > ", addTo);
-                int amount = Int32.Parse(Console.ReadLine());
+                // parsing the input
+                int amount = Math.Abs(Int32.Parse(Console.ReadLine()));
                 
+                // loop while the user has exceeded: the amount of abilityPoints they have
+                //                                   the max amount of points an ability can have
                 while (!(amount <= abilityPoints && amount + AbilityScores[addTo] <= 25))
                 {
+                    // Writing that they have exceeded an amount
                     Console.Write(
 @"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
                          {1} exceeds either: {2} or 25!
          Please enter the amount of points that want to add to the {0} abilty:
 > ", addTo, amount, abilityPoints);
+
+                    // Re-getting their input
                     amount = Int32.Parse(Console.ReadLine());
                 }
 
+                // Adding the amount to the selected ability
                 AbilityScores[addTo] += amount;
+
+                // Subtracting amount from the abilityPoints
                 abilityPoints -= amount;
 
+                // setting optionPicked to false as to reuse it
                 optionPicked = false;
-                dynamic apply = false;
+                dynamic apply = false; // dynamic variable apply to false
 
+                // Looping until the user picks Y/N
                 while (optionPicked == false)
                 {
+                    // Asking if they wish to apply the changes
                     Console.Write(
 @"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 Do you wish to apply these changes: Add {0} to {1} leaving you with {2}
 [Y] Apply
 [N] Revert changes
 > ", amount, addTo, abilityPoints);
+
+                    //Getting and processing their input to only 1 character
                     apply = Console.ReadLine().Replace("[", "").Replace("]", "").Replace(" ", "").Substring(0, 1).ToUpper();
+
                     switch (apply)
                     {
-                        case "Y":
-                            optionPicked = true;
-                            apply = true;
+                        case "Y": // If they picked yes
+                            optionPicked = true; // Exiting while loop
+                            apply = true; // Setting apply(dynamic) to true
                             break;
-                        case "N":
-                            optionPicked = true;
-                            abilityPoints += amount;
-                            AbilityScores[addTo] -= amount;
-                            apply = false;
+                        case "N": // If they picked no
+                            optionPicked = true; // Exiting while loop
+                            abilityPoints += amount; // Reversing changes
+                            AbilityScores[addTo] -= amount; // Reversing changes
+                            apply = false; // Setting apply(dynamic) to false
                             break;
                     }
                 }
+                
+                // boolean loop2 is set to true for while loop
+                bool loop2 = true;
 
-                if (apply)
+                // Repeating until selection is made
+                while (loop2)
                 {
-                    bool loop2 = true;
-                    while (loop2)
-                    {
-                        Console.Write(
-           @"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-                      Do you wish to use more ability points?
-                      [Y] Yes I do!            No Thanks! [N]
+                    // Asking if they wish to use more ability points
+                    Console.Write(
+        @"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+                    Do you wish to use more ability points?
+                    [Y] Yes I do!            No Thanks! [N]
 > ");
-                        string inp = Console.ReadLine().Replace("[", "").Replace("]", "").Replace(" ", "").Substring(0, 1).ToUpper();
-                        switch (inp)
-                        {
-                            case "Y":
-                                loop = false;
-                                loop2 = false;
-                                chooseAbilityScorePoints();
-                                break;
-                            case "N":
-                                loop2 = false;
-                                return;
-                        }
+                    // Getting their input and processing it to 1 character
+                    string inp = Console.ReadLine().Replace("[", "").Replace("]", "").Replace(" ", "").Substring(0, 1).ToUpper();
+                    switch (inp)
+                    {
+                        case "Y": // if they did wish to use more
+                            loop = true; // Making sure the while loop, loops
+                            loop2 = false; // Exiting the current while loop
+                            break;
+                        case "N": // if they didn't wish to use more
+                            loop2 = false; // Exiting the current while loop
+                            return;
                     }
                 }
             }
@@ -369,13 +395,18 @@ Do you wish to apply these changes: Add {0} to {1} leaving you with {2}
         // Converts ability SCORE into ability MODIFIER
         public static int convertAbilityScoreToAbilityModifier(string ability_score_name)
         {
+            // Setting tmp to a new int array where the position is the amount of ability points spent on it
             int[] tmp = new int[26] { -5, -4, -3, -2, -2, -1, -1, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5 };
 
+            // itterating through each entry of the array
             for (int i = 0; i < 26; i++)
+                // if the ability score is equal to i
                 if (AbilityScores[ability_score_name] == i)
+                    // return i position of tmp
                     return tmp[i];
 
-            return 0;
+            // if gets here exception is thrown
+            throw new Exception();
         }
         #endregion
 
