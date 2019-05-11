@@ -7,5 +7,7 @@ Scark is programmed in C# using the layout of a C# console app.
 
 You can view the [wiki](https://github.com/SquirtleSquadProgramming/ScarkSource/wiki) for more information on game dynamics and storyline.<br>
 Please review the [code of conduct](https://github.com/SquirtleSquadProgramming/ScarkSource/blob/master/CODE_OF_CONDUCT.md) for information about what our community values are for contributing.
+Please also read the [formatting guidelines](https://github.com/SquirtleSquadProgramming/ScarkSource/blob/master/FORMATTING_GUIDELINES.md) for information regarding how code should be formatted within the project.
 
 Programmed, written and created by Squirtle Squad.
+Credit to https://www.asciiart.eu/ for use of some great ASCII art. A list of all peoples' artwork featured within this project can be found here.
