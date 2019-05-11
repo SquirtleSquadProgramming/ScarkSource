@@ -11,7 +11,7 @@ namespace Scark
 {
     class Program
     {
-        public readonly static string gameVersion = "v0.1.6-alpha"; // game version variable
+        public readonly static string gameVersion = "v0.2.2-alpha"; // game version variable
 
         const uint ENABLE_QUICK_EDIT = 0x0040;
 
