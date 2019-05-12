@@ -56,19 +56,20 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
 
         private void towardsMedallionPrompt()
         {
-            Character.wd("[1] Go inside\n[2] Look around");
+            if (noticedBarrel)
+                Character.wd("[1] Go Inside\n[2] Look around\n[3] Look in barrel");
+            else
+                Character.wd("[1] Go inside\n[2] Look around");
+                              
             Console.Write("> ");
             string response = Console.ReadLine();
 
             switch (response.ToLower())
-            {
-
-
+            { 
                 case "1":
                     Character.wd("You walk up to the handsome mahogany door and push it open.");
                     break;
                 case "2":
-
                     // ERROR START ===========================================================================================================
                     if (Character.rollCheck("perception", 10) == false) //if check failed
                     {
@@ -82,7 +83,7 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
                         tryNoticedBarrel = true;
                         Console.ReadKey();
                     }
-                    else
+                    else if (Character.rollCheck("perception", 10) == true)
                     {
                         Character.wd("You look around the building and see a large wooden barrel on its side, its lid slightly ajar.");
                         noticedBarrel = true;
@@ -90,7 +91,7 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
                         Console.ReadKey();
                     }
                     break;
-                    // ERROR END ======================================================================================================================================
+                    // ERROR END =============================================================================================================
             }
         }
     }
