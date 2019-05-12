@@ -9,10 +9,6 @@ namespace Scark.ast.narsk
 {
     public class TowardsMedallion
     {
-        public bool lookedInBarrel = false;
-        public bool noticedBarrel = false;
-        public bool tryNoticedBarrel = false; // if player has tried to notice barrel already
-
         public void towardsMedallion()
         {
             if (Character.Settings["SpecialEffects"])
@@ -54,9 +50,10 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
             towardsMedallionPrompt();
         }
 
-        private void towardsMedallionPrompt()
+        
+        public void towardsMedallionPrompt(bool NOTICED_BARREL = false, bool TRY_NOTICED_BARREL = false, bool LOOKED_IN_BARREL = false)
         {
-            if (noticedBarrel)
+            if (NOTICED_BARREL)
                 Character.wd("[1] Go Inside\n[2] Look around\n[3] Look in barrel");
             else
                 Character.wd("[1] Go inside\n[2] Look around");
@@ -74,25 +71,30 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
                     if (Character.rollCheck("perception", 10) == false) //if check failed
                     {
                         Character.wd("You look around the building. Nothing seems out of place.");
-                        tryNoticedBarrel = true;
+                        TRY_NOTICED_BARREL = true;
                         Console.ReadKey();
                     }
-                    else if (tryNoticedBarrel == true) // ERROR - DOESNT WORK, STILL SOMETIMES SAYS THE FOUND BARREL OUTCOME
+                    else if (TRY_NOTICED_BARREL == true) // ERROR - DOESNT WORK, STILL SOMETIMES SAYS THE FOUND BARREL OUTCOME
                     {
                         Character.wd("You look around the building. Nothing seems out of place.");
-                        tryNoticedBarrel = true;
+                        TRY_NOTICED_BARREL = true;
                         Console.ReadKey();
                     }
                     else if (Character.rollCheck("perception", 10) == true)
                     {
                         Character.wd("You look around the building and see a large wooden barrel on its side, its lid slightly ajar.");
-                        noticedBarrel = true;
-                        tryNoticedBarrel = true; // VARIABLE PART OF ERROR
+                        NOTICED_BARREL = true;
+                        TRY_NOTICED_BARREL = true; // VARIABLE PART OF ERROR
                         Console.ReadKey();
                     }
                     break;
                     // ERROR END =============================================================================================================
             }
+        } 
+
+        private void towardsMedallfionPrompt(bool NOTICED_BARREL = false, bool TRY_NOTICED_BARREL = false, bool LOOKED_IN_BARREL = false)
+        {
+
         }
     }
 }
