@@ -17,6 +17,31 @@ namespace Scark.ast.items.weapons
             Description = "A rather short, bloodstained sword. Old but it works.";
 
             ID = 0;
+
+            Image = @"                '
+               / \
+              /   \
+             /  `  \
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  `  |
+ \           |     |           /
+  '-.._____..`.....`.._____..-'
+  \  ---__     [0]     __---  /
+   '.________..---..________.'
+              |___|
+              |___|
+              |___|
+              |___|
+              |___|";
         }
     }
 }

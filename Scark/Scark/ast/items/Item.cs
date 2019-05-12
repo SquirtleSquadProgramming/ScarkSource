@@ -11,5 +11,6 @@ namespace Scark.ast.items
         public static int ID { get; set; }
         public static string Name { get; set; }
         public static string Description { get; set; }
+        public static string Image { get; set; }
     }
 }
