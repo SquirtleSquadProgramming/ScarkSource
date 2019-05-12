@@ -49,7 +49,6 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
 
             towardsMedallionPrompt();
         }
-
         
         public void towardsMedallionPrompt(bool NOTICED_BARREL = false, bool TRY_NOTICED_BARREL = false, bool LOOKED_IN_BARREL = false)
         {
@@ -94,7 +93,7 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
 
         private void towardsMedallfionPrompt(bool NOTICED_BARREL = false, bool TRY_NOTICED_BARREL = false, bool LOOKED_IN_BARREL = false)
         {
-
+            //TODO Add stuff here
         }
     }
 }

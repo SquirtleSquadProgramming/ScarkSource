@@ -304,23 +304,62 @@ namespace Scark
 
             // Processing the (processed) input to the actual name of an ability for later use
             if (addTo == "X") return;
-            else addTo = abbreviationToName(addTo);
+            else
+            {
+                while (!optionPicked)
+                {
+                    optionPicked = true; // Exiting the while loop
+                    try
+                    {
+                        // Changing the abbreviation to the proper name
+                        addTo = abbreviationToName(addTo);
+                    }
+                    catch (NotImplementedException e)
+                    {
+                        optionPicked = false; // Making the while loop, loop again
+                        // Re asking
+                        Console.Write("                              That is not an option\n                             {0} Ability Points Remaining\n═══════════════════════════════════════════════════════════════════════════════════\n                                Options:\n[STE] Stealth      : Likelihood of surprising people, avoiding danger, hiding, etc.\n[CON] Constitution : Determines HP, likelyhood of surviving sickness, etc.\n[INT] Intelligence : Ability to know about things, traps, enemies, etc.\n[CHA] Charisma     : Likelihood of persuading or other speech actions.\n[PER] Perception   : Ability to sense traps, find clues, etc.\n[STR] Strength     : Ability to use strength\n[ X ]   Exit         : Exit this menu\nPlease select an ability to add points to (Max 25 points to each ability):\n> ", abilityPoints);
+                        addTo = (Console.ReadLine().Replace("[", "").Replace("]", "").ToUpper() + "   ").Substring(0, 3).Replace(" ", "");
+                    }
+                }
+            }
 
             // Asking the amound of points wants to add to the specified ability
             Console.Write("═══════════════════════════════════════════════════════════════════════════════════\nPlease enter the amount of points that want to add to the {0} abilty:\n> ", addTo);
-            
+
             // parsing the input
-            int amount = Math.Abs(Int32.Parse(Console.ReadLine()));
+            optionPicked = false;
+            int amount = 0;
+            while(!optionPicked)
+            {
+                optionPicked = true;
+                try
+                {
+                    amount = Math.Abs(Int32.Parse(Console.ReadLine()));
+                }
+                catch (Exception e)
+                {
+                    optionPicked = false;
+                    Console.Write("                          Please enter a number!\n═══════════════════════════════════════════════════════════════════════════════════\nPlease enter the amount of points that want to add to the {0} abilty:\n> ", addTo);
+                }
+            }
                 
             // loop while the user has exceeded: the amount of abilityPoints they have
             //                                   the max amount of points an ability can have
             while (!(amount <= abilityPoints && amount + AbilityScores[addTo] <= 25))
             {
                 // Writing that they have exceeded an amount
-                Console.Write("═══════════════════════════════════════════════════════════════════════════════════\n                        {1} exceeds either: {2} or 25!\n        Please enter the amount of points that want to add to the {0} abilty:\n> ", addTo, amount, abilityPoints);
+                Console.Write("═══════════════════════════════════════════════════════════════════════════════════\n                        {1} exceeds either: {2} or 25!\nPlease enter the amount of points that want to add to the {0} abilty:\n> ", addTo, amount, abilityPoints);
 
                 // Re-getting their input
-                amount = Int32.Parse(Console.ReadLine());
+                try
+                {
+                    amount = Math.Abs(Int32.Parse(Console.ReadLine()));
+                }
+                catch (Exception e)
+                {
+                    Console.Write("                             That is not a number!\n");
+                }
             }
 
             // Adding the amount to the selected ability
@@ -361,7 +400,16 @@ namespace Scark
             Console.Write("═══════════════════════════════════════════════════════════════════════════════════\n                Do you wish to use more ability points?\n                [Y] Yes I do!            No Thanks! [N]\n> ");
                 
             // Getting their input and processing it to 1 character
-            string inp = Console.ReadLine().Replace("[", "").Replace("]", "").Replace(" ", "").Substring(0, 1).ToUpper();
+
+            string inp = Console.ReadLine().Replace("[", "").Replace("]", "").Replace(" ", "").ToUpper();
+            try
+            {
+                inp = inp.Substring(0, 1);
+            }
+            catch
+            {
+                inp = "N";
+            }
             switch (inp)
             {
                 case "Y": // if they did wish to use more
