@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Scark.ast.items;
 
 namespace Scark.ast.items.weapons
 {
@@ -16,6 +17,40 @@ namespace Scark.ast.items.weapons
             Description = "A relatively large, rusting sword with a faint smell of blood.";
 
             ID = 1;
+
+            Image = @"                '
+               / \
+              /   \
+             /  `  \
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  |  |
+             |  `  |
+ \           |     |           /
+  '-.._____..`.....`.._____..-'
+  \  ---__,    [X]    .__---  /
+   '.________..-_-..________.'
+              |___|
+              |_-_|
+              |___|
+              |_-_|
+              L___|";
         }
     }
 }
