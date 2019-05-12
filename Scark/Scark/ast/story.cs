@@ -30,6 +30,7 @@ namespace Scark.ast
                         Console.Clear();
                         narsk.TowardsMedallion towardsMedallion = new narsk.TowardsMedallion();
                         towardsMedallion.towardsMedallion();
+                        end = true;
                         break;
                     case 3:
                         end = true;

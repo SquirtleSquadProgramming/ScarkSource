@@ -50,44 +50,49 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
             towardsMedallionPrompt();
         }
         
-        public void towardsMedallionPrompt(bool NOTICED_BARREL = false, bool TRY_NOTICED_BARREL = false, bool LOOKED_IN_BARREL = false)
+        public void towardsMedallionPrompt()
         {
-            if (NOTICED_BARREL)
-                Character.wd("[1] Go Inside\n[2] Look around\n[3] Look in barrel");
-            else
-                Character.wd("[1] Go inside\n[2] Look around");
-                              
-            Console.Write("> ");
-            string response = Console.ReadLine();
+            bool NOTICED_BARREL = false, TRY_NOTICED_BARREL = false, LOOKED_IN_BARREL = false, Loop = true;
+            while (Loop)
+            {
+                if (NOTICED_BARREL)
+                    Character.wd("[1] Go Inside\n[2] Look around\n[3] Look in barrel");
+                else
+                    Character.wd("[1] Go inside\n[2] Look around");
 
-            switch (response.ToLower())
-            { 
-                case "1":
-                    Character.wd("You walk up to the handsome mahogany door and push it open.");
-                    break;
-                case "2":
-                    // ERROR START ===========================================================================================================
-                    if (Character.rollCheck("perception", 10) == false) //if check failed
-                    {
-                        Character.wd("You look around the building. Nothing seems out of place.");
-                        TRY_NOTICED_BARREL = true;
-                        Console.ReadKey();
-                    }
-                    else if (TRY_NOTICED_BARREL == true) // ERROR - DOESNT WORK, STILL SOMETIMES SAYS THE FOUND BARREL OUTCOME
-                    {
-                        Character.wd("You look around the building. Nothing seems out of place.");
-                        TRY_NOTICED_BARREL = true;
-                        Console.ReadKey();
-                    }
-                    else if (Character.rollCheck("perception", 10) == true)
-                    {
-                        Character.wd("You look around the building and see a large wooden barrel on its side, its lid slightly ajar.");
-                        NOTICED_BARREL = true;
-                        TRY_NOTICED_BARREL = true; // VARIABLE PART OF ERROR
-                        Console.ReadKey();
-                    }
-                    break;
-                    // ERROR END =============================================================================================================
+                Console.Write("> ");
+                string response = Console.ReadLine();
+
+                switch (response.ToLower())
+                {
+                    case "1":
+                        Character.wd("You walk up to the handsome mahogany door and push it open.");
+                        break;
+                    case "2":
+                        // ERROR START ===========================================================================================================
+                        if (!Character.rollCheck("perception", 10)) //if check failed
+                        {
+                            Character.wd("You look around the building. Nothing seems out of place.");
+                            TRY_NOTICED_BARREL = true;
+                            Console.ReadKey();
+                        }
+                        else if (TRY_NOTICED_BARREL) // ERROR - DOESNT WORK, STILL SOMETIMES SAYS THE FOUND BARREL OUTCOME
+                        {
+                            Character.wd("You look around the building. Nothing seems out of place.");
+                            TRY_NOTICED_BARREL = true;
+                            Console.ReadKey();
+                        }
+                        else if (Character.rollCheck("perception", 10))
+                        {
+                            Character.wd("You look around the building and see a large wooden barrel on its side, its lid slightly ajar.");
+                            NOTICED_BARREL = true;
+                            TRY_NOTICED_BARREL = true; // VARIABLE PART OF ERROR
+                            Console.ReadKey();
+                        }
+                        break;
+                        // ERROR END =============================================================================================================
+                }
+
             }
         } 
 
