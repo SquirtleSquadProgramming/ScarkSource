@@ -84,6 +84,7 @@
     <Content Include="ast\items\item ids.txt" />
     <Content Include="ast\save\FileSystem.py" />
     <Content Include="ast\save\encDec.list" />
+    <Content Include="ScarkMap.txt" />
     <Content Include="Sean%27s Crap\Intro Dialogue.txt" />
     <Content Include="Notes.txt" />
   </ItemGroup>

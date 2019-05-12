@@ -34,7 +34,7 @@ namespace Scark.ast.start
             Character.wd("[LORD WAKEHART] She's gonna stay in the port for a lil' while as we restock.");
             Character.wd("[LORD WAKEHART] Y'know what, go to the town called Narsk not far from here, and go to the tarven called \"The Medallion\".");
             Character.wd("[LORD WAKEHART] Talk to my friend Orpheus, he's the barman. He'll tell you some stuff you ought to know.");
-            Character.wd("[LORD WAKEHART] Ethryl is the currency of Scark.");
+            Character.wd("[LORD WAKEHART] Also, ethryl is the currency of Scark.");
             Character.wd("[LORD WAKEHART] Here's some of it to start you off.");
             Character.wd("Wakehart hands over a few coins radiating with a strange light.");
 
@@ -47,6 +47,7 @@ namespace Scark.ast.start
             Character.addMagika(10);
 
             Character.wd("The once lapping waves run still. The Farquaad enters the bay...");
+            Character.wd("[LORD WAKEHART] Make sure you come back by dusk!");
 
             Character.pressAnyKeyToContinue();
 

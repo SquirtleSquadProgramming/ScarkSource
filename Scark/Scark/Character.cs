@@ -464,6 +464,26 @@ namespace Scark
             }
         }
 
+        // Rolls an ability check
+        public static bool rollCheck(string ABILITY_SCORE, int PASS_MARK) // Roll's output must be equal to higher than pass mark to suceed the check
+        {
+            Random rand = new Random();
+            int randOutcome = rand.Next(1, 25);
+
+            if (randOutcome + Character.convertAbilityScoreToAbilityModifier(ABILITY_SCORE) < PASS_MARK) // if outcome plus abilty modifier is less to pass mark
+            {
+                return false;
+            }
+            else if (randOutcome + Character.convertAbilityScoreToAbilityModifier(ABILITY_SCORE) > PASS_MARK)
+            {
+                return true;
+            }
+            else // error ocurred
+            {
+                return false;
+            }
+        }
+
         #endregion
     }
 }
