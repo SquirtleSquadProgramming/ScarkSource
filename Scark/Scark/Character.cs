@@ -224,6 +224,28 @@ namespace Scark
             // Waiting just incase a Console.Clear follows
             Thread.Sleep(1000);
         }
+
+        public static void resetCharacter()
+        {
+            Character.ethryl = 0;
+            Character.magika["current"] = 0;
+            Character.magika["max"] = 0;
+            Character.health["current"] = 0;
+            Character.health["max"] = 0;
+            Character.name = "";
+            Character.level = 0;
+            Character.maxXP = 0;
+            Character.currentXP = 0;
+            Character.abilityPoints = 0;
+            Character.characterClass = "0";
+            Character.AbilityScores["constitution"] = 0;
+            Character.AbilityScores["charisma"] = 0;
+            Character.AbilityScores["perception"] = 0;
+            Character.AbilityScores["intelligence"] = 0;
+            Character.AbilityScores["strength"] = 0;
+            Character.AbilityScores["stealth"] = 0;
+            Character.stage = 0;
+        }
         #endregion
 
         // reverts all colours to normal (colour scheme dependent)
@@ -414,8 +436,13 @@ namespace Scark
             }
         }
 
+        //Play a morbid death speel and end the game
         public static void death(string reason)
         {
+            //Slow things down so the death speel is more creepy
+            Character.Settings["SpeechSpeed"] = 2;
+
+            //Morbid death speel about the relativity of reality
             Character.wd("Your eyes fall dark, and your eyelids grow heavy.");
             Character.wd("Though not much can be said about the darkness,");
             Character.wd("It does not exist anyway.");
@@ -442,13 +469,15 @@ namespace Scark
             Character.wd("A final thought.");
             Character.wd("You surrender to the void.");
             Character.pressAnyKeyToContinue();
+            Character.Settings["SpeechSpeed"] = 4;
             Character.wd($"{Character.name} died with a level of {Character.level} because {reason}.");
+            Character.wd($"A document was left in {Character.name}'s pocket.");
+            showCharInfoGUI();
             Character.pressAnyKeyToContinue();
-            ast.start.Menu start = new ast.start.Menu();
+            resetCharacter(); // reset character
+            ast.start.Menu start = new ast.start.Menu(); //initialise new menu
             start.menuSeq(); // restart
         }
-           
-
 
         #endregion
     }
