@@ -63,7 +63,6 @@ namespace Scark.ast.narsk
             response = Console.ReadLine();
             switch (response)
             {
-                
                 case "1":
                     Character.wd("[OLD MAN] Splendid!");
                     Character.wd("[OLD MAN] I bid you to go to the medallion.");
@@ -130,10 +129,11 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
           -- . ''       -- . ''         `--._ _________`--._   -- . ''
 :'                 -- . ''          -- . ''  `--._----------`--._");
 
-                Character.wd("You walk along a narrow path for five or so minutes until you arrive at a wooden building.");
-                Character.wd("A battered sign hangs on a wall, reading \"The Medallion\"");
+                if (!NOTICED_BARREL && !TRY_NOTICED_BARREL && !LOOKED_IN_BARREL) Character.wd("You walk along a narrow path for five or so minutes until you arrive at a wooden building.");
+                if (!NOTICED_BARREL && !TRY_NOTICED_BARREL && !LOOKED_IN_BARREL) Character.wd("A battered sign hangs on a wall, reading \"The Medallion\"");
 
-                if (NOTICED_BARREL) Character.wd("[1] Go Inside\n[2] Look around\n[3] Look in barrel");
+                if (NOTICED_BARREL && !LOOKED_IN_BARREL) Character.wd("[1] Go Inside\n[2] Look around\n[3] Look in barrel");
+                else if (LOOKED_IN_BARREL) Character.wd("[1] Go inside");
                 else Character.wd("[1] Go inside\n[2] Look around");
 
                 Console.Write("> ");
@@ -146,6 +146,7 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
                         Loop = false;
                         break;
                     case "2":
+                    case "3":
                         if (NOTICED_BARREL && !LOOKED_IN_BARREL)
                         {
                             /* =-=-=-=-=-=-=-=-=-=-= TODO ADD STUF HERE =-=-=-=-=-=-=-=-=-=-= */
@@ -177,7 +178,6 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
                         }
                         break;
                 }
-
             }
         }
     }

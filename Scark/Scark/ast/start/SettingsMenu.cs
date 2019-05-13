@@ -47,7 +47,7 @@ namespace Scark.ast.start
         {
             Console.Clear();
 
-            Console.Write("\nPlease enter a speed modifier less than 10.\nThe default is 4\n> ");
+            Console.Write("\nPlease enter a speed modifier less than 10.\nThe higher the number the faster the text goes.\n(1 is the slowest, 10 is the fastest)\nThe default is 4\n> ");
             string response = Console.ReadLine();
 
             try
