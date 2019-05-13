@@ -15,7 +15,7 @@ namespace Scark.ast.start
         {
             Console.Clear();
 
-            Console.Write($"Please select the setting you wish to edit.\n[1] Dialogue Speed\n= {Character.Settings["SpeechSpeed"]}\n\n[2] Profanity\n= {Character.Settings["Profanity"]}\n\n[3] ColourTheme\n= {Character.Settings["ColourTheme"]}\n\n[4] SpecialEffects\n= {Character.Settings["SpecialEffects"]}\n\n[x] Exit\n> ");
+            Console.Write($"Please select the setting you wish to edit.\n[1] Dialogue Speed\n= {Character.Settings["SpeechSpeed"]}\n\n[2] Profanity\n= {Character.Settings["Profanity"]}\n\n[3] ColourTheme\n= {Character.Settings["ColourTheme"]}\n\n[4] SpecialEffects\n= {Character.Settings["SpecialEffects"]}\n\n[5] Full Screen(WIP - Not Recommended)\n\n[x] Exit\n> ");
             string response = Console.ReadLine();
 
             switch (response)
@@ -31,6 +31,10 @@ namespace Scark.ast.start
                     break;
                 case "4":
                     editSpecialEffectsSetting();
+                    break;
+                case "5":
+                    FullScreen FS = new FullScreen();
+                    FS.MakeFullScreen(); // Full Screen was abit to big so it has its own file
                     break;
                 case "x":
                 case "X":

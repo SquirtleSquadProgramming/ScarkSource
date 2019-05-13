@@ -54,6 +54,7 @@ namespace Scark
 
         public static void Main(string[] args)
         {
+            Console.Title = "Scark";
             Go();
 
             //Used To Remove Warnings 
