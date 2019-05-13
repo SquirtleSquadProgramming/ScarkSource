@@ -224,28 +224,6 @@ namespace Scark
             // Waiting just incase a Console.Clear follows
             Thread.Sleep(1000);
         }
-
-        public static void resetCharacter()
-        {
-            Character.ethryl = 0;
-            Character.magika["current"] = 0;
-            Character.magika["max"] = 0;
-            Character.health["current"] = 0;
-            Character.health["max"] = 0;
-            Character.name = "";
-            Character.level = 0;
-            Character.maxXP = 0;
-            Character.currentXP = 0;
-            Character.abilityPoints = 0;
-            Character.characterClass = "0";
-            Character.AbilityScores["constitution"] = 0;
-            Character.AbilityScores["charisma"] = 0;
-            Character.AbilityScores["perception"] = 0;
-            Character.AbilityScores["intelligence"] = 0;
-            Character.AbilityScores["strength"] = 0;
-            Character.AbilityScores["stealth"] = 0;
-            Character.stage = 0;
-        }
         #endregion
 
         // reverts all colours to normal (colour scheme dependent)
@@ -473,7 +451,7 @@ namespace Scark
             Character.wd($"A document was left in {Character.name}'s pocket.");
             showCharInfoGUI();
             Character.pressAnyKeyToContinue();
-            resetCharacter(); // reset character
+            resetStats(); // reset character
             ast.start.Menu start = new ast.start.Menu(); //initialise new menu
             start.menuSeq(); // restart
         }
