@@ -413,8 +413,13 @@ namespace Scark
             }
         }
 
+        //Play a morbid death speel and end the game
         public static void death(string reason)
         {
+            //Slow things down so the death speel is more creepy
+            Character.Settings["SpeechSpeed"] = 2;
+
+            //Morbid death speel about the relativity of reality
             Character.wd("Your eyes fall dark, and your eyelids grow heavy.");
             Character.wd("Though not much can be said about the darkness,");
             Character.wd("It does not exist anyway.");
@@ -441,9 +446,13 @@ namespace Scark
             Character.wd("A final thought.");
             Character.wd("You surrender to the void.");
             Character.pressAnyKeyToContinue();
+            Character.Settings["SpeechSpeed"] = 4;
             Character.wd($"{Character.name} died with a level of {Character.level} because {reason}.");
+            Character.wd($"A document was left in {Character.name}'s pocket.");
+            showCharInfoGUI();
             Character.pressAnyKeyToContinue();
-            ast.start.Menu start = new ast.start.Menu();
+            resetStats(); // reset character
+            ast.start.Menu start = new ast.start.Menu(); //initialise new menu
             start.menuSeq(); // restart
         }
 
