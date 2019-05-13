@@ -125,7 +125,7 @@ namespace Scark.ast.narsk
                     {
                         Console.Clear();
 
-                        optionAHPrints();
+                        bAHPrints.optionAHPrints();
                         Console.Write("> ");
                         string response = Console.ReadLine();
 
@@ -137,7 +137,7 @@ namespace Scark.ast.narsk
                                 break;
                             case "2":
                             case "3":
-                                perceptionPrints();
+                                bAHPrints.perceptionPrints();
                                 break;
                         }
                     }
