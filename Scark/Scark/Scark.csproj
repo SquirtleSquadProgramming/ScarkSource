@@ -67,6 +67,7 @@
     <Compile Include="ast\narsk\TowardsMedallion.cs" />
     <Compile Include="ast\NPCs\Monster.cs" />
     <Compile Include="ast\NPCs\NPC.cs" />
+    <Compile Include="ast\Other\CASP.cs" />
     <Compile Include="ast\start\CharacterCreation.cs" />
     <Compile Include="ast\start\MenuSequence.cs" />
     <Compile Include="ast\start\BoardShip.cs" />
@@ -82,8 +83,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ast\items\item ids.txt" />
-    <Content Include="ast\save\FileSystem.py" />
-    <Content Include="ast\save\encDec.list" />
     <Content Include="ScarkMap.txt" />
     <Content Include="Sean%27s Crap\Intro Dialogue.txt" />
     <Content Include="Notes.txt" />

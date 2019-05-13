@@ -50,7 +50,7 @@ namespace Scark.ast.Other
                     // Changing the abbreviation to the proper name
                     addTo = abbreviationToName(addTo);
                 }
-                catch (NotImplementedException e)
+                catch
                 {
                     optionPicked = false; // Making the while loop, loop again
                                           // Re asking
@@ -61,7 +61,7 @@ namespace Scark.ast.Other
             return addTo;
         }
 
-        public static int Amount()
+        public static int Amount(string addTo)
         {
             // parsing the input
             optionPicked = false;
@@ -73,7 +73,7 @@ namespace Scark.ast.Other
                 {
                     amount = Math.Abs(Int32.Parse(Console.ReadLine()));
                 }
-                catch (Exception e)
+                catch
                 {
                     optionPicked = false;
                     Console.Write("                          Please enter a number!\n═══════════════════════════════════════════════════════════════════════════════════\nPlease enter the amount of points that want to add to the {0} abilty:\n> ", addTo);
@@ -92,7 +92,7 @@ namespace Scark.ast.Other
                 {
                     amount = Math.Abs(Int32.Parse(Console.ReadLine()));
                 }
-                catch (Exception e)
+                catch
                 {
                     Console.Write("                             That is not a number!\n");
                 }
@@ -100,7 +100,7 @@ namespace Scark.ast.Other
             return amount;
         }
 
-        public static bool ApplyChanges()
+        public static bool ApplyChanges(int amount, string addTo)
         {
             // setting optionPicked to false as to reuse it
             optionPicked = false;

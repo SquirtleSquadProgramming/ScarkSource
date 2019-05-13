@@ -273,8 +273,6 @@ namespace Scark
         {
             Console.Clear();
 
-            bool optionPicked = false; // setting optionPicked to false for later use in a while loop
-
             string addTo = Scark.ast.Other.CASP.Category();
             if (addTo == "exit") return;
             
@@ -283,14 +281,14 @@ namespace Scark
             // Asking the amount of points wants to add to the specified ability
             Console.Write("═══════════════════════════════════════════════════════════════════════════════════\nPlease enter the amount of points that want to add to the {0} abilty:\n> ", addTo);
 
-            int amount = Scark.ast.Other.CASP.Amount();
+            int amount = Scark.ast.Other.CASP.Amount(addTo);
 
             // Adding the amount to the selected ability
             AbilityScores[addTo] += amount;
             // Subtracting amount from the abilityPoints
             abilityPoints -= amount;
 
-            bool apply = Scark.ast.Other.CASP.ApplyChanges();
+            bool apply = Scark.ast.Other.CASP.ApplyChanges(amount, addTo);
 
             if (!apply)
             {
