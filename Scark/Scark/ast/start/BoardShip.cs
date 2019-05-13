@@ -30,9 +30,10 @@ namespace Scark.ast.start
 
             Character.wd("\nThree days pass aboard the Farquaad.");
             Character.wd("You are awoken from your sleep by the noise of the crew.");
-            Character.wd("Another smaller ship, about a quarter the size of the Farquaad approaches.");
+            Character.wd("Another smaller ship, about a quarter the size of the Farquaad pulls into the wharf beside the Farquaad.");
             Character.wd("[LORD WAKEHART] Worry not, they are the local merchants.");
-            Character.wd("The smaller boat docks on the side of the Farquaad.");
+            Character.wd("As the incoming ship berths beside the Farquaad, you see the name \"Thorul\" on the starboard side of the vessel.");
+            Character.wd("A man walks onto the top deck, facing Lord Wakehart.");
             Character.wd("[THORUL] I am Thorul of Braedon.");
             Character.wd("[THORUL] I present no harm, I have come to trade.");
             Character.wd("[LORD WAKEHART] By my troth, I accept your presence.");
