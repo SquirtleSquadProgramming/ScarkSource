@@ -95,9 +95,12 @@ namespace Scark.ast.narsk
 
             Character.pressAnyKeyToContinue();
 
-            if (Character.Settings["SpecialEffects"])
+            bool NOTICED_BARREL = false, TRY_NOTICED_BARREL = false, LOOKED_IN_BARREL = false, Loop = true;
+            while (Loop)
             {
-                Console.WriteLine(@"                                                     ___
+                Console.Clear();
+                if (Character.Settings["SpecialEffects"])
+                    Console.WriteLine(@"                                                     ___
                                              ___..--'  .`.
                                     ___...--'     -  .` `.`.
                            ___...--' _      -  _   .` -   `.`.
@@ -126,63 +129,56 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
  -- . ''           :'              `--._ ---------`--._-- . ''    -- . ''
           -- . ''       -- . ''         `--._ _________`--._   -- . ''
 :'                 -- . ''          -- . ''  `--._----------`--._");
-            }
-            
-            Character.wd("You walk along a narrow path for five or so minutes until you arrive at a wooden building.");
-            Character.wd("A battered sign hangs on a wall, reading \"The Medallion\"");
 
-            towardsMedallionPrompt();
-        }
-        
-        public void towardsMedallionPrompt()
-        {
-            bool NOTICED_BARREL = false, TRY_NOTICED_BARREL = false, LOOKED_IN_BARREL = false, Loop = true;
-            while (Loop)
-            {
-                if (NOTICED_BARREL)
-                    Character.wd("[1] Go Inside\n[2] Look around\n[3] Look in barrel");
-                else
-                    Character.wd("[1] Go inside\n[2] Look around");
+                Character.wd("You walk along a narrow path for five or so minutes until you arrive at a wooden building.");
+                Character.wd("A battered sign hangs on a wall, reading \"The Medallion\"");
+
+                if (NOTICED_BARREL) Character.wd("[1] Go Inside\n[2] Look around\n[3] Look in barrel");
+                else Character.wd("[1] Go inside\n[2] Look around");
 
                 Console.Write("> ");
-                string response = Console.ReadLine();
+                response = Console.ReadLine();
 
                 switch (response.ToLower())
                 {
                     case "1":
                         Character.wd("You walk up to the handsome mahogany door and push it open.");
+                        Loop = false;
                         break;
                     case "2":
-                        // ERROR START ===========================================================================================================
-                        if (!Character.rollCheck("perception", 10)) //if check failed
+                        if (NOTICED_BARREL && !LOOKED_IN_BARREL)
+                        {
+                            /* =-=-=-=-=-=-=-=-=-=-= TODO ADD STUF HERE =-=-=-=-=-=-=-=-=-=-= */
+                            Character.wd("You open the barrel to find ----");
+                            /* =-=-=-=-=-=-=-=-=-=-= TODO ADD STUF HERE =-=-=-=-=-=-=-=-=-=-= */
+                            LOOKED_IN_BARREL = true;
+                            /* =-=-=-=-=-=-=-=-=-=-= TODO ADD STUF HERE =-=-=-=-=-=-=-=-=-=-= */
+                            Console.ReadKey();
+                            /* =-=-=-=-=-=-=-=-=-=-= TODO ADD STUF HERE =-=-=-=-=-=-=-=-=-=-= */
+                        }
+                        else if (!Character.rollCheck("perception", 10) && !LOOKED_IN_BARREL) //if check failed
                         {
                             Character.wd("You look around the building. Nothing seems out of place.");
                             TRY_NOTICED_BARREL = true;
                             Console.ReadKey();
                         }
-                        else if (TRY_NOTICED_BARREL) // ERROR - DOESNT WORK, STILL SOMETIMES SAYS THE FOUND BARREL OUTCOME
+                        else if (TRY_NOTICED_BARREL && !LOOKED_IN_BARREL)
                         {
                             Character.wd("You look around the building. Nothing seems out of place.");
                             TRY_NOTICED_BARREL = true;
                             Console.ReadKey();
                         }
-                        else if (Character.rollCheck("perception", 10))
+                        else if (Character.rollCheck("perception", 10) && !LOOKED_IN_BARREL)
                         {
                             Character.wd("You look around the building and see a large wooden barrel on its side, its lid slightly ajar.");
                             NOTICED_BARREL = true;
-                            TRY_NOTICED_BARREL = true; // VARIABLE PART OF ERROR
+                            TRY_NOTICED_BARREL = true;
                             Console.ReadKey();
                         }
                         break;
-                        // ERROR END =============================================================================================================
                 }
 
             }
-        } 
-
-        private void towardsMedallfionPrompt(bool NOTICED_BARREL = false, bool TRY_NOTICED_BARREL = false, bool LOOKED_IN_BARREL = false)
-        {
-            //TODO Add stuff here
         }
     }
 }
