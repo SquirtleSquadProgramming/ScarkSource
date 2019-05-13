@@ -325,7 +325,6 @@ namespace Scark
 
         internal static void showCharInfoGUI() //╔ ═ ╗ ║ ╚ ╝
         {
-            Console.WriteLine("\nCharacter Information\n");
             Console.WriteLine(@"
 ╔════════╗  ══════════════════════
 ║   __   ║  IDENTIFICATION DETAIL    
@@ -334,19 +333,19 @@ namespace Scark
 ║ /    \ ║  Narsk Province, Scark.
 ╚════════╝  ══════════════════════
                      ");
-            Console.WriteLine($"NAME: {0}", Character.name);
-            Console.WriteLine($"CLASS ID: {0}", Character.characterClass);
+            Console.WriteLine($"NAME: {Character.name}");
+            Console.WriteLine($"CLASS ID: {Character.characterClass}");
             Console.WriteLine("═════════════════════════════════");
-            Console.WriteLine($"LEVEL: {0}", Character.level);
-            Console.WriteLine($"[" + Character.currentXP + "/" + Character.maxXP + "] needed to level up");
+            Console.WriteLine($"LEVEL: {Character.level}");
+            Console.WriteLine($"[{Character.currentXP}/{Character.maxXP}] needed to level up");
             Console.WriteLine("═════════════════════════════════");
-            Console.WriteLine($"ETHRYL BALANCE: {0}", Character.ethryl);
+            Console.WriteLine($"ETHRYL BALANCE: {Character.ethryl}");
             Console.WriteLine("═════════════════════════════════");
-            Console.WriteLine($"MAGIKA: [{0}/{1}]", Character.magika["current"], Character.magika["max"]);
-            Console.WriteLine($"HEALTH: [{0}/{1}]", Character.health["current"], Character.health["max"]);
+            Console.WriteLine($"MAGIKA: [{Character.magika["current"]}/{Character.magika["max"]}]");
+            Console.WriteLine($"HEALTH: [{Character.health["current"]}/{Character.health["max"]}]");
             Console.WriteLine("═════════════════════════════════");
-            Console.WriteLine($"UNUSED ABILITY POINTS: {0}", Character.abilityPoints);
-            Console.WriteLine($"CON: [{0}] CHA: [{1}] INT: [{2}] PER: [{3}] STR: [{4}] STE: [{5}]", Character.AbilityScores["constitution"], Character.AbilityScores["charisma"], Character.AbilityScores["intelligence"], Character.AbilityScores["perception"], Character.AbilityScores["strength"], Character.AbilityScores["stealth"]);
+            Console.WriteLine($"UNUSED ABILITY POINTS: {Character.abilityPoints}");
+            Console.WriteLine($"CON: [{Character.AbilityScores["constitution"]}] CHA: [{Character.AbilityScores["charisma"]}] INT: [{Character.AbilityScores["intelligence"]}] \nPER: [{Character.AbilityScores["perception"]}] STR: [{Character.AbilityScores["strength"]}] STE: [{Character.AbilityScores["stealth"]}]");
             Console.WriteLine("═════════════════════════════════");
         }
 
