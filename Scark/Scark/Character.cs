@@ -14,19 +14,19 @@ namespace Scark
     {
         #region Character Attributes
         // Integer Variables
-        public static int stage = 0; // What stage of story the player is at
-        public static int ethryl = 0; // Currency
-        public static int abilityPoints = 0;
-        public static int level = 0; // Player level
-        public static int currentXP = 0; // player's current XP
-        public static int maxXP = 0; // maximum xp player can get before level up
+        public static int stage; // What stage of story the player is at
+        public static int ethryl; // Currency
+        public static int abilityPoints;
+        public static int level; // Player level
+        public static int currentXP; // player's current XP
+        public static int maxXP; // maximum xp player can get before level up
 
         // String Variables
-        public static string name = ""; // Name
-        public static string characterClass = ""; // Race -- but race is only human tho
+        public static string name; // Name
+        public static string characterClass; // Race -- but race is only human tho
 
         // Boolean Variables
-        public static bool dev = false; // If dev
+        public static bool dev; // If dev
 
         // List for inventory
         public static List<int /* int is for item ID */> inventory = new List<int>();
@@ -414,72 +414,42 @@ namespace Scark
             }
         }
 
-        // Death function
         public static void death(string reason)
         {
-            #region Prints
-            Character.wd("Your eyes fall dark,");
-            Character.wd("Though not much can be said about darkness,");
-            Character.wd("It doesn't exist anyway.");
+            Character.wd("Your eyes fall dark, and your eyelids grow heavy.");
+            Character.wd("Though not much can be said about the darkness,");
+            Character.wd("It does not exist anyway.");
             Character.wd("Anymore at least.");
-            Character.wd("For you, at least.");
+            Character.wd("Not for you, at least.");
             Character.wd("Others still breathe.");
-            Character.wd("But what is reality, if one cannot sense it.");
+            Character.wd("Their hearts still pump.");
+            Character.wd("But for you, your body turns still.");
+            Character.wd("What is reality, if one cannot sense it?");
             Character.wd("What can be so real if all is so abstract?");
             Character.wd("Mortality is so literal.");
+            Character.wd("What is reality?");
+            Character.wd("What is consciousness?");
+            Character.wd("What is the meaning of it all?");
             Character.wd("...");
             Character.wd("Everything falls silent.");
-            Character.wd("And nothing falls silent, because well, it doesn't exist.");
+            Character.wd("But nothing falls silent, because, well, silence does not exist.");
             Character.wd("For you anyway.");
-            Character.wd("You have moven on past reality. Almost.");
+            Character.wd("You have moven on past reality.");
+            Character.wd("Almost.");
             Character.wd("Yet, well, reality can't possibly exist no more. At least for the souls of the deceased.");
             Character.wd("Or could it?");
-            Character.wd("A final beat, a final thought.");
+            Character.wd("A final beat.");
+            Character.wd("A final thought.");
             Character.wd("You surrender to the void.");
             Character.pressAnyKeyToContinue();
             Character.wd($"{Character.name} died with a level of {Character.level} because {reason}.");
             Character.pressAnyKeyToContinue();
-            #endregion
-
-            Character.resetStats();
-
             ast.start.Menu start = new ast.start.Menu();
             start.menuSeq(); // restart
         }
+           
 
-        // Reseting all character attributes
-        internal static void resetStats()
-        {
-            stage = 0;
-            ethryl = 0;
-            abilityPoints = 0;
-            level = 0;
-            currentXP = 0;
-            maxXP = 0;
-            name = "";
-            characterClass = "";
-            dev = false;
-            inventory = new List<int>();
-            AbilityScores = new Dictionary<string, int>()
-                {
-                    {"constitution", 0},
-                    {"charisma", 0 },
-                    {"intelligence", 0 },
-                    {"perception", 0 },
-                    {"strength", 0 },
-                    {"stealth", 0 },
-                };
-            health = new Dictionary<string, int>()
-                {
-                    {"max", 0},
-                    {"current", 0}
-                };
-            magika = new Dictionary<string, int>()
-                {
-                    {"max", 0},
-                    {"current", 0}
-                };
-        }
+
         #endregion
     }
 }
