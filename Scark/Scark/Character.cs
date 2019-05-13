@@ -532,6 +532,35 @@ namespace Scark
             }
         }
 
+        public static void death(string reason)
+        {
+            Character.wd("Your eyes fall dark,");
+            Character.wd("Though not much can be said about darkness,");
+            Character.wd("It doesn't exist anyway.");
+            Character.wd("Anymore at least.");
+            Character.wd("For you, at least.");
+            Character.wd("Others still breathe.");
+            Character.wd("But what is reality, if one cannot sense it.");
+            Character.wd("What can be so real if all is so abstract?");
+            Character.wd("Mortality is so literal.");
+            Character.wd("...");
+            Character.wd("Everything falls silent.");
+            Character.wd("And nothing falls silent, because well, it doesn't exist.");
+            Character.wd("For you anyway.");
+            Character.wd("You have moven on past reality. Almost.");
+            Character.wd("Yet, well, reality can't possibly exist no more. At least for the souls of the deceased.");
+            Character.wd("Or could it?");
+            Character.wd("A final beat, a final thought.");
+            Character.wd("You surrender to the void.");
+            Character.pressAnyKeyToContinue();
+            Character.wd($"{Character.name} died with a level of {Character.level} because {reason}.");
+            Character.pressAnyKeyToContinue();
+            ast.start.Menu start = new ast.start.Menu();
+            start.menuSeq(); // restart
+        }
+           
+
+
         #endregion
     }
 }
