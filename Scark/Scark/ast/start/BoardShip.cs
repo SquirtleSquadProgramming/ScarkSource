@@ -39,7 +39,7 @@ namespace Scark.ast.start
             Character.wd("[LORD WAKEHART] By my troth, I accept your presence.");
             Character.wd("Thorul brings a rack of some of his merchandise out onto the deck.");
             Character.wd("[THORUL] Take your pick, if you wish.");
-            Character.wd("[LORD WAKEHART] Oh my, could it be!");
+            Character.wd("[LORD WAKEHART] Oh my, could it be...?");
             Character.wd("Wakehart reaches into the rack, and takes out a large bottle.");
             Character.wd("[LORD WAKEHART] 43%, aged scotch!");
             Character.wd("[LORD WAKEHART] For what do you wish to trade with?");
@@ -48,10 +48,10 @@ namespace Scark.ast.start
             Character.wd("Other crew members make their trades, and exit the deck.");
             Character.wd("Thorul walks up to you.");
             Character.wd("[THORUL] Is there anything you wish to purchase?");
-            Character.wd("[THORUL] How about this scroll of wisdom.");
+            Character.wd("[THORUL] How about this Scroll of Wisdom?");
             Character.wd("[THORUL] It was gifted to me by a man over at Narsk.");
             Character.wd("[THORUL] When chanted, the spell enchants you with wisdom and intelligence.");
-            Character.wd("[THORUL] However, it only works on humankind, which is quite a shame for a dwarf like myself.");
+            Character.wd("[THORUL] Alas, it only works on humankind such as yourself, which is quite a shame for a dwarf like myself.");
             Character.wd("[THORUL] I will give it to you if you polish my balmorals.");
 
             Character.wd($"[1] I accept your trade.\n[2] I do not accept your trade.");
@@ -92,8 +92,8 @@ namespace Scark.ast.start
 
             Character.awardEthryl(25);
 
-            Character.wd("[LORD WAKEHART] Wizards back in Braedon granted me a few vials of this strange substance as well."); 
-            Character.wd("[LORD WAKEHART] I will give you some, you never know when it might come in handy.");
+            Character.wd("[LORD WAKEHART] Wizards back in Braedon, on the West Coast granted me a few vials of this strange substance as well."); 
+            Character.wd("[LORD WAKEHART] I will give you some; you never know when it might come in handy.");
             Character.wd("You take a handful of the substance, and it seems to infuse into your skin.");
 
             Character.addMagika(10);

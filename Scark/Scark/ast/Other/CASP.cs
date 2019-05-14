@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Scark.ast.Other
 {
-    class CASP : Character
+    class CASP : Character // please make name more clear ffs
     {
         private static bool optionPicked = false;
 

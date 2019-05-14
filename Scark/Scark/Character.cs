@@ -353,7 +353,8 @@ namespace Scark
         {
             // Writing dialouge: "Press any key to continue..."
             wd("Press any key to continue...", true);
-            waitFor(); // Getting user to press a key
+            //waitFor(); // Getting user to press a key
+            Console.ReadKey();
             Console.Clear();
         }
 
@@ -424,6 +425,8 @@ namespace Scark
             Character.wd("Not for you, at least.");
             Character.wd("Others still breathe.");
             Character.wd("Their hearts still pump.");
+            Character.wd("Their bodies tirelessly work for the same thing.");
+            Character.wd("To live.");
             Character.wd("But for you, your body turns still.");
             Character.wd("What is reality, if one cannot sense it?");
             Character.wd("What can be so real if all is so abstract?");
@@ -437,10 +440,11 @@ namespace Scark
             Character.wd("For you anyway.");
             Character.wd("You have moven on past reality.");
             Character.wd("Almost.");
-            Character.wd("Yet, well, reality can't possibly exist no more. At least for the souls of the deceased.");
+            Character.wd("Yet, well, reality can't possibly exist anymore. At least for the souls of the deceased.");
             Character.wd("Or could it?");
             Character.wd("A final beat.");
             Character.wd("A final thought.");
+            Thread.Sleep(5000);
             Character.wd("You surrender to the void.");
             Character.pressAnyKeyToContinue();
             Character.Settings["SpeechSpeed"] = 4;
