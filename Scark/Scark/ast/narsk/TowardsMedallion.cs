@@ -43,7 +43,8 @@ namespace Scark.ast.narsk
 
             Character.pressAnyKeyToContinue();
 
-            MedallionAntiComplex.mission();
+            if (MedallionAntiComplex.mission())
+                return;
 
             Character.pressAnyKeyToContinue();
 
@@ -54,7 +55,7 @@ namespace Scark.ast.narsk
         {
             static bool Loop = true;
 
-            public static void mission()
+            public static bool mission()
             {
                 Loop = true;
                 while (Loop)
@@ -106,13 +107,14 @@ namespace Scark.ast.narsk
                             Character.pressAnyKeyToContinue();
                             Console.Clear();
                             Character.death("you dared to cross the dark sourcerer.");
-                            break;
+                            return true;
                         default:
                             Console.Clear();
                             Console.Write("{0} is not an option! Please input either 1 or 2...", response);
                             break;
                     }
                 }
+                return false;
             }
 
             internal class barrelAndEnter

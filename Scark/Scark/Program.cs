@@ -64,7 +64,7 @@ namespace Scark
             start.menuSeq(); // starting the main function
 
             Console.Write("Press any key to exit...");
-            Console.Read();
+            Character.waitFor();
         }
     }
 }

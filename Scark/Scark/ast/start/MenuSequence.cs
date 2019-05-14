@@ -92,6 +92,7 @@ namespace Scark.ast.start
                         break;
                     case "x": //Exit
                         optionSelected = true;
+                        Character.stage = -1;
                         return;
                     default: //for when they try to be smartasses
                         Console.WriteLine("Please input a valid number!");

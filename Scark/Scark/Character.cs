@@ -322,7 +322,6 @@ namespace Scark
 
         #region EOA Methods
         // EOA: Ease Of Access
-
         internal static void showCharInfoGUI() //╔ ═ ╗ ║ ╚ ╝
         {
             Console.WriteLine(@"
@@ -354,7 +353,7 @@ namespace Scark
         {
             // Writing dialouge: "Press any key to continue..."
             wd("Press any key to continue...", true);
-            Console.ReadKey(); // Getting user to press a key
+            waitFor(); // Getting user to press a key
             Console.Clear();
         }
 
@@ -485,6 +484,16 @@ namespace Scark
                     {"max", 0},
                     {"current", 0}
                 };
+        }
+
+        public static string getInput()
+        {
+            return Console.ReadLine();
+        }
+
+        public static void waitFor()
+        {
+            Console.ReadKey();
         }
         #endregion
     }

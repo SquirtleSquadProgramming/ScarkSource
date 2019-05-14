@@ -16,6 +16,9 @@ namespace Scark.ast
             {
                 switch (Character.stage)
                 {
+                    case -1:
+                        end = true;
+                        return;
                     case 0: // Character Creation
                         Console.Clear();
                         start.CC cC = new start.CC();
