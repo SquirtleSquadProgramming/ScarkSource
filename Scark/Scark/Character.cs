@@ -485,16 +485,6 @@ namespace Scark
                     {"current", 0}
                 };
         }
-
-        public static string getInput()
-        {
-            return Console.ReadLine();
-        }
-
-        public static void waitFor()
-        {
-            Console.ReadKey();
-        }
         #endregion
     }
 }

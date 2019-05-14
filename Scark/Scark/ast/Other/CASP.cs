@@ -147,7 +147,7 @@ namespace Scark.ast.Other
                 catch
                 {
                     optionPicked = false;
-                    Console.Write("                          Error! Please input Y or N");
+                    Console.Write("                          Error! Please input Y or N\n");
                 }
                 switch (inp)
                 {
