@@ -16,6 +16,9 @@ namespace Scark.ast
             {
                 switch (Character.stage)
                 {
+                    case -1:
+                        end = true;
+                        return;
                     case 0: // Character Creation
                         Console.Clear();
                         start.CC cC = new start.CC();
@@ -30,6 +33,7 @@ namespace Scark.ast
                         Console.Clear();
                         narsk.TowardsMedallion towardsMedallion = new narsk.TowardsMedallion();
                         towardsMedallion.towardsMedallion();
+                        end = true;
                         break;
                     case 3:
                         end = true;

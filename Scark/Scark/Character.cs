@@ -14,19 +14,19 @@ namespace Scark
     {
         #region Character Attributes
         // Integer Variables
-        public static int stage; // What stage of story the player is at
-        public static int ethryl; // Currency
-        public static int abilityPoints;
-        public static int level; // Player level
-        public static int currentXP; // player's current XP
-        public static int maxXP; // maximum xp player can get before level up
+        public static int stage = 0; // What stage of story the player is at
+        public static int ethryl = 0; // Currency
+        public static int abilityPoints = 0;
+        public static int level = 0; // Player level
+        public static int currentXP = 0; // player's current XP
+        public static int maxXP = 0; // maximum xp player can get before level up
 
         // String Variables
-        public static string name; // Name
-        public static string characterClass; // Race -- but race is only human tho
+        public static string name = ""; // Name
+        public static string characterClass = ""; // Race -- but race is only human tho
 
         // Boolean Variables
-        public static bool dev; // If dev
+        public static bool dev = false; // If dev
 
         // List for inventory
         public static List<int /* int is for item ID */> inventory = new List<int>();
@@ -268,109 +268,36 @@ namespace Scark
 
         #region Ability Scores
 
-        private static string abbreviationToName(string input)
-        {
-            switch (input)
-            {
-                case "CON":
-                    return "constitution"; // Setting it to* constitution
-                case "CHA":
-                    return "charisma"; // * charisma
-                case "INT":
-                    return "intelligence"; // * intelligence
-                case "PER":
-                    return "perception"; // * perception
-                case "STR":
-                    return "strength"; // * strength
-                case "STE":
-                    return "stealth"; // * stealth
-            }
-            throw new NotImplementedException();
-        }
-
         // Void for the choose ability score points menu
         public static void chooseAbilityScorePoints()
         {
             Console.Clear();
 
-            bool optionPicked = false; // setting optionPicked to false for later use in a while loop
-
-            //Clearing the Console and printing the options
-            Console.Clear();
-            Console.Write("                             {0} Ability Points Remaining\n═══════════════════════════════════════════════════════════════════════════════════\n                                Options:\n[STE] Stealth      : Likelihood of surprising people, avoiding danger, hiding, etc.\n[CON] Constitution : Determines HP, likelyhood of surviving sickness, etc.\n[INT] Intelligence : Ability to know about things, traps, enemies, etc.\n[CHA] Charisma     : Likelihood of persuading or other speech actions.\n[PER] Perception   : Ability to sense traps, find clues, etc.\n[STR] Strength     : Ability to use strength\n[ X ]   Exit         : Exit this menu\nPlease select an ability to add points to (Max 25 points to each ability):\n> ", abilityPoints);
-
-            // string addTo processed to give a maximum of 3 characters
-            string addTo = (Console.ReadLine().Replace("[", "").Replace("]", "").ToUpper() + "   ").Substring(0, 3).Replace(" ", "");
-
-            // Processing the (processed) input to the actual name of an ability for later use
-            if (addTo == "X") return;
-            else addTo = abbreviationToName(addTo);
-
-            // Asking the amound of points wants to add to the specified ability
-            Console.Write("═══════════════════════════════════════════════════════════════════════════════════\nPlease enter the amount of points that want to add to the {0} abilty:\n> ", addTo);
+            string addTo = Scark.ast.Other.CASP.Category();
+            if (addTo == "exit") return;
             
-            // parsing the input
-            int amount = Math.Abs(Int32.Parse(Console.ReadLine()));
-                
-            // loop while the user has exceeded: the amount of abilityPoints they have
-            //                                   the max amount of points an ability can have
-            while (!(amount <= abilityPoints && amount + AbilityScores[addTo] <= 25))
-            {
-                // Writing that they have exceeded an amount
-                Console.Write("═══════════════════════════════════════════════════════════════════════════════════\n                        {1} exceeds either: {2} or 25!\n        Please enter the amount of points that want to add to the {0} abilty:\n> ", addTo, amount, abilityPoints);
+            Console.Clear(); //Clearing the Console and printing the options
 
-                // Re-getting their input
-                amount = Int32.Parse(Console.ReadLine());
-            }
+            // Asking the amount of points wants to add to the specified ability
+            Console.Write("═══════════════════════════════════════════════════════════════════════════════════\nPlease enter the amount of points that want to add to the {0} abilty:\n> ", addTo);
+
+            int amount = Scark.ast.Other.CASP.Amount(addTo);
 
             // Adding the amount to the selected ability
             AbilityScores[addTo] += amount;
-
             // Subtracting amount from the abilityPoints
             abilityPoints -= amount;
 
-            // setting optionPicked to false as to reuse it
-            optionPicked = false;
-            dynamic apply = false; // dynamic variable apply to false
+            bool apply = Scark.ast.Other.CASP.ApplyChanges(amount, addTo);
 
-            // Looping until the user picks Y/N
-            while (optionPicked == false)
+            if (!apply)
             {
-                // Asking if they wish to apply the changes
-                Console.Write("═══════════════════════════════════════════════════════════════════════════════════\nDo you wish to apply these changes: Add {0} to {1} leaving you with {2}\n[Y] Apply\n[N] Revert changes\n> ", amount, addTo, abilityPoints);
-
-                //Getting and processing their input to only 1 character
-                apply = Console.ReadLine().Replace("[", "").Replace("]", "").Replace(" ", "").Substring(0, 1).ToUpper();
-
-                switch (apply)
-                {
-                    case "Y": // If they picked yes
-                        optionPicked = true; // Exiting while loop
-                        apply = true; // Setting apply(dynamic) to true
-                        break;
-                    case "N": // If they picked no
-                        optionPicked = true; // Exiting while loop
-                        abilityPoints += amount; // Reversing changes
-                        AbilityScores[addTo] -= amount; // Reversing changes
-                        apply = false; // Setting apply(dynamic) to false
-                        break;
-                }
+                abilityPoints += amount; // Reversing changes
+                AbilityScores[addTo] -= amount; // Reversing changes
             }
-              
-            // Asking if they wish to use more ability points
-            Console.Write("═══════════════════════════════════════════════════════════════════════════════════\n                Do you wish to use more ability points?\n                [Y] Yes I do!            No Thanks! [N]\n> ");
-                
-            // Getting their input and processing it to 1 character
-            string inp = Console.ReadLine().Replace("[", "").Replace("]", "").Replace(" ", "").Substring(0, 1).ToUpper();
-            switch (inp)
-            {
-                case "Y": // if they did wish to use more
-                    break;
-                case "N": // if they didn't wish to use more
-                    return;
-                default:
-                    return;
-            }
+
+            if (!Scark.ast.Other.CASP.UseMorePoints())
+                return;
 
             chooseAbilityScorePoints();
         }
@@ -395,10 +322,8 @@ namespace Scark
 
         #region EOA Methods
         // EOA: Ease Of Access
-
         internal static void showCharInfoGUI() //╔ ═ ╗ ║ ╚ ╝
         {
-            Console.WriteLine("\nCharacter Information\n");
             Console.WriteLine(@"
 ╔════════╗  ══════════════════════
 ║   __   ║  IDENTIFICATION DETAIL    
@@ -407,19 +332,19 @@ namespace Scark
 ║ /    \ ║  Narsk Province, Scark.
 ╚════════╝  ══════════════════════
                      ");
-            Console.WriteLine($"NAME: {0}", Character.name);
-            Console.WriteLine($"CLASS ID: {0}", Character.characterClass);
+            Console.WriteLine($"NAME: {Character.name}");
+            Console.WriteLine($"CLASS ID: {Character.characterClass}");
             Console.WriteLine("═════════════════════════════════");
-            Console.WriteLine($"LEVEL: {0}", Character.level);
-            Console.WriteLine($"[" + Character.currentXP + "/" + Character.maxXP + "] needed to level up");
+            Console.WriteLine($"LEVEL: {Character.level}");
+            Console.WriteLine($"[{Character.currentXP}/{Character.maxXP}] needed to level up");
             Console.WriteLine("═════════════════════════════════");
-            Console.WriteLine($"ETHRYL BALANCE: {0}", Character.ethryl);
+            Console.WriteLine($"ETHRYL BALANCE: {Character.ethryl}");
             Console.WriteLine("═════════════════════════════════");
-            Console.WriteLine($"MAGIKA: [{0}/{1}]", Character.magika["current"], Character.magika["max"]);
-            Console.WriteLine($"HEALTH: [{0}/{1}]", Character.health["current"], Character.health["max"]);
+            Console.WriteLine($"MAGIKA: [{Character.magika["current"]}/{Character.magika["max"]}]");
+            Console.WriteLine($"HEALTH: [{Character.health["current"]}/{Character.health["max"]}]");
             Console.WriteLine("═════════════════════════════════");
-            Console.WriteLine($"UNUSED ABILITY POINTS: {0}", Character.abilityPoints);
-            Console.WriteLine($"CON: [{0}] CHA: [{1}] INT: [{2}] PER: [{3}] STR: [{4}] STE: [{5}]", Character.AbilityScores["constitution"], Character.AbilityScores["charisma"], Character.AbilityScores["intelligence"], Character.AbilityScores["perception"], Character.AbilityScores["strength"], Character.AbilityScores["stealth"]);
+            Console.WriteLine($"UNUSED ABILITY POINTS: {Character.abilityPoints}");
+            Console.WriteLine($"CON: [{Character.AbilityScores["constitution"]}] CHA: [{Character.AbilityScores["charisma"]}] INT: [{Character.AbilityScores["intelligence"]}] \nPER: [{Character.AbilityScores["perception"]}] STR: [{Character.AbilityScores["strength"]}] STE: [{Character.AbilityScores["stealth"]}]");
             Console.WriteLine("═════════════════════════════════");
         }
 
@@ -428,7 +353,7 @@ namespace Scark
         {
             // Writing dialouge: "Press any key to continue..."
             wd("Press any key to continue...", true);
-            Console.ReadKey(); // Getting user to press a key
+            waitFor(); // Getting user to press a key
             Console.Clear();
         }
 
@@ -485,6 +410,82 @@ namespace Scark
             }
         }
 
+        //Play a morbid death speel and end the game
+        public static void death(string reason)
+        {
+            //Slow things down so the death speel is more creepy
+            Character.Settings["SpeechSpeed"] = 2;
+
+            //Morbid death speel about the relativity of reality
+            Character.wd("Your eyes fall dark, and your eyelids grow heavy.");
+            Character.wd("Though not much can be said about the darkness,");
+            Character.wd("It does not exist anyway.");
+            Character.wd("Anymore at least.");
+            Character.wd("Not for you, at least.");
+            Character.wd("Others still breathe.");
+            Character.wd("Their hearts still pump.");
+            Character.wd("But for you, your body turns still.");
+            Character.wd("What is reality, if one cannot sense it?");
+            Character.wd("What can be so real if all is so abstract?");
+            Character.wd("Mortality is so literal.");
+            Character.wd("What is reality?");
+            Character.wd("What is consciousness?");
+            Character.wd("What is the meaning of it all?");
+            Character.wd("...");
+            Character.wd("Everything falls silent.");
+            Character.wd("But nothing falls silent, because, well, silence does not exist.");
+            Character.wd("For you anyway.");
+            Character.wd("You have moven on past reality.");
+            Character.wd("Almost.");
+            Character.wd("Yet, well, reality can't possibly exist no more. At least for the souls of the deceased.");
+            Character.wd("Or could it?");
+            Character.wd("A final beat.");
+            Character.wd("A final thought.");
+            Character.wd("You surrender to the void.");
+            Character.pressAnyKeyToContinue();
+            Character.Settings["SpeechSpeed"] = 4;
+            Character.wd($"{Character.name} died with a level of {Character.level} because {reason}.");
+            Character.wd($"A document was left in {Character.name}'s pocket.");
+            showCharInfoGUI();
+            Character.pressAnyKeyToContinue();
+            resetStats(); // reset character
+            ast.start.Menu start = new ast.start.Menu(); //initialise new menu
+            start.menuSeq(); // restart
+        }
+
+        // Reseting all character attributes
+        internal static void resetStats()
+        {
+            stage = 0;
+            ethryl = 0;
+            abilityPoints = 0;
+            level = 0;
+            currentXP = 0;
+            maxXP = 0;
+            name = "";
+            characterClass = "";
+            dev = false;
+            inventory = new List<int>();
+            AbilityScores = new Dictionary<string, int>()
+                {
+                    {"constitution", 0},
+                    {"charisma", 0 },
+                    {"intelligence", 0 },
+                    {"perception", 0 },
+                    {"strength", 0 },
+                    {"stealth", 0 },
+                };
+            health = new Dictionary<string, int>()
+                {
+                    {"max", 0},
+                    {"current", 0}
+                };
+            magika = new Dictionary<string, int>()
+                {
+                    {"max", 0},
+                    {"current", 0}
+                };
+        }
         #endregion
     }
 }

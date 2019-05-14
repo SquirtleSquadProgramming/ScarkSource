@@ -11,7 +11,7 @@ namespace Scark
 {
     class Program
     {
-        public readonly static string gameVersion = "v0.2.2-alpha"; // game version variable
+        public readonly static string gameVersion = "v0.2.3-alpha"; // game version variable
 
         const uint ENABLE_QUICK_EDIT = 0x0040;
 
@@ -54,6 +54,7 @@ namespace Scark
 
         public static void Main(string[] args)
         {
+            Console.Title = "Scark";
             Go();
 
             //Used To Remove Warnings 
@@ -63,7 +64,7 @@ namespace Scark
             start.menuSeq(); // starting the main function
 
             Console.Write("Press any key to exit...");
-            Console.Read();
+            Character.waitFor();
         }
     }
 }
