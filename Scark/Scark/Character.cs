@@ -432,6 +432,7 @@ namespace Scark
             Console.Clear();
         }
 
+
         // write text w/ delay (depending on admin or not)
         public static void wd(string text, bool writeNotLine = false, bool profanitiseIfRequired = true)
         {

@@ -63,7 +63,9 @@ namespace Scark.ast.start
             Character.wd("The rope is loosened around your neck as you are escorted into the \ndisappointed audience by Lord Wakehart.");
 
             Character.wd("[LORD WAKEHART] Hey kid, what's your name?");
-            Console.Write("> ");
+
+            Character.wd("> ", true);
+
             Character.name = Console.ReadLine();
 
             Character.awardXP(10);
@@ -107,7 +109,8 @@ Select a role by inputting it's respective number.
             bool userPickedOption = false;
             while (userPickedOption == false)
             {
-                Console.Write("\n> ");
+                Character.wd("> ", true);
+
                 Character.characterClass = Console.ReadLine();
                 switch (Character.characterClass)
                 {
