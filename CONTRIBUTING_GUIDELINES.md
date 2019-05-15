@@ -35,6 +35,7 @@ class ExampleClass
 {
   ...
 }
+// thisIsSomeCamelCase
 ```
 Most variables should follow Camel Case (ie. all words' letters first letters are capatilized EXCEPT first), thus;
 ```cs
