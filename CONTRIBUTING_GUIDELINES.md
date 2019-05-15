@@ -1,6 +1,8 @@
+# Contributing Rules
+
+Rules go here
 
 # Code Styling
-
 ### Curly brace style  
 Curly braces are preferred to be on their own line, thus;
 ```cs
