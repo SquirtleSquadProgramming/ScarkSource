@@ -73,7 +73,7 @@ namespace Scark.ast.start
                 case "2":
                 default:
                     Character.wd("[THORUL] That is alright.");
-                    Character.wd("[THORUL] Stay safe, friend.");
+                    Character.wd("[THORUL] Stay safe, my friend.");
                     Character.wd("You go back inside to have an early nap.");
                     Character.wd("Thorul and his crew departs the berth.");
                     break;
