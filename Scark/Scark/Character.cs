@@ -262,8 +262,19 @@ namespace Scark
             File.WriteAllText(fileURL, output);
         }
 
-        // Void for reading character saves
+        public static bool Loaded = false;
 
+        // Void for reading character saves
+        public static void load(string name, bool isFileUrl = false)
+        {
+            Character.Loaded = true;
+            string[] data = new string[14];
+            if (!isFileUrl)
+                name = Environment.CurrentDirectory + String.Format("\\{0}.save", name);
+            data = File.ReadAllLines(name);
+
+            //Todo add data proccessing
+        }
         #endregion
 
         #region Ability Scores

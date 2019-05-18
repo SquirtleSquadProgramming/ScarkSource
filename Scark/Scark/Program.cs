@@ -56,9 +56,14 @@ namespace Scark
         {
             Console.Title = "Scark";
             Go();
-
             //Used To Remove Warnings 
             Console.Clear();
+
+            // If the user started the program with a file
+            if (args.Length > 0)
+                if (args[0] != "")
+                    Character.load(args[0]);
+
             // converting the start main function to a non - static
             ast.start.Menu start = new ast.start.Menu();
             start.menuSeq(); // starting the main function

@@ -66,7 +66,8 @@ namespace Scark.ast.start
 
                 Character.revertColourScheme();
 
-                Console.Write("\n             New       Load      Settings    Exit\n           =[ 1 ]=    =[ 2 ]=    =[ 3 ]=   =[ x ]=\n> "); // Options
+                if (Character.Loaded) Console.Write("\n                 Start      Settings    Exit\n           =[ 1 ]=    =[ 2 ]=    =[ 3 ]=   =[ x ]=\n> "); // Options
+                else Console.Write("\n             New       Load      Settings    Exit\n           =[ 1 ]=    =[ 2 ]=    =[ 3 ]=   =[ x ]=\n> "); // Options
 
                 if (Character.dev == true) Console.Write("Dev mode enabled\n> "); // Saying if dev mode is enabled
 
