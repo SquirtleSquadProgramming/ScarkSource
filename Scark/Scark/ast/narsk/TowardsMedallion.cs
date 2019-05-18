@@ -50,6 +50,7 @@ namespace Scark.ast.narsk
             Character.pressAnyKeyToContinue();
 
             MedallionAntiComplex.barrelAndEnter.run();
+            Character.save(Character.name);
         }
 
         internal class MedallionAntiComplex
@@ -58,8 +59,7 @@ namespace Scark.ast.narsk
 
             public static bool mission()
             {
-                Loop = true;
-                while (Loop)
+                while (1 != 0)
                 {
                     Console.WriteLine(@"   _______________________
    \                      \
@@ -91,7 +91,7 @@ namespace Scark.ast.narsk
                             Character.wd("[OLD MAN] You best get there prior to nightfall,");
                             Character.wd("[OLD MAN] The chunkys loom out here when the night falls silent.");
                             Character.wd("[OLD MAN] Mead is half off as well, if it tickles your fancy.");
-                            break;
+                            return false;
                         case "2":
                             Character.wd("[OLD MAN] Oh my.");
                             Character.wd("[OLD MAN] You are a brave soul to say such a thing.");

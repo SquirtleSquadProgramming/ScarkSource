@@ -10,7 +10,7 @@ namespace Scark.ast.Other
     {
         private static bool optionPicked = false;
 
-        private static string abbreviationToName(string input)
+        public static string abbreviationToName(string input)
         {
             switch (input)
             {
@@ -113,7 +113,7 @@ namespace Scark.ast.Other
                 Console.Write("═══════════════════════════════════════════════════════════════════════════════════\nDo you wish to apply these changes: Add {0} to {1} leaving you with {2}\n[Y] Apply\n[N] Revert changes\n> ", amount, addTo, abilityPoints);
 
                 //Getting and processing their input to only 1 character
-                apply = Console.ReadLine().Replace("[", "").Replace("]", "").Replace(" ", "").Substring(0, 1).ToUpper();
+                apply = (Console.ReadLine() + " ").Replace("[", "").Replace("]", "").Replace(" ", "").Substring(0, 1).ToUpper();
 
                 switch (apply)
                 {

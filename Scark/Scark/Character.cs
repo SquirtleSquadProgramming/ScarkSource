@@ -1,12 +1,10 @@
-﻿#region Usings
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.IO;
-#endregion
 
 namespace Scark
 {
@@ -89,7 +87,7 @@ namespace Scark
                 name,
                 characterClass,
                 listToString,
-                Settings["SpeechSpeed"] + "," + Settings["Profanity"] + "," + Settings["ColourTheme"],
+                Settings["SpeechSpeed"] + "," + Settings["Profanity"] + "," + Settings["ColourTheme"] + "," + Settings["SpecialEffects"],
                 a["constitution"].ToString() + "," + a["charisma"].ToString() + "," +
                 a["intelligence"].ToString() + ","+ a["perception"].ToString() + "," +
                 a["strength"].ToString() + "," + a["stealth"].ToString()
@@ -226,17 +224,6 @@ namespace Scark
         }
         #endregion
 
-        // reverts all colours to normal (colour scheme dependent)
-        public static void revertColourScheme()
-        {
-            // If the users theme is dark
-            if (Character.Settings["ColourTheme"] == "dark")
-                Console.ForegroundColor = ConsoleColor.White; // Then set the text colour back to white
-            // If the users theme is light (ew gay)
-            else if (Character.Settings["ColourTheme"] == "light")
-                Console.ForegroundColor = ConsoleColor.Black; // Then set the text colour back to black
-        }
-
         #region Save Systems
         // Void for saving the character data
         public static void save(string name)
@@ -271,9 +258,48 @@ namespace Scark
             string[] data = new string[14];
             if (!isFileUrl)
                 name = Environment.CurrentDirectory + String.Format("\\{0}.save", name);
-            data = File.ReadAllLines(name);
+            data = File.ReadAllText(name).Split('§');
 
-            //Todo add data proccessing
+            if (data.Length != 12)
+                throw new InvalidDataException();
+
+            stage = Int32.Parse(data[0]);
+
+            ethryl = Int32.Parse(data[1]);
+
+            health["max"] = Int32.Parse(data[2].Split(',')[0]);
+            health["min"] = Int32.Parse(data[2].Split(',')[1]);
+
+            magika["max"] = Int32.Parse(data[3].Split(',')[0]);
+            magika["min"] = Int32.Parse(data[3].Split(',')[1]);
+
+            level = Int32.Parse(data[4]);
+            currentXP = Int32.Parse(data[5]);
+            maxXP = Int32.Parse(data[6]);
+
+            name = data[7];
+
+            characterClass = data[8];
+
+            inventory = new List<int>();
+            foreach (string x in data[9].Split(',').ToList())
+                inventory.Add(Int32.Parse(x));
+
+            int i = 0;
+            foreach (string x in new string[] { "SpeechSpeed", "Profanity", "ColourTheme", "SpecialEffects" })
+            {
+                Settings[x] = Int32.Parse(data[10].Split(',')[i]);
+                i++;
+            }
+
+            i = 0;
+            foreach (string x in new string[] { "CON", "CHA", "INT", "PER", "STR", "STE" })
+            {
+                AbilityScores[ast.Other.CASP.abbreviationToName(x)] = Int32.Parse(data[11].Split(',')[i]);
+                i++;
+            }
+
+            Character.showCharInfoGUI();
         }
         #endregion
 
@@ -333,6 +359,18 @@ namespace Scark
 
         #region EOA Methods
         // EOA: Ease Of Access
+
+        // reverts all colours to normal (colour scheme dependent)
+        public static void revertColourScheme()
+        {
+            // If the users theme is dark
+            if (Character.Settings["ColourTheme"] == "dark")
+                Console.ForegroundColor = ConsoleColor.White; // Then set the text colour back to white
+            // If the users theme is light (ew gay)
+            else if (Character.Settings["ColourTheme"] == "light")
+                Console.ForegroundColor = ConsoleColor.Black; // Then set the text colour back to black
+        }
+
         internal static void showCharInfoGUI() //╔ ═ ╗ ║ ╚ ╝
         {
             Console.WriteLine(@"

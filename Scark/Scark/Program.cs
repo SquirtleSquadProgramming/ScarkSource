@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using Scark.ast;
 using System.Runtime.InteropServices;
+using System.IO;
 
 namespace Scark
 {
@@ -61,8 +62,14 @@ namespace Scark
 
             // If the user started the program with a file
             if (args.Length > 0)
+            {
                 if (args[0] != "")
-                    Character.load(args[0]);
+                {
+                    Console.WriteLine(args[0]);
+                    Console.WriteLine(File.Exists(args[0]));
+                    //Character.load(args[0]);
+                }
+            }
 
             // converting the start main function to a non - static
             ast.start.Menu start = new ast.start.Menu();
