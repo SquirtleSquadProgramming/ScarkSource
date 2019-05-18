@@ -358,7 +358,6 @@ namespace Scark
             Console.Clear();
         }
 
-
         // write text w/ delay (depending on admin or not)
         public static void wd(string text, bool writeNotLine = false, bool profanitiseIfRequired = true)
         {
@@ -378,8 +377,7 @@ namespace Scark
             }
 
             // If to do Console.Write
-            if (writeNotLine) Console.Write(filteredText + "\n");
-
+            if (writeNotLine) Console.Write(filteredText);
             // or Console.WriteLine
             else Console.WriteLine(filteredText + "\n");
 
@@ -416,61 +414,97 @@ namespace Scark
         {
             //Slow things down so the death speel is more creepy
             Character.Settings["SpeechSpeed"] = 2;
-
-            //Morbid death speel about the relativity of reality
-            Character.wd("Your eyes fall dark, and your eyelids grow heavy.");
-            Character.wd("Though not much can be said about the darkness,");
-            Character.wd("It does not exist anyway.");
-            Character.wd("Anymore at least.");
-            Character.wd("Not for you, at least.");
-            Character.wd("Others still breathe.");
-            Character.wd("Their hearts still pump.");
-            Character.wd("Their bodies tirelessly work for the same thing.");
-            Character.wd("To live.");
-            Character.wd("But for you, your body turns still.");
-            Character.wd("What is reality, if one cannot sense it?");
-            Character.wd("What can be so real if all is so abstract?");
-            Character.wd("Mortality is so literal.");
-            Character.wd("What is reality?");
-            Character.wd("What is consciousness?");
-            Character.wd("What is the meaning of it all?");
-            Character.wd("...");
-            Character.wd("Everything falls silent.");
-            Character.wd("But nothing falls silent, because, well, silence does not exist.");
-            Character.wd("For you anyway.");
-            Character.wd("You have moven on past reality.");
-            Character.wd("Almost.");
-            Character.wd("Yet, well, reality can't possibly exist anymore. At least for the souls of the deceased.");
-            Character.wd("Or could it?");
-            Character.wd("A final beat.");
-            Character.wd("A final thought.");
-            Thread.Sleep(5000);
-            Character.wd("You surrender to the void.");
-            Character.pressAnyKeyToContinue();
-            Character.Settings["SpeechSpeed"] = 4;
-            Character.wd($"{Character.name} died with a level of {Character.level} because {reason}.");
-            Character.wd($"A document was left in {Character.name}'s pocket.");
+            CharacterDeath.Speel(reason);
             showCharInfoGUI();
             Character.pressAnyKeyToContinue();
-            resetStats(); // reset character
-            ast.start.Menu start = new ast.start.Menu(); //initialise new menu
-            start.menuSeq(); // restart
+            if (CharacterDeath.lastCheckpoint())
+            {
+                CharacterDeath.resetStats(); // reset character
+                ast.start.Menu start = new ast.start.Menu(); //initialise new menu
+                start.menuSeq(); // restart
+            }
+            else
+            {
+                new ast.story().Run();
+            }
         }
 
-        // Reseting all character attributes
-        internal static void resetStats()
+        internal static class CharacterDeath
         {
-            stage = 0;
-            ethryl = 0;
-            abilityPoints = 0;
-            level = 0;
-            currentXP = 0;
-            maxXP = 0;
-            name = "";
-            characterClass = "";
-            dev = false;
-            inventory = new List<int>();
-            AbilityScores = new Dictionary<string, int>()
+            // Checking if user wishes to go to last checkpoint
+            internal static bool lastCheckpoint()
+            {
+                while (1 != 0)
+                {
+                    Character.wd("Do you wish to restart from the previous checkpoint?\n> ", true);
+                    switch ((Console.ReadLine().ToUpper() + " ").Substring(0,1))
+                    {
+                        case "Y":
+                            return false;
+                        case "N":
+                            return true;
+                        default:
+                            Console.WriteLine("That is not an option!");
+                            break;
+                    }
+                }
+                throw new NotImplementedException();
+            }
+
+            internal static void Speel(string reason)
+            {
+                //Morbid death speel about the relativity of reality
+                Character.wd("Your eyes fall dark, and your eyelids grow heavy.");
+                Character.wd("Though not much can be said about the darkness,");
+                Character.wd("It does not exist anyway.");
+                Character.wd("Anymore at least.");
+                Character.wd("Not for you, at least.");
+                Character.wd("Others still breathe.");
+                Character.wd("Their hearts still pump.");
+                Character.wd("Their bodies tirelessly work for the same thing.");
+                Character.wd("To live.");
+                Character.wd("But for you, your body turns still.");
+                Character.wd("What is reality, if one cannot sense it?");
+                Character.wd("What can be so real if all is so abstract?");
+                Character.wd("Mortality is so literal.");
+                Character.wd("What is reality?");
+                Character.wd("What is consciousness?");
+                Character.wd("What is the meaning of it all?");
+                Character.wd("...");
+                Character.wd("Everything falls silent.");
+                Character.wd("But nothing falls silent, because, well, silence does not exist.");
+                Character.wd("For you anyway.");
+                Character.wd("You have moven on past reality.");
+                Character.wd("Almost.");
+                Character.wd("Yet, well, reality can't possibly exist anymore. At least for the souls of the deceased.");
+                Character.wd("Or could it?");
+                Character.wd("A final beat.");
+                Character.wd("A final thought.");
+                Thread.Sleep(5000);
+                Character.wd("You surrender to the void.");
+                Character.pressAnyKeyToContinue();
+                Character.Settings["SpeechSpeed"] = 4;
+                Character.wd($"{Character.name} died with a level of {Character.level} because {reason}.");
+                Character.wd($"A document was left in {Character.name}'s pocket.");
+            }
+
+            // Reseting all character attributes
+            internal static void resetStats()
+            {
+                string characterSaveFile = "";
+                if (File.Exists(characterSaveFile))
+                    File.Delete(characterSaveFile);
+                stage = 0;
+                ethryl = 0;
+                abilityPoints = 0;
+                level = 0;
+                currentXP = 0;
+                maxXP = 0;
+                name = "";
+                characterClass = "";
+                dev = false;
+                inventory = new List<int>();
+                AbilityScores = new Dictionary<string, int>()
                 {
                     {"constitution", 0},
                     {"charisma", 0 },
@@ -479,16 +513,17 @@ namespace Scark
                     {"strength", 0 },
                     {"stealth", 0 },
                 };
-            health = new Dictionary<string, int>()
+                health = new Dictionary<string, int>()
                 {
                     {"max", 0},
                     {"current", 0}
                 };
-            magika = new Dictionary<string, int>()
+                magika = new Dictionary<string, int>()
                 {
                     {"max", 0},
                     {"current", 0}
                 };
+            }
         }
         #endregion
     }

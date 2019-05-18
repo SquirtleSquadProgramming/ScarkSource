@@ -109,7 +109,7 @@ Select a role by inputting it's respective number.
             bool userPickedOption = false;
             while (userPickedOption == false)
             {
-                Character.wd("> ", true);
+                Console.Write("> ");
 
                 Character.characterClass = Console.ReadLine();
                 switch (Character.characterClass)
@@ -119,7 +119,6 @@ Select a role by inputting it's respective number.
                         Character.inventory.Add(ItemID.ConvertStringToID("Iron Shortsword"));
                         userPickedOption = true;
                         Thread.Sleep(1500);
-
                         Character.pressAnyKeyToContinue();
 
                         assignAbilityScoreIntro();
