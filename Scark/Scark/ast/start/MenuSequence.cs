@@ -120,6 +120,7 @@ namespace Scark.ast.start
                         case "1": //Continue
                             Console.Clear();
                             Character.showCharInfoGUI();
+                            Character.showInventory();
                             Character.pressAnyKeyToContinue();
                             new ast.story().Run();
                             return true;

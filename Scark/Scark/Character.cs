@@ -94,7 +94,7 @@ namespace Scark
             };
         }
 
-        internal static void showCharInfoGUI() //╔ ═ ╗ ║ ╚ ╝
+        public static void showCharInfoGUI() //╔ ═ ╗ ║ ╚ ╝
         {
             Console.WriteLine(@"
 ╔════════╗  ══════════════════════
@@ -117,8 +117,12 @@ namespace Scark
             Console.WriteLine("═════════════════════════════════");
             Console.WriteLine($"UNUSED ABILITY POINTS: {Character.abilityPoints}");
             Console.WriteLine($"CON: [{Character.AbilityScores["constitution"]}] CHA: [{Character.AbilityScores["charisma"]}] INT: [{Character.AbilityScores["intelligence"]}] \nPER: [{Character.AbilityScores["perception"]}] STR: [{Character.AbilityScores["strength"]}] STE: [{Character.AbilityScores["stealth"]}]");
-            Console.WriteLine("═════════════════════════════════");
-            Console.WriteLine("INVENTORY:");
+        }
+
+        public static void showInventory()
+        {
+            Console.WriteLine("\n═════════════════════════════════");
+            Console.WriteLine($"{Character.name}'s INVENTORY:");
             if (Character.inventory.Count() > 0)
                 foreach (int x in Character.inventory)
                     Console.WriteLine(ItemID.ConvertIDToString(x));
