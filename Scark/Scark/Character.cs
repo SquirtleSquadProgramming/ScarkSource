@@ -94,6 +94,37 @@ namespace Scark
             };
         }
 
+        internal static void showCharInfoGUI() //╔ ═ ╗ ║ ╚ ╝
+        {
+            Console.WriteLine(@"
+╔════════╗  ══════════════════════
+║   __   ║  IDENTIFICATION DETAIL    
+║  /..\  ║  ══════════════════════
+║  \  /  ║  Issuing authority of 
+║ /    \ ║  Narsk Province, Scark.
+╚════════╝  ══════════════════════
+                     ");
+            Console.WriteLine($"NAME: {Character.name}");
+            Console.WriteLine($"CLASS ID: {Character.characterClass}");
+            Console.WriteLine("═════════════════════════════════");
+            Console.WriteLine($"LEVEL: {Character.level}");
+            Console.WriteLine($"XP: [{Character.currentXP}/{Character.maxXP}]");
+            Console.WriteLine("═════════════════════════════════");
+            Console.WriteLine($"ETHRYL BALANCE: {Character.ethryl}");
+            Console.WriteLine("═════════════════════════════════");
+            Console.WriteLine($"MAGIKA: [{Character.magika["current"]}/{Character.magika["max"]}]");
+            Console.WriteLine($"HEALTH: [{Character.health["current"]}/{Character.health["max"]}]");
+            Console.WriteLine("═════════════════════════════════");
+            Console.WriteLine($"UNUSED ABILITY POINTS: {Character.abilityPoints}");
+            Console.WriteLine($"CON: [{Character.AbilityScores["constitution"]}] CHA: [{Character.AbilityScores["charisma"]}] INT: [{Character.AbilityScores["intelligence"]}] \nPER: [{Character.AbilityScores["perception"]}] STR: [{Character.AbilityScores["strength"]}] STE: [{Character.AbilityScores["stealth"]}]");
+            Console.WriteLine("═════════════════════════════════");
+            Console.WriteLine("INVENTORY:");
+            if (Character.inventory.Count() > 0)
+                foreach (int x in Character.inventory)
+                    Console.WriteLine(ItemID.ConvertIDToString(x));
+            else Console.WriteLine("Empty");
+        }
+
         #endregion
 
         #region Adding Attributes
@@ -258,49 +289,45 @@ namespace Scark
             string[] data = new string[14];
             if (!isFileUrl)
                 name = Environment.CurrentDirectory + String.Format("\\{0}.save", name);
-            Console.WriteLine(name);
-            Console.ReadKey();
             data = File.ReadAllText(name).Split('§');
 
             if (data.Length != 12)
                 throw new InvalidDataException();
 
-            stage = Int32.Parse(data[0]);
+            Character.stage = Int32.Parse(data[0]);
 
-            ethryl = Int32.Parse(data[1]);
+            Character.ethryl = Int32.Parse(data[1]);
 
-            health["max"] = Int32.Parse(data[2].Split(',')[0]);
-            health["min"] = Int32.Parse(data[2].Split(',')[1]);
+            Character.health["max"] = Int32.Parse(data[2].Split(',')[0]);
+            Character.health["min"] = Int32.Parse(data[2].Split(',')[1]);
 
-            magika["max"] = Int32.Parse(data[3].Split(',')[0]);
-            magika["min"] = Int32.Parse(data[3].Split(',')[1]);
+            Character.magika["max"] = Int32.Parse(data[3].Split(',')[0]);
+            Character.magika["min"] = Int32.Parse(data[3].Split(',')[1]);
 
-            level = Int32.Parse(data[4]);
-            currentXP = Int32.Parse(data[5]);
-            maxXP = Int32.Parse(data[6]);
+            Character.level = Int32.Parse(data[4]);
+            Character.currentXP = Int32.Parse(data[5]);
+            Character.maxXP = Int32.Parse(data[6]);
 
-            name = data[7];
+            Character.name = data[7];
 
-            characterClass = data[8];
+            Character.characterClass = data[8];
 
-            inventory = new List<int>();
+            Character.inventory = new List<int>();
             foreach (string x in data[9].Split(',').ToList())
-                inventory.Add(Int32.Parse(x));
-           
-            Settings["SpeechSpeed"] = Int32.Parse(data[10].Split(',')[0]);
-            Settings["Profanity"] = Boolean.Parse(data[10].Split(',')[1]);
-            Settings["ColourTheme"] = data[10].Split(',')[2];
-            Settings["SpecialEffects"] = Boolean.Parse(data[10].Split(',')[3]);
+                Character.inventory.Add(Int32.Parse(x));
+
+            Character.Settings["SpeechSpeed"] = Int32.Parse(data[10].Split(',')[0]);
+            Character.Settings["Profanity"] = Boolean.Parse(data[10].Split(',')[1]);
+            Character.Settings["ColourTheme"] = data[10].Split(',')[2];
+            Character.Settings["SpecialEffects"] = Boolean.Parse(data[10].Split(',')[3]);
 
             int i = 0;
             foreach (string x in new string[] { "CON", "CHA", "INT", "PER", "STR", "STE" })
             {
-                AbilityScores[ast.Other.CASP.abbreviationToName(x)] = Int32.Parse(data[11].Split(',')[i]);
+                Character.AbilityScores[ast.Other.CASP.abbreviationToName(x)] = Int32.Parse(data[11].Split(',')[i]);
                 i++;
             }
-
-            Character.showCharInfoGUI();
-            Character.pressAnyKeyToContinue();
+            Console.WriteLine(new List<int>().Count());
         }
         #endregion
 
@@ -370,32 +397,6 @@ namespace Scark
             // If the users theme is light (ew gay)
             else if (Character.Settings["ColourTheme"] == "light")
                 Console.ForegroundColor = ConsoleColor.Black; // Then set the text colour back to black
-        }
-
-        internal static void showCharInfoGUI() //╔ ═ ╗ ║ ╚ ╝
-        {
-            Console.WriteLine(@"
-╔════════╗  ══════════════════════
-║   __   ║  IDENTIFICATION DETAIL    
-║  /..\  ║  ══════════════════════
-║  \  /  ║  Issuing authority of 
-║ /    \ ║  Narsk Province, Scark.
-╚════════╝  ══════════════════════
-                     ");
-            Console.WriteLine($"NAME: {Character.name}");
-            Console.WriteLine($"CLASS ID: {Character.characterClass}");
-            Console.WriteLine("═════════════════════════════════");
-            Console.WriteLine($"LEVEL: {Character.level}");
-            Console.WriteLine($"[{Character.currentXP}/{Character.maxXP}] needed to level up");
-            Console.WriteLine("═════════════════════════════════");
-            Console.WriteLine($"ETHRYL BALANCE: {Character.ethryl}");
-            Console.WriteLine("═════════════════════════════════");
-            Console.WriteLine($"MAGIKA: [{Character.magika["current"]}/{Character.magika["max"]}]");
-            Console.WriteLine($"HEALTH: [{Character.health["current"]}/{Character.health["max"]}]");
-            Console.WriteLine("═════════════════════════════════");
-            Console.WriteLine($"UNUSED ABILITY POINTS: {Character.abilityPoints}");
-            Console.WriteLine($"CON: [{Character.AbilityScores["constitution"]}] CHA: [{Character.AbilityScores["charisma"]}] INT: [{Character.AbilityScores["intelligence"]}] \nPER: [{Character.AbilityScores["perception"]}] STR: [{Character.AbilityScores["strength"]}] STE: [{Character.AbilityScores["stealth"]}]");
-            Console.WriteLine("═════════════════════════════════");
         }
 
         // Any key to continue
