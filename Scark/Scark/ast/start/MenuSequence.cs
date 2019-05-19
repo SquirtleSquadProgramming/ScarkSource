@@ -74,7 +74,7 @@ namespace Scark.ast.start
                 Console.WriteLine("      ███████                                         █    \n    █       ███                                     ██  \n   █         ██                                     ██\n   ██        █                                      ██ \n    ███                                ███  ████    ██\n   ██ ███           ████       ████     ████ ████ █ ██  ███  \n    ███ ███        █ ███  █   █ ███  █   ██   ████  ██ █ ███\n      ███ ███     █   ████   █   ████    ██         ███   █ \n        ███ ███  ██         ██    ██     ██         ██   █ \n          ██ ███ ██         ██    ██     ██         ██  █\n           ██ ██ ██         ██    ██     ██         ██ ██ \n            █ █  ██         ██    ██     ██         ██████ \n  ███        █   ███     █  ██    ██     ███        ██  ███ \n █  █████████     ███████    █████ ██     ███       ██   ███ █\n█     █████        █████      ███   ██               ██   ███\n█      \n ██ ");
                 Character.revertColourScheme();
 
-                if (Character.Loaded) Console.Write("\n                 Start      Settings    Exit\n           =[ 1 ]=    =[ 2 ]=    =[ 3 ]=   =[ x ]=\n> "); // Options
+                if (Character.Loaded) Console.Write("\n               Start     Settings    Exit\n              =[ 1 ]=    =[ 3 ]=   =[ x ]=\n> "); // Options
                 else Console.Write("\n             New       Load      Settings    Exit\n           =[ 1 ]=    =[ 2 ]=    =[ 3 ]=   =[ x ]=\n> "); // Options
 
                 if (Character.dev == true) Console.Write("Dev mode enabled\n> "); // Saying if dev mode is enabled
@@ -82,6 +82,7 @@ namespace Scark.ast.start
 
             internal static bool run(string option)
             {
+                if (Character.Loaded) return runIfLoaded(option);
                 switch (option)
                 {
                     case "1": //New Game
@@ -107,6 +108,29 @@ namespace Scark.ast.start
                         return false;
                 }
                 throw new NotImplementedException();
+            }
+
+            internal static bool runIfLoaded(string option)
+            {
+                switch (option)
+                {
+                    case "1": //New Game
+                        new ast.story().Run();
+                        return true;
+                    case "dev": //Dev mode (hidden)
+                        if (Character.dev == false) Character.dev = true;
+                        else Character.dev = false;
+                        return false;
+                    case "2": //Settings
+                        new SettingsMenu().run();
+                        return false;
+                    case "x": //Exit
+                        Character.stage = -1;
+                        return true;
+                    default: //for when they try to be smartasses
+                        Console.WriteLine("Please input a valid number!");
+                        return false;
+                }
             }
         }
     }

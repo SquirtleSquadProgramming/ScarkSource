@@ -258,6 +258,8 @@ namespace Scark
             string[] data = new string[14];
             if (!isFileUrl)
                 name = Environment.CurrentDirectory + String.Format("\\{0}.save", name);
+            Console.WriteLine(name);
+            Console.ReadKey();
             data = File.ReadAllText(name).Split('§');
 
             if (data.Length != 12)
@@ -284,15 +286,13 @@ namespace Scark
             inventory = new List<int>();
             foreach (string x in data[9].Split(',').ToList())
                 inventory.Add(Int32.Parse(x));
+           
+            Settings["SpeechSpeed"] = Int32.Parse(data[10].Split(',')[0]);
+            Settings["Profanity"] = Boolean.Parse(data[10].Split(',')[1]);
+            Settings["ColourTheme"] = data[10].Split(',')[2];
+            Settings["SpecialEffects"] = Boolean.Parse(data[10].Split(',')[3]);
 
             int i = 0;
-            foreach (string x in new string[] { "SpeechSpeed", "Profanity", "ColourTheme", "SpecialEffects" })
-            {
-                Settings[x] = Int32.Parse(data[10].Split(',')[i]);
-                i++;
-            }
-
-            i = 0;
             foreach (string x in new string[] { "CON", "CHA", "INT", "PER", "STR", "STE" })
             {
                 AbilityScores[ast.Other.CASP.abbreviationToName(x)] = Int32.Parse(data[11].Split(',')[i]);
@@ -300,6 +300,7 @@ namespace Scark
             }
 
             Character.showCharInfoGUI();
+            Character.pressAnyKeyToContinue();
         }
         #endregion
 
