@@ -51,6 +51,33 @@ namespace Scark.ast.narsk
 
             MedallionAntiComplex.barrelAndEnter.run();
             Character.save(Character.name);
+
+            Character.wd("[LOONIE] Huh, boys look who we 'av 'ere");
+            Character.wd("[LOONIE] A lil boatie!");
+            Character.wd("[LOONIE] How bouts you get your ass out of ere");
+            Character.wd("A group of bar thugs gather around you.. ");
+            Character.wd("[LOONIE] What do ye 'av on you?");
+            Character.wd("The thug shoves you onto the ground.. ");
+            Character.wd("[LOONIE] Not a talker aye? Well it aint matter matter to me.");
+            Character.wd("[LOONIE] I want yer ethryl and any other dazzle you may 'av");
+            Character.wd("[LOONIE] Make it choppy before I send my elbow up yer ass, and I aint talking pleasure.");
+            Character.pressAnyKeyToContinue();
+
+            if (Character.rollCheck("charisma", 10))
+            {
+                Character.wd("You stand back up and confront the thug.");
+                Character.wd("After noticing the ring on his hand, you talk to him about what his wife would think of his opression.");
+                Character.wd("He calms down and moves to the side, signalling the rest of the gang off.");
+                Character.wd("You were saved by your charisma this time.");
+            }
+            else
+            {
+                Character.wd("You try talking the thug out of this, but your charisma fails you..");
+                if (MedallionAntiComplex.mugging())
+                    return;
+            }
+                
+
         }
 
         internal class MedallionAntiComplex
@@ -225,6 +252,22 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
                         }
                     }
                 }
+            }
+            public static bool mugging()
+            {
+                
+                Character.wd("[LOONIE] Gimme it all!");
+                Character.wd("You reach for your pocket.. \n");
+                while (true)
+                {
+                    Character.wd($"You have {Character.ethryl} ethryl. You can either give him your entire worth, or lie and give him only half.");
+                    string response = Console.ReadLine();
+                    switch (response)
+                    {
+
+                    }
+                }
+                return false;
             }
         }
     }
