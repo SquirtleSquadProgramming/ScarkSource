@@ -258,16 +258,18 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
             }
             public static bool mugging()
             {
-                
                 Character.wd("[LOONIE] Gimme it all!");
                 Character.wd("You reach for your pocket.. \n");
                 Character.wd($"You have {Character.ethryl} ethryl. You can either give him your entire worth, or lie and give him only half.");
                 Character.wd("[1] Surrender all of your ethryl\n[2] Lie and give him only half of it.");
                 Console.Write("> ");
-                string response = Console.ReadLine();
-                switch (response)
+
+                switch (Console.ReadLine())
                 {
                     default:
+                        Character.awardEthryl(Character.ethryl * -1);
+                        Character.wd("They didn't accept your answer and they steal your leather wallet anyway.");
+                        return false;
                     case "1":
                         Character.awardEthryl(Character.ethryl * -1);
                         Character.wd("You break the bank, and hand over your leather wallet to the thug.");

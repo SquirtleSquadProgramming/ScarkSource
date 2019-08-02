@@ -27,7 +27,7 @@ namespace Scark
         public static bool dev = false; // If dev
 
         // List for inventory
-        public static List<int /* int is for item ID */> inventory = new List<int>();
+        public static List<int> inventory = new List<int>(); /* int is for item ID */
 
         // Dictionary for settings, accessed by setting in []: eg. Character.Settings["SpeechSpeed"]
         public static Dictionary<string, dynamic> Settings = new Dictionary<string, dynamic>()
