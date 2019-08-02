@@ -135,6 +135,7 @@ namespace Scark
         // awards ethyrl to the player
         public static void awardEthryl(int amount)
         {
+            bool sign = amount > 0;
             // If the user has special effects enabled
             if (Character.Settings["SpecialEffects"])
             {
@@ -146,8 +147,11 @@ namespace Scark
                     Console.ForegroundColor = ConsoleColor.DarkMagenta; // Setting the colour to a dark magenta
             }
             
-            // Writing: "+ * Ethryl" * amount of ethryl to console
-            Console.WriteLine("+ " + amount.ToString() + " Ethryl\n");
+            // Printing text feedback
+            if (sign)
+                Console.WriteLine("+ " + amount.ToString() + " Ethryl\n");
+            else if (!sign)
+                Console.WriteLine("- " + (amount * -1).ToString() + " Ethryl\n");
 
             // Adding the ethryl to the player
             Character.ethryl = Character.ethryl + amount;

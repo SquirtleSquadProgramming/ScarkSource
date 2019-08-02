@@ -51,6 +51,36 @@ namespace Scark.ast.narsk
 
             MedallionAntiComplex.barrelAndEnter.run();
             Character.save(Character.name);
+
+            Character.wd("[LOONIE] Huh, boys look who we 'av 'ere");
+            Character.wd("[LOONIE] A lil boatie!");
+            Character.wd("[LOONIE] How bouts you get your ass out of ere");
+            Character.wd("A group of bar thugs gather around you.. ");
+            Character.wd("[LOONIE] What do ye 'av on you?");
+            Character.wd("The thug shoves you onto the ground.. ");
+            Character.wd("[LOONIE] Not a talker aye? Well it aint matter matter to me.");
+            Character.wd("[LOONIE] I want yer ethryl and any other dazzle you may 'av");
+            Character.wd("[LOONIE] Make it choppy before I send my elbow up yer as.");
+            Character.pressAnyKeyToContinue();
+
+            if (Character.rollCheck("charisma", 14))
+            {
+                Character.wd("You stand back up and confront the thug.");
+                Character.wd("After noticing the ring on his hand, you talk to him about what his wife would think of his opression.");
+                Character.wd("He calms down and moves to the side, signalling the rest of the gang off.");
+                Character.wd("You were saved by your charisma this time.");
+            }
+            else
+            {
+                Character.wd("You try talking the thug out of this, but your charisma fails you..");
+                if (MedallionAntiComplex.mugging())
+                    return;
+            }
+            Character.wd("You scurry past the thugs to the front of the bar.");
+            Character.wd("[ORPHEUS] He-llo fine chap!");
+            Character.wd("[ORPHEUS] Wh-at might bring you here?");
+
+
         }
 
         internal class MedallionAntiComplex
@@ -224,6 +254,47 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
                             Console.ReadKey();
                         }
                     }
+                }
+            }
+            public static bool mugging()
+            {
+                
+                Character.wd("[LOONIE] Gimme it all!");
+                Character.wd("You reach for your pocket.. \n");
+                Character.wd($"You have {Character.ethryl} ethryl. You can either give him your entire worth, or lie and give him only half.");
+                Character.wd("[1] Surrender all of your ethryl\n[2] Lie and give him only half of it.");
+                Console.Write("> ");
+                string response = Console.ReadLine();
+                switch (response)
+                {
+                    default:
+                    case "1":
+                        Character.awardEthryl(Character.ethryl * -1);
+                        Character.wd("You break the bank, and hand over your leather wallet to the thug.");
+                        return false;
+                    case "2":
+                        Character.awardEthryl((Character.ethryl / 2) * -1);
+                        Character.wd("You reach for your wallet, but take only a few ethryl.");
+                        Character.wd("[LOONIE] Is that all you av?");
+                        if (Character.rollCheck("stealth", 5))
+                        {
+                            Character.wd("The thug looks at you suspiciously.");
+                            Character.wd("You stare back with a blank poker face, your stomach in knots.");
+                            Character.wd("Your stealth saved you this time.");
+                            return false;
+                        }
+                        else
+                        {
+                            Character.wd("The thug stares at you.");
+                            Character.wd("In nervous shock your hand trembles and the thug leans closer.");
+                            Character.wd("[LOONIE] You look a lil pale there kiddo.");
+                            Character.wd("[LOONIE] How abouts you give me your whole wallet.");
+                            Character.wd("The thug's companions shuffle around, and you feel a cold pain around the side of your head.");
+                            Character.wd("[LOONIE] Hehehe, some people just don't leeaar--");
+                            Character.wd("Darkness.");
+                                Character.death("you tried to con a thug in his own game.");
+                                return true;
+                        }
                 }
             }
         }
