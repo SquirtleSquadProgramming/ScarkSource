@@ -72,7 +72,7 @@ namespace Scark.ast.start
                 if (Character.Settings["SpecialEffects"])Console.ForegroundColor = colours[chosenIndex];
 
                 Console.WriteLine("      ███████                                         █    \n    █       ███                                     ██  \n   █         ██                                     ██\n   ██        █                                      ██ \n    ███                                ███  ████    ██\n   ██ ███           ████       ████     ████ ████ █ ██  ███  \n    ███ ███        █ ███  █   █ ███  █   ██   ████  ██ █ ███\n      ███ ███     █   ████   █   ████    ██         ███   █ \n        ███ ███  ██         ██    ██     ██         ██   █ \n          ██ ███ ██         ██    ██     ██         ██  █\n           ██ ██ ██         ██    ██     ██         ██ ██ \n            █ █  ██         ██    ██     ██         ██████ \n  ███        █   ███     █  ██    ██     ███        ██  ███ \n █  █████████     ███████    █████ ██     ███       ██   ███ █\n█     █████        █████      ███   ██               ██   ███\n█      \n ██ ");
-                Character.revertColourScheme();
+                EOA.revertColourScheme();
 
                 if (Character.Loaded) Console.Write("\n               Start       Options      Close\n              =[ 1 ]=      =[ 2 ]=     =[ x ]=\n> "); // Options
                 else Console.Write("\n             New       Load      Settings    Exit\n           =[ 1 ]=    =[ 2 ]=    =[ 3 ]=   =[ x ]=\n> "); // Options
@@ -95,7 +95,7 @@ namespace Scark.ast.start
                     case "2": //Load character (doesn't work yet)
                         LoadMenu.GUI();
                         Console.WriteLine("Loaded!");
-                        Character.pressAnyKeyToContinue();
+                        EOA.pressAnyKeyToContinue();
                         Console.Clear();
                         return false;
                     case "3": //Settings
@@ -121,7 +121,7 @@ namespace Scark.ast.start
                             Console.Clear();
                             Character.showCharInfoGUI();
                             Character.showInventory();
-                            Character.pressAnyKeyToContinue();
+                            EOA.pressAnyKeyToContinue();
                             new ast.story().Run();
                             return true;
                         case "dev": //Dev mode (hidden)
@@ -149,7 +149,7 @@ namespace Scark.ast.start
                         string name = Console.ReadLine();
                         if (System.IO.File.Exists(Environment.CurrentDirectory + "\\" + name + ".save"))
                         {
-                            Character.load(name, false);
+                            Character.Load(name, false);
                             return;
                         }
                         else Console.WriteLine("There is no save file with that name that can be found!\nPlease ensure that the file is in the same file as this .exe!");

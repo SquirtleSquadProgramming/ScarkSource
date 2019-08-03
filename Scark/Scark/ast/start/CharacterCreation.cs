@@ -19,17 +19,17 @@ namespace Scark.ast.start
         public void NewPlayer()
         {
             //Story Line
-            Character.wd("You carefully aim your crossbow directly at the King's chest.");
+            EOA.wd("You carefully aim your crossbow directly at the King's chest.");
                 
-            Character.wd("A bloodstained crossbow loaded with a lead bolt sits in your \nsweaty hand as you observe the speech from a ramshackle building.");
+            EOA.wd("A bloodstained crossbow loaded with a lead bolt sits in your \nsweaty hand as you observe the speech from a ramshackle building.");
 
-            Character.wd("Your finger pulls the trigger.");
+            EOA.wd("Your finger pulls the trigger.");
                 
-            Character.wd("You hear an instant uproar as the King's body topples down the \nstone stairs.");
+            EOA.wd("You hear an instant uproar as the King's body topples down the \nstone stairs.");
                 
-            Character.wd("In the midst of all the confusion, you begin running.");
+            EOA.wd("In the midst of all the confusion, you begin running.");
                 
-            Character.wd("Suddenly, a baton bludgeons you from behind.");
+            EOA.wd("Suddenly, a baton bludgeons you from behind.");
             if (!Character.dev)
             {
                 Thread.Sleep(2000);
@@ -37,69 +37,69 @@ namespace Scark.ast.start
                 Thread.Sleep(3000);
             }
 
-            Character.wd("You wake up in a mysterious place and realize where you are...");
+            EOA.wd("You wake up in a mysterious place and realize where you are...");
                 
-            Character.wd("You have been arrested for treason to the king. You are walked up \nto the gallows to which you will be executed.");
+            EOA.wd("You have been arrested for treason to the king. You are walked up \nto the gallows to which you will be executed.");
                 
-            Character.wd("The executioner firms his grasp around the lever. Before he pulls \nthe lever he mumbles a quick prayer.");
+            EOA.wd("The executioner firms his grasp around the lever. Before he pulls \nthe lever he mumbles a quick prayer.");
                
-            Character.wd("[EXECUTIONER] Does anybody object to this her' hanging?");
+            EOA.wd("[EXECUTIONER] Does anybody object to this her' hanging?");
                 
-            Character.wd("Nothing but silence comes from the crowd.");
+            EOA.wd("Nothing but silence comes from the crowd.");
 
-            Character.wd("[TOWNFOLK] Just bloody pull the lever already!");
+            EOA.wd("[TOWNFOLK] Just bloody pull the lever already!");
 
-            Character.wd("As the executioner moves his hand towards the lever, a voice shouts \nout.");
+            EOA.wd("As the executioner moves his hand towards the lever, a voice shouts \nout.");
                 
-            Character.wd("[VOICE] I object!");
+            EOA.wd("[VOICE] I object!");
                 
-            Character.wd("The executioner's eyes fix upon the man who called.");
+            EOA.wd("The executioner's eyes fix upon the man who called.");
                 
-            Character.wd("[EXECUTIONER] Arr, an' who d'ya think you ar'?");
+            EOA.wd("[EXECUTIONER] Arr, an' who d'ya think you ar'?");
                 
-            Character.wd("[VOICE] Lord Wakehart, the explorer.");
+            EOA.wd("[VOICE] Lord Wakehart, the explorer.");
                 
-            Character.wd("[LORD WAKEHART] I wish to pardon this kid.");
+            EOA.wd("[LORD WAKEHART] I wish to pardon this kid.");
                 
-            Character.wd("The executioner has no choice but to obey the laws, Wakehart's lordship \ngrants him power to pardon anyone he wishes.");
+            EOA.wd("The executioner has no choice but to obey the laws, Wakehart's lordship \ngrants him power to pardon anyone he wishes.");
                 
-            Character.wd("The rope is loosened around your neck as you are escorted into the \ndisappointed audience by Lord Wakehart.");
+            EOA.wd("The rope is loosened around your neck as you are escorted into the \ndisappointed audience by Lord Wakehart.");
 
-            Character.wd("[LORD WAKEHART] Hey kid, what's your name?");
+            EOA.wd("[LORD WAKEHART] Hey kid, what's your name?");
 
-            Character.wd("> ", true);
+            EOA.wd("> ", true);
 
             Character.name = Console.ReadLine();
 
             Character.awardXP(10);
 
-            Character.wd($"[LORD WAKEHART] Hey, {Character.name}. Don't think I'm pardoning \nyou for nothing, nah.");
+            EOA.wd($"[LORD WAKEHART] Hey, {Character.name}. Don't think I'm pardoning \nyou for nothing, nah.");
                 
-            Character.wd("[LORD WAKEHART] I've a quest for you, and if you succeed, you'll be \na very rich man.");
+            EOA.wd("[LORD WAKEHART] I've a quest for you, and if you succeed, you'll be \na very rich man.");
                 
-            Character.wd("[LORD WAKEHART] Ha ha, I'm guessing you want to know what this quest \ninvolves!");
+            EOA.wd("[LORD WAKEHART] Ha ha, I'm guessing you want to know what this quest \ninvolves!");
                 
-            Character.wd("[LORD WAKEHART] Well, I need a brave adventurer to go to the island \nof Scark.");
+            EOA.wd("[LORD WAKEHART] Well, I need a brave adventurer to go to the island \nof Scark.");
                 
-            Character.wd("[LORD WAKEHART] I'll tell you more when we get there, kid.");
+            EOA.wd("[LORD WAKEHART] I'll tell you more when we get there, kid.");
                 
-            Character.wd("Before you can say anything, you are rushed off to a training fort...");
+            EOA.wd("Before you can say anything, you are rushed off to a training fort...");
 
             Console.Clear();
 
             //Training Fort
             
-            Character.wd("[TRAINER] So.");
-            Character.wd("[TRAINER] I see that the idiot Wakehead or whatever the hell his name \nis has pardoned you.");
-            Character.wd("[TRAINER] Well, I guess I'll have to obey.");
-            Character.wd("[TRAINER] So kid, how'll your flimsy little limbs fight, eh?");
-            Character.wd("[TRAINER] Don't know what I'm talking about?");
-            Character.wd("[TRAINER] Not surprised, from some wanna-be revolutionist like yourself.");
-            Character.wd("[TRAINER] Forgive me, but your attempt on the glorious King's life was \nfutile at best.");
-            Character.wd("[TRAINER] At worst?");
-            Character.wd("[TRAINER] Ha ha ha ha.");
-            Character.wd("[TRAINER] Well anyways, I can train you in four classes.");
-            Character.wd("[TRAINER] Rouge, warrior, ranger or mage.");
+            EOA.wd("[TRAINER] So.");
+            EOA.wd("[TRAINER] I see that the idiot Wakehead or whatever the hell his name \nis has pardoned you.");
+            EOA.wd("[TRAINER] Well, I guess I'll have to obey.");
+            EOA.wd("[TRAINER] So kid, how'll your flimsy little limbs fight, eh?");
+            EOA.wd("[TRAINER] Don't know what I'm talking about?");
+            EOA.wd("[TRAINER] Not surprised, from some wanna-be revolutionist like yourself.");
+            EOA.wd("[TRAINER] Forgive me, but your attempt on the glorious King's life was \nfutile at best.");
+            EOA.wd("[TRAINER] At worst?");
+            EOA.wd("[TRAINER] Ha ha ha ha.");
+            EOA.wd("[TRAINER] Well anyways, I can train you in four classes.");
+            EOA.wd("[TRAINER] Rouge, warrior, ranger or mage.");
 
             Console.WriteLine(@"The trainer asks you how you would like to fight.
 
@@ -123,7 +123,7 @@ Select a role by inputting it's respective number.
                         Character.inventory.Add(IronShortsword.ToItem());
                         userPickedOption = true;
                         Thread.Sleep(1500);
-                        Character.pressAnyKeyToContinue();
+                        EOA.pressAnyKeyToContinue();
 
                         assignAbilityScoreIntro();
                         break;
@@ -134,7 +134,7 @@ Select a role by inputting it's respective number.
                         userPickedOption = true;
                         Thread.Sleep(1500);
 
-                        Character.pressAnyKeyToContinue();
+                        EOA.pressAnyKeyToContinue();
 
                         assignAbilityScoreIntro();
                         break;
@@ -147,7 +147,7 @@ Select a role by inputting it's respective number.
                         userPickedOption = true;
                         Thread.Sleep(1500);
 
-                        Character.pressAnyKeyToContinue();
+                        EOA.pressAnyKeyToContinue();
 
                         assignAbilityScoreIntro();
                         break;
@@ -158,7 +158,7 @@ Select a role by inputting it's respective number.
                         userPickedOption = true;
                         Thread.Sleep(1500);
 
-                        Character.pressAnyKeyToContinue();
+                        EOA.pressAnyKeyToContinue();
 
                         assignAbilityScoreIntro();
                         break;
@@ -175,16 +175,16 @@ Select a role by inputting it's respective number.
 
         public void assignAbilityScoreIntro()
         {
-            Character.wd("[TRAINER] Hey, don't start packing yet.");
-            Character.wd("[TRAINER] You need to choose some ability scores as well.");
-            Character.wd("[TRAINER] They determine how good you are at certain things.");
-            Character.wd("[TRAINER] There are six ability scores; Constitution, Charisma, Intelligence, Perception, Strength and Stealth.");
-            Character.wd("[TRAINER] You get 25 Ability Points to spend on these scores at the start.");
+            EOA.wd("[TRAINER] Hey, don't start packing yet.");
+            EOA.wd("[TRAINER] You need to choose some ability scores as well.");
+            EOA.wd("[TRAINER] They determine how good you are at certain things.");
+            EOA.wd("[TRAINER] There are six ability scores; Constitution, Charisma, Intelligence, Perception, Strength and Stealth.");
+            EOA.wd("[TRAINER] You get 25 Ability Points to spend on these scores at the start.");
             Character.awardAbilityPoint(25);
-            Character.wd("[TRAINER] You can get more points by leveling up, or doing certain quests.");
-            Character.wd("[TRAINER] Your skills will start out bad, but as you progress, you'll get better and better.");
+            EOA.wd("[TRAINER] You can get more points by leveling up, or doing certain quests.");
+            EOA.wd("[TRAINER] Your skills will start out bad, but as you progress, you'll get better and better.");
 
-            Character.pressAnyKeyToContinue();
+            EOA.pressAnyKeyToContinue();
 
             Character.chooseAbilityScorePoints();
         }
