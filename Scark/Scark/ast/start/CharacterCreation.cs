@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using Scark.ast;
+using Scark.ast.items;
 
 namespace Scark.ast.start
 {
@@ -116,7 +117,7 @@ Select a role by inputting it's respective number.
                 {
                     case "1": // Rouge
                         Character.characterClass = "Rouge";
-                        Character.inventory.Add(ItemID.ConvertStringToID("Iron Shortsword"));
+                        Character.inventory.Add(ItemID.StringToItem("Iron Shortsword"));
                         userPickedOption = true;
                         Thread.Sleep(1500);
                         Character.pressAnyKeyToContinue();
@@ -125,7 +126,7 @@ Select a role by inputting it's respective number.
                         break;
                     case "2": // Warrior
                         Character.characterClass = "Warrior";
-                        Character.inventory.Add(ItemID.ConvertStringToID("Iron Broadsword"));
+                        Character.inventory.Add(ItemID.StringToItem("Iron Broadsword"));
                         userPickedOption = true;
                         Thread.Sleep(1500);
 
@@ -135,8 +136,8 @@ Select a role by inputting it's respective number.
                         break;
                     case "3": // Ranger
                         Character.characterClass = "Ranger";
-                        Character.inventory.Add(ItemID.ConvertStringToID("Iron Bow"));
-                        Character.inventory.Add(ItemID.ConvertStringToID("Leather Quiver"));
+                        Character.inventory.Add(ItemID.StringToItem("Iron Bow"));
+                        Character.inventory.Add(ItemID.StringToItem("Leather Quiver"));
                         userPickedOption = true;
                         Thread.Sleep(1500);
 
@@ -146,7 +147,7 @@ Select a role by inputting it's respective number.
                         break;
                     case "4": // Mage
                         Character.characterClass = "Mage";
-                        Character.inventory.Add(ItemID.ConvertStringToID("Book of Souls"));
+                        Character.inventory.Add(ItemID.StringToItem("Book of Souls"));
                         userPickedOption = true;
                         Thread.Sleep(1500);
 

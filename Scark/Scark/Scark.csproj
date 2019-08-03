@@ -59,7 +59,6 @@
   <ItemGroup>
     <Compile Include="ast\items\general\LeatherQuiver.cs" />
     <Compile Include="ast\items\Item.cs" />
-    <Compile Include="ast\items\Weapon.cs" />
     <Compile Include="ast\items\weapons\BookOfSouls.cs" />
     <Compile Include="ast\items\weapons\IronBow.cs" />
     <Compile Include="ast\items\weapons\IronBroadsword.cs" />

@@ -132,7 +132,6 @@ namespace Scark
                     Console.WriteLine(x.Name);
             else Console.WriteLine("Empty");
         }
-
         #endregion
 
         #region Adding Attributes
@@ -344,7 +343,6 @@ namespace Scark
         #endregion
 
         #region Ability Scores
-
         // Void for the choose ability score points menu
         public static void chooseAbilityScorePoints()
         {
@@ -450,6 +448,12 @@ namespace Scark
                 // Sleeping for the specified speech speed
                 Thread.Sleep((text.Length * 100) / Character.Settings["SpeechSpeed"]);
             }
+        }
+
+        public static void writeAt(string Text, int x, int y)
+        {
+            Console.SetCursorPosition(x, y);
+            Console.Write(Text);
         }
 
         // Rolls an ability check
@@ -591,10 +595,83 @@ namespace Scark
         #endregion
 
         #region Trade
-        public static void Trade(Trader trader)
+        public static void Trade(Trader Vendor)
         {
-            wd($"[{trader.Name}]: 'Ello there, would ya like to purchase from me?");
-            wd("[Y] Yes\n[N] No\n> ", true);
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine($"[{Vendor.Name.ToUpper()}]: 'Ello there, would ya like to trade with me?");
+                Console.Write("[Y] Yes\n[N] No\n> ", true);
+                switch (Console.ReadKey().Key)
+                { // TEMP: ─ │ ┬ ┼
+                    case ConsoleKey.Y:
+                        int numOfSelectedItem = 1;
+                        bool Left = true;
+
+                        while (true)
+                        {
+                            Console.Clear();
+
+                            Console.SetCursorPosition(0, 0);
+                            Console.Write(Vendor.Name);
+
+                            Console.SetCursorPosition(28, 0);
+                            Console.Write($"│{name}");
+
+                            Console.SetCursorPosition(0, 1);
+                            foreach (int i in new int[55])
+                                Console.Write("─");
+
+                            Console.SetCursorPosition(23, 1);
+                            Console.Write("┬");
+                            Console.SetCursorPosition(51, 1);
+                            Console.Write("┬");
+
+                            Console.SetCursorPosition(28, 1);
+                            Console.Write("┼");
+
+                            for (int i = 0; i < Vendor.Inventory.Length; i++)
+                            {
+                                if (Left)
+                                    if (numOfSelectedItem == i - 1)
+                                        Console.ForegroundColor = ConsoleColor.Yellow;
+                                    else Console.ResetColor();
+                                writeAt($"{i} {Vendor.Inventory[i][0]}", 0, i + 4);
+                                writeAt($"│{Vendor.Inventory[i][1]}", 23, i + 4);
+                                writeAt($"│", 28, i + 4);
+                            }
+
+                            bool exit = false;
+                            switch (Console.ReadKey().Key)
+                            {
+                                case ConsoleKey.T:
+                                    break;
+
+                                case ConsoleKey.UpArrow:
+                                    if (numOfSelectedItem > 1)
+                                        numOfSelectedItem--;
+                                    break;
+                                case ConsoleKey.DownArrow:
+                                    if (numOfSelectedItem < 10)
+                                        numOfSelectedItem++;
+                                    break;
+                                case ConsoleKey.LeftArrow:
+                                case ConsoleKey.RightArrow:
+                                    if (Left) Left = false;
+                                    else Left = true;
+                                    break;
+
+                                case ConsoleKey.X:
+                                    exit = true;
+                                    break;
+                            }
+                            if (exit) break;
+                        }
+                        return;
+                    case ConsoleKey.N: return;
+                    default: continue;
+                }
+            }
         }
         #endregion
     }

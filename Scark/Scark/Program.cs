@@ -53,6 +53,8 @@ namespace Scark
             return true;
         }
 
+        #pragma warning disable CS0162
+
         public static void Main(string[] args)
         {
             Console.Title = "Scark";
@@ -65,6 +67,9 @@ namespace Scark
                 if (args[0] != "")
                     Character.load(args[0], true);
 
+            Character.name = "Wonnim";
+            Character.Trade(ast.NPCs.Traders.TavernKeep.ToTrader());
+            return;
             // converting the start main function to a non - static
             ast.start.Menu start = new ast.start.Menu();
             start.menuSeq(); // starting the main function

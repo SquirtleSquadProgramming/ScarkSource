@@ -10,6 +10,7 @@ namespace Scark.ast.items.general
     {
         public static Dictionary<string, dynamic> Attributes = new Dictionary<string, dynamic>() { };
         public static int ID = 2;
+        public static int Price = 100; // Need to Change!
         public static string Name = "Leather Quiver";
         public static string Description = "A container made from skinned cows to hold your arrows.";
         public static string Image = @"                          |
@@ -36,6 +37,6 @@ namespace Scark.ast.items.general
      `.__    `.'
          `''''";
 
-        public static Item ToItem() => new Item(ID, Name, Description, Image, Attributes);
+        public static Item ToItem() => new Item(ID, Price, Name, Description, Image, Attributes);
     }
 }

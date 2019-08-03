@@ -143,7 +143,6 @@ namespace Scark.ast.narsk
                             break;
                     }
                 }
-                return false;
             }
 
             internal class barrelAndEnter
