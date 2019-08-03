@@ -14,34 +14,31 @@ namespace Scark.ast.items.weapons
             { "Damage", 6 }, // WIP
             { "Class", "Melee" } // WIP
         };
-        public static int ID = 0;
-        public static int Price = 100; // Need to Change!
+        public static int ID = 5;
+        public static int Price = 50; // Need to Change!
         public static string Name = "Tomahawk";
-        public static string Description = "";
+        public static string Description = "A lightweight hatchet that gets the job done";
         public static string Image = @"                '
-               / \
-              /   \
-             /  `  \
-             |  |  |
-             |  |  |
-             |  |  |
-             |  |  |
-             |  |  |
-             |  |  |
-             |  |  |
-             |  |  |
-             |  |  |
-             |  |  |
-             |  `  |
- \           |     |           /
-  '-.._____..`.....`.._____..-'
-  \  ---__     [0]     __---  /
-   '.________..---..________.'
-              |___|
-              |___|
-              |___|
-              |___|
-              |___|";
+               _
+ |`-. __      __
+ ||     ------   '-,
+ ||               /
+ ||              '
+ ||              |
+ ||  _,------\_/-|
+ |L./        |-  |
+             | - |
+             |- -|
+             |_-_|
+             |___|
+             |_-_|
+             |___|
+             |_-_|
+             |___|
+             |_-_|
+             |___|
+             |_-_|
+             L___|";
 
         public static Item ToItem() => new Item(ID, Price, Name, Description, Image, Attributes);
     }

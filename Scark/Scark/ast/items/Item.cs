@@ -40,5 +40,19 @@ namespace Scark.ast.items
         {
             public LengthException(string Message) : base(Message) { }
         }
+
+        public static void showItemInfoGUI(Item item)
+        {
+
+            Console.WriteLine($"ITEM:        {item.Name} [ID: {item.ID}]");
+            Console.WriteLine($"DESCRIPTION: {item.Description}");
+            Console.WriteLine($"VALUE:       {item.Price}");
+            Console.WriteLine(item.Image);
+            Console.WriteLine($"ATTRIBUTES:  ");
+            foreach (KeyValuePair<string, dynamic> attribute in item.Attributes)
+            {
+                Console.WriteLine($"{attribute.Key} : {attribute.Value}");
+            }
+        }
     }
 }

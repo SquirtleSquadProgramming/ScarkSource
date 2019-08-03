@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Scark.ast;
+using Scark.ast.items;
+using Scark.ast.items.weapons;
 
 namespace Scark.ast.narsk
 {
@@ -84,7 +86,7 @@ namespace Scark.ast.narsk
 
         internal class MedallionAntiComplex
         {
-            static bool Loop = true;
+            static bool loop = true;
 
             public static bool mission()
             {
@@ -150,7 +152,8 @@ namespace Scark.ast.narsk
 
                 public static void run()
                 {
-                    while (Loop)
+                    loop = true;
+                    while (loop)
                     {
                         Console.Clear();
 
@@ -161,7 +164,7 @@ namespace Scark.ast.narsk
                         {
                             case ConsoleKey.D1:
                                 Character.wd("You walk up to the handsome mahogany door and push it open.");
-                                Loop = false;
+                                loop = false;
                                 break;
                             case ConsoleKey.D2:
                             case ConsoleKey.D3:
@@ -221,13 +224,34 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
                     {
                         if (NOTICED_BARREL && !LOOKED_IN_BARREL)
                         {
-                            /* =-=-=-=-=-=-=-=-=-=-= TODO ADD STUF HERE =-=-=-=-=-=-=-=-=-=-= */
-                            Character.wd("You open the barrel to find ----");
-                            /* =-=-=-=-=-=-=-=-=-=-= TODO ADD STUF HERE =-=-=-=-=-=-=-=-=-=-= */
+                            Character.wd("You open the barrel to find a hatchet..");
+                            Character.wd("A vintage tomahawk from when this very tavern was a loghouse..");
+                            Character.pressAnyKeyToContinue();
+                            loop = true;
+                            while (loop)
+                            {
+
+                                Item.showItemInfoGUI(ItemID.IDToItem(5));
+                                Character.wd("Would you like to take the tomahawk? Y or N");
+
+                                switch (Console.ReadKey().Key)
+                                {
+                                    case ConsoleKey.Y:
+                                        Character.wd("The tomahawk has been added to your inventory.");
+                                        Character.inventory.Add(ItemID.IDToItem(5));
+                                        loop = false;
+                                        break;
+                                    case ConsoleKey.N:
+                                        break;
+                                    default:
+                                        Character.wd("Please either enter Y or N!");
+                                        Character.pressAnyKeyToContinue();
+                                        break;
+                                }
+                            }
+                            
                             LOOKED_IN_BARREL = true;
-                            /* =-=-=-=-=-=-=-=-=-=-= TODO ADD STUF HERE =-=-=-=-=-=-=-=-=-=-= */
-                            Console.ReadKey();
-                            /* =-=-=-=-=-=-=-=-=-=-= TODO ADD STUF HERE =-=-=-=-=-=-=-=-=-=-= */
+                            Character.pressAnyKeyToContinue();
                         }
                         else if (!Character.rollCheck("perception", 10) && !LOOKED_IN_BARREL) //if check failed
                         {
