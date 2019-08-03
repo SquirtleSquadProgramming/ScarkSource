@@ -110,7 +110,7 @@ namespace Scark.ast.Other
             while (optionPicked == false)
             {
                 // Asking if they wish to apply the changes
-                Console.Write("═══════════════════════════════════════════════════════════════════════════════════\nDo you wish to apply these changes: Add {0} to {1} leaving you with {2}\n[Y] Apply\n[N] Revert changes\n> ", amount, addTo, abilityPoints);
+                Console.Write("\n═══════════════════════════════════════════════════════════════════════════════════\nDo you wish to apply these changes: Add {0} to {1} leaving you with {2}\n[Y] Apply\n[N] Revert changes\n> ", amount, addTo, abilityPoints);
                 
                 switch (Console.ReadKey().Key)
                 {
@@ -133,24 +133,14 @@ namespace Scark.ast.Other
             {
                 optionPicked = true;
                 // Asking if they wish to use more ability points
-                Console.Write("═══════════════════════════════════════════════════════════════════════════════════\n                Do you wish to use more ability points?\n                [Y] Yes I do!            No Thanks! [N]\n> ");
+                Console.Write("\n═══════════════════════════════════════════════════════════════════════════════════\n                Do you wish to use more ability points?\n                [Y] Yes I do!            No Thanks! [N]\n> ");
 
-                // Getting their input and processing it to 1 character
-                string inp = Console.ReadLine().Replace("[", "").Replace("]", "").Replace(" ", "").ToUpper();
-                try
+                
+                switch (Console.ReadKey().Key)
                 {
-                    inp = inp.Substring(0, 1);
-                }
-                catch
-                {
-                    optionPicked = false;
-                    Console.Write("                          Error! Please input Y or N\n");
-                }
-                switch (inp)
-                {
-                    case "Y": // if they did wish to use more
+                    case ConsoleKey.Y: // if they did wish to use more
                         return true;
-                    case "N": // if they didn't wish to use more
+                    case ConsoleKey.N: // if they didn't wish to use more
                         return false;
                 }
             }

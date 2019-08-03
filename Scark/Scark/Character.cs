@@ -742,7 +742,7 @@ namespace Scark
                                     break;
                             }
                             Console.CursorVisible = true;
-                            if (exit || (!Vendor.Inventory.Any()) && (!inventory.Any())) break;
+                            if (exit || (!Vendor.Inventory.Any() && !inventory.Any())) break;
                             Console.CursorVisible = false;
                         }
                         return;

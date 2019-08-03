@@ -21,21 +21,29 @@ namespace Scark.ast.narsk
             Character.wd("[OLD MAN] Therefore I shall b-be brief.");
             Character.wd($"[OLD MAN] A-a-are you {Character.name}?");
             Character.wd($"[1] Yes, I am {Character.name}\n[2] No, I am not {Character.name}");
-            Console.Write("> ");
 
             switch (Console.ReadKey().Key)
             {
                 case ConsoleKey.D1:
+                    Console.Clear();
                     Character.wd("[OLD MAN] Ah, good!");
                     Character.wd("[OLD MAN] I am p-p-possibly the only one in a 20 klick distance that doesn't hate you r-right now.");
                     Character.wd("[OLD MAN] T-try not t-to talk to the chunkys, I have heard the thugs around here are rather p-patriotic.");
                     break;
-                default:
-                    Character.wd("The Old Man couldn't hear you and assumed you said no...");
-                    goto case ConsoleKey.D2;
                 case ConsoleKey.D2:
+                    Console.Clear();
                     Character.wd("[OLD MAN] Oh well.");
                     Character.wd("[OLD MAN] You will h-have to do.");
+                    Character.wd($"[OLD MAN] I didn't really like the {Character.name} chap anyway.");
+                    Character.wd("[OLD MAN] Did you hear what he d-did to the king?");
+                    Character.wd("...");
+                    Character.wd("[OLD MAN] Aight, I have got something for you.");
+                    break;
+                default:
+                    Console.Clear();
+                    Character.wd("The Old Man couldn't hear you and assumed you said no...");
+                    Character.wd("[OLD MAN] Huh? Stop mumbling!");
+                    Character.wd("[OLD MAN] Anyways, you will h-have to do.");
                     Character.wd($"[OLD MAN] I didn't really like the {Character.name} chap anyway.");
                     Character.wd("[OLD MAN] Did you hear what he d-did to the king?");
                     Character.wd("...");
@@ -110,10 +118,10 @@ namespace Scark.ast.narsk
   \______________________\");
                     Character.wd($"[OLD MAN] So what d-do you say, {Character.name}, will you join me in m-my business?");
                     Character.wd($"[1] Sounds like a mission for me.\n[2] I don't want to do this.");
-                    Console.Write(">");
                     switch (Console.ReadKey().Key)
                     {
                         case ConsoleKey.D1:
+                            Console.Clear();
                             Character.wd("[OLD MAN] Splendid!");
                             Character.wd("[OLD MAN] I bid you to go to the medallion.");
                             Character.wd("[OLD MAN] If you have already met Lord Wakeheart, you should know t-that he has bestowed much honour in a young b-barman named Orpheus.");
@@ -123,6 +131,7 @@ namespace Scark.ast.narsk
                             Character.wd("[OLD MAN] Mead is half off as well, if it tickles your fancy.");
                             return false;
                         case ConsoleKey.D2:
+                            Console.Clear();
                             Character.wd("[OLD MAN] Oh my.");
                             Character.wd("[OLD MAN] You are a brave soul to say such a thing.");
                             Character.wd("Suddenly the Old Mans voice drops an octave, and his breathing makes a rattling noise.");
@@ -140,8 +149,24 @@ namespace Scark.ast.narsk
                             Character.death("you dared to cross the dark sorcerer."); // death already...? maybe make it so that you DONT die lmao
                             return true;
                         default:
+                            Console.Clear();
                             Character.wd("The Old Man couldn't hear you and assumed you said no...");
-                            goto case ConsoleKey.D2;
+                            Character.wd("[OLD MAN] You don't seem to want to join me don't you!");
+                            Character.wd("[OLD MAN] You are a brave soul to say such a thing.");
+                            Character.wd("Suddenly the Old Mans voice drops an octave, and his breathing makes a rattling noise.");
+                            Character.wd("[OLD MAN] Those who wish to cross my mission, shall be rewarded with death.");
+                            Character.wd("His pupils dilate, his skin is a pale white.");
+                            Character.wd("His hands reach onto your shoulders.");
+                            Character.wd("[OLD MAN] You cannot live knowing that I wish to cross those who burden our society.");
+                            Character.wd("His fingers grow sharp, and puncture into your shoulders.");
+                            Character.wd("You collapse to the ground, the man on top of you.");
+                            Character.wd("The old man breathes in, you feel your soul escaping from your body.");
+                            Character.wd("You enter his mouth leaving a lifeless body behind.");
+                            Character.wd("You can't feel anything anymore."); // this sounds like a Harry Potter dementor knowckoff
+                            Character.pressAnyKeyToContinue();
+                            Console.Clear();
+                            Character.death("you dared to cross the dark sorcerer."); // death already...? maybe make it so that you DONT die lmao
+                            return true;
                     }
                 }
             }
@@ -163,7 +188,7 @@ namespace Scark.ast.narsk
                         switch (Console.ReadKey().Key)
                         {
                             case ConsoleKey.D1:
-                                Character.wd("You walk up to the handsome mahogany door and push it open.");
+                                Character.wd("\nYou walk up to the handsome mahogany door and push it open.");
                                 loop = false;
                                 break;
                             case ConsoleKey.D2:
@@ -282,19 +307,18 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
                 Character.wd("You reach for your pocket.. \n");
                 Character.wd($"You have {Character.ethryl} ethryl. You can either give him your entire worth, or lie and give him only half.");
                 Character.wd("[1] Surrender all of your ethryl\n[2] Lie and give him only half of it.");
-                Console.Write("> ");
 
-                switch (Console.ReadLine())
+                switch (Console.ReadKey().Key)
                 {
                     default:
                         Character.awardEthryl(Character.ethryl * -1);
                         Character.wd("They didn't accept your answer and they steal your leather wallet anyway.");
                         return false;
-                    case "1":
+                    case ConsoleKey.D1:
                         Character.awardEthryl(Character.ethryl * -1);
                         Character.wd("You break the bank, and hand over your leather wallet to the thug.");
                         return false;
-                    case "2":
+                    case ConsoleKey.D2:
                         Character.awardEthryl((Character.ethryl / 2) * -1);
                         Character.wd("You reach for your wallet, but take only a few ethryl.");
                         Character.wd("[LOONIE] Is that all you av?");
