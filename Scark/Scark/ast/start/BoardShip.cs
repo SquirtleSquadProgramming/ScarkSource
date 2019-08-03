@@ -54,12 +54,12 @@ namespace Scark.ast.start
             Character.wd("[THORUL] Alas, it only works on humankind such as yourself, which is quite a shame for a dwarf like myself.");
             Character.wd("[THORUL] I will give it to you if you polish my balmorals.");
 
-            Character.wd($"[1] I accept your trade.\n[2] I do not accept your trade.");
-            Console.Write("> ");
+            Character.wd($"[1] I accept your trade.\n[2] I do not accept your trade.\n");
 
             switch (Console.ReadKey().Key)
             {
                 case ConsoleKey.D1:
+                    Console.Clear();
                     Character.wd("[THORUL] It is all yours.");
                     Character.wd("You pick up the scroll, and it vanishes.");
                     Character.wd("Your head tingles, and you feel more intelligent.");
@@ -71,6 +71,7 @@ namespace Scark.ast.start
                     break;
                 case ConsoleKey.D2:
                 default:
+                    Console.Clear();
                     Character.wd("[THORUL] That is alright.");
                     Character.wd("[THORUL] Stay safe, my friend.");
                     Character.wd("You go back inside to have an early nap.");

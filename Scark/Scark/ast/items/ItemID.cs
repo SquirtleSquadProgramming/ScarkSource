@@ -14,7 +14,16 @@ namespace Scark.ast.items
          * Character.inventory.Add(ItemID.IDToItem(0);
          * // OR \\
          * Character.inventory.Add(weapons.IronShortsword.ToItem());
+         * 
+         * // REMEMBER \\
+         * You need to do:
+         * 
+         * using Scark.ast;
+         * using Scark.ast.items;
+         * 
+         * At the precompiler section of your file so that ItemID is defined
          */
+
 
         public static string ConvertIDToString(int item_id) // Kinda Obsolete... But still *can* be useful
         {
@@ -39,6 +48,7 @@ namespace Scark.ast.items
                 case 2: return general.LeatherQuiver.ToItem();
                 case 3: return weapons.IronBow.ToItem();
                 case 4: return weapons.BookOfSouls.ToItem();
+                case 5: return weapons.Tomahawk.ToItem();
             }
 
             throw new Item.UnknownException($"Could not find item with id of {item_id}");
@@ -53,6 +63,7 @@ namespace Scark.ast.items
                 case "Leather Quiver":  return general.LeatherQuiver.ToItem();
                 case "Iron Bow":        return weapons.IronBow.ToItem();
                 case "Book of Souls":   return weapons.BookOfSouls.ToItem();
+                case "Tomahawk":        return weapons.Tomahawk.ToItem();
             }
 
             throw new Item.UnknownException($"Could not find item with name of {item_name}");
@@ -67,6 +78,7 @@ namespace Scark.ast.items
                 case "Leather Quiver":  return 2;
                 case "Iron Bow":        return 3;
                 case "Book of Souls":   return 4;
+                case "Tomahawk":        return 5;
             }
 
             throw new Item.UnknownException($"Could not find item with name of {item_name}");

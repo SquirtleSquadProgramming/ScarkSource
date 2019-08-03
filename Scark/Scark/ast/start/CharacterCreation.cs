@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 using System.Threading;
 using Scark.ast;
 using Scark.ast.items;
-<<<<<<< Updated upstream
-=======
 using Scark.ast.items.weapons;
 using Scark.ast.items.general;
->>>>>>> Stashed changes
+
 
 namespace Scark.ast.start
 {
@@ -115,65 +113,35 @@ Select a role by inputting it's respective number.
             bool userPickedOption = false;
             while (userPickedOption == false)
             {
-                Console.Write("> ");
-
-                Character.characterClass = Console.ReadLine().Substring(0, 1);
-                switch (Character.characterClass)
+                
+                switch (Console.ReadKey().Key)
                 {
-                    case "1": // Rouge
+                    case ConsoleKey.D1: // Rouge
                         Character.characterClass = "Rouge";
-<<<<<<< Updated upstream
                         Character.inventory.Add(ItemID.StringToItem("Iron Shortsword"));
-=======
-                        Character.inventory.Add(IronShortsword.ToItem());
->>>>>>> Stashed changes
                         userPickedOption = true;
-                        Thread.Sleep(1500);
-                        Character.pressAnyKeyToContinue();
 
                         assignAbilityScoreIntro();
                         break;
-                    case "2": // Warrior
+                    case ConsoleKey.D2: // Warrior
                         Character.characterClass = "Warrior";
-<<<<<<< Updated upstream
                         Character.inventory.Add(ItemID.StringToItem("Iron Broadsword"));
-=======
-                        Character.inventory.Add(IronBroadsword.ToItem());
->>>>>>> Stashed changes
                         userPickedOption = true;
-                        Thread.Sleep(1500);
-
-                        Character.pressAnyKeyToContinue();
 
                         assignAbilityScoreIntro();
                         break;
-                    case "3": // Ranger
+                    case ConsoleKey.D3: // Ranger
                         Character.characterClass = "Ranger";
-<<<<<<< Updated upstream
                         Character.inventory.Add(ItemID.StringToItem("Iron Bow"));
                         Character.inventory.Add(ItemID.StringToItem("Leather Quiver"));
-=======
-                        Character.inventory.Add(IronBow.ToItem());
-                        Character.inventory.Add(LeatherQuiver.ToItem());
->>>>>>> Stashed changes
                         userPickedOption = true;
-                        Thread.Sleep(1500);
-
-                        Character.pressAnyKeyToContinue();
 
                         assignAbilityScoreIntro();
                         break;
-                    case "4": // Mage
+                    case ConsoleKey.D4: // Mage
                         Character.characterClass = "Mage";
-<<<<<<< Updated upstream
                         Character.inventory.Add(ItemID.StringToItem("Book of Souls"));
-=======
-                        Character.inventory.Add(BookOfSouls.ToItem());
->>>>>>> Stashed changes
                         userPickedOption = true;
-                        Thread.Sleep(1500);
-
-                        Character.pressAnyKeyToContinue();
 
                         assignAbilityScoreIntro();
                         break;
@@ -190,6 +158,9 @@ Select a role by inputting it's respective number.
 
         public void assignAbilityScoreIntro()
         {
+            Console.Clear();
+            Character.wd("You train for weeks under intense coaching.");
+            Character.pressAnyKeyToContinue();
             Character.wd("[TRAINER] Hey, don't start packing yet.");
             Character.wd("[TRAINER] You need to choose some ability scores as well.");
             Character.wd("[TRAINER] They determine how good you are at certain things.");
