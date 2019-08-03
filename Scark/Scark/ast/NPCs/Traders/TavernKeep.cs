@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace Scark.ast.NPCs.Traders
 {
-    public class TavernKeep : Trader
+    static class TavernKeep
     {
-        public TavernKeep()
+        internal static string Name = "TavernKeep";
+        internal static int ID = 0;
+        internal static int CurrentHP = 100;
+        internal static int MaxHP = 100;
+        internal static int[][] Inventory = new int[1][]
         {
-            Name = "TavernKeep";
-            ethryl = 300;
-            MaxHP = 100;
-            CurrentHP = 100;
-            inventory = new int[1][];
-            inventory[0] = new int[2] { 1, 100 };
-        }
+            new int[2] { 1, 100 }
+        };
+        internal static int Ethryl = 300;
+
+        public static Trader ToTrader() => new Trader(Name, ID, CurrentHP, MaxHP, Inventory, Ethryl);
     }
 }

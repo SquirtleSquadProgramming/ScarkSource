@@ -8,9 +8,9 @@ namespace Scark.ast.NPCs
 {
     public class NPC
     {
-        public static string Name { get; set; }
-        public static int id { get; set; } //Possible usefull later on
-        public static int CurrentHP { get; set; }
-        public static int MaxHP { get; set; }
+        public string Name { get; set; }
+        public int id { get; set; } //Possible usefull later on
+        public int CurrentHP { get; set; }
+        public int MaxHP { get; set; }
     }
 }

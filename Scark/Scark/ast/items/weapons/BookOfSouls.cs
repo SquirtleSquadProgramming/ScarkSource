@@ -7,18 +7,17 @@ using Scark.ast.items;
 
 namespace Scark.ast.items.weapons
 {
-    class BookOfSouls : Weapon
+    static class BookOfSouls
     {
-        public BookOfSouls()
+        public static Dictionary<string, dynamic> Attributes = new Dictionary<string, dynamic>()
         {
-            Damage = 7;
-            Name = "Book of Souls";
-            WeaponClass = "Magic";
-            Description = "Harnessing dark magic, for those who follow, death awaits.";
-
-            ID = 4;
-
-            Image = @"                      ____________
+            { "Damage", 7 },
+            { "Class", "Magic" }
+        };
+        public static int ID = 4;
+        public static string Name = "Book of Souls";
+        public static string Description = "Harnessing dark magic, for those who follow, death awaits.";
+        public static string Image = @"                      ____________
                 __.--'      _.--'|
            _,,-'       _.--;.-   |
      _,.-''       _.--'  ,''     |
@@ -42,6 +41,7 @@ _.==i_______ _.--'    _,'        |
 |     ___   |    ,-'
 |  ---      | ,-'
 ............|'";
-        }
+
+        public static Item ToItem() => new Item(ID, Name, Description, Image, Attributes);
     }
 }

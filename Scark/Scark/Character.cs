@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.IO;
+using Scark.ast;
+using Scark.ast.items;
+using Scark.ast.NPCs;
+using Scark.ast.NPCs.Traders;
 
 namespace Scark
 {
@@ -27,7 +31,7 @@ namespace Scark
         public static bool dev = false; // If dev
 
         // List for inventory
-        public static List<int> inventory = new List<int>(); /* int is for item ID */
+        public static List<Item> inventory = new List<Item>(); /* int is for item ID */
 
         // Dictionary for settings, accessed by setting in []: eg. Character.Settings["SpeechSpeed"]
         public static Dictionary<string, dynamic> Settings = new Dictionary<string, dynamic>()
@@ -70,8 +74,8 @@ namespace Scark
             for (int i = 0; i < inventory.Count; i++)
             {
                 if (i < inventory.Count - 1)
-                    listToString += inventory[i] + ",";
-                else listToString += inventory[i];
+                    listToString += inventory[i].ID + ",";
+                else listToString += inventory[i].ID;
             }
 
             dynamic a = AbilityScores; // For EOA
@@ -124,8 +128,8 @@ namespace Scark
             Console.WriteLine("\n═════════════════════════════════");
             Console.WriteLine($"{Character.name}'s INVENTORY:");
             if (Character.inventory.Count() > 0)
-                foreach (int x in Character.inventory)
-                    Console.WriteLine(ItemID.ConvertIDToString(x));
+                foreach (Item x in Character.inventory)
+                    Console.WriteLine(x.Name);
             else Console.WriteLine("Empty");
         }
 
@@ -146,7 +150,7 @@ namespace Scark
                 else if (Character.Settings["ColourTheme"] == "light")
                     Console.ForegroundColor = ConsoleColor.DarkMagenta; // Setting the colour to a dark magenta
             }
-            
+
             // Printing text feedback
             if (sign)
                 Console.WriteLine("+ " + amount.ToString() + " Ethryl\n");
@@ -320,9 +324,9 @@ namespace Scark
 
             Character.characterClass = data[8];
 
-            Character.inventory = new List<int>();
+            Character.inventory = new List<Item>();
             foreach (string x in data[9].Split(',').ToList())
-                Character.inventory.Add(Int32.Parse(x));
+                Character.inventory.Add(ItemID.IDToItem(Int32.Parse(x)));
 
             Character.Settings["SpeechSpeed"] = Int32.Parse(data[10].Split(',')[0]);
             Character.Settings["Profanity"] = Boolean.Parse(data[10].Split(',')[1]);
@@ -348,7 +352,7 @@ namespace Scark
 
             string addTo = Scark.ast.Other.CASP.Category();
             if (addTo == "exit") return;
-            
+
             Console.Clear(); //Clearing the Console and printing the options
 
             // Asking the amount of points wants to add to the specified ability
@@ -428,7 +432,7 @@ namespace Scark
             {
                 // 2 dimensional jagged string array for profane words
                 string[][] profaneText = new string[5][] { new string[] { "hell", "fuck" }, new string[] { "flip", "fuck" }, new string[] { "darn", "damn" }, new string[] { "idiot", "dick" }, new string[] { "bloody", "fucking" } };
-                
+
                 // Itterates through profaneText
                 for (int i = 0; i < profaneText.Length; i++)
                     //i replaciing good boiii with bad boiiii words iiiii
@@ -496,7 +500,7 @@ namespace Scark
                 while (1 != 0)
                 {
                     Character.wd("Do you wish to restart from the previous checkpoint?\n> ", true);
-                    switch ((Console.ReadLine().ToUpper() + " ").Substring(0,1))
+                    switch ((Console.ReadLine().ToUpper() + " ").Substring(0, 1))
                     {
                         case "Y":
                             return false;
@@ -583,6 +587,14 @@ namespace Scark
                     {"current", 0}
                 };
             }
+        }
+        #endregion
+
+        #region Trade
+        public static void Trade(Trader trader)
+        {
+            wd($"[{trader.Name}]: 'Ello there, would ya like to purchase from me?");
+            wd("[Y] Yes\n[N] No\n> ", true);
         }
         #endregion
     }

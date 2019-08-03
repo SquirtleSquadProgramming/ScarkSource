@@ -7,18 +7,17 @@ using Scark.ast.items;
 
 namespace Scark.ast.items.weapons
 {
-    class IronBroadsword : Weapon
+    static class IronBroadsword
     {
-        public IronBroadsword()
+        public static Dictionary<string, dynamic> Attributes = new Dictionary<string, dynamic>()
         {
-            Damage = 4; // tbc
-            Name = "Iron Broadsword";
-            WeaponClass = "Melee";
-            Description = "A relatively large, rusting sword with a faint smell of blood.";
-
-            ID = 1;
-
-            Image = @"                '
+            { "Damage", 4 }, // WIP
+            { "Class", "Melee" } // WIP
+        };
+        public static int ID = 1;
+        public static string Name = "Iron Broadsword";
+        public static string Description = "A relatively large, rusting sword with a faint smell of blood.";
+        public static string Image = @"                '
                / \
               /   \
              /  `  \
@@ -51,6 +50,7 @@ namespace Scark.ast.items.weapons
               |___|
               |_-_|
               L___|";
-        }
+
+        public static Item ToItem() => new Item(ID, Name, Description, Image, Attributes);
     }
 }

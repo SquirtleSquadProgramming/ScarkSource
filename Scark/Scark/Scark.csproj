@@ -57,7 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ast\items\general items\LeatherQuiver.cs" />
+    <Compile Include="ast\items\general\LeatherQuiver.cs" />
     <Compile Include="ast\items\Item.cs" />
     <Compile Include="ast\items\Weapon.cs" />
     <Compile Include="ast\items\weapons\BookOfSouls.cs" />
@@ -67,6 +67,8 @@
     <Compile Include="ast\narsk\TowardsMedallion.cs" />
     <Compile Include="ast\NPCs\Monster.cs" />
     <Compile Include="ast\NPCs\NPC.cs" />
+    <Compile Include="ast\NPCs\Trader.cs" />
+    <Compile Include="ast\NPCs\Traders\TavernKeep.cs" />
     <Compile Include="ast\Other\CASP.cs" />
     <Compile Include="ast\start\CharacterCreation.cs" />
     <Compile Include="ast\start\MenuSequence.cs" />
@@ -75,7 +77,7 @@
     <Compile Include="ast\story.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="ast\start\FullScreen.cs" />
-    <Compile Include="ItemID.cs" />
+    <Compile Include="ast\items\ItemID.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

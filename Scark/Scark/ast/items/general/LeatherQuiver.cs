@@ -4,17 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scark.ast.items.general_items
+namespace Scark.ast.items.general
 {
-    class LeatherQuiver : Item 
+    static class LeatherQuiver
     {
-        LeatherQuiver()
-        {
-            Name = "Leather Quiver";
-
-            ID = 2;
-
-            Image = @"                          |
+        public static Dictionary<string, dynamic> Attributes = new Dictionary<string, dynamic>() { };
+        public static int ID = 2;
+        public static string Name = "Leather Quiver";
+        public static string Description = "A container made from skinned cows to hold your arrows.";
+        public static string Image = @"                          |
                         | |      |
                         | |,'/ | |     _,
                         | ,'/_ | |,'/.'
@@ -37,6 +35,7 @@ namespace Scark.ast.items.general_items
    .i'''`--._   ,'
      `.__    `.'
          `''''";
-        }
+
+        public static Item ToItem() => new Item(ID, Name, Description, Image, Attributes);
     }
 }
