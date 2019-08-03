@@ -254,6 +254,7 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
                     }
                 }
             }
+
             public static bool mugging()
             {
                 Character.wd("[LOONIE] Gimme it all!");
