@@ -15,7 +15,7 @@ namespace Scark.ast.items.weapons
             { "Class", "Ranged" } // WIP
         };
         public static int ID = 3;
-        public static int Price = 100; // Need to Change!
+        public static int Price = 25; // Need to Change!
         public static string Name = "Iron Bow";
         public static string Description = "A trusty bow. A little bit rusty, but capable of hunting easy game.";
         public static string Image = @"             __

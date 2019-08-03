@@ -25,6 +25,7 @@ namespace Scark.ast.items
                 case 2: return "Leather Quiver";
                 case 3: return "Iron Bow";
                 case 4: return "Book of Souls";
+                case 5: return "Tomahawk";
             }
 
             throw new Item.UnknownException($"Could not find item with id of {item_id}");
@@ -39,6 +40,7 @@ namespace Scark.ast.items
                 case 2: return general.LeatherQuiver.ToItem();
                 case 3: return weapons.IronBow.ToItem();
                 case 4: return weapons.BookOfSouls.ToItem();
+                case 5: return weapons.Tomahawk.ToItem();
             }
 
             throw new Item.UnknownException($"Could not find item with id of {item_id}");
@@ -53,6 +55,7 @@ namespace Scark.ast.items
                 case "Leather Quiver":  return general.LeatherQuiver.ToItem();
                 case "Iron Bow":        return weapons.IronBow.ToItem();
                 case "Book of Souls":   return weapons.BookOfSouls.ToItem();
+                case "Tomahawk":        return weapons.Tomahawk.ToItem();
             }
 
             throw new Item.UnknownException($"Could not find item with name of {item_name}");
@@ -67,6 +70,7 @@ namespace Scark.ast.items
                 case "Leather Quiver":  return 2;
                 case "Iron Bow":        return 3;
                 case "Book of Souls":   return 4;
+                case "Tomahawk":        return 5;
             }
 
             throw new Item.UnknownException($"Could not find item with name of {item_name}");
