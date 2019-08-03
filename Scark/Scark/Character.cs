@@ -659,10 +659,14 @@ namespace Scark
                             if (Vendor.Inventory.Count >= inventory.Count) MaxLength = Vendor.Inventory.Count;
                             else MaxLength = inventory.Count; // << unlikely
 
+                            WriteAt("[Enter] Trade Item", 0, MaxLength + 4);
+                            WriteAt("[Arrow Keys] Select Items", 0, MaxLength + 5);
+                            WriteAt("[X] Exit Menu", 0, MaxLength + 6);
+
                             bool exit = false;
                             switch (Console.ReadKey().Key)
                             {
-                                case ConsoleKey.T:
+                                case ConsoleKey.Enter:
                                     if (Left)
                                     {
                                         if (Vendor.Inventory.Any())
