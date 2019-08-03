@@ -68,6 +68,8 @@ namespace Scark
                     Character.load(args[0], true);
 
             Character.name = "Wonnim";
+            Character.inventory.Add(ast.items.weapons.IronBroadsword.ToItem());
+            Character.inventory.Add(ast.items.weapons.BookOfSouls.ToItem());
             Character.Trade(ast.NPCs.Traders.TavernKeep.ToTrader());
             return;
             // converting the start main function to a non - static

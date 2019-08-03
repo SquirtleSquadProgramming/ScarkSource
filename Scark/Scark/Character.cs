@@ -450,7 +450,7 @@ namespace Scark
             }
         }
 
-        public static void writeAt(string Text, int x, int y)
+        public static void WriteAt(string Text, int x, int y)
         {
             Console.SetCursorPosition(x, y);
             Console.Write(Text);
@@ -610,36 +610,54 @@ namespace Scark
 
                         while (true)
                         {
+                            Console.ResetColor();
                             Console.Clear();
 
-                            Console.SetCursorPosition(0, 0);
-                            Console.Write(Vendor.Name);
+                            WriteAt(Vendor.Name.ToUpper(), 0, 0);
+                            WriteAt($"│{name.ToUpper()}", 28, 0);
+                            
+                            for (int i = 0; i < 55; i++)
+                                WriteAt("─", i, 1);
 
-                            Console.SetCursorPosition(28, 0);
-                            Console.Write($"│{name}");
+                            WriteAt($"ETHRYL: {Vendor.Ethryl}", 0, 2);
+                            WriteAt($"│COST│", 23, 2);
+                            WriteAt($"ETHRYL: {ethryl}", 29, 2);
+                            WriteAt($"│COST", 50, 2);
 
-                            Console.SetCursorPosition(0, 1);
-                            foreach (int i in new int[55])
-                                Console.Write("─");
+                            WriteAt("┬", 23, 1);
+                            WriteAt("┬", 50, 1);
+                            WriteAt("┼", 28, 1);
 
-                            Console.SetCursorPosition(23, 1);
-                            Console.Write("┬");
-                            Console.SetCursorPosition(51, 1);
-                            Console.Write("┬");
-
-                            Console.SetCursorPosition(28, 1);
-                            Console.Write("┼");
-
-                            for (int i = 0; i < Vendor.Inventory.Length; i++)
+                            for (int i = 0; i < Vendor.Inventory.Count; i++)
                             {
                                 if (Left)
-                                    if (numOfSelectedItem == i - 1)
+                                    if (numOfSelectedItem == i + 1)
                                         Console.ForegroundColor = ConsoleColor.Yellow;
                                     else Console.ResetColor();
-                                writeAt($"{i} {Vendor.Inventory[i][0]}", 0, i + 4);
-                                writeAt($"│{Vendor.Inventory[i][1]}", 23, i + 4);
-                                writeAt($"│", 28, i + 4);
+                                WriteAt($"{i + 1} {Vendor.Inventory[i].Name}", 0, i + 3);
+                                WriteAt($"{Vendor.Inventory[i].Price}", 24, i + 3);
+                                Console.ResetColor();
+                                WriteAt($"│", 28, i + 3);
+                                WriteAt($"│", 50, i + 3);
+                                WriteAt($"│", 23, i + 3);
                             }
+                            for (int i = 0; i < inventory.Count; i++)
+                            {
+                                if (!Left)
+                                    if (numOfSelectedItem == i + 1)
+                                        Console.ForegroundColor = ConsoleColor.Yellow;
+                                    else Console.ResetColor();
+                                WriteAt($"{i + 1} {inventory[i].Name}", 29, i + 3);
+                                WriteAt($"{inventory[i].Price}", 51, i + 3);
+                                Console.ResetColor();
+                                WriteAt($"│", 28, i + 3);
+                                WriteAt($"│", 50, i + 3);
+                                WriteAt($"│", 23, i + 3);
+                            }
+
+                            int MaxLength = 0;
+                            if (Vendor.Inventory.Count >= inventory.Count) MaxLength = Vendor.Inventory.Count;
+                            else MaxLength = inventory.Count; // << unlikely
 
                             bool exit = false;
                             switch (Console.ReadKey().Key)
@@ -652,20 +670,31 @@ namespace Scark
                                         numOfSelectedItem--;
                                     break;
                                 case ConsoleKey.DownArrow:
-                                    if (numOfSelectedItem < 10)
-                                        numOfSelectedItem++;
+                                    if (Left)
+                                    {
+                                        if (numOfSelectedItem < Vendor.Inventory.Count)
+                                            numOfSelectedItem++;
+                                    }
+                                    else
+                                    {
+                                        if (numOfSelectedItem < inventory.Count)
+                                            numOfSelectedItem++;
+                                    }
                                     break;
                                 case ConsoleKey.LeftArrow:
                                 case ConsoleKey.RightArrow:
                                     if (Left) Left = false;
                                     else Left = true;
+                                    numOfSelectedItem = 1;
                                     break;
 
                                 case ConsoleKey.X:
                                     exit = true;
                                     break;
                             }
+                            Console.CursorVisible = true;
                             if (exit) break;
+                            Console.CursorVisible = false;
                         }
                         return;
                     case ConsoleKey.N: return;

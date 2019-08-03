@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Scark.ast.items;
 
 namespace Scark.ast.NPCs
 {
@@ -12,17 +13,17 @@ namespace Scark.ast.NPCs
         public int ID;
         public int CurrentHP;
         public int MaxHP;
-        public int[][] Inventory;
+        public List<Item> Inventory;
         public int Ethryl;
 
-        public Trader(string name, int id, int currentHP, int maxHP, int[][] inventory, int ethryl)
+        public Trader(string _Name, int _ID, int _CurrentHP, int _MaxHP, List<Item> _Inventory, int _Ethryl)
         {
-            Name = name;
-            ID = id;
-            CurrentHP = currentHP;
-            MaxHP = maxHP;
-            Inventory = inventory;
-            Ethryl = ethryl;
+            Name = _Name;
+            ID = _ID;
+            CurrentHP = _CurrentHP;
+            MaxHP = _MaxHP;
+            Inventory = _Inventory;
+            Ethryl = _Ethryl;
         }
     }
 }
