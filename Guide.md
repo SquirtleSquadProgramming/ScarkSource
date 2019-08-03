@@ -1,10 +1,11 @@
 # Guides for Sārk Code!
 #### LINKS:
-- [General Items](https://github.com/SquirtleSquadProgramming/ScarkSource/new/master/Guides#general-items)
-	- [Completed Example](https://github.com/SquirtleSquadProgramming/ScarkSource/new/master/Guides#completed-example-of-general-item)
-- [General NPCs](https://github.com/SquirtleSquadProgramming/ScarkSource/new/master/Guides#general-npcs)
-- [Trading NPCs](https://github.com/SquirtleSquadProgramming/ScarkSource/new/master/Guides#trading-npcs)
-	- [Completed Example](https://github.com/SquirtleSquadProgramming/ScarkSource/new/master/Guides#completed-example-of-trading-npc)
+- [General Items](#general-items)
+	- [Completed Example](#completed-example-of-general-item)
+- [Weapon Items](#weapon-items)
+- [General NPCs](#general-npcs)
+- [Trading NPCs](#trading-npcs)
+	- [Completed Example](#completed-example-of-trading-npc)
 
 
 
@@ -33,7 +34,7 @@ namespace Scark.ast.items.general
 	- In this case it will be set to `"A strange elixir that seems to have healing properties."`
 - `string Image`
 	- ASCII art of the item
-	- ~~In this case it will be set to `" "`~~ [View the image in completed code](https://github.com/SquirtleSquadProgramming/ScarkSource/new/master/Guides#completed-example-of-general-item)
+	- ~~In this case it will be set to `" "`~~ [View the image in completed code](#completed-example-of-general-item)
 - `Dictionary<string, dynamic> Attributes`
 	- Used to add other properties to the item (eg. How much health the item gives)
 	- In this case it will be set to `{"HPGain", 20}`
@@ -54,7 +55,7 @@ static class HealingPotion
 	public static string image = ""; // See in completed example below
 }
 ```
-([Completed Example](https://github.com/SquirtleSquadProgramming/ScarkSource/new/master/Guides#completed-example-of-general-item))
+([Completed Example](#completed-example-of-general-item))
 
 4. It is almost complete but the item needs to be able to be converted into a used instance of the `Item` class. To do so, add this:
 ```cs
@@ -121,14 +122,14 @@ namespace Scark.ast.items.general
 	}
 }
 ```
-#### Goto [Top](https://github.com/SquirtleSquadProgramming/ScarkSource/new/master/Guides#guides-for-s%C4%81rk-code)
+#### Goto [Top](#guides-for-s%C4%81rk-code)
 
 
 
 
 ## Weapon Items
 ###### THE FOLLOWING IS A TUTORIAL AND HAS NOT BEEN IMPLEMENTED INTO THE GAME
-#### Goto [Top](https://github.com/SquirtleSquadProgramming/ScarkSource/new/master/Guides#guides-for-s%C4%81rk-code)
+#### Goto [Top](#guides-for-s%C4%81rk-code)
 ### WIP
 
 
@@ -136,7 +137,7 @@ namespace Scark.ast.items.general
 
 ## General NPCs
 ###### THE FOLLOWING IS A TUTORIAL AND HAS NOT BEEN IMPLEMENTED INTO THE GAME
-#### Goto [Top](https://github.com/SquirtleSquadProgramming/ScarkSource/new/master/Guides#guides-for-s%C4%81rk-code)
+#### Goto [Top](#guides-for-s%C4%81rk-code)
 ### WIP
 
 
@@ -228,4 +229,4 @@ namespace Scark.ast.NPCs.Traders
 	}
 }
 ```
-#### Goto [Top](https://github.com/SquirtleSquadProgramming/ScarkSource/new/master/Guides#guides-for-s%C4%81rk-code)
+#### Goto [Top](#guides-for-s%C4%81rk-code)
