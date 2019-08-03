@@ -69,6 +69,8 @@
     <Compile Include="ast\NPCs\Trader.cs" />
     <Compile Include="ast\NPCs\Traders\TavernKeep.cs" />
     <Compile Include="ast\Other\CASP.cs" />
+    <Compile Include="ast\Other\FS.cs" />
+    <Compile Include="ast\Other\Trade.cs" />
     <Compile Include="ast\start\CharacterCreation.cs" />
     <Compile Include="ast\start\MenuSequence.cs" />
     <Compile Include="ast\start\BoardShip.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="Character.cs" />
     <Compile Include="ast\start\FullScreen.cs" />
     <Compile Include="ast\items\ItemID.cs" />
+    <Compile Include="EOA.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

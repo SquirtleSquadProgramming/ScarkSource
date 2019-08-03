@@ -29,6 +29,7 @@ namespace Scark
 
         // Boolean Variables
         public static bool dev = false; // If dev
+        public static bool Loaded = false;
 
         // List for inventory
         public static List<Item> inventory = new List<Item>(); /* int is for item ID */
@@ -67,8 +68,7 @@ namespace Scark
             {"current", 0}
         };
 
-        // Puts all character data into one
-        public static string[] dataCollection()
+        private static string ItemListToString(List<Item> _Inventory)
         {
             string listToString = ""; // Used for converting the list to a string (for saving)
             for (int i = 0; i < inventory.Count; i++)
@@ -77,25 +77,28 @@ namespace Scark
                     listToString += inventory[i].ID + ",";
                 else listToString += inventory[i].ID;
             }
+            return listToString;
+        }
 
-            dynamic a = AbilityScores; // For EOA
+        // Puts all character data into one
+        public static string[] dataCollection()
+        {
+            dynamic a = Character.AbilityScores; // For EOA
 
-            return new string[] {
-                stage.ToString(),
-                ethryl.ToString(),
-                health["max"].ToString() + "," + health["current"].ToString(),
-                magika["max"].ToString() + "," + magika["current"].ToString(),
-                level.ToString(),
-                currentXP.ToString(),
-                maxXP.ToString(),
-                name,
-                characterClass,
-                listToString,
-                Settings["SpeechSpeed"] + "," + Settings["Profanity"] + "," + Settings["ColourTheme"] + "," + Settings["SpecialEffects"],
-                a["constitution"].ToString() + "," + a["charisma"].ToString() + "," +
-                a["intelligence"].ToString() + ","+ a["perception"].ToString() + "," +
-                a["strength"].ToString() + "," + a["stealth"].ToString()
-            };
+            List<string> Output = new List<string>();
+            Output.Add(stage.ToString());
+            Output.Add(ethryl.ToString());
+            Output.Add(health["max"].ToString() + "," + health["current"].ToString());
+            Output.Add(magika["max"].ToString() + "," + magika["current"].ToString());
+            Output.Add(level.ToString());
+            Output.Add(currentXP.ToString());
+            Output.Add(maxXP.ToString());
+            Output.Add(name);
+            Output.Add(characterClass);
+            Output.Add(ItemListToString(Character.inventory));
+            Output.Add(Settings["SpeechSpeed"] + "," + Settings["Profanity"] + "," + Settings["ColourTheme"] + "," + Settings["SpecialEffects"]);
+            Output.Add(a["constitution"].ToString() + "," + a["charisma"].ToString() + "," + a["intelligence"].ToString() + "," + a["perception"].ToString() + "," + a["strength"].ToString() + "," + a["stealth"].ToString());
+            return Output.ToArray();
         }
 
         public static void showCharInfoGUI() //╔ ═ ╗ ║ ╚ ╝
@@ -140,15 +143,7 @@ namespace Scark
         {
             bool sign = amount > 0;
             // If the user has special effects enabled
-            if (Character.Settings["SpecialEffects"])
-            {
-                // If the users theme is dark mode
-                if (Character.Settings["ColourTheme"] == "dark")
-                    Console.ForegroundColor = ConsoleColor.Magenta; // Setting the colour to magenta
-                // If the users theme is light mode (ew gay)
-                else if (Character.Settings["ColourTheme"] == "light")
-                    Console.ForegroundColor = ConsoleColor.DarkMagenta; // Setting the colour to a dark magenta
-            }
+            EOA.ChangeToEffects(new ConsoleColor[] { ConsoleColor.Magenta, ConsoleColor.DarkMagenta });
 
             // Printing text feedback
             if (sign)
@@ -157,10 +152,10 @@ namespace Scark
                 Console.WriteLine("- " + (amount * -1).ToString() + " Ethryl\n");
 
             // Adding the ethryl to the player
-            Character.ethryl = Character.ethryl + amount;
+            Character.ethryl += amount;
 
             // Setting the foreground colour back to the default
-            revertColourScheme();
+            EOA.revertColourScheme();
 
             // Wait a bit (because why not) (and also incase a Console.Clear() is directly after this.)
             Thread.Sleep(1000);
@@ -187,7 +182,7 @@ namespace Scark
             Character.magika["max"] += amount;
 
             // Changing text colour back to the original
-            revertColourScheme();
+            EOA.revertColourScheme();
 
             // Sleeping because a Console.Clear may follow
             Thread.Sleep(1000);
@@ -217,7 +212,7 @@ namespace Scark
             Character.abilityPoints += amount;
 
             // Reverting text colour to original
-            revertColourScheme();
+            EOA.revertColourScheme();
 
             // Sleeping as there may be a Console.Clear after
             Thread.Sleep(1000);
@@ -256,89 +251,13 @@ namespace Scark
             }
 
             // revert back to normal colours
-            revertColourScheme();
+            EOA.revertColourScheme();
 
             // Make sure maxxp is up to date, again
             maxXP = (level + 1) * 100;
 
             // Waiting just incase a Console.Clear follows
             Thread.Sleep(1000);
-        }
-        #endregion
-
-        #region Save Systems
-        // Void for saving the character data
-        public static void save(string name)
-        {
-            // setting fileURL to the url to the save file
-            string fileURL = Environment.CurrentDirectory + "\\" + name + ".save";
-            string[] tmp = Character.dataCollection(); // setting string[] tmp to dataCollection()
-            string output = ""; // string output to blank
-
-            // itterating through dataCollection
-            for (int i = 0; i < Character.dataCollection().Length; i++)
-            {
-                output += tmp[i]; // adding dataCollection[i] to output
-
-                // if ! the last entry of tmp
-                if (i < tmp.Length - 1)
-                {
-                    output += "§"; // adding a seperator character
-                }
-            }
-
-            // writing ouput to the save file at fileURL
-            File.WriteAllText(fileURL, output);
-        }
-
-        public static bool Loaded = false;
-
-        // Void for reading character saves
-        public static void load(string name, bool isFileUrl = false)
-        {
-            Character.Loaded = true;
-            string[] data = new string[14];
-            if (!isFileUrl)
-                name = Environment.CurrentDirectory + String.Format("\\{0}.save", name);
-            data = File.ReadAllText(name).Split('§');
-
-            if (data.Length != 12)
-                throw new InvalidDataException();
-
-            Character.stage = Int32.Parse(data[0]);
-
-            Character.ethryl = Int32.Parse(data[1]);
-
-            Character.health["max"] = Int32.Parse(data[2].Split(',')[0]);
-            Character.health["min"] = Int32.Parse(data[2].Split(',')[1]);
-
-            Character.magika["max"] = Int32.Parse(data[3].Split(',')[0]);
-            Character.magika["min"] = Int32.Parse(data[3].Split(',')[1]);
-
-            Character.level = Int32.Parse(data[4]);
-            Character.currentXP = Int32.Parse(data[5]);
-            Character.maxXP = Int32.Parse(data[6]);
-
-            Character.name = data[7];
-
-            Character.characterClass = data[8];
-
-            Character.inventory = new List<Item>();
-            foreach (string x in data[9].Split(',').ToList())
-                Character.inventory.Add(ItemID.IDToItem(Int32.Parse(x)));
-
-            Character.Settings["SpeechSpeed"] = Int32.Parse(data[10].Split(',')[0]);
-            Character.Settings["Profanity"] = Boolean.Parse(data[10].Split(',')[1]);
-            Character.Settings["ColourTheme"] = data[10].Split(',')[2];
-            Character.Settings["SpecialEffects"] = Boolean.Parse(data[10].Split(',')[3]);
-
-            int i = 0;
-            foreach (string x in new string[] { "CON", "CHA", "INT", "PER", "STR", "STE" })
-            {
-                Character.AbilityScores[ast.Other.CASP.abbreviationToName(x)] = Int32.Parse(data[11].Split(',')[i]);
-                i++;
-            }
-            Console.WriteLine(new List<int>().Count());
         }
         #endregion
 
@@ -391,71 +310,12 @@ namespace Scark
                     return tmp[i];
 
             // if gets here exception is thrown
-            throw new Exception();
+            throw new Exception("Does not contain any integer.");
         }
         #endregion
 
-        #region EOA Methods
         // EOA: Ease Of Access
-
-        // reverts all colours to normal (colour scheme dependent)
-        public static void revertColourScheme()
-        {
-            // If the users theme is dark
-            if (Character.Settings["ColourTheme"] == "dark")
-                Console.ForegroundColor = ConsoleColor.White; // Then set the text colour back to white
-            // If the users theme is light (ew gay)
-            else if (Character.Settings["ColourTheme"] == "light")
-                Console.ForegroundColor = ConsoleColor.Black; // Then set the text colour back to black
-        }
-
-        // Any key to continue
-        public static void pressAnyKeyToContinue()
-        {
-            // Writing dialouge: "Press any key to continue..."
-            wd("Press any key to continue...", true);
-            //waitFor(); // Getting user to press a key
-            Console.ReadKey();
-            Console.Clear();
-        }
-
-        // write text w/ delay (depending on admin or not)
-        public static void wd(string text, bool writeNotLine = false, bool profanitiseIfRequired = true)
-        {
-            // String filteredText gets the value of text
-            string filteredText = text;
-
-            //profanitise if selected
-            if (Character.Settings["Profanity"] && profanitiseIfRequired == true)
-            {
-                // 2 dimensional jagged string array for profane words
-                string[][] profaneText = new string[5][] { new string[] { "hell", "fuck" }, new string[] { "flip", "fuck" }, new string[] { "darn", "damn" }, new string[] { "idiot", "dick" }, new string[] { "bloody", "fucking" } };
-
-                // Itterates through profaneText
-                for (int i = 0; i < profaneText.Length; i++)
-                    //i replaciing good boiii with bad boiiii words iiiii
-                    filteredText = filteredText.Replace(profaneText[i][0], profaneText[i][1]);
-            }
-
-            // If to do Console.Write
-            if (writeNotLine) Console.Write(filteredText);
-            // or Console.WriteLine
-            else Console.WriteLine(filteredText + "\n");
-
-            // If the character isn't a dev
-            if (!Character.dev)
-            {
-                // Sleeping for the specified speech speed
-                Thread.Sleep((text.Length * 100) / Character.Settings["SpeechSpeed"]);
-            }
-        }
-
-        public static void WriteAt(string Text, int x, int y)
-        {
-            Console.SetCursorPosition(x, y);
-            Console.Write(Text);
-        }
-
+        #region EOA Methods
         // Rolls an ability check
         public static bool rollCheck(string ABILITY_SCORE, int PASS_MARK) // Roll's output must be equal to higher than pass mark to suceed the check
         {
@@ -463,17 +323,10 @@ namespace Scark
             int randOutcome = rand.Next(1, 25);
 
             if (randOutcome + Character.convertAbilityScoreToAbilityModifier(ABILITY_SCORE) < PASS_MARK) // if outcome plus abilty modifier is less to pass mark
-            {
                 return false;
-            }
             else if (randOutcome + Character.convertAbilityScoreToAbilityModifier(ABILITY_SCORE) > PASS_MARK)
-            {
                 return true;
-            }
-            else // error ocurred
-            {
-                return false;
-            }
+            else return false;
         }
 
         //Play a morbid death speel and end the game
@@ -483,7 +336,7 @@ namespace Scark
             Character.Settings["SpeechSpeed"] = 2;
             CharacterDeath.Speel(reason);
             showCharInfoGUI();
-            Character.pressAnyKeyToContinue();
+            EOA.pressAnyKeyToContinue();
             if (CharacterDeath.lastCheckpoint())
             {
                 CharacterDeath.resetStats(); // reset character
@@ -503,7 +356,7 @@ namespace Scark
             {
                 while (1 != 0)
                 {
-                    Character.wd("Do you wish to restart from the previous checkpoint?\n> ", true);
+                    EOA.wd("Do you wish to restart from the previous checkpoint?\n> ", true);
                     switch ((Console.ReadLine().ToUpper() + " ").Substring(0, 1))
                     {
                         case "Y":
@@ -521,38 +374,38 @@ namespace Scark
             internal static void Speel(string reason)
             {
                 //Morbid death speel about the relativity of reality
-                Character.wd("Your eyes fall dark, and your eyelids grow heavy.");
-                Character.wd("Though not much can be said about the darkness,");
-                Character.wd("It does not exist anyway.");
-                Character.wd("Anymore at least.");
-                Character.wd("Not for you, at least.");
-                Character.wd("Others still breathe.");
-                Character.wd("Their hearts still pump.");
-                Character.wd("Their bodies tirelessly work for the same thing.");
-                Character.wd("To live.");
-                Character.wd("But for you, your body turns still.");
-                Character.wd("What is reality, if one cannot sense it?");
-                Character.wd("What can be so real if all is so abstract?");
-                Character.wd("Mortality is so literal.");
-                Character.wd("What is reality?");
-                Character.wd("What is consciousness?");
-                Character.wd("What is the meaning of it all?");
-                Character.wd("...");
-                Character.wd("Everything falls silent.");
-                Character.wd("But nothing falls silent, because, well, silence does not exist.");
-                Character.wd("For you anyway.");
-                Character.wd("You have moven on past reality.");
-                Character.wd("Almost.");
-                Character.wd("Yet, well, reality can't possibly exist anymore. At least for the souls of the deceased.");
-                Character.wd("Or could it?");
-                Character.wd("A final beat.");
-                Character.wd("A final thought.");
+                EOA.wd("Your eyes fall dark, and your eyelids grow heavy.");
+                EOA.wd("Though not much can be said about the darkness,");
+                EOA.wd("It does not exist anyway.");
+                EOA.wd("Anymore at least.");
+                EOA.wd("Not for you, at least.");
+                EOA.wd("Others still breathe.");
+                EOA.wd("Their hearts still pump.");
+                EOA.wd("Their bodies tirelessly work for the same thing.");
+                EOA.wd("To live.");
+                EOA.wd("But for you, your body turns still.");
+                EOA.wd("What is reality, if one cannot sense it?");
+                EOA.wd("What can be so real if all is so abstract?");
+                EOA.wd("Mortality is so literal.");
+                EOA.wd("What is reality?");
+                EOA.wd("What is consciousness?");
+                EOA.wd("What is the meaning of it all?");
+                EOA.wd("...");
+                EOA.wd("Everything falls silent.");
+                EOA.wd("But nothing falls silent, because, well, silence does not exist.");
+                EOA.wd("For you anyway.");
+                EOA.wd("You have moven on past reality.");
+                EOA.wd("Almost.");
+                EOA.wd("Yet, well, reality can't possibly exist anymore. At least for the souls of the deceased.");
+                EOA.wd("Or could it?");
+                EOA.wd("A final beat.");
+                EOA.wd("A final thought.");
                 Thread.Sleep(5000);
-                Character.wd("You surrender to the void.");
-                Character.pressAnyKeyToContinue();
+                EOA.wd("You surrender to the void.");
+                EOA.pressAnyKeyToContinue();
                 Character.Settings["SpeechSpeed"] = 4;
-                Character.wd($"{Character.name} died with a level of {Character.level} because {reason}.");
-                Character.wd($"A document was left in {Character.name}'s pocket.");
+                EOA.wd($"{Character.name} died with a level of {Character.level} because {reason}.");
+                EOA.wd($"A document was left in {Character.name}'s pocket.");
             }
 
             // Reseting all character attributes
@@ -594,196 +447,8 @@ namespace Scark
         }
         #endregion
 
-        #region Trade
-        internal static class TradeACC
-        {
-            internal static int numOfSelectedItem = 1;
-            internal static bool Left = true;
-            internal static Trader Vendor;
-
-            internal static void Prints()
-            {
-                Console.ResetColor();
-                Console.Clear();
-
-                WriteAt(Vendor.Name.ToUpper(), 0, 0);
-                WriteAt($"│{name.ToUpper()}", 28, 0);
-
-                for (int i = 0; i < 55; i++)
-                    WriteAt("─", i, 1);
-
-                WriteAt($"ETHRYL: {Vendor.Ethryl}", 0, 2);
-                WriteAt($"│COST│", 23, 2);
-                WriteAt($"ETHRYL: {ethryl}", 29, 2);
-                WriteAt($"│COST", 50, 2);
-
-                WriteAt("┬", 23, 1);
-                WriteAt("┬", 50, 1);
-                WriteAt("┼", 28, 1);
-            }
-
-            internal static void DrawingItems()
-            {
-                for (int i = 0; i < Vendor.Inventory.Count; i++)
-                {
-                    if (Left)
-                        if (numOfSelectedItem == i + 1)
-                            Console.ForegroundColor = ConsoleColor.Yellow;
-                        else Console.ResetColor();
-                    WriteAt($"{i + 1} {Vendor.Inventory[i].Name}", 0, i + 3);
-                    WriteAt($"{Vendor.Inventory[i].Price}", 24, i + 3);
-                    Console.ResetColor();
-                    WriteAt($"│", 28, i + 3);
-                    WriteAt($"│", 50, i + 3);
-                    WriteAt($"│", 23, i + 3);
-                }
-                for (int i = 0; i < inventory.Count; i++)
-                {
-                    if (!Left)
-                        if (numOfSelectedItem == i + 1)
-                            Console.ForegroundColor = ConsoleColor.Yellow;
-                        else Console.ResetColor();
-                    WriteAt($"{i + 1} {inventory[i].Name}", 29, i + 3);
-                    WriteAt($"{inventory[i].Price}", 51, i + 3);
-                    Console.ResetColor();
-                    WriteAt($"│", 28, i + 3);
-                    WriteAt($"│", 50, i + 3);
-                    WriteAt($"│", 23, i + 3);
-                }
-            }
-
-            internal static void Trade()
-            {
-                if (Left)
-                {
-                    if (Vendor.Inventory.Any())
-                    {
-                        if (ethryl >= Vendor.Inventory[numOfSelectedItem - 1].Price)
-                        {
-                            inventory.Add(Vendor.Inventory[numOfSelectedItem - 1]);
-                            ethryl += Vendor.Inventory[numOfSelectedItem - 1].Price * -1;
-                            Vendor.Ethryl += Vendor.Inventory[numOfSelectedItem - 1].Price;
-                            Vendor.Inventory.RemoveAt(numOfSelectedItem - 1);
-
-                            if (numOfSelectedItem >= Vendor.Inventory.Count || !Vendor.Inventory.Any()) numOfSelectedItem--;
-                            if (numOfSelectedItem == 0) { Left = false; numOfSelectedItem = 1; }
-                        }
-                    }
-                }
-                else
-                {
-                    if (inventory.Any())
-                    {
-                        if (Vendor.Ethryl >= inventory[numOfSelectedItem - 1].Price)
-                        {
-                            Vendor.Inventory.Add(inventory[numOfSelectedItem - 1]); //a
-                            Vendor.Ethryl += inventory[numOfSelectedItem - 1].Price * -1;
-                            ethryl += inventory[numOfSelectedItem - 1].Price;
-                            inventory.RemoveAt(numOfSelectedItem - 1);
-
-                            if (numOfSelectedItem >= inventory.Count || !inventory.Any()) numOfSelectedItem--;
-                            if (numOfSelectedItem == 0) { Left = true; numOfSelectedItem = 1; }
-                        }
-                    }
-                }
-            }
-
-            internal static void Down()
-            {
-                if (Left)
-                {
-                    if (numOfSelectedItem < Vendor.Inventory.Count)
-                        numOfSelectedItem++;
-                }
-                else
-                {
-                    if (numOfSelectedItem < inventory.Count)
-                        numOfSelectedItem++;
-                }
-            }
-
-            internal static void Up()
-            {
-                if (numOfSelectedItem > 1)
-                    numOfSelectedItem--;
-            }
-
-            internal static void LeftAndRight()
-            {
-                if (TradeACC.Left)
-                {
-                    if (inventory.Any())
-                    {
-                        if (inventory.Count < TradeACC.numOfSelectedItem) TradeACC.numOfSelectedItem = inventory.Count;
-                        TradeACC.Left = false;
-                    }
-                }
-                else
-                {
-                    if (TradeACC.Vendor.Inventory.Any())
-                    {
-                        if (TradeACC.Vendor.Inventory.Count < TradeACC.numOfSelectedItem) TradeACC.numOfSelectedItem = TradeACC.Vendor.Inventory.Count;
-                        TradeACC.Left = true;
-                    }
-                }
-            }
-        }
-
-        public static void Trade(Trader Vendor)
-        {
-            TradeACC.Vendor = Vendor;
-            while (true)
-            {
-                Console.Clear();
-                Console.WriteLine($"[{TradeACC.Vendor.Name.ToUpper()}]: 'Ello there, would ya like to trade with me?");
-                Console.Write("[Y] Yes\n[N] No\n> ", true);
-                switch (Console.ReadKey().Key)
-                { // TEMP: ─ │ ┬ ┼
-                    case ConsoleKey.Y:
-
-                        while (true)
-                        {
-                            TradeACC.Prints();
-                            TradeACC.DrawingItems();
-
-                            int MaxLength = 0;
-                            if (TradeACC.Vendor.Inventory.Count >= inventory.Count) MaxLength = TradeACC.Vendor.Inventory.Count;
-                            else MaxLength = inventory.Count; // << unlikely
-
-                            WriteAt("[Enter] Trade Item", 0, MaxLength + 4);
-                            WriteAt("[Arrow Keys] Select Items", 0, MaxLength + 5);
-                            WriteAt("[X] Exit Menu", 0, MaxLength + 6);
-
-                            bool exit = false;
-                            switch (Console.ReadKey().Key)
-                            {
-                                case ConsoleKey.Enter:
-                                    TradeACC.Trade();
-                                    break;
-                                case ConsoleKey.UpArrow:
-                                    break;
-                                case ConsoleKey.DownArrow:
-                                    TradeACC.Down();
-                                    break;
-                                case ConsoleKey.LeftArrow:
-                                case ConsoleKey.RightArrow:
-                                    TradeACC.LeftAndRight();
-                                    break;
-
-                                case ConsoleKey.X:
-                                    exit = true;
-                                    break;
-                            }
-                            Console.CursorVisible = true;
-                            if (exit || (!TradeACC.Vendor.Inventory.Any()) && (!inventory.Any())) break;
-                            Console.CursorVisible = false;
-                        }
-                        return;
-                    case ConsoleKey.N: return;
-                    default: continue;
-                }
-            }
-        }
-        #endregion
+        public static void Save(string name) => ast.Other.FS.save(name);
+        public static void Load(string name, bool isFileUrl = false) => ast.Other.FS.load(name, isFileUrl);
+        public static void Trade(Trader Vendor) => ast.Other.Trade.With(Vendor);
     }
 }

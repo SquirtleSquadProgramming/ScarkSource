@@ -6,30 +6,33 @@ using System.Threading.Tasks;
 
 namespace Scark.ast.Other
 {
-    class CASP : Character // please make name more clear ffs
+    /// <summary>
+    /// Choose Ability Score Points
+    /// </summary>
+    class CASP : Character
     {
         private static bool optionPicked = false;
 
         public static string abbreviationToName(string input)
         {
-            switch (input)
+            Dictionary<string, string> Converter = new Dictionary<string, string>()
             {
-                case "CON":
-                    return "constitution"; // Setting it to* constitution
-                case "CHA":
-                    return "charisma"; // * charisma
-                case "INT":
-                    return "intelligence"; // * intelligence
-                case "PER":
-                    return "perception"; // * perception
-                case "STR":
-                    return "strength"; // * strength
-                case "STE":
-                    return "stealth"; // * stealth
-                case "X":
-                    return "exit";
+                { "CON", "constitution" },
+                { "CHA", "charisma" },
+                { "INT", "intelligence" },
+                { "PER", "perception" },
+                { "STR", "strength" },
+                { "STE", "stealth" },
+                { "X", "exit" }
+            };
+            try
+            {
+                return Converter[input];
             }
-            throw new NotImplementedException();
+            catch (Exception e)
+            {
+                throw new NotImplementedException(e.ToString());
+            }
         }
 
         // Choose Ability Score Points Category (For reducing complexity)
