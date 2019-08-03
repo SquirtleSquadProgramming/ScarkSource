@@ -8,11 +8,6 @@ namespace Scark.ast.items
 {
     public class ItemID
     {
-      //    Character.inventory.Add(ItemID.ConvertStringToID("iron shortsword"));
-      //    Character.inventory.ForEach(i => Console.Write("{0} ", ItemID.ConvertIDToString(i)));
-      //    
-      //    ^ (old) example of adding item to inventory
-
         /*
          * Character.inventory.Add(ItemID.StringToItem("Iron Shortsword");
          * // OR \\
@@ -21,7 +16,7 @@ namespace Scark.ast.items
          * Character.inventory.Add(weapons.IronShortsword.ToItem());
          */
 
-        public static string ConvertIDToString(int item_id)
+        public static string ConvertIDToString(int item_id) // Kinda Obsolete... But still *can* be useful
         {
             switch (item_id)
             {
@@ -63,7 +58,7 @@ namespace Scark.ast.items
             throw new Item.UnknownException($"Could not find item with name of {item_name}");
         }
 
-        public static int ConvertStringToID(string item_name)
+        public static int ConvertStringToID(string item_name) // Kinda Obsolete... But still *can* be useful
         {
             switch (item_name)
             {
