@@ -67,11 +67,6 @@ namespace Scark
                 if (args[0] != "")
                     Character.load(args[0], true);
 
-            Character.name = "Wonnim";
-            Character.inventory.Add(ast.items.weapons.IronBroadsword.ToItem());
-            Character.inventory.Add(ast.items.weapons.BookOfSouls.ToItem());
-            Character.Trade(ast.NPCs.Traders.TavernKeep.ToTrader());
-            return;
             // converting the start main function to a non - static
             ast.start.Menu start = new ast.start.Menu();
             start.menuSeq(); // starting the main function

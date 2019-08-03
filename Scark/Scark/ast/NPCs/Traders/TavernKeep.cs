@@ -22,7 +22,7 @@ namespace Scark.ast.NPCs.Traders
             IronBroadsword.ToItem(),
             LeatherQuiver.ToItem(),
             IronBow.ToItem()
-        };
+        }; // Need to change
         internal static int Ethryl = 300;
 
         public static Trader ToTrader() => new Trader(Name, ID, CurrentHP, MaxHP, Inventory, Ethryl);

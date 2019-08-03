@@ -663,6 +663,38 @@ namespace Scark
                             switch (Console.ReadKey().Key)
                             {
                                 case ConsoleKey.T:
+                                    if (Left)
+                                    {
+                                        if (Vendor.Inventory.Any())
+                                        {
+                                            if (ethryl >= Vendor.Inventory[numOfSelectedItem - 1].Price)
+                                            {
+                                                inventory.Add(Vendor.Inventory[numOfSelectedItem - 1]);
+                                                ethryl += Vendor.Inventory[numOfSelectedItem - 1].Price * -1;
+                                                Vendor.Ethryl += Vendor.Inventory[numOfSelectedItem - 1].Price;
+                                                Vendor.Inventory.RemoveAt(numOfSelectedItem - 1);
+
+                                                if (numOfSelectedItem >= Vendor.Inventory.Count || !Vendor.Inventory.Any()) numOfSelectedItem--;
+                                                if (numOfSelectedItem == 0) { Left = false; numOfSelectedItem = 1; }
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (inventory.Any())
+                                        {
+                                            if (Vendor.Ethryl >= inventory[numOfSelectedItem - 1].Price)
+                                            {
+                                                Vendor.Inventory.Add(inventory[numOfSelectedItem - 1]); //a
+                                                Vendor.Ethryl += inventory[numOfSelectedItem - 1].Price * -1;
+                                                ethryl += inventory[numOfSelectedItem - 1].Price;
+                                                inventory.RemoveAt(numOfSelectedItem - 1);
+
+                                                if (numOfSelectedItem >= inventory.Count || !inventory.Any()) numOfSelectedItem--;
+                                                if (numOfSelectedItem == 0) { Left = true; numOfSelectedItem = 1; }
+                                            }
+                                        }
+                                    }
                                     break;
 
                                 case ConsoleKey.UpArrow:
@@ -683,9 +715,22 @@ namespace Scark
                                     break;
                                 case ConsoleKey.LeftArrow:
                                 case ConsoleKey.RightArrow:
-                                    if (Left) Left = false;
-                                    else Left = true;
-                                    numOfSelectedItem = 1;
+                                    if (Left)
+                                    {
+                                        if (inventory.Any())
+                                        {
+                                            if (inventory.Count < numOfSelectedItem) numOfSelectedItem = inventory.Count;
+                                            Left = false;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (Vendor.Inventory.Any())
+                                        {
+                                            if (Vendor.Inventory.Count < numOfSelectedItem) numOfSelectedItem = Vendor.Inventory.Count;
+                                            Left = true;
+                                        }
+                                    }
                                     break;
 
                                 case ConsoleKey.X:
@@ -693,7 +738,7 @@ namespace Scark
                                     break;
                             }
                             Console.CursorVisible = true;
-                            if (exit) break;
+                            if (exit || (!Vendor.Inventory.Any()) && (!inventory.Any())) break;
                             Console.CursorVisible = false;
                         }
                         return;
