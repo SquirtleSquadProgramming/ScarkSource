@@ -20,17 +20,18 @@ namespace Scark.ast.narsk
             Character.wd($"[OLD MAN] A-a-are you {Character.name}?");
             Character.wd($"[1] Yes, I am {Character.name}\n[2] No, I am not {Character.name}");
             Console.Write("> ");
-            string response = Console.ReadLine();
 
-            switch (response)
+            switch (Console.ReadKey().Key)
             {
-                case "1":
+                case ConsoleKey.D1:
                     Character.wd("[OLD MAN] Ah, good!");
                     Character.wd("[OLD MAN] I am p-p-possibly the only one in a 20 klick distance that doesn't hate you r-right now.");
                     Character.wd("[OLD MAN] T-try not t-to talk to the chunkys, I have heard the thugs around here are rather p-patriotic.");
                     break;
-                case "2":
                 default:
+                    Character.wd("The Old Man couldn't hear you and assumed you said no...");
+                    goto case ConsoleKey.D2;
+                case ConsoleKey.D2:
                     Character.wd("[OLD MAN] Oh well.");
                     Character.wd("[OLD MAN] You will h-have to do.");
                     Character.wd($"[OLD MAN] I didn't really like the {Character.name} chap anyway.");
@@ -87,7 +88,7 @@ namespace Scark.ast.narsk
 
             public static bool mission()
             {
-                while (1 != 0)
+                while (true)
                 {
                     Console.WriteLine(@"   _______________________
    \                      \
@@ -108,10 +109,9 @@ namespace Scark.ast.narsk
                     Character.wd($"[OLD MAN] So what d-do you say, {Character.name}, will you join me in m-my business?");
                     Character.wd($"[1] Sounds like a mission for me.\n[2] I don't want to do this.");
                     Console.Write(">");
-                    string response = Console.ReadLine();
-                    switch (response)
+                    switch (Console.ReadKey().Key)
                     {
-                        case "1":
+                        case ConsoleKey.D1:
                             Character.wd("[OLD MAN] Splendid!");
                             Character.wd("[OLD MAN] I bid you to go to the medallion.");
                             Character.wd("[OLD MAN] If you have already met Lord Wakeheart, you should know t-that he has bestowed much honour in a young b-barman named Orpheus.");
@@ -120,7 +120,7 @@ namespace Scark.ast.narsk
                             Character.wd("[OLD MAN] The chunkys loom out here when the night falls silent.");
                             Character.wd("[OLD MAN] Mead is half off as well, if it tickles your fancy.");
                             return false;
-                        case "2":
+                        case ConsoleKey.D2:
                             Character.wd("[OLD MAN] Oh my.");
                             Character.wd("[OLD MAN] You are a brave soul to say such a thing.");
                             Character.wd("Suddenly the Old Mans voice drops an octave, and his breathing makes a rattling noise.");
@@ -138,9 +138,8 @@ namespace Scark.ast.narsk
                             Character.death("you dared to cross the dark sorcerer."); // death already...? maybe make it so that you DONT die lmao
                             return true;
                         default:
-                            Console.Clear();
-                            Console.Write("{0} is not an option! Please input either 1 or 2...", response);
-                            break;
+                            Character.wd("The Old Man couldn't hear you and assumed you said no...");
+                            goto case ConsoleKey.D2;
                     }
                 }
             }
@@ -157,16 +156,15 @@ namespace Scark.ast.narsk
 
                         bAHPrints.optionAHPrints();
                         Console.Write("> ");
-                        string response = Console.ReadLine();
 
-                        switch (response.ToLower())
+                        switch (Console.ReadKey().Key)
                         {
-                            case "1":
+                            case ConsoleKey.D1:
                                 Character.wd("You walk up to the handsome mahogany door and push it open.");
                                 Loop = false;
                                 break;
-                            case "2":
-                            case "3":
+                            case ConsoleKey.D2:
+                            case ConsoleKey.D3:
                                 bAHPrints.perceptionPrints();
                                 break;
                         }
@@ -292,7 +290,7 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
                             Character.wd("The thug's companions shuffle around, and you feel a cold pain around the side of your head.");
                             Character.wd("[LOONIE] Hehehe, some people just don't leeaar--");
                             Character.wd("Darkness.");
-                                Character.death("you tried to con a thug in his own game.");
+                            Character.death("you tried to con a thug in his own game.");
                                 return true;
                         }
                 }

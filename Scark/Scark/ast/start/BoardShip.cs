@@ -56,11 +56,10 @@ namespace Scark.ast.start
 
             Character.wd($"[1] I accept your trade.\n[2] I do not accept your trade.");
             Console.Write("> ");
-            string response = Console.ReadLine();
 
-            switch (response)
+            switch (Console.ReadKey().Key)
             {
-                case "1":
+                case ConsoleKey.D1:
                     Character.wd("[THORUL] It is all yours.");
                     Character.wd("You pick up the scroll, and it vanishes.");
                     Character.wd("Your head tingles, and you feel more intelligent.");
@@ -70,7 +69,7 @@ namespace Scark.ast.start
                     // wow those must be some massive shoes
                     Character.wd("Thorul departed just after nightfall.");
                     break;
-                case "2":
+                case ConsoleKey.D2:
                 default:
                     Character.wd("[THORUL] That is alright.");
                     Character.wd("[THORUL] Stay safe, my friend.");

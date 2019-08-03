@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 using System.Threading;
 using Scark.ast;
 using Scark.ast.items;
+<<<<<<< Updated upstream
+=======
+using Scark.ast.items.weapons;
+using Scark.ast.items.general;
+>>>>>>> Stashed changes
 
 namespace Scark.ast.start
 {
@@ -112,12 +117,16 @@ Select a role by inputting it's respective number.
             {
                 Console.Write("> ");
 
-                Character.characterClass = Console.ReadLine();
+                Character.characterClass = Console.ReadLine().Substring(0, 1);
                 switch (Character.characterClass)
                 {
                     case "1": // Rouge
                         Character.characterClass = "Rouge";
+<<<<<<< Updated upstream
                         Character.inventory.Add(ItemID.StringToItem("Iron Shortsword"));
+=======
+                        Character.inventory.Add(IronShortsword.ToItem());
+>>>>>>> Stashed changes
                         userPickedOption = true;
                         Thread.Sleep(1500);
                         Character.pressAnyKeyToContinue();
@@ -126,7 +135,11 @@ Select a role by inputting it's respective number.
                         break;
                     case "2": // Warrior
                         Character.characterClass = "Warrior";
+<<<<<<< Updated upstream
                         Character.inventory.Add(ItemID.StringToItem("Iron Broadsword"));
+=======
+                        Character.inventory.Add(IronBroadsword.ToItem());
+>>>>>>> Stashed changes
                         userPickedOption = true;
                         Thread.Sleep(1500);
 
@@ -136,8 +149,13 @@ Select a role by inputting it's respective number.
                         break;
                     case "3": // Ranger
                         Character.characterClass = "Ranger";
+<<<<<<< Updated upstream
                         Character.inventory.Add(ItemID.StringToItem("Iron Bow"));
                         Character.inventory.Add(ItemID.StringToItem("Leather Quiver"));
+=======
+                        Character.inventory.Add(IronBow.ToItem());
+                        Character.inventory.Add(LeatherQuiver.ToItem());
+>>>>>>> Stashed changes
                         userPickedOption = true;
                         Thread.Sleep(1500);
 
@@ -147,7 +165,11 @@ Select a role by inputting it's respective number.
                         break;
                     case "4": // Mage
                         Character.characterClass = "Mage";
+<<<<<<< Updated upstream
                         Character.inventory.Add(ItemID.StringToItem("Book of Souls"));
+=======
+                        Character.inventory.Add(BookOfSouls.ToItem());
+>>>>>>> Stashed changes
                         userPickedOption = true;
                         Thread.Sleep(1500);
 

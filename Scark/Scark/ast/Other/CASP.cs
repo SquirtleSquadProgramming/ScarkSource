@@ -111,16 +111,13 @@ namespace Scark.ast.Other
             {
                 // Asking if they wish to apply the changes
                 Console.Write("═══════════════════════════════════════════════════════════════════════════════════\nDo you wish to apply these changes: Add {0} to {1} leaving you with {2}\n[Y] Apply\n[N] Revert changes\n> ", amount, addTo, abilityPoints);
-
-                //Getting and processing their input to only 1 character
-                apply = (Console.ReadLine() + " ").Replace("[", "").Replace("]", "").Replace(" ", "").Substring(0, 1).ToUpper();
-
-                switch (apply)
+                
+                switch (Console.ReadKey().Key)
                 {
-                    case "Y": // If they picked yes
+                    case ConsoleKey.Y: // If they picked yes
                         optionPicked = true; // Exiting while loop
                         return true; // Setting apply(dynamic) to true
-                    case "N": // If they picked no
+                    case ConsoleKey.N: // If they picked no
                         optionPicked = true; // Exiting while loop
                         return false; // Setting apply(dynamic) to false
                 }
