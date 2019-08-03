@@ -12,7 +12,7 @@ namespace Scark.ast.items
         public string Name { get; set; }
         public string Description { get; set; }
         public string Image { get; set; }
-        public Dictionary<string, dynamic> Attributes { get; set; };
+        public Dictionary<string, dynamic> Attributes { get; set; }
 
         public Item(int item_ID, string item_Name, string item_Description, string item_Image, Dictionary<string, dynamic> item_Attributes)
         {

@@ -79,8 +79,6 @@ namespace Scark.ast.narsk
             Character.wd("You scurry past the thugs to the front of the bar.");
             Character.wd("[ORPHEUS] He-llo fine chap!");
             Character.wd("[ORPHEUS] Wh-at might bring you here?");
-
-
         }
 
         internal class MedallionAntiComplex

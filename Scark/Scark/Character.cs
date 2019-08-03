@@ -566,7 +566,7 @@ namespace Scark
                 name = "";
                 characterClass = "";
                 dev = false;
-                inventory = new List<int>();
+                inventory = new List<Item>();
                 AbilityScores = new Dictionary<string, int>()
                 {
                     {"constitution", 0},
