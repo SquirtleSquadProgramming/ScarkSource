@@ -15,6 +15,7 @@ namespace Scark.ast.items.weapons
             { "Class", "Magic" }
         };
         public static int ID = 4;
+        public static int Price = 100; // Need to Change!
         public static string Name = "Book of Souls";
         public static string Description = "Harnessing dark magic, for those who follow, death awaits.";
         public static string Image = @"                      ____________
@@ -42,6 +43,6 @@ _.==i_______ _.--'    _,'        |
 |  ---      | ,-'
 ............|'";
 
-        public static Item ToItem() => new Item(ID, Name, Description, Image, Attributes);
+        public static Item ToItem() => new Item(ID, Price, Name, Description, Image, Attributes);
     }
 }

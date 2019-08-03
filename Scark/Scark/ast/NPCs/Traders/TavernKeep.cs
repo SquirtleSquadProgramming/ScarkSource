@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Scark.ast.items;
+using Scark.ast.items.weapons;
+using Scark.ast.items.general;
 
 namespace Scark.ast.NPCs.Traders
 {
@@ -12,10 +15,14 @@ namespace Scark.ast.NPCs.Traders
         internal static int ID = 0;
         internal static int CurrentHP = 100;
         internal static int MaxHP = 100;
-        internal static int[][] Inventory = new int[1][]
+        internal static List<Item> Inventory = new List<Item>
         {
-            new int[2] { 1, 100 }
-        };
+            IronShortsword.ToItem(),
+            BookOfSouls.ToItem(),
+            IronBroadsword.ToItem(),
+            LeatherQuiver.ToItem(),
+            IronBow.ToItem()
+        }; // Need to change
         internal static int Ethryl = 300;
 
         public static Trader ToTrader() => new Trader(Name, ID, CurrentHP, MaxHP, Inventory, Ethryl);

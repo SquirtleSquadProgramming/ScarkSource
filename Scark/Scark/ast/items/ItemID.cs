@@ -21,7 +21,6 @@ namespace Scark.ast.items
          * Character.inventory.Add(weapons.IronShortsword.ToItem());
          */
 
-
         public static string ConvertIDToString(int item_id)
         {
             switch (item_id)
@@ -33,7 +32,7 @@ namespace Scark.ast.items
                 case 4: return "Book of Souls";
             }
 
-            throw new UnknownItemException($"Could not find item with id of {item_id}");
+            throw new Item.UnknownException($"Could not find item with id of {item_id}");
         }
 
         public static Item IDToItem(int item_id)
@@ -47,7 +46,7 @@ namespace Scark.ast.items
                 case 4: return weapons.BookOfSouls.ToItem();
             }
 
-            throw new UnknownItemException($"Could not find item with id of {item_id}");
+            throw new Item.UnknownException($"Could not find item with id of {item_id}");
         }
 
         public static Item StringToItem(string item_name)
@@ -61,7 +60,7 @@ namespace Scark.ast.items
                 case "Book of Souls":   return weapons.BookOfSouls.ToItem();
             }
 
-            throw new UnknownItemException($"Could not find item with name of {item_name}");
+            throw new Item.UnknownException($"Could not find item with name of {item_name}");
         }
 
         public static int ConvertStringToID(string item_name)
@@ -75,7 +74,7 @@ namespace Scark.ast.items
                 case "Book of Souls":   return 4;
             }
 
-            throw new UnknownItemException($"Could not find item with name of {item_name}");
+            throw new Item.UnknownException($"Could not find item with name of {item_name}");
         }
     }
 }

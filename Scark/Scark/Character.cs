@@ -132,7 +132,6 @@ namespace Scark
                     Console.WriteLine(x.Name);
             else Console.WriteLine("Empty");
         }
-
         #endregion
 
         #region Adding Attributes
@@ -344,7 +343,6 @@ namespace Scark
         #endregion
 
         #region Ability Scores
-
         // Void for the choose ability score points menu
         public static void chooseAbilityScorePoints()
         {
@@ -450,6 +448,12 @@ namespace Scark
                 // Sleeping for the specified speech speed
                 Thread.Sleep((text.Length * 100) / Character.Settings["SpeechSpeed"]);
             }
+        }
+
+        public static void WriteAt(string Text, int x, int y)
+        {
+            Console.SetCursorPosition(x, y);
+            Console.Write(Text);
         }
 
         // Rolls an ability check
@@ -591,10 +595,161 @@ namespace Scark
         #endregion
 
         #region Trade
-        public static void Trade(Trader trader)
+        public static void Trade(Trader Vendor)
         {
-            wd($"[{trader.Name}]: 'Ello there, would ya like to purchase from me?");
-            wd("[Y] Yes\n[N] No\n> ", true);
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine($"[{Vendor.Name.ToUpper()}]: 'Ello there, would ya like to trade with me?");
+                Console.Write("[Y] Yes\n[N] No\n> ", true);
+                switch (Console.ReadKey().Key)
+                { // TEMP: ─ │ ┬ ┼
+                    case ConsoleKey.Y:
+                        int numOfSelectedItem = 1;
+                        bool Left = true;
+
+                        while (true)
+                        {
+                            Console.ResetColor();
+                            Console.Clear();
+
+                            WriteAt(Vendor.Name.ToUpper(), 0, 0);
+                            WriteAt($"│{name.ToUpper()}", 28, 0);
+                            
+                            for (int i = 0; i < 55; i++)
+                                WriteAt("─", i, 1);
+
+                            WriteAt($"ETHRYL: {Vendor.Ethryl}", 0, 2);
+                            WriteAt($"│COST│", 23, 2);
+                            WriteAt($"ETHRYL: {ethryl}", 29, 2);
+                            WriteAt($"│COST", 50, 2);
+
+                            WriteAt("┬", 23, 1);
+                            WriteAt("┬", 50, 1);
+                            WriteAt("┼", 28, 1);
+
+                            for (int i = 0; i < Vendor.Inventory.Count; i++)
+                            {
+                                if (Left)
+                                    if (numOfSelectedItem == i + 1)
+                                        Console.ForegroundColor = ConsoleColor.Yellow;
+                                    else Console.ResetColor();
+                                WriteAt($"{i + 1} {Vendor.Inventory[i].Name}", 0, i + 3);
+                                WriteAt($"{Vendor.Inventory[i].Price}", 24, i + 3);
+                                Console.ResetColor();
+                                WriteAt($"│", 28, i + 3);
+                                WriteAt($"│", 50, i + 3);
+                                WriteAt($"│", 23, i + 3);
+                            }
+                            for (int i = 0; i < inventory.Count; i++)
+                            {
+                                if (!Left)
+                                    if (numOfSelectedItem == i + 1)
+                                        Console.ForegroundColor = ConsoleColor.Yellow;
+                                    else Console.ResetColor();
+                                WriteAt($"{i + 1} {inventory[i].Name}", 29, i + 3);
+                                WriteAt($"{inventory[i].Price}", 51, i + 3);
+                                Console.ResetColor();
+                                WriteAt($"│", 28, i + 3);
+                                WriteAt($"│", 50, i + 3);
+                                WriteAt($"│", 23, i + 3);
+                            }
+
+                            int MaxLength = 0;
+                            if (Vendor.Inventory.Count >= inventory.Count) MaxLength = Vendor.Inventory.Count;
+                            else MaxLength = inventory.Count; // << unlikely
+
+                            WriteAt("[Enter] Trade Item", 0, MaxLength + 4);
+                            WriteAt("[Arrow Keys] Select Items", 0, MaxLength + 5);
+                            WriteAt("[X] Exit Menu", 0, MaxLength + 6);
+
+                            bool exit = false;
+                            switch (Console.ReadKey().Key)
+                            {
+                                case ConsoleKey.Enter:
+                                    if (Left)
+                                    {
+                                        if (Vendor.Inventory.Any())
+                                        {
+                                            if (ethryl >= Vendor.Inventory[numOfSelectedItem - 1].Price)
+                                            {
+                                                inventory.Add(Vendor.Inventory[numOfSelectedItem - 1]);
+                                                ethryl += Vendor.Inventory[numOfSelectedItem - 1].Price * -1;
+                                                Vendor.Ethryl += Vendor.Inventory[numOfSelectedItem - 1].Price;
+                                                Vendor.Inventory.RemoveAt(numOfSelectedItem - 1);
+
+                                                if (numOfSelectedItem >= Vendor.Inventory.Count || !Vendor.Inventory.Any()) numOfSelectedItem--;
+                                                if (numOfSelectedItem == 0) { Left = false; numOfSelectedItem = 1; }
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (inventory.Any())
+                                        {
+                                            if (Vendor.Ethryl >= inventory[numOfSelectedItem - 1].Price)
+                                            {
+                                                Vendor.Inventory.Add(inventory[numOfSelectedItem - 1]); //a
+                                                Vendor.Ethryl += inventory[numOfSelectedItem - 1].Price * -1;
+                                                ethryl += inventory[numOfSelectedItem - 1].Price;
+                                                inventory.RemoveAt(numOfSelectedItem - 1);
+
+                                                if (numOfSelectedItem >= inventory.Count || !inventory.Any()) numOfSelectedItem--;
+                                                if (numOfSelectedItem == 0) { Left = true; numOfSelectedItem = 1; }
+                                            }
+                                        }
+                                    }
+                                    break;
+
+                                case ConsoleKey.UpArrow:
+                                    if (numOfSelectedItem > 1)
+                                        numOfSelectedItem--;
+                                    break;
+                                case ConsoleKey.DownArrow:
+                                    if (Left)
+                                    {
+                                        if (numOfSelectedItem < Vendor.Inventory.Count)
+                                            numOfSelectedItem++;
+                                    }
+                                    else
+                                    {
+                                        if (numOfSelectedItem < inventory.Count)
+                                            numOfSelectedItem++;
+                                    }
+                                    break;
+                                case ConsoleKey.LeftArrow:
+                                case ConsoleKey.RightArrow:
+                                    if (Left)
+                                    {
+                                        if (inventory.Any())
+                                        {
+                                            if (inventory.Count < numOfSelectedItem) numOfSelectedItem = inventory.Count;
+                                            Left = false;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (Vendor.Inventory.Any())
+                                        {
+                                            if (Vendor.Inventory.Count < numOfSelectedItem) numOfSelectedItem = Vendor.Inventory.Count;
+                                            Left = true;
+                                        }
+                                    }
+                                    break;
+
+                                case ConsoleKey.X:
+                                    exit = true;
+                                    break;
+                            }
+                            Console.CursorVisible = true;
+                            if (exit || (!Vendor.Inventory.Any()) && (!inventory.Any())) break;
+                            Console.CursorVisible = false;
+                        }
+                        return;
+                    case ConsoleKey.N: return;
+                    default: continue;
+                }
+            }
         }
         #endregion
     }

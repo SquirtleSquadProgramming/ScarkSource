@@ -53,6 +53,8 @@ namespace Scark
             return true;
         }
 
+        #pragma warning disable CS0162
+
         public static void Main(string[] args)
         {
             Console.Title = "Scark";
