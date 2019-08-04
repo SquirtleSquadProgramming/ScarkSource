@@ -47,39 +47,19 @@ namespace Scark.ast.items
         [Serializable]
         public class UnknownException : Exception
         {
-            public UnknownException()
-            {
-
-            }
-            public UnknownException(string Message) : base(Message)
-            {
-
-            }
-            public UnknownException(string Message, Exception inner) : base(Message, inner)
-            {
-
-            }
-            protected UnknownException(SerializationInfo info, StreamingContext context) : base(info, context)
-            {
-                
-            }
+            public UnknownException() { }
+            public UnknownException(string Message) { }
+            public UnknownException(string Message, Exception inner) { }
+            protected UnknownException(SerializationInfo info, StreamingContext context) { }
         }
 
         [Serializable]
         private class LengthException : Exception
         {
-            public LengthException()
-            {
-            }
-            public LengthException(string message) : base(message)
-            {
-            }
-            public LengthException(string message, Exception innerException) : base(message, innerException)
-            {
-            }
-            protected LengthException(SerializationInfo info, StreamingContext context) : base(info, context)
-            {
-            }
+            public LengthException() { }
+            public LengthException(string message) { }
+            public LengthException(string message, Exception innerException) { }
+            protected LengthException(SerializationInfo info, StreamingContext context) { }
         }
     }
 }
