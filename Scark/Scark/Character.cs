@@ -56,8 +56,8 @@ namespace Scark
         // Health
         public static Dictionary<string, int> health = new Dictionary<string, int>()
         {
-            {"max", 0},
-            {"current", 0}
+            {"max", 100},
+            {"current", 100}
         };
 
         // Mana/Magika
@@ -221,6 +221,19 @@ namespace Scark
 
             // Sleeping as there may be a Console.Clear after
             Thread.Sleep(1000);
+        }
+
+        // lose / gain health
+        public static void minusHealth(int AMOUNT_TO_BE_TAKEN_AWAY)
+        {
+            health["current"] -= AMOUNT_TO_BE_TAKEN_AWAY;
+            
+            if (Settings["ColourTheme"] == "dark")
+                Console.ForegroundColor = ConsoleColor.Red;
+            else if (Settings["ColorTheme"] == "light")
+                Console.ForegroundColor == ConsoleColor.DarkRed;
+
+            wd("You lost " + AMOUNT_TO_BE_TAKEN_AWAY + " health!");
         }
 
         // award experience points

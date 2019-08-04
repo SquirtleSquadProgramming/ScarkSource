@@ -250,7 +250,8 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
                         if (NOTICED_BARREL && !LOOKED_IN_BARREL)
                         {
                             Character.wd("You open the barrel to find a hatchet..");
-                            Character.wd("A vintage tomahawk from when this very tavern was a loghouse..");
+                            Character.wd("A vintage tomahawk from when this very tavern was a loghouse...");
+                            Character.wd("The handle of the hatchet is labled in fading letters, \"1493 Dwarven wood\"");
                             Character.pressAnyKeyToContinue();
                             loop = true;
                             while (loop)
@@ -263,10 +264,11 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
                                 {
                                     case ConsoleKey.Y:
                                         Character.wd("The tomahawk has been added to your inventory.");
-                                        Character.inventory.Add(ItemID.IDToItem(5));
+                                        Character.inventory.Add(ItemID.IDToItem(5)); // tomahawk
                                         loop = false;
                                         break;
                                     case ConsoleKey.N:
+                                        Character.wd("After observing the vintage tool, you put it back in it's barrel.");
                                         break;
                                     default:
                                         Character.wd("Please either enter Y or N!");
@@ -316,12 +318,12 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
                         return false;
                     case ConsoleKey.D1:
                         Character.awardEthryl(Character.ethryl * -1);
-                        Character.wd("You break the bank, and hand over your leather wallet to the thug.");
+                        Character.wd("You unwillingly hand over your leather wallet to the thug.");
                         return false;
                     case ConsoleKey.D2:
                         Character.awardEthryl((Character.ethryl / 2) * -1);
                         Character.wd("You reach for your wallet, but take only a few ethryl.");
-                        Character.wd("[LOONIE] Is that all you av?");
+                        Character.wd("[LOONIE] Is that all you 'av?");
                         if (Character.rollCheck("stealth", 5))
                         {
                             Character.wd("The thug looks at you suspiciously.");
@@ -336,9 +338,12 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
                             Character.wd("[LOONIE] You look a lil pale there kiddo.");
                             Character.wd("[LOONIE] How abouts you give me your whole wallet.");
                             Character.wd("The thug's companions shuffle around, and you feel a cold pain around the side of your head.");
+                            
+                            Character.minusHealth(10);  
+
                             Character.wd("[LOONIE] Hehehe, some people just don't leeaar--");
                             Character.wd("Darkness.");
-                            Character.death("you tried to con a thug in his own game.");
+                            Character.death("You tried to con a thug in his own game.");
                                 return true;
                         }
                 }
