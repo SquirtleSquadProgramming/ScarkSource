@@ -21,24 +21,32 @@ namespace Scark.ast.narsk
             EOA.wd($"[1] Yes, I am {Character.name}\n[2] No, I am not {Character.name}");
             Console.Write("> ");
 
-            switch (Console.ReadKey().Key)
+            bool Loop = true;
+            while (Loop)
             {
-                case ConsoleKey.D1:
-                    EOA.wd("[OLD MAN] Ah, good!");
-                    EOA.wd("[OLD MAN] I am p-p-possibly the only one in a 20 klick distance that doesn't hate you r-right now.");
-                    EOA.wd("[OLD MAN] T-try not t-to talk to the chunkys, I have heard the thugs around here are rather p-patriotic.");
-                    break;
-                default:
-                    EOA.wd("The Old Man couldn't hear you and assumed you said no...");
-                    goto case ConsoleKey.D2;
-                case ConsoleKey.D2:
-                    EOA.wd("[OLD MAN] Oh well.");
-                    EOA.wd("[OLD MAN] You will h-have to do.");
-                    EOA.wd($"[OLD MAN] I didn't really like the {Character.name} chap anyway.");
-                    EOA.wd("[OLD MAN] Did you hear what he d-did to the king?");
-                    EOA.wd("...");
-                    EOA.wd("[OLD MAN] Aight, I have got something for you.");
-                    break;
+                switch (Console.ReadKey().Key)
+                {
+                    case ConsoleKey.D1:
+                    case ConsoleKey.NumPad1:
+                        EOA.wd("\n[OLD MAN] Ah, good!");
+                        EOA.wd("[OLD MAN] I am p-p-possibly the only one in a 20 klick distance that doesn't hate you r-right now.");
+                        EOA.wd("[OLD MAN] T-try not t-to talk to the chunkys, I have heard the thugs around here are rather p-patriotic.");
+                        Loop = false;
+                        break;
+                    default:
+                        Console.WriteLine("\nPlease select an option!");
+                        continue;
+                    case ConsoleKey.D2:
+                    case ConsoleKey.NumPad2:
+                        EOA.wd("\n[OLD MAN] Oh well.");
+                        EOA.wd("[OLD MAN] You will h-have to do.");
+                        EOA.wd($"[OLD MAN] I didn't really like the {Character.name} chap anyway.");
+                        EOA.wd("[OLD MAN] Did you hear what he d-did to the king?");
+                        EOA.wd("...");
+                        EOA.wd("[OLD MAN] Aight, I have got something for you.");
+                        Loop = false;
+                        break;
+                }
             }
 
             EOA.wd("The old man hands you a scroll.");
@@ -88,7 +96,8 @@ namespace Scark.ast.narsk
             {
                 while (true)
                 {
-                    Console.WriteLine(@"   _______________________
+                    Console.WriteLine(@"
+   _______________________
    \                      \
     \  To the dear soul    \
      | reading this,        |
@@ -106,11 +115,12 @@ namespace Scark.ast.narsk
   \______________________\");
                     EOA.wd($"[OLD MAN] So what d-do you say, {Character.name}, will you join me in m-my business?");
                     EOA.wd($"[1] Sounds like a mission for me.\n[2] I don't want to do this.");
-                    Console.Write(">");
+                    Console.Write("> ");
                     switch (Console.ReadKey().Key)
                     {
                         case ConsoleKey.D1:
-                            EOA.wd("[OLD MAN] Splendid!");
+                        case ConsoleKey.NumPad1:
+                            EOA.wd("\n[OLD MAN] Splendid!");
                             EOA.wd("[OLD MAN] I bid you to go to the medallion.");
                             EOA.wd("[OLD MAN] If you have already met Lord Wakeheart, you should know t-that he has bestowed much honour in a young b-barman named Orpheus.");
                             EOA.wd("[OLD MAN] He is the informant to our association around here, and you will find him at the good ol' Medallion t-tavern.");
@@ -119,7 +129,8 @@ namespace Scark.ast.narsk
                             EOA.wd("[OLD MAN] Mead is half off as well, if it tickles your fancy.");
                             return false;
                         case ConsoleKey.D2:
-                            EOA.wd("[OLD MAN] Oh my.");
+                        case ConsoleKey.NumPad2:
+                            EOA.wd("\n[OLD MAN] Oh my.");
                             EOA.wd("[OLD MAN] You are a brave soul to say such a thing.");
                             EOA.wd("Suddenly the Old Mans voice drops an octave, and his breathing makes a rattling noise.");
                             EOA.wd("[OLD MAN] Those who wish to cross my mission, shall be rewarded with death.");
@@ -136,8 +147,8 @@ namespace Scark.ast.narsk
                             Character.death("you dared to cross the dark sorcerer."); // death already...? maybe make it so that you DONT die lmao
                             return true;
                         default:
-                            EOA.wd("The Old Man couldn't hear you and assumed you said no...");
-                            goto case ConsoleKey.D2;
+                            EOA.wd("\nPlease enter 1 or 2!");
+                            continue;
                     }
                 }
             }
@@ -158,11 +169,15 @@ namespace Scark.ast.narsk
                         switch (Console.ReadKey().Key)
                         {
                             case ConsoleKey.D1:
-                                EOA.wd("You walk up to the handsome mahogany door and push it open.");
+                            case ConsoleKey.NumPad1:
+                                EOA.wd("\nYou walk up to the handsome mahogany door and push it open.");
                                 Loop = false;
                                 break;
                             case ConsoleKey.D2:
+                            case ConsoleKey.NumPad2:
                             case ConsoleKey.D3:
+                            case ConsoleKey.NumPad3:
+                                Console.Write("\n");
                                 bAHPrints.perceptionPrints();
                                 break;
                         }
@@ -228,7 +243,7 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
                             switch (Console.ReadKey().Key)
                             {
                                 case ConsoleKey.Y:
-                                    EOA.wd("The tomahawk has been added to your inventory.");
+                                    EOA.wd("\nThe tomahawk has been added to your inventory.");
                                     Character.inventory.Add(items.ItemID.IDToItem(5));
                                     loop = false;
                                     break;
@@ -256,13 +271,13 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
                             Console.ReadKey();
                             /* =-=-=-=-=-=-=-=-=-=-= TODO ADD STUF HERE =-=-=-=-=-=-=-=-=-=-= */
                         }
-                        else if (!Character.rollCheck("perception", 10) && !LOOKED_IN_BARREL) //if check failed
+                        else if (TRY_NOTICED_BARREL && !LOOKED_IN_BARREL)
                         {
                             EOA.wd("You look around the building. Nothing seems out of place.");
                             TRY_NOTICED_BARREL = true;
                             Console.ReadKey();
                         }
-                        else if (TRY_NOTICED_BARREL && !LOOKED_IN_BARREL)
+                        else if (!Character.rollCheck("perception", 10) && !LOOKED_IN_BARREL) //if check failed
                         {
                             EOA.wd("You look around the building. Nothing seems out of place.");
                             TRY_NOTICED_BARREL = true;

@@ -5,6 +5,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
+#pragma warning disable CA1060
+#pragma warning disable CA2101
 namespace Scark
 {
     class FullScreen

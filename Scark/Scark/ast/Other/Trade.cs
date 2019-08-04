@@ -196,7 +196,7 @@ namespace Scark.ast.Other
             TradeACC.Vendor = Vendor;
             Console.Clear();
             Console.WriteLine($"[{TradeACC.Vendor.Name.ToUpper()}]: 'Ello there, would ya like to trade with me?");
-            Console.Write("[Y] Yes\n[N] No\n> ", true);
+            Console.Write("[Y] Yes\n[N] No\n> ");
             switch (Console.ReadKey().Key)
             { // TEMP: ─ │ ┬ ┼
                 case ConsoleKey.Y:

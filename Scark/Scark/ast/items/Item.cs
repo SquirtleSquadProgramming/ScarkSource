@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,25 +34,32 @@ namespace Scark.ast.items
         {
             Console.WriteLine($"ITEM:        {item.Name} [ID: {item.ID}]");
             Console.WriteLine($"DESCRIPTION: {item.Description}");
-            Console.WriteLine($"VALUE:       {item.Price}");
+            Console.WriteLine($"VALUE:       {item.Price} Ethryl");
             Console.WriteLine(item.Image);
             Console.WriteLine($"ATTRIBUTES:  ");
             foreach (KeyValuePair<string, dynamic> attribute in item.Attributes)
             {
                 Console.WriteLine($"{attribute.Key} : {attribute.Value}");
             }
+            Console.WriteLine("\n");
         }
 
-        public class UnknownException : System.Exception
+        [Serializable]
+        public class UnknownException : Exception
         {
             public UnknownException() { }
-            public UnknownException(string Message) : base(Message) { }
-            public UnknownException(string Message, Exception inner) : base(Message, inner) { }
+            public UnknownException(string Message) { }
+            public UnknownException(string Message, Exception inner) { }
+            protected UnknownException(SerializationInfo info, StreamingContext context) { }
         }
 
-        private class LengthException : System.Exception
+        [Serializable]
+        private class LengthException : Exception
         {
-            public LengthException(string Message) : base(Message) { }
+            public LengthException() { }
+            public LengthException(string message) { }
+            public LengthException(string message, Exception innerException) { }
+            protected LengthException(SerializationInfo info, StreamingContext context) { }
         }
     }
 }

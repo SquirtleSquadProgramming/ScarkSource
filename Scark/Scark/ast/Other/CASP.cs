@@ -145,6 +145,9 @@ namespace Scark.ast.Other
                         return true;
                     case ConsoleKey.N: // if they didn't wish to use more
                         return false;
+                    default:
+                        optionPicked = false;
+                        continue;
                 }
             }
             throw new NotImplementedException();
