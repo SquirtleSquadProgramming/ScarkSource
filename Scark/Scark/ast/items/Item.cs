@@ -31,7 +31,6 @@ namespace Scark.ast.items
 
         public static void showItemInfoGUI(Item item)
         {
-
             Console.WriteLine($"ITEM:        {item.Name} [ID: {item.ID}]");
             Console.WriteLine($"DESCRIPTION: {item.Description}");
             Console.WriteLine($"VALUE:       {item.Price}");
