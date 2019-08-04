@@ -3,6 +3,7 @@
 - [General Items](#general-items)
 	- [Completed Example](#completed-example-of-general-item)
 - [Weapon Items](#weapon-items)
+	- [Completed Example](#completed-example-of-weapon-item)
 - [General NPCs](#general-npcs)
 - [Trading NPCs](#trading-npcs)
 	- [Completed Example](#completed-example-of-trading-npc)
@@ -57,12 +58,12 @@ static class HealingPotion
 ```
 ([Completed Example](#completed-example-of-general-item))
 
-4. It is almost complete but the item needs to be able to be converted into a used instance of the `Item` class. To do so, add this:
+3. It is almost complete but the item needs to be able to be converted into a used instance of the `Item` class. To do so, add this:
 ```cs
 public static Item ToItem() => new Item(ID, Price, Name, Description, Image, Attributes);
 ```
 
-5. Now the new item must be added to the [ItemID.cs](https://github.com/SquirtleSquadProgramming/ScarkSource/blob/master/Scark/Scark/ast/items/ItemID.cs):
+4. Now the new item must be added to the [ItemID.cs](https://github.com/SquirtleSquadProgramming/ScarkSource/blob/master/Scark/Scark/ast/items/ItemID.cs):
 ```cs
 public class ItemID
 {
@@ -129,16 +130,118 @@ namespace Scark.ast.items.general
 
 ## Weapon Items
 ###### THE FOLLOWING IS A TUTORIAL AND HAS NOT BEEN IMPLEMENTED INTO THE GAME
+1. Create a new static class (file) named the name of the weapon in [Pascal Case](http://wiki.c2.com/?PascalCase) inside `ast/items/weapons`:
+```cs
+namespace Scark.ast.items.weapons
+{
+	static class VialOfHarming { }
+}
+```
+2. The item has necessary properties which are the following:
+- `int ID`
+	- The identifying number of the item
+	- In this case it will be set to `100`
+- `int Price`
+	- The amount of ethryl that is required to purchase this item
+	- In this case it will be set to `15`
+- `string Name`
+	- The name of the item
+	- In this case it will be set to `"Vial O' Harming"`
+- `string Description`
+	- The description of the item (eg. what it does)
+	- In this case it will be set to `"A toxic elixir in a fragile vial just ready to be thrown..."`
+- `string Image`
+	- ASCII art of the item
+	- ~~In this case it will be set to `" "`~~ [View the image in completed code](#completed-example-of-weapon-item)
+- `Dictionary<string, dynamic> Attributes`
+	- Used to add other properties to the item, weapons **need** Damage and Class attributes
+	- In this case it will be set to `{ {"Damage", 4}, {"Class", "Throwing"} }`
+_Note: these all have to be **public** and **static**_
+
+So now the code looks like this:
+```cs
+using System.Collections.Generic;
+
+static class VialOfHarming
+{
+	public static int ID = 100;
+	public static int Price = 15;
+	public static string Name = "Vial O' Harming";
+	public static string Description = "A toxic elixir in a fragile vial just ready to be thrown...";
+	public static Dictionary<string, dynamic> Attributes = new Dictionary<string, dynamic>()
+	{
+		{ "Damage", 3 },
+		{ "Class", "Throwing" }
+	};
+	public static string Image = @" "; // See in completed example below 
+}
+```
+([Completed Example](#completed-example-of-weapon-item))
+
+3. It is almost complete but the weapon needs to be able to be converted into a used instance of the `Item` class. To do so, add this:
+```cs
+public static Item ToItem() => new Item(ID, Price, Name, Description, Image, Attributes);
+```
+4. Now the new item must be added to the [ItemID.cs](https://github.com/SquirtleSquadProgramming/ScarkSource/blob/master/Scark/Scark/ast/items/ItemID.cs):
+```cs
+public class ItemID
+{
+	public static Item IDToItem(int item_id)
+    {
+    	switch (item_id)
+        {
+			case 100: return weapons.VialOfHarming.ToItem();
+        }
+
+        throw new Item.UnknownException($"Could not find item with id of {item_id}");
+	}
+
+    public static Item StringToItem(string item_name)
+    {
+		switch (item_name)
+        {
+        	case "Vial o' Harming": return weapons.VialOfHarming.ToItem();
+		}
+
+        throw new Item.UnknownException($"Could not find item with name of {item_name}");
+	}
+}
+```
+
+##### Completed Example of Weapon Item
+```cs
+using System.Collections.Generic;
+
+static class VialOfHarming
+{
+	public static int ID = 100;
+	public static int Price = 15;
+	public static string Name = "Vial O' Harming";
+	public static string Description = "A toxic elixir in a fragile vial just ready to be thrown...";
+	public static Dictionary<string, dynamic> Attributes = new Dictionary<string, dynamic>()
+	{
+		{ "Damage", 3 },
+		{ "Class", "Throwing" }
+	};
+	public static string Image = @"
+ /\
+ )(
+|__|
+|  |
+|__|";
+	
+	public static Item ToItem() => new Item(ID, Price, Name, Description, Image, Attributes);
+}
+```
 #### Goto [Top](#guides-for-s%C4%81rk-code)
-### WIP
 
 
 
 
 ## General NPCs
 ###### THE FOLLOWING IS A TUTORIAL AND HAS NOT BEEN IMPLEMENTED INTO THE GAME
-#### Goto [Top](#guides-for-s%C4%81rk-code)
 ### WIP
+#### Goto [Top](#guides-for-s%C4%81rk-code)
 
 
 
