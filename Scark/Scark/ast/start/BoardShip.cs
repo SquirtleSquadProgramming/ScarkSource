@@ -54,12 +54,13 @@ namespace Scark.ast.start
             EOA.wd("[THORUL] Alas, it only works on humankind such as yourself, which is quite a shame for a dwarf like myself.");
             EOA.wd("[THORUL] I will give it to you if you polish my balmorals.");
 
-            EOA.wd($"[1] I accept your trade.\n[2] I do not accept your trade.");
+            EOA.wd($"[1] I accept your trade.\n[2] I do not accept your trade.\n> ");
 
             switch (Console.ReadKey().Key)
             {
                 case ConsoleKey.D1:
-                    EOA.wd("[THORUL] It is all yours.");
+                case ConsoleKey.NumPad1:
+                    EOA.wd("\n[THORUL] It is all yours.");
                     EOA.wd("You pick up the scroll, and it vanishes.");
                     EOA.wd("Your head tingles, and you feel more intelligent.");
                     EOA.wd("Your intelligence ability increases by one.");
@@ -69,8 +70,9 @@ namespace Scark.ast.start
                     EOA.wd("Thorul departed just after nightfall.");
                     break;
                 case ConsoleKey.D2:
+                case ConsoleKey.NumPad2:
                 default:
-                    EOA.wd("[THORUL] That is alright.");
+                    EOA.wd("\n[THORUL] That is alright.");
                     EOA.wd("[THORUL] Stay safe, my friend.");
                     EOA.wd("You go back inside to have an early nap.");
                     EOA.wd("Thorul and his crew departs the berth.");
@@ -80,7 +82,7 @@ namespace Scark.ast.start
 
             EOA.wd("\nAnother week passes.");
             EOA.wd("[LORD WAKEHART] Hey kid.");
-            EOA.wd("[LORD WAKEHART] Not long 'til the Farquaad arrives at Scark.");
+            EOA.wd("[LORD WAKEHART] Not long 'til the Farquaad arrives at Sārk.");
             EOA.wd("[LORD WAKEHART] She's gonna stay in the port for a lil' while as we restock.");
             EOA.wd("[LORD WAKEHART] Y'know what, go to the town called Narsk not far from here, and go to the tarven called \"The Medallion\".");
             EOA.wd("[LORD WAKEHART] Talk to my friend Orpheus, he's the barman. He'll tell you some stuff you ought to know.");

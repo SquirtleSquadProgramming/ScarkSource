@@ -116,7 +116,8 @@ Select a role by inputting it's respective number.
                 
                 switch (Console.ReadKey().Key)
                 {
-                    case ConsoleKey.D1: // Rouge
+                    case ConsoleKey.D1:
+                    case ConsoleKey.NumPad1: // Rouge
                         Character.characterClass = "Rouge";
                         Character.inventory.Add(ItemID.StringToItem("Iron Shortsword"));
                         Character.inventory.Add(IronShortsword.ToItem());
@@ -124,7 +125,8 @@ Select a role by inputting it's respective number.
 
                         assignAbilityScoreIntro();
                         break;
-                    case ConsoleKey.D2: // Warrior
+                    case ConsoleKey.D2:
+                    case ConsoleKey.NumPad2: // Warrior
                         Character.characterClass = "Warrior";
                         Character.inventory.Add(ItemID.StringToItem("Iron Broadsword"));
                         Character.inventory.Add(IronBroadsword.ToItem());
@@ -132,7 +134,8 @@ Select a role by inputting it's respective number.
 
                         assignAbilityScoreIntro();
                         break;
-                    case ConsoleKey.D3: // Ranger
+                    case ConsoleKey.D3:
+                    case ConsoleKey.NumPad3: // Ranger
                         Character.characterClass = "Ranger";
                         Character.inventory.Add(ItemID.StringToItem("Iron Bow"));
                         Character.inventory.Add(ItemID.StringToItem("Leather Quiver"));
@@ -142,7 +145,8 @@ Select a role by inputting it's respective number.
 
                         assignAbilityScoreIntro();
                         break;
-                    case ConsoleKey.D4: // Mage
+                    case ConsoleKey.D4:
+                    case ConsoleKey.NumPad4:// Mage
                         Character.characterClass = "Mage";
                         Character.inventory.Add(ItemID.StringToItem("Book of Souls"));
                         Character.inventory.Add(BookOfSouls.ToItem());
