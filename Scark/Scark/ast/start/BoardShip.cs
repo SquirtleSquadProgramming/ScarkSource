@@ -55,7 +55,6 @@ namespace Scark.ast.start
             EOA.wd("[THORUL] I will give it to you if you polish my balmorals.");
 
             EOA.wd($"[1] I accept your trade.\n[2] I do not accept your trade.");
-            Console.Write("> ");
 
             switch (Console.ReadKey().Key)
             {

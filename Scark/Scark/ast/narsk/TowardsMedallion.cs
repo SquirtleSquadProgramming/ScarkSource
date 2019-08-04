@@ -215,12 +215,41 @@ _____`--._ ''      . '---'``--._|:::::::|:::::::::::::::::::::::|
                         else EOA.wd("[1] Go inside\n[2] Look around");
                     }
 
+                    internal static bool loop = false;
+
+                    private static void takeItem()
+                    {
+                        loop = true;
+                        while (loop)
+                        {
+                            items.Item.showItemInfoGUI(items.ItemID.IDToItem(5));
+                            EOA.wd("Would you like to take the tomahawk? Y or N");
+
+                            switch (Console.ReadKey().Key)
+                            {
+                                case ConsoleKey.Y:
+                                    EOA.wd("The tomahawk has been added to your inventory.");
+                                    Character.inventory.Add(items.ItemID.IDToItem(5));
+                                    loop = false;
+                                    break;
+                                case ConsoleKey.N:
+                                    break;
+                                default:
+                                    EOA.wd("Please either enter Y or N!");
+                                    EOA.pressAnyKeyToContinue();
+                                    break;
+                            }
+                        }
+                    }
+
                     internal static void perceptionPrints()
                     {
                         if (NOTICED_BARREL && !LOOKED_IN_BARREL)
                         {
-                            /* =-=-=-=-=-=-=-=-=-=-= TODO ADD STUF HERE =-=-=-=-=-=-=-=-=-=-= */
-                            EOA.wd("You open the barrel to find ----");
+                            EOA.wd("You open the barrel to find a hatchet..");
+                            EOA.wd("A vintage tomahawk from when this very tavern was a loghouse..");
+                            EOA.pressAnyKeyToContinue();
+                            takeItem();
                             /* =-=-=-=-=-=-=-=-=-=-= TODO ADD STUF HERE =-=-=-=-=-=-=-=-=-=-= */
                             LOOKED_IN_BARREL = true;
                             /* =-=-=-=-=-=-=-=-=-=-= TODO ADD STUF HERE =-=-=-=-=-=-=-=-=-=-= */

@@ -11,11 +11,11 @@ namespace Scark.ast.items.weapons
     {
         public static Dictionary<string, dynamic> Attributes = new Dictionary<string, dynamic>()
         {
-            { "Damage", 4 }, // WIP
+            { "Damage", 5 }, // WIP
             { "Class", "Melee" } // WIP
         };
         public static int ID = 1;
-        public static int Price = 100; // Need to Change!
+        public static int Price = 25; // Need to Change!
         public static string Name = "Iron Broadsword";
         public static string Description = "A relatively large, rusting sword with a faint smell of blood.";
         public static string Image = @"                '

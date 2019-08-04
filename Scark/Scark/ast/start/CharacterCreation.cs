@@ -113,52 +113,40 @@ Select a role by inputting it's respective number.
             while (userPickedOption == false)
             {
                 Console.Write("> ");
-
-                Character.characterClass = Console.ReadLine().Substring(0, 1);
-                switch (Character.characterClass)
+                
+                switch (Console.ReadKey().Key)
                 {
-                    case "1": // Rouge
+                    case ConsoleKey.D1: // Rouge
                         Character.characterClass = "Rouge";
                         Character.inventory.Add(ItemID.StringToItem("Iron Shortsword"));
                         Character.inventory.Add(IronShortsword.ToItem());
                         userPickedOption = true;
-                        Thread.Sleep(1500);
-                        EOA.pressAnyKeyToContinue();
 
                         assignAbilityScoreIntro();
                         break;
-                    case "2": // Warrior
+                    case ConsoleKey.D2: // Warrior
                         Character.characterClass = "Warrior";
                         Character.inventory.Add(ItemID.StringToItem("Iron Broadsword"));
                         Character.inventory.Add(IronBroadsword.ToItem());
                         userPickedOption = true;
-                        Thread.Sleep(1500);
-
-                        EOA.pressAnyKeyToContinue();
 
                         assignAbilityScoreIntro();
                         break;
-                    case "3": // Ranger
+                    case ConsoleKey.D3: // Ranger
                         Character.characterClass = "Ranger";
                         Character.inventory.Add(ItemID.StringToItem("Iron Bow"));
                         Character.inventory.Add(ItemID.StringToItem("Leather Quiver"));
                         Character.inventory.Add(IronBow.ToItem());
                         Character.inventory.Add(LeatherQuiver.ToItem());
                         userPickedOption = true;
-                        Thread.Sleep(1500);
-
-                        EOA.pressAnyKeyToContinue();
 
                         assignAbilityScoreIntro();
                         break;
-                    case "4": // Mage
+                    case ConsoleKey.D4: // Mage
                         Character.characterClass = "Mage";
                         Character.inventory.Add(ItemID.StringToItem("Book of Souls"));
                         Character.inventory.Add(BookOfSouls.ToItem());
                         userPickedOption = true;
-                        Thread.Sleep(1500);
-
-                        EOA.pressAnyKeyToContinue();
 
                         assignAbilityScoreIntro();
                         break;
@@ -175,6 +163,9 @@ Select a role by inputting it's respective number.
 
         public void assignAbilityScoreIntro()
         {
+            Console.Clear();
+            EOA.wd("You train for weeks under intense coaching.");
+            EOA.pressAnyKeyToContinue();
             EOA.wd("[TRAINER] Hey, don't start packing yet.");
             EOA.wd("[TRAINER] You need to choose some ability scores as well.");
             EOA.wd("[TRAINER] They determine how good you are at certain things.");

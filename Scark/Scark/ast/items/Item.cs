@@ -29,6 +29,19 @@ namespace Scark.ast.items
             Attributes = _Attributes;
         }
 
+        public static void showItemInfoGUI(Item item)
+        {
+            Console.WriteLine($"ITEM:        {item.Name} [ID: {item.ID}]");
+            Console.WriteLine($"DESCRIPTION: {item.Description}");
+            Console.WriteLine($"VALUE:       {item.Price}");
+            Console.WriteLine(item.Image);
+            Console.WriteLine($"ATTRIBUTES:  ");
+            foreach (KeyValuePair<string, dynamic> attribute in item.Attributes)
+            {
+                Console.WriteLine($"{attribute.Key} : {attribute.Value}");
+            }
+        }
+
         public class UnknownException : System.Exception
         {
             public UnknownException() { }

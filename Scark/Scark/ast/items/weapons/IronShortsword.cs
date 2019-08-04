@@ -15,7 +15,7 @@ namespace Scark.ast.items.weapons
             { "Class", "Melee" } // WIP
         };
         public static int ID = 0;
-        public static int Price = 100; // Need to Change!
+        public static int Price = 25; // Need to Change!
         public static string Name = "Iron Shortsword";
         public static string Description = "A rather short, bloodstained sword. Old, but it works";
         public static string Image = @"                '
