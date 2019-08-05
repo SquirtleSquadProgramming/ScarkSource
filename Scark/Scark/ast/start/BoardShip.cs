@@ -10,7 +10,7 @@ namespace Scark.ast.start
 {
     class BoardShip
     {
-        Random rand = new Random();
+        static Random rand = new Random();
         int result = rand.Next(1,3);
         bool boughtProstitute = false;
         bool savedProstitute = false;
@@ -109,10 +109,11 @@ namespace Scark.ast.start
                 EOA.wd("[THORUL] So, kid. Wanna buy one? 20 ethryl for one night.");
                 EOA.wd("[1] I wish to buy one.\n[2] I refuse to buy one.");
 
-                switch (Console.ReadKey().Key)
+                string response = Console.ReadLine();
+
+                switch (response)
                 {
-                    case ConsoleKey.D1:
-                    case ConsoleKey.NumPad1:
+                    case "1":
                         EOA.wd("You look in your wallet and realise that you have no money.");
                         EOA.wd("\n[THORUL] Don't worry. Since it's your first time, you can have it for free.");
                         EOA.wd("\n[THORUL] It is all yours. I'll come back for it tomorrow!");
@@ -120,8 +121,7 @@ namespace Scark.ast.start
                         EOA.wd("Thorul departed shortly later.");
                         boughtProstitute = true;
                         break;
-                    case ConsoleKey.D2:
-                    case ConsoleKey.NumPad2:
+                    case "2":
                     default:
                         EOA.wd("\n[THORUL] That is alright.");
                         EOA.wd("[THORUL] Stay safe, my friend.");

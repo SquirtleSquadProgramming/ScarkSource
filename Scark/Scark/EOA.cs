@@ -76,7 +76,7 @@ namespace Scark
             // If the user has special effects enabled
             EOA.ChangeToEffects(new ConsoleColor[] { ConsoleColor.Red, ConsoleColor.DarkRed });
 
-            Console.WriteLine("- " + amount.ToString + " Health!\n");
+            Console.WriteLine($"- {0} health!", amount.ToString());
 
             // Setting the foreground colour back to the default
             EOA.revertColourScheme();
