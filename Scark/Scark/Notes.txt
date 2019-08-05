@@ -82,7 +82,12 @@ Harnessing the dark and light pillars of magic and energy, the mage infuses the 
 (Book of Souls)
 
 
+##### STORY FILES
 
+# Header Section (For finding sections of story)
+> [NAME] Spoken text (Space after defining is necessary)
+< Break for hardcoded events ie. input or story divergence
 
+=-=-=-=-=
 
-
+# [\w\d]+[(\n> .+)(\n< .+)]+
