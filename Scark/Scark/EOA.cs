@@ -70,6 +70,21 @@ namespace Scark
             wdExtn(filteredText, writeNotLine);
         }
 
+        public static void subtractHealth(int amount)
+        {
+            Character.health["max"] -= amount;
+            // If the user has special effects enabled
+            EOA.ChangeToEffects(new ConsoleColor[] { ConsoleColor.Red, ConsoleColor.DarkRed });
+
+            Console.WriteLine($"- {0} health!", amount.ToString());
+
+            // Setting the foreground colour back to the default
+            EOA.revertColourScheme();
+
+            // Wait a bit (because why not) (and also incase a Console.Clear() is directly after this.)
+            Thread.Sleep(1000);
+        }
+
         private static void wdExtn(string text, bool writeNotLine)
         {
             // If to do Console.Write
