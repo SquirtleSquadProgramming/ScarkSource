@@ -26,6 +26,7 @@ namespace Scark.ast.items
                 case 3: return "Iron Bow";
                 case 4: return "Book of Souls";
                 case 5: return "Tomahawk";
+                case 6: return "Royal Topaz";
             }
 
             throw new Item.UnknownException($"Could not find item with id of {item_id}");

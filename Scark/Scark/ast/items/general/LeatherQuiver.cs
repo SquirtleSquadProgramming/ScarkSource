@@ -15,6 +15,7 @@ namespace Scark.ast.items.general
         };
         public static int ID = 2;
         public static int Price = 10; // Need to Change!
+        public static int SellPrice = 5;
         public static string Name = "Leather Quiver";
         public static string Description = "A container made from skinned cows to hold your arrows.";
         public static string Image = @"                          |
@@ -41,6 +42,6 @@ namespace Scark.ast.items.general
      `.__    `.'
          `''''";
 
-        public static Item ToItem() => new Item(ID, Price, Name, Description, Image, Attributes);
+        public static Item ToItem() => new Item(ID, Price, SellPrice, Name, Description, Image, Attributes);
     }
 }

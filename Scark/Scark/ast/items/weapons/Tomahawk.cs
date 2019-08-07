@@ -16,6 +16,7 @@ namespace Scark.ast.items.weapons
         };
         public static int ID = 5;
         public static int Price = 50;
+        public static int SellPrice = 35;
         public static string Name = "Tomahawk";
         public static string Description = "A lightweight hatchet that gets the job done";
         public static string Image = @"|`-. __      __
@@ -38,6 +39,6 @@ namespace Scark.ast.items.weapons
              |_-_|
              L___|";
 
-        public static Item ToItem() => new Item(ID, Price, Name, Description, Image, Attributes);
+        public static Item ToItem() => new Item(ID, Price, SellPrice, Name, Description, Image, Attributes);
     }
 }

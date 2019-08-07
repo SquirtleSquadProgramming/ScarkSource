@@ -11,10 +11,41 @@ namespace Scark.ast.start
     class BoardShip
     {
         static Random rand = new Random();
-        int result = rand.Next(1,3);
+        int result = 0;
         bool boughtProstitute = false;
         bool savedProstitute = false;
 
+        public void randomEvent()
+        {
+            result = rand.Next(0,2); // btwn 0 and 1
+
+            if (Character.dev)
+            {
+                Console.WriteLine(@"\nDEV MODE
+Which random event shall be played?
+[0] No event
+[1] Kraken attack");
+                switch (Console.ReadLine())
+                {
+                    case "0":
+                        result = 0;
+                        break;
+                    case "1":
+                        result = 1;
+                        break;
+                }
+            }
+
+            switch (result)
+            {
+                case 0: // no random event
+                    aboardShip();
+                    break;
+                case 1:
+                    krakenAttack();
+                    break;
+            }
+        }   
 
         public void aboardShip()
         {
@@ -34,8 +65,26 @@ namespace Scark.ast.start
             `-------------'");
             }
             
+            result = rand.Next(1,3);
 
-            if (result == 13) // temp
+            if (Character.dev)
+            {
+                Console.WriteLine(@"\nDEV MODE
+Which random event shall be played?
+[0] Regular trades
+[1] Prostitute storyline");
+                switch (Console.ReadLine())
+                {
+                    case "0":
+                        result = 1;
+                        break;
+                    case "1":
+                        result = 2;
+                        break;
+                }
+            }
+
+            if (result == 1) 
             {
                 EOA.wd("\nThree days pass aboard the Farquaad.");
                 EOA.wd("You are awoken from your sleep by the noise of the crew.");
@@ -89,7 +138,7 @@ namespace Scark.ast.start
                 }
                 EOA.pressAnyKeyToContinue();
             }
-            else if (result == 2 || result == 1) // temp
+            else if (result == 2) 
             {
                 EOA.wd("\nThree days pass aboard the Farquaad.");
                 EOA.wd("You are awoken from your sleep by the noise of the crew.");
@@ -213,6 +262,49 @@ namespace Scark.ast.start
             EOA.pressAnyKeyToContinue();
 
             Character.stage++; // Continuing story
+        }
+
+        public void krakenAttack(int part = 1)
+        {
+            if (part = 1)
+            {
+                EOA.wd("Twelve days pass.");
+                EOA.wd("You have already vomited four times on this journey, and your stomach still feels unused to the constant rocking of the boat.");
+                EOA.wd("One morning, you awake to the usual; Lord Farquaad banging on the cabin door.");
+                EOA.wd("[LORD WAKEHART] Come on! Breakfast!");
+                EOA.wd("Suddenly, you feel a sudden bump which nearly topples you over.");
+                EOA.wd("And you feel it again.");
+                EOA.wd("Then, out of nowhere, a massive slimy tentacle wraps itself around the Farquaad.");
+                EOA.wd("[LORD WAKEHART] What the ...?");
+                EOA.wd("Then, you see the tentacle grapple a chest and pull it overboard.");
+                EOA.wd("[LORD WAKEHART] Mercy! My jewels!"); // tintin reference lmao im epic
+            
+                EOA.wd("[1] Ask if you can help Lord Wakehart save his jewels\n[2] Keep silent");
+
+                switch(Console.ReadKey().Key)
+                {
+                    case ConsoleKey.D1:
+                    case ConsoleKey.NumPad1:
+                        EOA.wd("You ask Lord Wakehart if you can help him retrieve his jewels.");
+                        EOA.wd("[LORD WAKEHART] R-really?");
+                        EOA.wd("[LORD WAKEHART] It'll be really dangerous though... are you sure?");
+                        EOA.wd("You agree to the challenge.");
+                        krakenAttack(2);
+                        break;
+                    case ConsoleKey.D2:
+                    case ConsoleKey.NumPad2:
+                        break;
+                    default:
+                        break;
+                }
+            
+            }
+            else if (part = 2)
+            {
+                EOA.wd("Lord Wakehart equips you with diving gear and lowers you down into the water.");
+                EOA.wd("You see the giant Kraken resting on the seabed, the chest of jewels grasped in its tentacles.");
+
+            }
         }
     }
 }
