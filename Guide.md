@@ -27,6 +27,9 @@ namespace Scark.ast.items.general
 - `int Price`
 	- The amount of ethryl that is required to purchase this item
 	- In this case it will be set to `50`
+- `int SellPrice`
+	- The amount of ethryl you will gain by selling the item
+	- In this case it will be set to `35`
 - `string Name`
 	- The name of the item
 	- In this case it will be set to `"Healing Potion"`
@@ -47,6 +50,7 @@ static class HealingPotion
 {
 	public static int ID = 100;
 	public static int Price = 50;
+	public static int SellPrice = 35;
 	public static Name = "Healing Potion";
 	public static Description = "A strange elixir that sames to have healing properties."
 	public static Dictionary<string, dynamic> Attributes = new Dictionary<string, dynamic>
@@ -60,7 +64,7 @@ static class HealingPotion
 
 3. It is almost complete but the item needs to be able to be converted into a used instance of the `Item` class. To do so, add this:
 ```cs
-public static Item ToItem() => new Item(ID, Price, Name, Description, Image, Attributes);
+public static Item ToItem() => new Item(ID, Price, SellPrice, Name, Description, Image, Attributes);
 ```
 
 4. Now the new item must be added to the [ItemID.cs](https://github.com/SquirtleSquadProgramming/ScarkSource/blob/master/Scark/Scark/ast/items/ItemID.cs):
@@ -99,6 +103,7 @@ namespace Scark.ast.items.general
 	{
 		public static int ID = 100;
 		public static int Price = 50;
+		public static int SellPrice = 35;
 		public static Name = "Healing Potion";
 		public static Description = "A strange elixir that sames to have healing properties.";
 		public static Dictionary<string, dynamic> Attributes = new Dictionary<string, dynamic>
@@ -119,7 +124,7 @@ namespace Scark.ast.items.general
     \       /
      `.___.'";
 		
-		public static Item ToItem() => new Item(ID, Price, Name, Description, Image, Attributes);
+		public static Item ToItem() => new Item(ID, Price, SellPrice, Name, Description, Image, Attributes);
 	}
 }
 ```
